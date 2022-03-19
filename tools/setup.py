@@ -74,7 +74,7 @@ def main():
                         help="Path to the original NSO (1.0, compressed or not)", nargs="?")
     args = parser.parse_args()
 
-    setup.install_viking()
+    # setup.install_viking()
     prepare_executable(args.original_nso)
     setup.set_up_compiler("4.0.1")
     print("Please download and extract clang-3.9.1 manually, until it has been properly added to the setup chain.")

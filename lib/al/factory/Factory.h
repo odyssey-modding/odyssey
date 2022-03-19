@@ -3,9 +3,10 @@
 namespace al {
 class LiveActor;
 
-struct FactoryEntry {
+template <class T>
+struct NameToCreator {
     const char* mName;
-    void* mCreationFunction;
+    T mCreationFunction;
 };
 
 template <typename T>
@@ -14,12 +15,12 @@ public:
     inline Factory(const char* factory_name)
         : mFactoryName(factory_name), mFactoryEntries(nullptr), mNumFactoryEntries(0) {}
     template <int N>
-    inline Factory(const char* factory_name, al::FactoryEntry (&entries)[N])
+    inline Factory(const char* factory_name, al::NameToCreator<T> (&entries)[N])
         : mFactoryName(factory_name) {
         initFactory(entries);
     }
     template <int N>
-    inline void initFactory(al::FactoryEntry (&entries)[N]) {
+    inline void initFactory(al::NameToCreator<T> (&entries)[N]) {
         mFactoryEntries = entries;
         mNumFactoryEntries = N;
     }
@@ -28,7 +29,7 @@ public:
 
 private:
     const char* mFactoryName;
-    al::FactoryEntry* mFactoryEntries;
+    al::NameToCreator<T>* mFactoryEntries;
     int mNumFactoryEntries;
 };
 

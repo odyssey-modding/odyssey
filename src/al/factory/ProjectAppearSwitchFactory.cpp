@@ -3,8 +3,10 @@
 
 namespace al {
 
+typedef LiveActor* (*createActor)(const char* name);
+
 // FIXME fill in method references: (1.0) off_7101D89F18
-static FactoryEntry sProjectAppearSwitchFactoryEntries[] = {{"FixMapParts", nullptr},
+    static al::NameToCreator<al::createActor> sProjectAppearSwitchFactoryEntries[] = {{"FixMapParts", nullptr},
                                                             {"FallMapParts", nullptr},
                                                             {"CapHanger", nullptr},
                                                             {"Coin", nullptr},

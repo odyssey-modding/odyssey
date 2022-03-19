@@ -1,9 +1,16 @@
 #include "al/factory/ProjectActorFactory.h"
 #include "al/factory/Factory.h"
+#include "al/util/LiveActorUtil.h"
+
+class Coin;
+class FireDrum2D;
+class Mofumofu;
 
 namespace al {
 
-static FactoryEntry sProjectActorFactoryEntries[] = {{"AchievementNpc", nullptr},
+typedef LiveActor* (*createActor)(const char* name);
+
+static al::NameToCreator<al::createActor> sProjectActorFactoryEntries[] = {{"AchievementNpc", nullptr},
                                                      {"AirBubble", nullptr},
                                                      {"AirBubbleGenerator", nullptr},
                                                      {"AirCurrent", nullptr},
@@ -117,7 +124,7 @@ static FactoryEntry sProjectActorFactoryEntries[] = {{"AchievementNpc", nullptr}
                                                      {"CollectAnimalWatcher", nullptr},
                                                      {"CollectBgmSpeaker", nullptr},
                                                      {"CollectionList", nullptr},
-                                                     {"Coin", nullptr},
+                                                     {"Coin", createActorFunction<Coin>},
                                                      {"Coin2D", nullptr},
                                                      {"Coin2DCityDirector", nullptr},
                                                      {"CoinBlow", nullptr},
@@ -183,7 +190,7 @@ static FactoryEntry sProjectActorFactoryEntries[] = {{"AchievementNpc", nullptr}
                                                      {"FireBrosPossessed", nullptr},
                                                      {"FireSwitch", nullptr},
                                                      {"FireHydrant", nullptr},
-                                                     {"FireDrum2D", nullptr},
+                                                     {"FireDrum2D", createActorFunction<FireDrum2D>},
                                                      {"FishingFish", nullptr},
                                                      {"FixMapParts2D", nullptr},
                                                      {"FixMapPartsAppearKillAsync", nullptr},
@@ -303,7 +310,7 @@ static FactoryEntry sProjectActorFactoryEntries[] = {{"AchievementNpc", nullptr}
                                                      {"MoonRock", nullptr},
                                                      {"MoonWorldBell", nullptr},
                                                      {"MoonWorldCaptureParadeLift", nullptr},
-                                                     {"Mofumofu", nullptr},
+                                                     {"Mofumofu", al::createActorFunction<Mofumofu>},
                                                      {"MofumofuLv2", nullptr},
                                                      {"MofumofuScrap", nullptr},
                                                      {"Motorcycle", nullptr},
