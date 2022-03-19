@@ -28,6 +28,6 @@ public:
     virtual al::SceneObjHolder* getSceneObjHolder();
     virtual al::CameraDirector* getCameraDirector();
 
-    unsigned char _28[0xD8 - 0x28];
+
 };
 }  // namespace al
