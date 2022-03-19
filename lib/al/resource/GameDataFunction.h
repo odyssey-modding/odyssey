@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include <al/LiveActor/LiveActor.h>
+#include "al/liveActor/LiveActor.h"
 #include "GameDataHolder.h"
 #include "GameDataHolderAccessor.h"
 #include "GameDataHolderWriter.h"

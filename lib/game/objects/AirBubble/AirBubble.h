@@ -1,6 +1,6 @@
 #pragma once
 
-#include "al/LiveActor/LiveActor.h"
+#include "al/liveActor/LiveActor.h"
 
 class AirBubble : public al::LiveActor {
     AirBubble(const char* name);

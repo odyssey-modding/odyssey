@@ -12,7 +12,7 @@
 #include "al/nerve/NerveKeeper.h"
 #include "al/scene/SceneObjHolder.h"
 
-#include "al/LiveActor/LiveActor.h"
+#include "al/liveActor/LiveActor.h"
 
 namespace al {
 
@@ -73,7 +73,7 @@ public:
     virtual al::SceneObjHolder* getSceneObjHolder(void) const {
         return mLytSceneInfo->mSceneObjHolder;
     }
-    virtual al::MessageSystem* getMessageSystem(void) const {
+    virtual const al::MessageSystem* getMessageSystem(void) const {
         return mLytSceneInfo->mMessageSystem;
     }
 

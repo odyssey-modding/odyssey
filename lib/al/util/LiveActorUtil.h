@@ -4,7 +4,7 @@
 #include <math/seadQuat.h>
 #include <math/seadVector.h>
 #include <prim/seadSafeString.h>
-#include "al/LiveActor/LiveActor.h"
+#include "al/liveActor/LiveActor.h"
 
 namespace al {
 

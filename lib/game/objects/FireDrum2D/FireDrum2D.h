@@ -1,6 +1,6 @@
 #pragma once
 
-#include "al/LiveActor/LiveActor.h"
+#include "al/liveActor/LiveActor.h"
 #include "al/util/NerveUtil.h"
 #include "game/iuse/IUseDimension.h"
 

@@ -1,8 +1,8 @@
 #pragma once
 
-namespace al {
-class SceneCreator;
+#include "al/scene/SceneCreator.h"
 
+namespace al {
 class IUseSceneCreator {
 public:
     virtual ~IUseSceneCreator();

@@ -5,6 +5,8 @@
 #include "al/nerve/NerveExecutor.h"
 #include "al/scene/SceneInitInfo.h"
 #include "al/scene/SceneObjHolder.h"
+#include "al/iuse/IUseCamera.h"
+#include "al/iuse/IUseAudioKeeper.h"
 
 namespace al {
 class Scene : public al::NerveExecutor,
@@ -28,17 +30,4 @@ public:
 
     unsigned char _28[0xD8 - 0x28];
 };
-
-class StageScene : public al::Scene {
-public:
-    StageScene();
-
-    virtual ~StageScene();
-    virtual void init(const al::SceneInitInfo&);
-    virtual void appear();
-    virtual void kill();
-
-    virtual void control();
-    virtual void drawMain();
-};
-};  // namespace al
+}  // namespace al
