@@ -13,6 +13,7 @@
 #include "al/scene/SceneObjHolder.h"
 
 #include "al/liveActor/LiveActor.h"
+#include "LayoutPartsActorKeeper.h"
 
 namespace al {
 
@@ -41,18 +42,19 @@ class LayoutActor : public al::IUseHioNode,
 public:
     LayoutActor(char const*);
 
-    virtual al::NerveKeeper* getNerveKeeper(void) const { return mNerveKeeper; }
-
     virtual void appear();
     virtual void kill();
-    virtual void movement();
+    virtual void control() {}
     virtual void calcAnim(bool);
+    virtual void movement();
 
+
+    virtual al::NerveKeeper* getNerveKeeper(void) const { return mNerveKeeper; }
     virtual const char* getName(void) const { return mName.cstr(); }
     virtual al::EffectKeeper* getEffectKeeper(void) const { return mEffectKeeper; }
     virtual al::AudioKeeper* getAudioKeeper(void) const { return mAudioKeeper; }
-    virtual al::LayoutActionKeeper* getLayoutActionKeeper(void) const { return mLytActionKeeper; }
-    virtual al::LayoutKeeper* getLayoutKeeper(void) const { return mLytKeeper; }
+    virtual al::LayoutActionKeeper* getLayoutActionKeeper(void) const { return mLayoutActionKeeper; }
+    virtual al::LayoutKeeper* getLayoutKeeper(void) const { return mLayoutKeeper; }
 
     void initLayoutKeeper(al::LayoutKeeper*);
     void initActionKeeper(void);
@@ -68,28 +70,26 @@ public:
     void syncAction();
 
     virtual al::CameraDirector* getCameraDirector(void) const {
-        return mLytSceneInfo->mCameraDirector;
+        return mLayoutSceneInfo->mCameraDirector;
     }
     virtual al::SceneObjHolder* getSceneObjHolder(void) const {
-        return mLytSceneInfo->mSceneObjHolder;
+        return mLayoutSceneInfo->mSceneObjHolder;
     }
     virtual const al::MessageSystem* getMessageSystem(void) const {
-        return mLytSceneInfo->mMessageSystem;
+        return mLayoutSceneInfo->mMessageSystem;
     }
-
-    virtual void control();
 
     sead::FixedSafeString<0x80> mName;                    // 0x40
     NerveKeeper* mNerveKeeper;                            // 0xD8
-    LayoutKeeper* mLytKeeper;                             // 0xE0
-    LayoutActionKeeper* mLytActionKeeper;                 // 0xE8
+    LayoutKeeper* mLayoutKeeper;                             // 0xE0
+    LayoutActionKeeper* mLayoutActionKeeper;                 // 0xE8
     struct TextPaneAnimator* mTextPaneAnimator;           // 0xF0
     EffectKeeper* mEffectKeeper;                          // 0xF8
     AudioKeeper* mAudioKeeper;                            // 0x100
     struct ExecuteInfo* mExecuteInfo;                     // 0x108
     HitReactionKeeper* mHitReactionKeeper;                // 0x110
-    LayoutSceneInfo* mLytSceneInfo;                       // 0x118
-    struct LayoutPartsActorKeeper* mLytPartsActorKeeper;  // 0x120
+    LayoutSceneInfo* mLayoutSceneInfo;                       // 0x118
+    LayoutPartsActorKeeper* mLayoutPartsActorKeeper;  // 0x120
     bool mIsAlive;                                        // 0x128
 };
 }  // namespace al
