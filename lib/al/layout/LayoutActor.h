@@ -83,10 +83,10 @@ public:
     NerveKeeper* mNerveKeeper;                            // 0xD8
     LayoutKeeper* mLayoutKeeper;                             // 0xE0
     LayoutActionKeeper* mLayoutActionKeeper;                 // 0xE8
-    struct TextPaneAnimator* mTextPaneAnimator;           // 0xF0
+    LayoutTextPaneAnimator* mTextPaneAnimator;           // 0xF0
     EffectKeeper* mEffectKeeper;                          // 0xF8
     AudioKeeper* mAudioKeeper;                            // 0x100
-    struct ExecuteInfo* mExecuteInfo;                     // 0x108
+    LayoutExecuteInfo* mExecuteInfo;                     // 0x108
     HitReactionKeeper* mHitReactionKeeper;                // 0x110
     LayoutSceneInfo* mLayoutSceneInfo;                       // 0x118
     LayoutPartsActorKeeper* mLayoutPartsActorKeeper;  // 0x120

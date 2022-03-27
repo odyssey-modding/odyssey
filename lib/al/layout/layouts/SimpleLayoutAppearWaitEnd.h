@@ -22,7 +22,11 @@ public:
     void exeAppear();
     void exeWait();
     void exeEnd();
+
+    int mWaitMaxStep;
 };
+
+static_assert(sizeof(SimpleLayoutAppearWaitEnd) == 0x130);
 
 namespace {
 NERVE_HEADER(SimpleLayoutAppearWaitEnd, Appear)
