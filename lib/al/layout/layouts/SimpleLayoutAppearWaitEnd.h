@@ -14,6 +14,7 @@ public:
 
     void appear() override;
     void end();
+    void startWait();
 
     bool isAppearOrWait() const;
     bool isWait() const;
