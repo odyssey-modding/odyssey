@@ -1,6 +1,6 @@
 add_subdirectory(actor)
-add_subdirectory(objects)
+add_subdirectory(layoutActors)
+add_subdirectory(liveActors)
 add_subdirectory(player)
 add_subdirectory(scene)
 add_subdirectory(sequence)
-add_subdirectory(layouts)

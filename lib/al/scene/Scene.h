@@ -28,6 +28,8 @@ public:
     virtual al::SceneObjHolder* getSceneObjHolder();
     virtual al::CameraDirector* getCameraDirector();
 
+private:
+    bool mIsAlive;
 
 };
 }  // namespace al

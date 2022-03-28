@@ -5,8 +5,25 @@
 #include "al/iuse/IUseSceneCreator.h"
 
 namespace al {
+class GameSystemInfo;
+class SequenceInitInfo;
+class AudioSystemInfo;
+class Scene;
+
 class Sequence : public al::NerveExecutor, public al::IUseAudioKeeper, public al::IUseSceneCreator {
 public:
     Sequence(const char* name);
+    void update();
+    void kill();
+    void initAudio(const al::GameSystemInfo&, const char*, int, int, int, const char*);
+    void initAudioKeeper(const char*);
+    void initDrawSystemInfo(const al::SequenceInitInfo&);
+    al::AudioSystemInfo* getAudioSystemInfo();
+
+    void drawMain();
+    void drawSub();
+    void init(const al::SequenceInitInfo&);
+    bool isDisposable() { return true; }
+    al::Scene* getCurrentScene();
 };
 }  // namespace al
