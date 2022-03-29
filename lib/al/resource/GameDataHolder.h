@@ -8,8 +8,9 @@
 #include "GameDataFile.h"
 #include "GameDataHolderBase.h"
 #include "al/message/MessageSystem.h"
-#include "game/WorldList/WorldList.h"
-#include "sead/prim/seadSafeString.h"
+#include <prim/seadSafeString.h>
+
+class WorldList;
 
 class GameDataHolder  // : public GameDataHolderBase
 {
@@ -82,8 +83,8 @@ public:
     void readFromSaveDataBufferCommonFileOnlyLanguage();
 
     u64* _8;
-    undefined8 padding;
-    undefined8 _padding;
+    void* gap_1;
+    void* gap_2;
     GameDataFile* mDataFileArr;   // 0x18
     GameDataFile* mGameDataFile;  // 0x20
     unsigned char padding_190[0x168];

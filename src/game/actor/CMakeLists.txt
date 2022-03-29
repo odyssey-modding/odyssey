@@ -1,3 +1,1 @@
-target_sources(odyssey PRIVATE
-    ActorDimensionKeeper.cpp
-)
+add_subdirectory(dimension)

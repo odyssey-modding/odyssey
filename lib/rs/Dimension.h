@@ -2,6 +2,7 @@
 
 namespace al {
 class LiveActor;
+class AreaObj;
 }
 class IUseDimension;
 class ActorDimensionKeeper;
@@ -17,5 +18,7 @@ bool isChange2D(const IUseDimension* dimension);
 bool isChange3D(const IUseDimension* dimension);
 bool is3D(const IUseDimension* dimension);
 void snap2D(const al::LiveActor* actor, const IUseDimension* dimension, float unk_distance);
+
+bool isFaceTo2DAreaPushOutDir(const al::AreaObj*);
 
 }  // namespace rs

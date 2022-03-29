@@ -25,7 +25,7 @@ class Scene : public al::NerveExecutor,
               public al::IUseCamera,
               public al::IUseSceneObjHolder {
 public:
-    Scene(const char*);
+    Scene(const char* name);
 
     virtual ~Scene();
     virtual void init(const al::SceneInitInfo&);

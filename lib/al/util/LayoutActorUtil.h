@@ -10,8 +10,9 @@ void initLayoutActorLocalized(al::LayoutActor*, const al::LayoutInitInfo&, const
 void initLayoutPartsActor(al::LayoutActor*, al::LayoutActor*, const al::LayoutInitInfo&,
                           const char*, const char*);
 
-    void startAction(al::IUseLayoutAction* layoutActor, const char* actionName,
-                     const char* paneName);
+void startAction(al::IUseLayoutAction* layoutActor, const char* actionName, const char* paneName);
+void startFreezeActionEnd(al::IUseLayoutAction* layoutActor, const char* actionName, const char* paneName);
+int getActionFrame(const al::IUseLayoutAction* layoutActor, const char* paneName);
 bool isActionEnd(al::IUseLayoutAction* layoutActor, const char* paneName);
 
 void updateLayoutPaneRecursive(al::LayoutActor* layoutActor);

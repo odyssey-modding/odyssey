@@ -1,4 +1,4 @@
-#include "game/objects/AirBubble/AirBubble.h"
+#include "game/liveActors/AirBubble/AirBubble.h"
 
 AirBubble::AirBubble(const char* name) : al::LiveActor(name) {}
 void AirBubble::init(const al::ActorInitInfo& info) {

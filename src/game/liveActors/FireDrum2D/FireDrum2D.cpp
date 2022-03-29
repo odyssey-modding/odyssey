@@ -1,4 +1,4 @@
-#include "game/objects/FireDrum2D/FireDrum2D.h"
+#include "game/liveActors/FireDrum2D/FireDrum2D.h"
 
 #include "al/sensor/SensorMsg.h"
 #include "al/util/LiveActorUtil.h"
