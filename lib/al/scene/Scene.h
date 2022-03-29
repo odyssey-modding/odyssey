@@ -7,8 +7,19 @@
 #include "al/scene/SceneObjHolder.h"
 #include "al/iuse/IUseCamera.h"
 #include "al/iuse/IUseAudioKeeper.h"
+#include <prim/seadSafeString.h>
 
 namespace al {
+class StageResourceKeeper;
+class LiveActorKit;
+class LayoutKit;
+class SceneStopCtrl;
+class SceneMsgCtrl;
+class ScreenCoverCtrl;
+class AudioDirector;
+class AudioKeeper;
+class NerveKeeper;
+
 class Scene : public al::NerveExecutor,
               public al::IUseAudioKeeper,
               public al::IUseCamera,
@@ -30,6 +41,18 @@ public:
 
 private:
     bool mIsAlive;
-
+    sead::FixedSafeString<0x40> mName;
+    StageResourceKeeper* mStageResourceKeeper;
+    LiveActorKit* mLiveActorKit;
+    LayoutKit* mLayoutKit;
+    SceneObjHolder* mSceneObjHolder;
+    SceneStopCtrl* mSceneStopCtrl;
+    SceneMsgCtrl* mSceneMsgCtrl;
+    ScreenCoverCtrl* mScreenCoverCtrl;
+    AudioDirector* mAudioDirector;
+    AudioKeeper* mAudioKeeper;
+    NerveKeeper* mNerveKeeper;
 };
+
+static_assert(sizeof(al::Scene) == 0xd8);
 }  // namespace al

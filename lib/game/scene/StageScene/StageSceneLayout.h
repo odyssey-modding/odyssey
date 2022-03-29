@@ -1,6 +1,6 @@
 #pragma once
 
-#include "game/Layouts/CoinCounter.h"
+#include "game/layouts/CoinCounter.h"
 
 class StageSceneLayout {
 public:

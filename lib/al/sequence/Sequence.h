@@ -13,6 +13,7 @@ class Scene;
 class Sequence : public al::NerveExecutor, public al::IUseAudioKeeper, public al::IUseSceneCreator {
 public:
     Sequence(const char* name);
+    ~Sequence() override;
     void update();
     void kill();
     void initAudio(const al::GameSystemInfo&, const char*, int, int, int, const char*);
@@ -25,5 +26,8 @@ public:
     void init(const al::SequenceInitInfo&);
     bool isDisposable() { return true; }
     al::Scene* getCurrentScene();
+
+private:
+
 };
 }  // namespace al
