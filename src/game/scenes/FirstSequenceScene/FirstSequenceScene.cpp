@@ -1,1 +1,1 @@
-#include "game/scene/FirstSequenceScene/FirstSequenceScene.h"
+#include "game/scenes/FirstSequenceScene/FirstSequenceScene.h"

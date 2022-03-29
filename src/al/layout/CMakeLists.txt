@@ -7,4 +7,4 @@ target_sources(odyssey PRIVATE
     LayoutPartsActorKeeper.cpp
 )
 
-add_subdirectory(layouts)
+add_subdirectory(actors)

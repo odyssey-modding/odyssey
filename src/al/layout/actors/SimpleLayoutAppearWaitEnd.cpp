@@ -1,4 +1,4 @@
-#include "al/layout/layouts/SimpleLayoutAppearWaitEnd.h"
+#include "al/layout/actors/SimpleLayoutAppearWaitEnd.h"
 #include "al/util/LayoutActorUtil.h"
 
 namespace al {
