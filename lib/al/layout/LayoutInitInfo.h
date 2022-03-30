@@ -19,13 +19,13 @@ public:
               al::AudioDirector const*, al::CameraDirector*, al::LayoutSystem const*,
               al::MessageSystem const*, al::GamePadSystem const*, al::PadRumbleDirector*);
 
-    void *qword30;
-    void *qword38;
-    void *qword40;
-    const al::ExecuteDirector *mExecuteDirector;
-    const al::EffectSystemInfo *mEffectSysInfo;
-    const al::AudioDirector *mAudioDirector;
-    const al::LayoutSystem *mLayoutSystem;
+    void *qword30 = nullptr;
+    void *qword38 = nullptr;
+    void *qword40 = nullptr;
+    const al::ExecuteDirector *mExecuteDirector = nullptr;
+    const al::EffectSystemInfo *mEffectSysInfo = nullptr;
+    const al::AudioDirector *mAudioDirector = nullptr;
+    const al::LayoutSystem *mLayoutSystem = nullptr;
 };
 
 void initLayoutInitInfo(al::LayoutInitInfo *,al::LayoutKit const*,al::SceneObjHolder *,al::AudioDirector const*,al::LayoutSystem const*,al::MessageSystem const*,al::GamePadSystem const*);
