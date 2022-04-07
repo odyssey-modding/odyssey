@@ -16,4 +16,6 @@ int getActionFrame(const al::IUseLayoutAction* layoutActor, const char* paneName
 bool isActionEnd(al::IUseLayoutAction* layoutActor, const char* paneName);
 
 void updateLayoutPaneRecursive(al::LayoutActor* layoutActor);
+
+void hidePane(al::LayoutActor*);
 }  // namespace al
