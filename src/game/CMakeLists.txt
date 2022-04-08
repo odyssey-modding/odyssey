@@ -1,4 +1,5 @@
 add_subdirectory(actor)
+add_subdirectory(gameData)
 add_subdirectory(layoutActors)
 add_subdirectory(liveActors)
 add_subdirectory(player)

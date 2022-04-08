@@ -7,6 +7,7 @@
 #include "al/scene/SceneObjHolder.h"
 #include "al/iuse/IUseCamera.h"
 #include "al/iuse/IUseAudioKeeper.h"
+#include "al/LiveActor/LiveActorKit.h"
 #include <prim/seadSafeString.h>
 
 namespace al {
@@ -35,9 +36,15 @@ public:
     virtual void control();
     virtual void drawMain();
     virtual void drawSub();
-    virtual al::AudioKeeper* getAudioKeeper();
-    virtual al::SceneObjHolder* getSceneObjHolder();
-    virtual al::CameraDirector* getCameraDirector();
+    al::AudioKeeper* getAudioKeeper() const override {
+        return mAudioKeeper;
+    }
+    al::SceneObjHolder* getSceneObjHolder() const {
+        return mSceneObjHolder;
+    }
+    al::CameraDirector* getCameraDirector() const {
+        return mLiveActorKit->getCameraDirector();
+    }
 
 private:
     bool mIsAlive;

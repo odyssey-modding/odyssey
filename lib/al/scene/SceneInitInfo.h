@@ -1,6 +1,6 @@
 #pragma once
 
-#include "al/resource/GameDataHolderAccessor.h"
+#include "game/gameData/GameDataHolderAccessor.h"
 
 namespace al {
 struct SceneInitInfo {
