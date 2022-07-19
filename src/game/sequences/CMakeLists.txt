@@ -1,4 +1,2 @@
-target_sources(odyssey PRIVATE
-    E3Sequence.cpp
-    HakoniwaSequence.cpp
-)
+add_subdirectory(E3Sequence)
+add_subdirectory(HakoniwaSequence)

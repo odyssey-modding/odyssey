@@ -45,8 +45,6 @@ void SceneStateSelectMode::exeAppear() {
     }
 }
 
-void SceneStateSelectMode::exeWait() {}
-
 namespace {
 NERVE_IMPL(SceneStateSelectMode, Appear)
 NERVE_IMPL(SceneStateSelectMode, Wait)

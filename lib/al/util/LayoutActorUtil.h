@@ -12,7 +12,9 @@ void initLayoutPartsActor(al::LayoutActor*, al::LayoutActor*, const al::LayoutIn
 
 void startAction(al::IUseLayoutAction* layoutActor, const char* actionName, const char* paneName);
 void startFreezeActionEnd(al::IUseLayoutAction* layoutActor, const char* actionName, const char* paneName);
+void startFreezeAction(al::IUseLayoutAction* layoutActor, const char* actionName, float time, const char* paneName);
 int getActionFrame(const al::IUseLayoutAction* layoutActor, const char* paneName);
+int getActionFrameMax(const al::IUseLayoutAction* layoutActor, const char* actionName, const char* paneName);
 bool isActionEnd(al::IUseLayoutAction* layoutActor, const char* paneName);
 
 void updateLayoutPaneRecursive(al::LayoutActor* layoutActor);
