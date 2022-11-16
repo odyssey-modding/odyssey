@@ -67,8 +67,8 @@ float* findActorParamF32(const al::LiveActor*, const char*);
 int* findActorParamS32(const al::LiveActor*, const char*);
 
 void setNerveAtActionEnd(al::LiveActor*, const al::Nerve*);
-void initActorWithArchiveName(al::LiveActor* actor, const al::ActorInitInfo& info, const sead::SafeString&,
-                              const char* suffix);
+void initActorWithArchiveName(al::LiveActor* actor, const al::ActorInitInfo& info,
+                              const sead::SafeString&, const char* suffix);
 void initMapPartsActor(al::LiveActor* actor, const al::ActorInitInfo& info, const char* suffix);
 
 void initJointControllerKeeper(const al::LiveActor*, int);

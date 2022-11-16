@@ -9,7 +9,8 @@ public:
     GamePadSystem();
     void changeSinglePlayMode();
     bool isDisconnectPlayable();
-    sead::WFixedSafeString<256> getPadName(u8); // might return a parent type instead of this specific format
+    sead::WFixedSafeString<256>
+        getPadName(u8);       // might return a parent type instead of this specific format
     int getPadPlayStyle(u8);  // unknown return type
     void update();
     bool isDisconnectPlayableImpl();

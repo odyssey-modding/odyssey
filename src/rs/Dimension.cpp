@@ -1,7 +1,7 @@
 #include "rs/Dimension.h"
 
 #include "al/LiveActor/LiveActor.h"
-#include "game/actor/ActorDimensionKeeper.h"
+#include "game/Util/ActorDimensionKeeper.h"
 #include "game/iuse/IUseDimension.h"
 
 namespace rs {

@@ -54,7 +54,7 @@ public:
     // enables cappy if not enabled already
     static void enableCap(GameDataHolderWriter);
 
-    // kills the player
+    // kills the Player
     static void killPlayer(GameDataHolderWriter);
 
     // upgrades the odyssey

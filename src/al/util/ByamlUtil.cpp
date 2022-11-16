@@ -1,6 +1,6 @@
 #include "al/util/ByamlUtil.h"
-#include "al/byaml/ByamlData.h"
-#include "al/byaml/ByamlIter.h"
+#include "al/Yaml/ByamlData.h"
+#include "al/Yaml/ByamlIter.h"
 #include "math/seadBoundBox.h"
 
 namespace al {

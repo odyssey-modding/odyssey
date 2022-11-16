@@ -197,13 +197,14 @@ float Rail::calcNearestRailPosCoord(const sead::Vector3f& pos, float interval) c
     return calcNearestRailPosCoord(pos, interval, &tmp);
 }
 // FIXME diff issue due to bug in tools/check
-float Rail::calcNearestRailPosCoord(const sead::Vector3f& pos, float interval, float* distance) const {
+float Rail::calcNearestRailPosCoord(const sead::Vector3f& pos, float interval,
+                                    float* distance) const {
     *distance = sead::Mathf::maxNumber();
     float bestParam = sead::Mathf::maxNumber();
 
     int curr_index = 0LL;
     int bestIndex = 0;
-    for (long i=0; i < mRailPartCount; i++) {
+    for (long i = 0; i < mRailPartCount; i++) {
         RailPart* part = &mRailPart[curr_index];
         float param;
         float length = part->calcNearestLength(&param, pos, part->getPartLength(), interval);
@@ -220,7 +221,8 @@ float Rail::calcNearestRailPosCoord(const sead::Vector3f& pos, float interval, f
     return bestParam;
 }
 // FIXME diff issue due to bug in tools/check
-float Rail::calcNearestRailPos(sead::Vector3f* rail_pos, const sead::Vector3f& pos, float interval) const {
+float Rail::calcNearestRailPos(sead::Vector3f* rail_pos, const sead::Vector3f& pos,
+                               float interval) const {
     float coord = calcNearestRailPosCoord(pos, interval);
     const RailPart* part = nullptr;
     float partDistance = 0;
@@ -236,21 +238,23 @@ bool Rail::isNearRailPoint(float distance, float epsilon) const {
     return (partDistance < epsilon) || ((part->getPartLength() - partDistance) < epsilon);
 }
 int Rail::calcRailPointNum(float distance1, float distance2) const {
-    if((distance2-distance1) < 0.01f) return 0;
+    if ((distance2 - distance1) < 0.01f)
+        return 0;
     const RailPart* part1 = nullptr;
     const RailPart* part2 = nullptr;
     float partDistance1, partDistance2;
     int sec1 = getIncludedSection(&part1, &partDistance1, distance1);
     int sec2 = getIncludedSection(&part2, &partDistance2, distance2);
 
-    return ((sec2 - sec1) + (partDistance1 < 0.01f)) + ((part2->getPartLength() - partDistance2) < 0.01f);
+    return ((sec2 - sec1) + (partDistance1 < 0.01f)) +
+           ((part2->getPartLength() - partDistance2) < 0.01f);
 }
-//FIXME regalloc in length calculation
+// FIXME regalloc in length calculation
 float Rail::getIncludedSectionLength(float* partDistance, float* length, float distance) const {
     const RailPart* part = nullptr;
     getIncludedSection(&part, partDistance, distance);
     float partLength = part->getPartLength();
-    if(partDistance && length) {
+    if (partDistance && length) {
         *length = partLength - *partDistance;
     }
     return partLength;
@@ -259,8 +263,9 @@ int Rail::getIncludedSectionIndex(float distance) const {
     return getIncludedSection(nullptr, nullptr, distance);
 }
 bool Rail::isIncludeBezierRailPart() const {
-    for(int i=0; i<mRailPartCount; i++) {
-        if(isBezierRailPart(i)) return true;
+    for (int i = 0; i < mRailPartCount; i++) {
+        if (isBezierRailPart(i))
+            return true;
     }
     return false;
 }

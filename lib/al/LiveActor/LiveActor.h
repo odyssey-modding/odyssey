@@ -1,11 +1,11 @@
 #pragma once
 
-#include "al/byaml/ByamlIter.h"
+#include "al/Yaml/ByamlIter.h"
 
+#include "al/Audio/IUseAudioKeeper.h"
+#include "al/Camera/IUseCamera.h"
 #include "al/hio/HioNode.h"
 #include "al/iuse/IUseAreaObj.h"
-#include "al/iuse/IUseAudioKeeper.h"
-#include "al/iuse/IUseCamera.h"
 #include "al/iuse/IUseCollision.h"
 #include "al/iuse/IUseEffectKeeper.h"
 #include "al/nerve/Nerve.h"
@@ -14,7 +14,7 @@
 #include "al/scene/SceneObjHolder.h"
 #include "al/screen/ScreenPointKeeper.h"
 #include "al/sensor/HitSensorKeeper.h"
-#include "al/switch/StageSwitchKeeper.h"
+#include "al/stage/StageSwitchKeeper.h"
 
 namespace al {
 class ActorScoreKeeper {

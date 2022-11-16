@@ -1,4 +1,4 @@
-#include "game/player/PlayerEquipmentUser.h"
+#include "game/Player/PlayerEquipmentUser.h"
 
 #include "al/sensor/SensorMsg.h"
 #include "rs/Sensor.h"

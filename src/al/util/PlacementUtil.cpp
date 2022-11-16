@@ -1,6 +1,6 @@
 #include "al/util/PlacementUtil.h"
 
-#include "al/byaml/ByamlIter.h"
+#include "al/Yaml/ByamlIter.h"
 
 namespace al {
 int getCountPlacementInfo(const al::PlacementInfo& rInfo) {

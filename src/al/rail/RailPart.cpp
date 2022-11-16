@@ -30,7 +30,7 @@ void RailPart::calcVelocity(sead::Vector3f* vel, float param) const {
 }
 void RailPart::calcDir(sead::Vector3f* dir, float param) const {
     calcVelocity(dir, param);
-    if(!isNearZero(*dir, 0.001)) {
+    if (!isNearZero(*dir, 0.001)) {
         normalize(dir);
         return;
     }
@@ -40,11 +40,11 @@ void RailPart::calcDir(sead::Vector3f* dir, float param) const {
     sead::Vector3f endPos;
     calcEndPos(&endPos);
 
-    dir->x = endPos.x-startPos.x;
-    dir->y = endPos.y-startPos.y;
-    dir->z = endPos.z-startPos.z;
-    if(isNearZero(*dir, 0.001)) {
-        *dir = {0,0,1};
+    dir->x = endPos.x - startPos.x;
+    dir->y = endPos.y - startPos.y;
+    dir->z = endPos.z - startPos.z;
+    if (isNearZero(*dir, 0.001)) {
+        *dir = {0, 0, 1};
     } else {
         normalize(dir);
     }

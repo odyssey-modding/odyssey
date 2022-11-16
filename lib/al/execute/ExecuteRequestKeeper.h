@@ -28,7 +28,7 @@ public:
         Request_Draw = 0x2,
         Request_RemoveFromDraw = 0x3
     };
-    
+
     ExecuteRequestKeeper(int size);
 
     void executeRequestActorMovementAllOn();

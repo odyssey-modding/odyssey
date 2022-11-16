@@ -1,7 +1,7 @@
 #pragma once
 
 #include <resource/seadResource.h>
-#include "al/byaml/ByamlIter.h"
+#include "al/Yaml/ByamlIter.h"
 
 namespace al {
 class PlacementInfo {

@@ -5,7 +5,9 @@
 #include "al/util/StageSwitchUtil.h"
 
 namespace al {
+
 FixMapParts::FixMapParts(const char* name) : LiveActor(name) {}
+
 void FixMapParts::init(const ActorInitInfo& info) {
     const char* suffix = nullptr;
     tryGetStringArg(&suffix, info, "Suffix");
@@ -17,22 +19,26 @@ void FixMapParts::init(const ActorInitInfo& info) {
         mStatic = true;
     }
 }
+
 void FixMapParts::appear() {
     LiveActor::appear();
 
     if (isExistModel(this))
         tryStartAction(this, "Appear");
 }
+
 void FixMapParts::movement() {
     if (!mStatic)
         LiveActor::movement();
 }
+
 void FixMapParts::calcAnim() {
     if (!mStatic)
         LiveActor::calcAnim();
     else
         calcViewModel(this);
 }
+
 bool FixMapParts::receiveMsg(const SensorMsg* message, HitSensor* source, HitSensor* target) {
     if (isMsgAskSafetyPoint(message))
         return !isValidSwitchAppear(this) && !isValidSwitchKill(this);
@@ -49,4 +55,5 @@ bool FixMapParts::receiveMsg(const SensorMsg* message, HitSensor* source, HitSen
 
     return false;
 }
+
 }  // namespace al

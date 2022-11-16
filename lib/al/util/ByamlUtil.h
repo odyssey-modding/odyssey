@@ -3,8 +3,8 @@
 #include <gfx/seadColor.h>
 #include <math/seadBoundBox.h>
 #include <math/seadVector.h>
-#include "al/byaml/ByamlData.h"
-#include "al/byaml/ByamlIter.h"
+#include "al/Yaml/ByamlData.h"
+#include "al/Yaml/ByamlIter.h"
 
 namespace sead {
 class WriteStream;

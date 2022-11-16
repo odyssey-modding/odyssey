@@ -13,10 +13,9 @@
 #ifndef __GLIBC_PREREQ
 #define __MUSL_GLIBC__ 2
 #define __MUSL_GLIBC_MINOR__ 17
-#define __GLIBC_PREREQ(maj, min) ((__MUSL_GLIBC__ << 16) + __MUSL_GLIBC_MINOR__ >= ((maj) << 16) + (min))
+#define __GLIBC_PREREQ(maj, min)                                                                   \
+    ((__MUSL_GLIBC__ << 16) + __MUSL_GLIBC_MINOR__ >= ((maj) << 16) + (min))
 #endif
 #define __MUSL__ 0x10110
 #define __NNMUSL__ 1
 #endif
-
-
