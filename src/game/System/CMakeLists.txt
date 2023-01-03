@@ -1,3 +1,9 @@
 target_sources(odyssey PRIVATE
-    GameDataHolderAccessor.cpp
+    AchievementSaveData.cpp
+    Application.cpp
+    BossSaveData.cpp
+    CollectBgm.cpp
+    Init.cpp
+    ProjectInterface.cpp
+    RootTask.cpp
 )
