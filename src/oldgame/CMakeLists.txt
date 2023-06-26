@@ -1,7 +1,0 @@
-add_subdirectory(Boss)
-add_subdirectory(MapObj)
-add_subdirectory(NPC)
-add_subdirectory(Player)
-add_subdirectory(Util)
-add_subdirectory(Scene)
-add_subdirectory(System)

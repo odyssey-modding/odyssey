@@ -18,8 +18,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(odyssey)
+file(GLOB_RECURSE SOURCES_GAME ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/*.c ${PROJECT_SOURCE_DIR}/libs/*.cpp)
+file(GLOB_RECURSE SOURCES_AL ${PROJECT_SOURCE_DIR}/lib/al/*.cpp ${PROJECT_SOURCE_DIR}/lib/al/*.c ${PROJECT_SOURCE_DIR}/lib/al/*.cpp)
+
+add_executable(odyssey ${SOURCES_GAME} ${SOURCES_AL})
+
 target_include_directories(odyssey PRIVATE src)
+
 target_compile_definitions(odyssey PRIVATE NON_MATCHING)
 target_compile_options(odyssey PRIVATE -fno-rtti -fno-exceptions)
 target_compile_options(odyssey PRIVATE -Wall -Wextra -Wdeprecated)
@@ -32,7 +37,6 @@ set(NN_SDK_MINOR 5)
 set(NN_SDK_PATCH 1)
 set(NN_SDK_TYPE "Release")
 
-add_subdirectory(src)
 include_directories(lib)
 include_directories(lib/aarch64)
 

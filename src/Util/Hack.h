@@ -1,0 +1,141 @@
+#pragma once
+
+#include "IUse/IUse.h"
+#include <math/seadVector.h>
+#include <math/seadQuat.h>
+#include <math/seadVector.h>
+
+class IUsePlayerHack;
+class IUsePlayerCollision;
+class CapTargetInfo;
+
+namespace rs {
+CapTargetInfo *createCapTargetInfo(al::LiveActor *,char const*);
+CapTargetInfo *createCapTargetInfoWithPlayerCollider(al::LiveActor *,IUsePlayerCollision *,char const*);
+CapTargetInfo *createCapTargetInfoHackMapParts(al::LiveActor *);
+CapTargetInfo *createCapTargetInfoLockOnOnlyNoArchive(al::LiveActor *,sead::Matrix34<float> const*);
+void requestLockOnCapHitReaction(al::LiveActor const*,CapTargetInfo const*,char const*);
+void startHack(al::HitSensor *,al::HitSensor *,al::LiveActor *);
+void endHack(IUsePlayerHack **);
+void endHackDir(IUsePlayerHack **,sead::Vector3<float> const&);
+void endHackTargetQuat(IUsePlayerHack **,sead::Quat<float> const&,sead::Vector3<float> const&);
+void endHackFromTargetPos(IUsePlayerHack **,sead::Vector3<float> const&);
+void endHackFromTargetPos(IUsePlayerHack **,sead::Vector3<float> const&,sead::Vector3<float> const&);
+void endHackFromTargetPos(IUsePlayerHack **,sead::Vector3<float> const&,sead::Quat<float> const&,sead::Vector3<float> const&);
+void endHackWithDamage(IUsePlayerHack **);
+void endHackWithDamageAndVelocity(IUsePlayerHack **,sead::Vector3<float> const&);
+void endHackEscapeScale(IUsePlayerHack **,float);
+void endHackDirEscapeScale(IUsePlayerHack **,sead::Vector3<float> const&,float);
+void endHackDirEscapeScalePose(IUsePlayerHack **,sead::Quat<float> const&,sead::Vector3<float> const&,float);
+void endHackAirVelocity(IUsePlayerHack **,sead::Vector3<float> const&,sead::Quat<float> const&,sead::Vector3<float> const&,int);
+void endHackElectricWireToDestination(IUsePlayerHack **,sead::Vector3<float> const&,sead::Vector3<float> const&);
+void endHackFastenerToDestination(IUsePlayerHack **,sead::Vector3<float> const&,sead::Vector3<float> const&);
+void endHackBazookaElectricToDestination(IUsePlayerHack **,sead::Vector3<float> const&,sead::Vector3<float> const&,sead::Quat<float> const&,int,float);
+void endHackThrowed(IUsePlayerHack **,sead::Vector3<float> const&);
+void requestDamage(IUsePlayerHack *);
+void syncDamageVisibility(al::LiveActor *,IUsePlayerHack const*);
+bool isDamageVisibilityHide(IUsePlayerHack const*);
+bool isTouchHackCancelCollisionCode(al::LiveActor const*,IUsePlayerCollision const*);
+bool isTouchHackDamageCollisionCode(al::LiveActor const*,IUsePlayerCollision const*);
+void updateMaterialCode(al::LiveActor *,IUsePlayerCollision const*);
+void startHackStartDemo(IUsePlayerHack *,al::LiveActor *);
+void startHackStartDemoPuppetable(IUsePlayerHack *,al::LiveActor *);
+void addHackStartDemoActor(IUsePlayerHack *,al::LiveActor *);
+void endHackStartDemo(IUsePlayerHack *,al::LiveActor *);
+bool tryEndHackStartDemo(IUsePlayerHack *,al::LiveActor *);
+bool isActiveHackStartDemo(IUsePlayerHack const*);
+bool isHackStartDemoEnterMario(IUsePlayerHack const*);
+bool isHackerStopMove(al::LiveActor const*,IUsePlayerHack const*,float);
+bool isHackerStopMoveGround(al::LiveActor const*,IUsePlayerHack const*,float,IUsePlayerCollision const*);
+void sendMsgHackerNoReaction(IUsePlayerHack const*,al::HitSensor *,al::HitSensor *);
+void sendMsgHackerNoReactionWithoutShine(IUsePlayerHack const*,al::HitSensor *,al::HitSensor *);
+bool isMsgHackerDamageAndCancel(al::SensorMsg const*);
+bool isMsgEnableMapCheckPointWarpCollidedGround(al::SensorMsg const*,al::LiveActor const*);
+bool isMsgEnableMapCheckPointWarpCollidedGround(al::SensorMsg const*,IUsePlayerCollision const*);
+void receiveMsgRequestTransferHack(al::SensorMsg const*,IUsePlayerHack *,al::HitSensor *);
+void hideHackCap(IUsePlayerHack *);
+void showHackCap(IUsePlayerHack *);
+void hideShadowHackCap(IUsePlayerHack *);
+bool isHackCapSeparateFlying(IUsePlayerHack *);
+void calcGroundHeightHackerDepthShadowMapLength(al::LiveActor *,IUsePlayerHack const*,sead::Vector3<float> const&,float,float);
+void cutGroundHeightHackerDepthShadowMapLength(al::LiveActor *,IUsePlayerHack const*,char const*,sead::Vector3<float> const&,float,float);
+void checkExistHeightSpaceAboveGround(float *,IUsePlayerHack const*,float);
+void requestRecoverySafetyPoint(IUsePlayerHack *,sead::Vector3<float> const&,sead::Vector3<float> const&);
+bool trySnapTransToSnapMoveArea(al::LiveActor *,bool,sead::Vector3<float> const&,float);
+void updateHackActorVisibilityBySeparatePlay(al::LiveActor *,IUsePlayerHack *,char const*,char const*);
+void startReset(al::LiveActor *);
+void endReset(al::LiveActor *);
+void calcHackerMoveVec(sead::Vector3<float> *,IUsePlayerHack const*,sead::Vector3<float> const&);
+void calcHackerMoveDir(sead::Vector3<float> *,IUsePlayerHack const*,sead::Vector3<float> const&);
+void calcHackerWallInputVec(sead::Vector3<float> *,sead::Vector3<float> *,IUsePlayerHack const*,sead::Vector3<float> const&);
+void calcHackerWallInputVec(sead::Vector3<float> *,sead::Vector3<float> *,sead::Vector2<float> const&,sead::Vector3<float> const&);
+void getHackMoveStickRaw(IUsePlayerHack const*);
+void calcHackerWallInputDir(sead::Vector3<float> *,sead::Vector3<float> *,IUsePlayerHack const*,sead::Vector3<float> const&);
+void addHackActorAccelStick(al::LiveActor *,IUsePlayerHack const*,sead::Vector3<float> *,float,sead::Vector3<float> const&);
+void calcHackMovePower(IUsePlayerHack const*);
+void checkHackerMoveDir(IUsePlayerHack const*,sead::Vector3<float> const&,sead::Vector3<float> const&,float);
+void calcHackerTrampleJumpParam(float *,float *,int *,al::LiveActor *,IUsePlayerHack const*,float,float,float,float,float,int,float,float,float,float,float);
+bool isOnHackMoveStick(IUsePlayerHack const*);
+bool isHoldHackJump(IUsePlayerHack const*);
+bool isOnHackMoveStickDeepDown(IUsePlayerHack const*);
+bool isOnHackMoveStickGreater(IUsePlayerHack const*,float);
+bool isTriggerHackAction(IUsePlayerHack const*);
+bool isTriggerHackPreInputAction(IUsePlayerHack const*);
+bool isHoldHackAction(IUsePlayerHack const*);
+bool isReleaseHackAction(IUsePlayerHack const*);
+bool isTriggerHackJump(IUsePlayerHack const*);
+bool isTriggerHackPreInputJump(IUsePlayerHack const*);
+bool isReleaseHackJump(IUsePlayerHack const*);
+bool isTriggerHackAnyButton(IUsePlayerHack const*);
+bool isTriggerHackPreInputAnyButton(IUsePlayerHack const*);
+bool isHoldHackAnyButton(IUsePlayerHack const*);
+bool isReleaseHackAnyButton(IUsePlayerHack const*);
+bool isTriggerHackSeparateJump(IUsePlayerHack const*);
+bool isHoldHackSeparateJump(IUsePlayerHack const*);
+void getHackStickRotateSpeed(IUsePlayerHack const*);
+bool isTriggerHackSwing(IUsePlayerHack const*);
+bool isTriggerHackSwingDirLeft(IUsePlayerHack const*);
+bool isTriggerHackSwingDirRight(IUsePlayerHack const*);
+bool isTriggerHackSwingDoubleHand(IUsePlayerHack const*);
+bool isTriggerHackSwingDoubleHandReverseDir(IUsePlayerHack const*);
+bool isTriggerHackSwingDoubleHandReverseInsideDir(IUsePlayerHack const*);
+bool isTriggerHackSwingDoubleHandReverseOutsideDir(IUsePlayerHack const*);
+void getHackPoseRotZDegreeLeft(IUsePlayerHack const*);
+void getHackPoseRotZDegreeRight(IUsePlayerHack const*);
+bool isTriggerTankCameraReset(IUsePlayerHack const*);
+bool isTriggerHackSwingLeftHand(IUsePlayerHack const*);
+bool isTriggerHackSwingRightHand(IUsePlayerHack const*);
+void getHackSwingThrowDir(IUsePlayerHack const*);
+void getHackSwingLeftHandDir(IUsePlayerHack const*);
+void getHackSwingRightHandDir(IUsePlayerHack const*);
+void getHackSwingVelLeftHand(IUsePlayerHack const*);
+void getHackSwingVelRightHand(IUsePlayerHack const*);
+void getHackCameraStickRaw(IUsePlayerHack const*);
+void getRadiconInputSteeringValue(IUsePlayerHack const*);
+void getRadiconInputThrottleValue(IUsePlayerHack const*);
+bool isTriggerRecorderPlay(IUsePlayerHack const*);
+bool isTriggerRecorderReverse(IUsePlayerHack const*);
+bool isHoldRecorderPlay(IUsePlayerHack const*);
+bool isHoldRecorderReverse(IUsePlayerHack const*);
+bool isTriggerRecorderJump(IUsePlayerHack const*);
+bool isTriggerRecorderCancel(IUsePlayerHack const*);
+void getHackGemyLeftStickRaw(void);
+void getHackGemyRightStickRaw(void);
+bool isTriggerGemyResetCamera(IUsePlayerHack const*);
+bool isTriggerGemyChangeCamera(IUsePlayerHack const*);
+bool isTriggerSubjectiveCamera(IUsePlayerHack const*);
+bool isTriggerFlutter(IUsePlayerHack const*,float);
+bool isTriggerFukankunZoomOn(IUsePlayerHack const*);
+bool isTriggerFukankunZoomOff(IUsePlayerHack const*);
+bool isHoldFukankunZoom(IUsePlayerHack const*);
+void getPoleJumpPadPoseMtx(sead::Matrix33<float> *);
+void getPoleJumpPadAcceleration(sead::Vector3<float> *);
+bool isTriggerIceClimberClimbLeft(IUsePlayerHack const*);
+bool isTriggerIceClimberClimbRight(IUsePlayerHack const*);
+bool isTriggerIceClimberFall(IUsePlayerHack const*);
+}  // namespace rs
+
+namespace HackFunction {
+    bool isTriggerHackEnd(IUsePlayerHack const*);
+    bool isTriggerCancelBubbleLauncher(IUsePlayerHack const*);
+}

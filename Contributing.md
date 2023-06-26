@@ -156,7 +156,7 @@ will allow your contributions to be reviewed more quickly.
 
 * Use `#include "..."` when including `al` and `rs` (SMO) header files.
     * Include paths should be relative to lib/.
-        * OK: `#include "al/Library/LiveActor/LiveActor.h"`
+        * OK: `#include <al/Library/LiveActor/LiveActor.h>`
         * Not OK: `#include "LiveActor.h"`
 
 * Use `#include <...>` for system or library includes. Examples:
