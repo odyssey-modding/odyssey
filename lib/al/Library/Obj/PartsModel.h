@@ -2,7 +2,7 @@
 
 #include <math/seadMatrix.h>
 #include <math/seadVector.h>
-#include "al/Library/LiveActor/LiveActor.h"
+#include <al/Library/LiveActor/LiveActor.h>
 
 namespace al {
 

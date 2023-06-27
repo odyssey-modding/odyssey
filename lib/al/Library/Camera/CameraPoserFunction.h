@@ -1,6 +1,6 @@
 #pragma once
 
-#include "al/Library/IUse/IUseCollision.h"
+#include <al/Library/IUse/IUseCollision.h>
 #include <gfx/seadCamera.h>
 #include <math/seadMatrix.h>
 #include <math/seadQuat.h>

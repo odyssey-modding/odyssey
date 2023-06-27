@@ -1,10 +1,10 @@
 #pragma once
 
-#include "al/Library/IUse/IUse.h"
+#include <al/Library/IUse/IUse.h>
 
 #include "SnapShotCameraCtrl.h"
-#include "al/Library/Nerve/Nerve.h"
-#include "al/Library/Placement/PlacementInfo.h"
+#include <al/Library/Nerve/Nerve.h>
+#include <al/Library/Placement/PlacementInfo.h>
 
 #include <gfx/seadCamera.h>
 #include <math/seadMatrix.h>

@@ -1,6 +1,6 @@
 #include "CapTargetParts.h"
-#include "al/Library/LiveActor/ActorActionFunction.h"
-#include "al/Library/LiveActor/ActorModelFunction.h"
+#include <al/Library/LiveActor/ActorActionFunction.h>
+#include <al/Library/LiveActor/ActorModelFunction.h>
 
 void CapTargetParts::startHack() {
     al::startAction(this, "Normal");

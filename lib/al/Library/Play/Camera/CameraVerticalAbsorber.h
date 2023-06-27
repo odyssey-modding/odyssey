@@ -1,13 +1,13 @@
 #pragma once
 
-#include "al/Library/Camera/CameraPoserFunction.h"
-#include "al/Library/Nerve/Nerve.h"
-#include "al/Library/Nerve/NerveExecutor.h"
-#include "al/Library/Nerve/NerveKeeper.h"
-#include "al/Library/Nerve/NerveUtil.h"
-#include "al/Library/Nerve/NerveSetupUtil.h"
-#include "al/Library/Yaml/ByamlIter.h"
-#include "al/Library/Nerve/NerveExecutor.h"
+#include <al/Library/Camera/CameraPoserFunction.h>
+#include <al/Library/Nerve/Nerve.h>
+#include <al/Library/Nerve/NerveExecutor.h>
+#include <al/Library/Nerve/NerveKeeper.h>
+#include <al/Library/Nerve/NerveUtil.h>
+#include <al/Library/Nerve/NerveSetupUtil.h>
+#include <al/Library/Yaml/ByamlIter.h>
+#include <al/Library/Nerve/NerveExecutor.h>
 #include <gfx/seadCamera.h>
 #include <gfx/seadProjection.h>
 

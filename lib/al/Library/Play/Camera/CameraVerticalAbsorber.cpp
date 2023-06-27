@@ -1,6 +1,6 @@
 #include "CameraVerticalAbsorber.h"
-#include "al/Library/Math/MathUtil.h"
-#include "al/Library/Yaml/ByamlUtil.h"
+#include <al/Library/Math/MathUtil.h>
+#include <al/Library/Yaml/ByamlUtil.h>
 
 namespace {
     using namespace al;
@@ -105,7 +105,7 @@ namespace al {
                 mLookAtCamera.getPos() -= mTargetInterp;
             }
         }
-        mLookAtCamera.doUpdateMatrix(&mLookAtCamera.mMatrix);
+        mLookAtCamera.doUpdateMatrix(&mLookAtCamera.getMatrix());
         mProjection.set(alCameraPoserFunction::getNear(mCameraPoser),
                         alCameraPoserFunction::getFar(mCameraPoser),
                         sead::Mathf::deg2rad(mCameraPoser->getFovyDegree()),

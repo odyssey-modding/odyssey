@@ -9,12 +9,12 @@
 #include <al/Library/LiveActor/LiveActorFunction.h>
 #include "Util/Hack.h"
 #include "Util/StageSceneFunction.h"
-#include "al/Library/HitSensor/Messages.h"
-#include "al/Library/LiveActor/ActorClippingFunction.h"
-#include "al/Library/LiveActor/ActorInitFunction.h"
-#include "al/Library/LiveActor/ActorPoseKeeper.h"
-#include "al/Library/LiveActor/ActorSensorFunction.h"
-#include "al/Library/Math/MathUtil.h"
+#include <al/Library/HitSensor/Messages.h>
+#include <al/Library/LiveActor/ActorClippingFunction.h>
+#include <al/Library/LiveActor/ActorInitFunction.h>
+#include <al/Library/LiveActor/ActorPoseKeeper.h>
+#include <al/Library/LiveActor/ActorSensorFunction.h>
+#include <al/Library/Math/MathUtil.h>
 
 namespace {
 NERVE_IMPL(AnagramAlphabetCharacter, Wait);

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "al/Library/Nerve/NerveExecutor.h"
-#include "al/Library/IUse/IUse.h"
-#include "al/Library/Yaml/ByamlIter.h"
+#include <al/Library/Nerve/NerveExecutor.h>
+#include <al/Library/IUse/IUse.h>
+#include <al/Library/Yaml/ByamlIter.h>
 #include "gfx/seadCamera.h"
 
 struct CameraParam {

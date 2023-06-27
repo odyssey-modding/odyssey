@@ -7,9 +7,9 @@
 #include <math/seadBoundBox.h>
 #include <math/seadVector.h>
 #include <prim/seadSafeString.h>
-#include "al/Library/LiveActor/LiveActor.h"
-#include "al/Library/Resource/Resource.h"
-#include "al/Library/Yaml/ByamlIter.h"
+#include <al/Library/LiveActor/LiveActor.h>
+#include <al/Library/Resource/Resource.h>
+#include <al/Library/Yaml/ByamlIter.h>
 #include "gfx/seadColor.h"
 
 namespace al {

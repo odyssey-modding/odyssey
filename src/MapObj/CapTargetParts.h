@@ -1,6 +1,6 @@
 #pragma once
 
-#include "al/Library/Obj/PartsModel.h"
+#include <al/Library/Obj/PartsModel.h>
 
 class CapTargetParts : public al::PartsModel {
     public:

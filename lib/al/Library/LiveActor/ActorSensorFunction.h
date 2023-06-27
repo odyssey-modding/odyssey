@@ -1,6 +1,6 @@
 #pragma once
 
-#include "al/Library/LiveActor/LiveActor.h"
+#include <al/Library/LiveActor/LiveActor.h>
 
 enum SensorType {
     Eye = 0,

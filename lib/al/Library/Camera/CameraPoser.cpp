@@ -1,5 +1,5 @@
 #include "CameraPoser.h"
-#include "al/Library/Camera/CameraPoserFunction.h"
+#include <al/Library/Camera/CameraPoserFunction.h>
 
 namespace al {
     void CameraPoser::startSnapShotModeCore() {
