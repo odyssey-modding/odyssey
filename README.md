@@ -1,5 +1,7 @@
 # OdysseyDecomp
-Decompilation of all Super Mario Odyssey versions, from 1.0.0 to 1.3.0.
+Decompilation of Super Mario Odyssey 1.0.0.
+
+*Sorted function map can be found [here](https://docs.google.com/spreadsheets/d/198vrkkDqktrRDLInSAkK2HsG5hy1Fl8cmCNRMND3nCY/edit).*
 
 # Building
 
@@ -68,12 +70,3 @@ By default, Ninja will perform a multithreaded build. There is no need to pass -
 
 To check whether everything built correctly, just run `tools/check` after the build completes.
 
-# Contributing
-Anyone is welcome to contribute to this project, just send a pull request!
-
-### TODO
-- Enable comparison between different versions and check for mis-matches in all versions using `tools/check`
-- 1.3.0 uses a different optimization method, find it and implement it into the toolchain
-
-# Credits
-This decompilation uses [this](https://github.com/open-ead/sead) as a reference for the sead library used. Big thanks to their research!
