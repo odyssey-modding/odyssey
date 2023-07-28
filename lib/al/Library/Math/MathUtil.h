@@ -26,6 +26,8 @@ bool isNearZero(const sead::Matrix34f& value, f32 tolerance);
 bool isNearZeroOrGreater(f32 value, f32 tolerance);
 bool isNearZeroOrLess(f32 value, f32 tolerance);
 
+bool tryNormalizeOrZero(sead::Vector3f* out, const sead::Vector3f& in);
+
 f32 modf(f32 a, f32 b);
 
 void calcQuatSide(sead::Vector3f* out, const sead::Quatf& quat);
@@ -37,10 +39,14 @@ void makeMtxRotateTrans(sead::Matrix34f* out, const sead::Vector3f& rotate, cons
 void makeMtxFrontUpPos(sead::Matrix34f* out, const sead::Vector3f& front, const sead::Vector3f& up, const sead::Vector3f& pos);
 void makeMtxUpFrontPos(sead::Matrix34f* out, const sead::Vector3f& up, const sead::Vector3f& front, const sead::Vector3f& pos);
 
+
+void alongVectorNormalH(sead::Vector3f* out, const sead::Vector3f& param_2, const sead::Vector3f& param_3, const sead::Vector3f& param_4);
+
+bool limitLength(sead::Vector3f* out, const sead::Vector3f& vector, float length);
 void separateVectorHV(sead::Vector3f*, sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&);
 
 void lerpVec(sead::Vector2f*, const sead::Vector2f&, const sead::Vector2f&, float);
-void lerpVec(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&, float);
 void lerpVecHV(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&, const sead::Vector3f&, float, float);
+void lerpVec(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&, float);
 
 }  // namespace al

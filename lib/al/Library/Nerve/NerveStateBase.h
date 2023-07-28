@@ -19,6 +19,7 @@ public:
     virtual void control();
 
     bool isDead() const { return mIsDead; }
+    void setDead(bool isDead) { mIsDead = isDead; };
 };
 
 class ActorStateBase : public al::NerveStateBase {
@@ -27,6 +28,7 @@ private:
 
 public:
     ActorStateBase(const char* stateName, al::LiveActor* actor);
+    al::LiveActor* getActor() const { return mActor; };
 };
 
 }  // namespace al
