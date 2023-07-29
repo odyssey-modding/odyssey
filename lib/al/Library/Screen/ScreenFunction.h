@@ -105,5 +105,5 @@ void calcLineCameraToWorldPosFromScreenPosSub(sead::Vector3f* output1, sead::Vec
 } // namespace al
 
 namespace ScreenFunction {
-void calcWorldPositionFromCenterScreen(sead::Vector3f*,sead::Vector2f const&,sead::Vector3f const&,sead::Camera const&,sead::Projection const&,sead::Viewport const&);
+void calcWorldPositionFromCenterScreen(sead::Vector3f*, sead::Vector2f const&, sead::Vector3f const&, sead::Camera const&, sead::Projection const&, sead::Viewport const&);
 } // namespace ScreenFunction
