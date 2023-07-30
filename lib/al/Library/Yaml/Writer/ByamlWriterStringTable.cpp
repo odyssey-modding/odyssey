@@ -1,12 +1,10 @@
-#include <al/Library/Yaml/Writer/ByamlWriterStringTable.h>
 #include <al/Library/Yaml/ByamlHeader.h>
+#include <al/Library/Yaml/Writer/ByamlWriterStringTable.h>
 
 #include <cstring>
 #include <stream/seadStream.h>
 
-namespace al {
-
-}
+namespace al {}
 
 namespace al {
 
@@ -26,9 +24,8 @@ inline char* add(const char* string, sead::TList<const char*> list) {
     list.pushBack(node);
     return array;
 }
-const char* ByamlWriterStringTable::tryAdd(
-    const char* string) {  // TODO major mismatches, probably due to the inlined functions way of
-                           // adding things to `list`.
+const char* ByamlWriterStringTable::tryAdd(const char* string) {  // TODO major mismatches, probably due to the inlined functions way of
+                                                                  // adding things to `list`.
     for (auto& node : mList) {
         s32 result = strcmp(string, node);
         if (result == 0)
@@ -65,8 +62,7 @@ u32 ByamlWriterStringTable::calcIndex(const char* data) const {
     }
     return -1;
 }
-void ByamlWriterStringTable::write(
-    sead::WriteStream* stream) const {  // TODO minor mismatch during first `for`-loop
+void ByamlWriterStringTable::write(sead::WriteStream* stream) const {  // TODO minor mismatch during first `for`-loop
     if (isEmpty())
         return;
     stream->writeU8(0xC2);

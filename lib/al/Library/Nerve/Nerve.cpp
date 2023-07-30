@@ -1,3 +1,5 @@
 #include <al/Library/Nerve/Nerve.h>
 
-void al::Nerve::executeOnEnd(al::NerveKeeper* keeper) const {}
+namespace al {
+void Nerve::executeOnEnd(al::NerveKeeper* keeper) const {}
+}  // namespace al

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <basis/seadTypes.h>
+
 namespace al {
 class IntervalTrigger {
     IntervalTrigger(f32);

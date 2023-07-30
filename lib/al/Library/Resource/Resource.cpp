@@ -1,12 +1,11 @@
+#include <al/Library/File/FileUtil.h>
 #include <al/Library/Resource/Resource.h>
 #include <g3d/aglNW4FToNN.h>
 #include <heap/seadHeap.h>
 #include <heap/seadHeapMgr.h>
-#include <al/Library/File/FileUtil.h>
 
 namespace al {
-Resource::Resource(const sead::SafeString& path)
-    : mArchive(nullptr), mDevice(nullptr), mName(path) {
+Resource::Resource(const sead::SafeString& path) : mArchive(nullptr), mDevice(nullptr), mName(path) {
     mHeap = sead::HeapMgr::sInstancePtr->getCurrentHeap();
     mData = nullptr;
     mResFile = nullptr;
@@ -14,8 +13,7 @@ Resource::Resource(const sead::SafeString& path)
     mDevice = new sead::ArchiveFileDevice(mArchive);
 }
 
-Resource::Resource(const sead::SafeString& path, sead::ArchiveRes* archive)
-    : mArchive(nullptr), mDevice(nullptr), mName(path) {
+Resource::Resource(const sead::SafeString& path, sead::ArchiveRes* archive) : mArchive(nullptr), mDevice(nullptr), mName(path) {
     mHeap = sead::HeapMgr::sInstancePtr->getCurrentHeap();
     mData = nullptr;
     mResFile = nullptr;

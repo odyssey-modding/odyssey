@@ -18,8 +18,7 @@ private:
 
 public:
     inline FunctorV0M() {}
-    inline FunctorV0M(T objPointer, F functPointer)
-        : mObjPointer(objPointer), mFunctor(functPointer){};
+    inline FunctorV0M(T objPointer, F functPointer) : mObjPointer(objPointer), mFunctor(functPointer){};
     inline FunctorV0M(const FunctorV0M<T, F>& copy) = default;
 
     void operator()() const override;

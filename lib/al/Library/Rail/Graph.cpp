@@ -43,8 +43,7 @@ void Graph::removeEdge(const Edge* edge) {
 Graph::Edge* Graph::tryFindEdge(s32 index_vertex1, s32 index_vertex2) const {
     for (s32 i = 0; i < mEdges.size(); i++) {
         auto* edge = mEdges[i];
-        if (edge->getVertex1()->getIndex() == index_vertex1 &&
-            edge->getVertex2()->getIndex() == index_vertex2) {
+        if (edge->getVertex1()->getIndex() == index_vertex1 && edge->getVertex2()->getIndex() == index_vertex2) {
             return edge;
         }
     }

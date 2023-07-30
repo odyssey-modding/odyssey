@@ -1,8 +1,8 @@
 #pragma once
 
-#include <basis/seadTypes.h>
-#include <al/Library/Nerve/NerveUtil.h>
 #include <al/Library/Nerve/Nerve.h>
+#include <al/Library/Nerve/NerveUtil.h>
+#include <basis/seadTypes.h>
 
 namespace al {
 class NerveAction : public al::Nerve {

@@ -26,13 +26,14 @@ al::setNerve(this, &NrvExampleUseCase.Wait);
 
 */
 
-#define NERVE_IMPL_(Class, Action, ActionFunc)                                                                                                   \
+#define NERVE_IMPL_(Class, Action, ActionFunc)                                                                                                       \
     class Class##Nrv##Action : public al::Nerve {                                                                                                    \
     public:                                                                                                                                          \
-        void execute(al::NerveKeeper* keeper) const override { (keeper->getParent<Class>())->exe##ActionFunc(); }                                    \
+        void execute(al::NerveKeeper* keeper) const override {                                                                                       \
+            (keeper->getParent<Class>())->exe##ActionFunc();                                                                                         \
+        }                                                                                                                                            \
     };
 
 #define NERVE_IMPL(Class, Action) NERVE_IMPL_(Class, Action, Action)
 
-#define NERVE_MAKE(Class, Action) \
-    Class##Nrv##Action Action;
+#define NERVE_MAKE(Class, Action) Class##Nrv##Action Action;

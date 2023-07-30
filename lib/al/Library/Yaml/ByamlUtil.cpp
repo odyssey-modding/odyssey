@@ -1,7 +1,7 @@
-#include <al/Library/Yaml/ByamlUtil.h>
-#include <math/seadBoundBox.h>
 #include <al/Library/Yaml/ByamlData.h>
 #include <al/Library/Yaml/ByamlIter.h>
+#include <al/Library/Yaml/ByamlUtil.h>
+#include <math/seadBoundBox.h>
 
 namespace al {
 bool tryGetByamlU8(u8* pOut, const ByamlIter& rIter, const char* pKey) {
@@ -404,7 +404,7 @@ void printByamlIter_(const ByamlIter& iter, PrintParams* param) {
                 iter.tryConvertBool(&data, &entry);
             }
         }
-        loop:;
+    loop:;
     }
 }
 }  // namespace al

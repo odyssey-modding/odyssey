@@ -1,15 +1,16 @@
 #pragma once
 
-#include <al/Library/IUse/IUse.h>
-
-#include "SnapShotCameraCtrl.h"
+#include <al/Library/Area/AreaObjDirector.h>
+#include <al/Library/Audio/AudioKeeper.h>
+#include <al/Library/Name/IUseName.h>
 #include <al/Library/Nerve/Nerve.h>
 #include <al/Library/Placement/PlacementInfo.h>
-
+#include <al/Library/Rail/RailRider.h>
 #include <gfx/seadCamera.h>
 #include <math/seadMatrix.h>
 #include <math/seadQuat.h>
 #include <math/seadVector.h>
+#include "SnapShotCameraCtrl.h"
 
 namespace al {
 
@@ -34,77 +35,78 @@ class CameraPoser : public al::HioNode,
                     public al::IUseName,
                     public al::IUseNerve,
                     public al::IUseRail {
-    const char* mPoserName;                             // 0x30
-    float field_38;                                     // 0x38
-    sead::Vector3f mPosition;                           // 0x3C
-    sead::Vector3f mTargetTrans = sead::Vector3f::ex;   // 0x48
-    sead::Vector3f mCameraUp = sead::Vector3f::ey;      // 0x54
-    float mFovyDegree = 35.0f;                          // 0x60
-    float field_64;                                     // 0x64
-    sead::Matrix34f mViewMtx = sead::Matrix34f::ident;  // 0x68
-    bool field_98 = false;                              // 0x98
-    CameraViewInfo* mViewInfo;                          // 0xA0
-    al::AreaObjDirector* mAreaDirector;                 // 0xA8
-    CameraPoserFlag* mPoserFlags;                       // 0xB0
-    CameraVerticalAbsorber* mVerticalAbsorber;          // 0xB8
-    CameraAngleCtrlInfo* mAngleCtrlInfo;                // 0xC0
-    CameraAngleSwingInfo* mAngleSwingInfo;              // 0xC8
-    CameraArrowCollider* mArrowCollider;                // 0xD0
-    CameraOffsetCtrlPreset* mOffsetCtrlPreset;          // 0xD8
-    float* mLocalInterpole;                             // 0xE0 (size = 0x20)
-    float* mLookAtInterpole;                            // 0xE8 (size = 0x10)
-    CameraParamMoveLimit* mParamMoveLimit;              // 0xF0
-    void* field_f8;                                     // 0xF8
-    GyroCameraCtrl* mGyroCtrl;                          // 0x100
-    SnapShotCameraCtrl* mSnapshotCtrl;                  // 0x108
-    AudioKeeper* mAudioKeeper;                          // 0x110
-    NerveKeeper* mNerveKeeper;                          // 0x118
-    RailKeeper* mRailKeeper;                            // 0x120
-    int* field_128;                                     // 0x128 (size = 0xC) interpolesteptype?
-    int* field_130;                                     // 0x130 (size - 0x8)
-    sead::Vector3f* mOrthoProjectionParam;              // 0x138 (gets init'd with new of size 0xC)
+private:
+    const char* mPoserName;
+    float field_38;
+    sead::Vector3f mPosition;
+    sead::Vector3f mTargetTrans = sead::Vector3f::ex;
+    sead::Vector3f mCameraUp = sead::Vector3f::ey;
+    float mFovyDegree = 35.0f;
+    float field_64;
+    sead::Matrix34f mViewMtx = sead::Matrix34f::ident;
+    bool field_98 = false;
+    al::CameraViewInfo* mViewInfo;
+    al::AreaObjDirector* mAreaDirector;
+    al::CameraPoserFlag* mPoserFlags;
+    al::CameraVerticalAbsorber* mVerticalAbsorber;
+    al::CameraAngleCtrlInfo* mAngleCtrlInfo;
+    al::CameraAngleSwingInfo* mAngleSwingInfo;
+    al::CameraArrowCollider* mArrowCollider;
+    al::CameraOffsetCtrlPreset* mOffsetCtrlPreset;
+    float* mLocalInterpole;
+    float* mLookAtInterpole;
+    al::CameraParamMoveLimit* mParamMoveLimit;
+    void* field_f8;
+    al::GyroCameraCtrl* mGyroCtrl;
+    al::SnapShotCameraCtrl* mSnapshotCtrl;
+    al::AudioKeeper* mAudioKeeper;
+    al::NerveKeeper* mNerveKeeper;
+    al::RailKeeper* mRailKeeper;
+    int* field_128;
+    int* field_130;
+    sead::Vector3f* mOrthoProjectionParam;
 
 public:
     CameraPoser(const char* poserName);
 
-    virtual AreaObjDirector* getAreaObjDirector() const override;
+    virtual al::AreaObjDirector* getAreaObjDirector() const override;
     virtual void init();
     virtual void initByPlacementObj(const al::PlacementInfo&);
     virtual void endInit();
-    virtual void start(const CameraStartInfo&);
+    virtual void start(const al::CameraStartInfo&);
     virtual void update();
     virtual void end();
-    virtual void loadParam(const ByamlIter&);
+    virtual void loadParam(const al::ByamlIter&);
     virtual void makeLookAtCamera(sead::LookAtCamera*) const;
-    virtual void receiveRequestFromObject(const CameraObjectRequestInfo&);
-    virtual bool isZooming(void) const;
-    virtual bool isEnableRotateByPad(void) const;
-    virtual void startSnapShotMode(void);
-    virtual void endSnapShotMode(void);
+    virtual void receiveRequestFromObject(const al::CameraObjectRequestInfo&);
+    virtual bool isZooming() const;
+    virtual bool isEnableRotateByPad() const;
+    virtual void startSnapShotMode();
+    virtual void endSnapShotMode();
 
-    virtual const char* getName(void) const override;
-    virtual CollisionDirector* getCollisionDirector(void) const override;
-    virtual NerveKeeper* getNerveKeeper(void) const override;
-    virtual AudioKeeper* getAudioKeeper(void) const override;
-    virtual RailRider* getRailRider(void) const override;
+    virtual const char* getName() const override;
+    virtual al::CollisionDirector* getCollisionDirector() const override;
+    virtual al::NerveKeeper* getNerveKeeper() const override;
+    virtual al::AudioKeeper* getAudioKeeper() const override;
+    virtual al::RailRider* getRailRider() const override;
 
-    virtual void load(const ByamlIter&);
-    virtual void movement(void);
+    virtual void load(const al::ByamlIter&);
+    virtual void movement();
     virtual void calcCameraPose(sead::LookAtCamera*) const;
     virtual void requestTurnToDirection(const al::CameraTurnInfo*);
 
-    bool isInterpoleByCameraDistance(void) const;
-    bool isInterpoleEaseOut(void) const;
-    bool isEndInterpoleByStep(void) const;
-    bool isFirstCalc(void) const;
+    bool isInterpoleByCameraDistance() const;
+    bool isInterpoleEaseOut() const;
+    bool isEndInterpoleByStep() const;
+    bool isFirstCalc() const;
 
     void initNerve(const al::Nerve*, int);
     void initArrowCollider(al::CameraArrowCollider*);
     void initAudioKeeper(const char*);
     void initRail(const al::PlacementInfo&);
-    void initLocalInterpole(void);
+    void initLocalInterpole();
     void initLookAtInterpole(float);
-    void initOrthoProjectionParam(void);
+    void initOrthoProjectionParam();
     void tryInitAreaLimitter(const al::PlacementInfo&);
 
     void makeLookAtCameraPrev(sead::LookAtCamera*) const;
@@ -112,20 +114,20 @@ public:
     void makeLookAtCameraLast(sead::LookAtCamera*) const;
     void makeLookAtCameraCollide(sead::LookAtCamera*) const;
 
-    void getInterpoleStep(void);
+    void getInterpoleStep();
     void setInterpoleStep(int);
-    void resetInterpoleStep(void);
-    void setInterpoleEaseOut(void);
-    void getEndInterpoleStep(void);
+    void resetInterpoleStep();
+    void setInterpoleEaseOut();
+    void getEndInterpoleStep();
 
     void appear(const al::CameraStartInfo&);
     void calcCameraPose(sead::LookAtCamera*);
     void receiveRequestFromObjectCore(const al::CameraObjectRequestInfo&);
 
-    void startSnapShotModeCore(void);
-    void endSnapShotModeCore(void);
+    void startSnapShotModeCore();
+    void endSnapShotModeCore();
 
-    float getFovyDegree(void) const;
+    float getFovyDegree() const;
 
     sead::Vector3f getPosition() const { return mPosition; };
     sead::Vector3f getTargetTrans() const { return mTargetTrans; };

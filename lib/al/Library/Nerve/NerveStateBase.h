@@ -24,6 +24,7 @@ public:
 class ActorStateBase : public al::NerveStateBase {
 private:
     al::LiveActor* mActor;
+
 public:
     ActorStateBase(const char* stateName, al::LiveActor* actor);
 };

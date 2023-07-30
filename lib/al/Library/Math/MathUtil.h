@@ -37,10 +37,10 @@ void makeMtxRotateTrans(sead::Matrix34f* out, const sead::Vector3f& rotate, cons
 void makeMtxFrontUpPos(sead::Matrix34f* out, const sead::Vector3f& front, const sead::Vector3f& up, const sead::Vector3f& pos);
 void makeMtxUpFrontPos(sead::Matrix34f* out, const sead::Vector3f& up, const sead::Vector3f& front, const sead::Vector3f& pos);
 
-void separateVectorHV(sead::Vector3<float> *,sead::Vector3<float> *,sead::Vector3<float> const&,sead::Vector3<float> const&);
+void separateVectorHV(sead::Vector3f*, sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&);
 
-void lerpVec(sead::Vector2<float> *,sead::Vector2<float> const&,sead::Vector2<float> const&,float);
-void lerpVec(sead::Vector3<float> *,sead::Vector3<float> const&,sead::Vector3<float> const&,float);
-void lerpVecHV(sead::Vector3<float> *,sead::Vector3<float> const&,sead::Vector3<float> const&,sead::Vector3<float> const&,float,float);
+void lerpVec(sead::Vector2f*, const sead::Vector2f&, const sead::Vector2f&, float);
+void lerpVec(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&, float);
+void lerpVecHV(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&, const sead::Vector3f&, float, float);
 
 }  // namespace al

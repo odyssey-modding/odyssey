@@ -1,9 +1,9 @@
 #include <al/Library/Yaml/Writer/ByamlWriterData.h>
 
-#include <stream/seadStream.h>
 #include <al/Library/Yaml/ByamlHeader.h>
 #include <al/Library/Yaml/Writer/ByamlWriterBigDataList.h>
 #include <al/Library/Yaml/Writer/ByamlWriterStringTable.h>
+#include <stream/seadStream.h>
 
 namespace al {
 
@@ -66,8 +66,7 @@ void ByamlWriterNull::write(sead::WriteStream* stream) const {
     stream->writeU32(0);
 }
 
-ByamlWriterString::ByamlWriterString(const char* string, ByamlWriterStringTable* stringTable)
-    : mString(nullptr), mStringTable(stringTable) {
+ByamlWriterString::ByamlWriterString(const char* string, ByamlWriterStringTable* stringTable) : mString(nullptr), mStringTable(stringTable) {
     mString = mStringTable->tryAdd(string);
 }
 u8 ByamlWriterString::getTypeCode() const {
@@ -90,8 +89,7 @@ u32 ByamlWriterBigData::calcBigDataSize() const {
 }
 void ByamlWriterBigData::writeBigData(sead::WriteStream*) const {}
 
-ByamlWriterInt64::ByamlWriterInt64(long value, ByamlWriterBigDataList* list)
-    : ByamlWriterBigData(list), mValue(value) {}
+ByamlWriterInt64::ByamlWriterInt64(long value, ByamlWriterBigDataList* list) : ByamlWriterBigData(list), mValue(value) {}
 ByamlWriterInt64::~ByamlWriterInt64() = default;
 u8 ByamlWriterInt64::getTypeCode() const {
     return 0xD4;
@@ -101,8 +99,7 @@ void ByamlWriterInt64::writeBigData(sead::WriteStream* stream) const {
 }
 void ByamlWriterInt64::print(s32) const {}
 
-ByamlWriterUInt64::ByamlWriterUInt64(u64 value, ByamlWriterBigDataList* list)
-    : ByamlWriterBigData(list), mValue(value) {}
+ByamlWriterUInt64::ByamlWriterUInt64(u64 value, ByamlWriterBigDataList* list) : ByamlWriterBigData(list), mValue(value) {}
 ByamlWriterUInt64::~ByamlWriterUInt64() = default;
 u8 ByamlWriterUInt64::getTypeCode() const {
     return 0xD5;
@@ -112,8 +109,7 @@ void ByamlWriterUInt64::writeBigData(sead::WriteStream* stream) const {
 }
 void ByamlWriterUInt64::print(s32) const {}
 
-ByamlWriterDouble::ByamlWriterDouble(f64 value, ByamlWriterBigDataList* list)
-    : ByamlWriterBigData(list), mValue(value) {}
+ByamlWriterDouble::ByamlWriterDouble(f64 value, ByamlWriterBigDataList* list) : ByamlWriterBigData(list), mValue(value) {}
 ByamlWriterDouble::~ByamlWriterDouble() = default;
 u8 ByamlWriterDouble::getTypeCode() const {
     return 0xD6;
@@ -160,8 +156,7 @@ bool ByamlWriterContainer::isArray() const {
 }
 void ByamlWriterContainer::deleteData() {}
 
-ByamlWriterArray::ByamlWriterArray(ByamlWriterStringTable* stringTable)
-    : mStringTable(stringTable) {}
+ByamlWriterArray::ByamlWriterArray(ByamlWriterStringTable* stringTable) : mStringTable(stringTable) {}
 ByamlWriterArray::~ByamlWriterArray() {
     while (auto* node = mList.popBack()) {
         delete node;
@@ -251,11 +246,9 @@ bool ByamlWriterArray::isArray() const {
     return true;
 }
 
-ByamlWriterHashPair::ByamlWriterHashPair(const char* key, ByamlWriterData* value)
-    : mKey(key), mValue(value) {}
+ByamlWriterHashPair::ByamlWriterHashPair(const char* key, ByamlWriterData* value) : mKey(key), mValue(value) {}
 
-ByamlWriterHash::ByamlWriterHash(ByamlWriterStringTable* stringTable1,
-                                 ByamlWriterStringTable* stringTable2)
+ByamlWriterHash::ByamlWriterHash(ByamlWriterStringTable* stringTable1, ByamlWriterStringTable* stringTable2)
     : mStringTable1(stringTable1), mStringTable2(stringTable2) {}
 ByamlWriterHash::~ByamlWriterHash() {
     while (auto* node = mList.popBack()) {

@@ -1,50 +1,49 @@
 #pragma once
 
 #include <al/Library/LiveActor/ActorSceneInfo.h>
+#include <al/Library/LiveActor/LiveActor.h>
 #include <al/Library/Nerve/NerveUtil.h>
+#include <al/Library/Resource/Resource.h>
+#include <al/Library/Yaml/ByamlIter.h>
 #include <basis/seadTypes.h>
+#include <gfx/seadColor.h>
 #include <gfx/seadDrawContext.h>
 #include <math/seadBoundBox.h>
 #include <math/seadVector.h>
 #include <prim/seadSafeString.h>
-#include <al/Library/LiveActor/LiveActor.h>
-#include <al/Library/Resource/Resource.h>
-#include <al/Library/Yaml/ByamlIter.h>
-#include "gfx/seadColor.h"
 
 namespace al {
 
 class ShadowMaskBase;
 
-void initShadowMaskCtrl(al::LiveActor*, al::ActorInitInfo const&, al::ByamlIter const&, char const*);
-void initShadowMaskCtrlWithoutInitFile(al::LiveActor*, al::ActorInitInfo const&, int);
-al::ShadowMaskBase* createShadowMaskSphere(al::LiveActor*, char const*, char const*, char const*);
-al::ShadowMaskBase* createShadowMaskCube(al::LiveActor*, char const*, char const*, char const*, sead::Color4f const&, sead::Vector3<float> const&,
-                                         float, float, float, sead::Vector3<float> const&, float);
-al::ShadowMaskBase* createShadowMaskCylinder(al::LiveActor*, char const*, char const*, char const*, sead::Color4f const&, sead::Vector3<float> const&,
-                                             float, float, float, float, float);
-al::ShadowMaskBase* createShadowMaskCastOvalCylinder(al::LiveActor*, char const*, char const*, char const*, sead::Color4f const&,
-                                                     sead::Vector3<float> const&, sead::Vector3<float> const&, float, float, float, float);
-void initActorCollision(al::LiveActor*, sead::SafeStringBase<char> const&, al::HitSensor*, sead::Matrix34<float> const*);
-void initActorCollisionWithResource(al::LiveActor*, al::Resource const*, sead::SafeStringBase<char> const&, al::HitSensor*,
-                                    sead::Matrix34<float> const*, char const*);
-void initActorCollisionWithArchiveName(al::LiveActor*, sead::SafeStringBase<char> const&, sead::SafeStringBase<char> const&, al::HitSensor*,
-                                       sead::Matrix34<float> const*);
-void initActorCollisionWithFilePtr(al::LiveActor*, void*, void const*, al::HitSensor*, sead::Matrix34<float> const*, char const*, char const*, int);
-void initStageSwitch(al::LiveActor*, al::ActorInitInfo const&);
-void initActorItemKeeper(al::LiveActor*, al::ActorInitInfo const&, al::ByamlIter const&);
-void initActorPrePassLightKeeper(al::LiveActor*, al::Resource const*, al::ActorInitInfo const&, char const*);
-void initActorOcclusionKeeper(al::LiveActor*, al::Resource const*, al::ActorInitInfo const&, char const*);
-void initSubActorKeeper(al::LiveActor*, al::ActorInitInfo const&, char const*, int);
-void initSubActorKeeperNoFile(al::LiveActor*, al::ActorInitInfo const&, int);
+void initShadowMaskCtrl(al::LiveActor*, const al::ActorInitInfo&, const al::ByamlIter&, const char*);
+void initShadowMaskCtrlWithoutInitFile(al::LiveActor*, const al::ActorInitInfo&, s32);
+al::ShadowMaskBase* createShadowMaskSphere(al::LiveActor*, const char*, const char*, const char*);
+al::ShadowMaskBase* createShadowMaskCube(al::LiveActor*, const char*, const char*, const char*, const sead::Color4f&, const sead::Vector3f&, f32, f32,
+                                         f32, const sead::Vector3f&, f32);
+al::ShadowMaskBase* createShadowMaskCylinder(al::LiveActor*, const char*, const char*, const char*, const sead::Color4f&, const sead::Vector3f&, f32,
+                                             f32, f32, f32, f32);
+al::ShadowMaskBase* createShadowMaskCastOvalCylinder(al::LiveActor*, const char*, const char*, const char*, const sead::Color4f&,
+                                                     const sead::Vector3f&, const sead::Vector3f&, f32, f32, f32, f32);
+void initActorCollision(al::LiveActor*, const sead::SafeString&, al::HitSensor*, const sead::Matrix34f*);
+void initActorCollisionWithResource(al::LiveActor*, const al::Resource*, const sead::SafeString&, al::HitSensor*, const sead::Matrix34f*,
+                                    const char*);
+void initActorCollisionWithArchiveName(al::LiveActor*, const sead::SafeString&, const sead::SafeString&, al::HitSensor*, const sead::Matrix34f*);
+void initActorCollisionWithFilePtr(al::LiveActor*, void*, const void*, al::HitSensor*, const sead::Matrix34f*, const char*, const char*, s32);
+void initStageSwitch(al::LiveActor*, const al::ActorInitInfo&);
+void initActorItemKeeper(al::LiveActor*, const al::ActorInitInfo&, const al::ByamlIter&);
+void initActorPrePassLightKeeper(al::LiveActor*, const al::Resource*, const al::ActorInitInfo&, const char*);
+void initActorOcclusionKeeper(al::LiveActor*, const al::Resource*, const al::ActorInitInfo&, const char*);
+void initSubActorKeeper(al::LiveActor*, const al::ActorInitInfo&, const char*, s32);
+void initSubActorKeeperNoFile(al::LiveActor*, const al::ActorInitInfo&, s32);
 void registerSubActor(al::LiveActor*, al::LiveActor*);
 void registerSubActorSyncClipping(al::LiveActor*, al::LiveActor*);
 void registerSubActorSyncClippingAndHide(al::LiveActor*, al::LiveActor*);
 void registerSubActorSyncAll(al::LiveActor*, al::LiveActor*);
 void setSubActorOffSyncClipping(al::LiveActor*);
-void initScreenPointKeeper(al::LiveActor*, al::Resource const*, al::ActorInitInfo const&, char const*);
-void initScreenPointKeeperNoYaml(al::LiveActor*, int);
-void initActorMaterialCategory(al::LiveActor*, al::ActorInitInfo const&, char const*);
+void initScreenPointKeeper(al::LiveActor*, const al::Resource*, const al::ActorInitInfo&, const char*);
+void initScreenPointKeeperNoYaml(al::LiveActor*, s32);
+void initActorMaterialCategory(al::LiveActor*, const al::ActorInitInfo&, const char*);
 
 class LiveActor;
 class LiveActorGroup;
@@ -123,7 +122,7 @@ public:
 void initActor(al::LiveActor* actor, const al::ActorInitInfo& initInfo);
 void initActorSuffix(al::LiveActor* actor, const al::ActorInitInfo& initInfo, const char* suffix);
 void initActorChangeModel(al::LiveActor* actor, const al::ActorInitInfo& initInfo);
-void initActorChangeModelSuffix(al::LiveActor* actor, const al::ActorInitInfo& initInfo, char const* suffix);
+void initActorChangeModelSuffix(al::LiveActor* actor, const al::ActorInitInfo& initInfo, const char* suffix);
 void initActorWithArchiveName(al::LiveActor* actor, const al::ActorInitInfo& initInfo, const sead::SafeString& archiveName, const char* suffix);
 void initChildActorWithArchiveNameWithPlacementInfo(al::LiveActor* actor, const al::ActorInitInfo& initInfo, const sead::SafeString& archiveName,
                                                     const char* suffix);

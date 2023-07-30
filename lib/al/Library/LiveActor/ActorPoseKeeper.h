@@ -276,12 +276,12 @@ void calcDistanceSignLocalZDir(const al::LiveActor* actor, const sead::Vector3f&
 void calcDistanceLocalXDir(const al::LiveActor* actor, const sead::Vector3f&);
 void calcDistanceLocalYDir(const al::LiveActor* actor, const sead::Vector3f&);
 void calcDistanceLocalZDir(const al::LiveActor* actor, const sead::Vector3f&);
-sead::Vector3f *getTransPtr(al::LiveActor* actor);
+sead::Vector3f* getTransPtr(al::LiveActor* actor);
 void setTrans(al::LiveActor* actor, f32, f32, f32);
 void setTransX(al::LiveActor* actor, f32);
 void setTransY(al::LiveActor* actor, f32);
 void setTransZ(al::LiveActor* actor, f32);
-void getRotate(const al::LiveActor* actor);
+const sead::Vector3f& getRotate(const al::LiveActor* actor);
 void getRotatePtr(al::LiveActor* actor);
 void setRotate(al::LiveActor* actor, f32, f32, f32);
 void setRotateX(al::LiveActor* actor, f32);

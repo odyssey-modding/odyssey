@@ -1,8 +1,8 @@
 #pragma once
 
 #include <basis/seadTypes.h>
-#include <math/seadVector.h>
 #include <math/seadMatrix.h>
+#include <math/seadVector.h>
 
 namespace al {
 class LiveActor;
@@ -36,14 +36,14 @@ void startNerveAction(al::LiveActor* actor, const char* actionName);
 void setNerveAtActionEnd(al::LiveActor* actor, const al::Nerve* nerve);
 void resetNerveActionForInit(al::LiveActor* actor);
 
-void startHitReaction(al::LiveActor const*,char const*);
-void startHitReactionHitEffect(al::LiveActor const*,char const*,al::HitSensor const*,al::HitSensor const*);
-void startHitReactionHitEffect(al::LiveActor const*,char const*,sead::Vector3<float> const&);
-void startHitReactionHitEffect(al::LiveActor const*,char const*,sead::Matrix34<float> const*);
-void startHitReactionBlowHit(al::LiveActor const*,al::HitSensor const*,al::HitSensor const*);
-void startHitReactionBlowHit(al::LiveActor const*,sead::Vector3<float> const&);
-void startHitReactionBlowHit(al::LiveActor const*);
-void startHitReactionBlowHitDirect(al::LiveActor const*,al::HitSensor const*,al::HitSensor const*);
-void startHitReactionBlowHitDirect(al::LiveActor const*,sead::Vector3<float> const&);
-void startHitReactionBlowHitDirect(al::LiveActor const*);
+void startHitReaction(const al::LiveActor* actor, const char* reactionName);
+void startHitReactionHitEffect(const al::LiveActor* actor, const char* reactionName, const al::HitSensor*, const al::HitSensor*);
+void startHitReactionHitEffect(const al::LiveActor* actor, const char* reactionName, const sead::Vector3f&);
+void startHitReactionHitEffect(const al::LiveActor* actor, const char* reactionName, const sead::Matrix34f*);
+void startHitReactionBlowHit(const al::LiveActor* actor, const al::HitSensor*, const al::HitSensor*);
+void startHitReactionBlowHit(const al::LiveActor* actor, const sead::Vector3f&);
+void startHitReactionBlowHit(const al::LiveActor* actor);
+void startHitReactionBlowHitDirect(const al::LiveActor* actor, const al::HitSensor*, const al::HitSensor*);
+void startHitReactionBlowHitDirect(const al::LiveActor* actor, const sead::Vector3f&);
+void startHitReactionBlowHitDirect(const al::LiveActor* actor);
 }  // namespace al

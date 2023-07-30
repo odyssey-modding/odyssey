@@ -12,7 +12,8 @@ public:
     static const char* getYamlName();
     static ActorParamHolder* tryCreate(al::LiveActor* actor, const al::Resource* resource, const char* suffix);
 
-    f32 findParamF32(const char* );
+    f32 findParamF32(const char*);
+
 private:
     ActorParamHolder(al::LiveActor* actor, const al::Resource* resource, const char* suffix);
 };

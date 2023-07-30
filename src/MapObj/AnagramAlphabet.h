@@ -7,8 +7,8 @@ class AnagramAlphabetCharacter;
 
 class AnagramAlphabet : public al::LiveActor {
     public:
-    AnagramAlphabet(char const*);
-    void init(al::ActorInitInfo const&);
+    AnagramAlphabet(const char*);
+    void init(const al::ActorInitInfo&);
     bool testBase(AnagramAlphabetCharacter *);
     bool testEndHack();
     bool testComplete();

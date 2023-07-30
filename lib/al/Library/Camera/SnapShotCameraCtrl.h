@@ -1,7 +1,8 @@
 #pragma once
 
+#include <al/Library/Audio/AudioKeeper.h>
+#include <al/Library/Collision/CollisionDirector.h>
 #include <al/Library/Nerve/NerveExecutor.h>
-#include <al/Library/IUse/IUse.h>
 #include <al/Library/Yaml/ByamlIter.h>
 #include "gfx/seadCamera.h"
 
@@ -32,17 +33,18 @@ class SnapShotCameraCtrl : public al::NerveExecutor, public al::IUseAudioKeeper 
     float mRollTarget;
     unsigned int uVar2;
     bool bVar1;
+
 public:
-    SnapShotCameraCtrl(al::SnapShotCameraSceneInfo const*);
+    SnapShotCameraCtrl(const al::SnapShotCameraSceneInfo*);
     void start(float);
-    void load(al::ByamlIter const&);
+    void load(const al::ByamlIter&);
     void startReset(int);
-    void update(sead::LookAtCamera const&,al::IUseCollision const*,al::ICameraInput const*);
-    void makeLookAtCameraPost(sead::LookAtCamera *)const;
-    void makeLookAtCameraLast(sead::LookAtCamera *)const;
-    void exeWait(void);
-    void exeReset(void);
+    void update(const sead::LookAtCamera&, const al::IUseCollision*, const al::ICameraInput*);
+    void makeLookAtCameraPost(sead::LookAtCamera*) const;
+    void makeLookAtCameraLast(sead::LookAtCamera*) const;
+    void exeWait();
+    void exeReset();
 
     float getFovyDegree() const { return mFovyDegree; };
 };
-}
+}  // namespace al

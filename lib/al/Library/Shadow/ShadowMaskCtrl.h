@@ -39,5 +39,4 @@ public:
     void show();
     void validate();
 };
-
 }  // namespace al

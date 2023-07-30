@@ -3,8 +3,7 @@
 
 namespace al {
 
-static void rotationAndTranslationFromMatrix(sead::Vector3f& trans, sead::Vector3f& rot,
-                                             const sead::Matrix34f* mtx) {
+static void rotationAndTranslationFromMatrix(sead::Vector3f& trans, sead::Vector3f& rot, const sead::Matrix34f* mtx) {
     sead::Vector3f tmp;
     mtx->getRotation(tmp);
     rot.set(sead::Mathf::rad2deg(tmp.x), sead::Mathf::rad2deg(tmp.y), sead::Mathf::rad2deg(tmp.z));
@@ -68,8 +67,7 @@ void ActorPoseKeeperBase::copyPose(const ActorPoseKeeperBase* other) {
 }
 void ActorPoseKeeperBase::updatePoseRotate(const sead::Vector3f& rot) {
     sead::Quatf quat;
-    quat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y),
-                sead::Mathf::deg2rad(rot.z));
+    quat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y), sead::Mathf::deg2rad(rot.z));
     updatePoseQuat(quat);
 }
 
@@ -97,8 +95,7 @@ void ActorPoseKeeperTFSV::updatePoseTrans(const sead::Vector3f& trans) {
 }
 void ActorPoseKeeperTFSV::updatePoseRotate(const sead::Vector3f& rot) {
     sead::Quatf quat;
-    quat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y),
-                sead::Mathf::deg2rad(rot.z));
+    quat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y), sead::Mathf::deg2rad(rot.z));
     al::calcQuatFront(&mFront, quat);
 }
 void ActorPoseKeeperTFSV::updatePoseQuat(const sead::Quatf& quat) {
@@ -125,8 +122,7 @@ void ActorPoseKeeperTFGSV::updatePoseTrans(const sead::Vector3f& trans) {
 }
 void ActorPoseKeeperTFGSV::updatePoseRotate(const sead::Vector3f& rot) {
     sead::Quatf quat;
-    quat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y),
-                sead::Mathf::deg2rad(rot.z));
+    quat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y), sead::Mathf::deg2rad(rot.z));
 
     ActorPoseKeeperTFSV::updatePoseQuat(quat);
     calcQuatUp(&mGravity, quat);
@@ -159,8 +155,7 @@ void ActorPoseKeeperTFUSV::updatePoseTrans(const sead::Vector3f& trans) {
 }
 void ActorPoseKeeperTFUSV::updatePoseRotate(const sead::Vector3f& rot) {
     sead::Quatf quat;
-    quat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y),
-                sead::Mathf::deg2rad(rot.z));
+    quat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y), sead::Mathf::deg2rad(rot.z));
 
     ActorPoseKeeperTFSV::updatePoseQuat(quat);
     calcQuatUp(&mUp, quat);
@@ -204,8 +199,7 @@ void ActorPoseKeeperTQSV::updatePoseTrans(const sead::Vector3f& trans) {
     mTrans = trans;
 }
 void ActorPoseKeeperTQSV::updatePoseRotate(const sead::Vector3f& rot) {
-    mQuat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y),
-                 sead::Mathf::deg2rad(rot.z));
+    mQuat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y), sead::Mathf::deg2rad(rot.z));
 }
 void ActorPoseKeeperTQSV::updatePoseQuat(const sead::Quatf& quat) {
     mQuat.x = quat.x;
@@ -251,8 +245,7 @@ void ActorPoseKeeperTQGSV::updatePoseTrans(const sead::Vector3f& trans) {
     mTrans = trans;
 }
 void ActorPoseKeeperTQGSV::updatePoseRotate(const sead::Vector3f& rot) {
-    mQuat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y),
-                 sead::Mathf::deg2rad(rot.z));
+    mQuat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y), sead::Mathf::deg2rad(rot.z));
 }
 void ActorPoseKeeperTQGSV::updatePoseQuat(const sead::Quatf& quat) {
     mQuat.x = quat.x;
@@ -305,8 +298,7 @@ void ActorPoseKeeperTQGMSV::updatePoseTrans(const sead::Vector3f& trans) {
     mMtx.makeQT(mQuat, mTrans);
 }
 void ActorPoseKeeperTQGMSV::updatePoseRotate(const sead::Vector3f& rot) {
-    mQuat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y),
-                 sead::Mathf::deg2rad(rot.z));
+    mQuat.setRPY(sead::Mathf::deg2rad(rot.x), sead::Mathf::deg2rad(rot.y), sead::Mathf::deg2rad(rot.z));
     mMtx.makeQT(mQuat, mTrans);
 }
 void ActorPoseKeeperTQGMSV::updatePoseQuat(const sead::Quatf& quat) {
@@ -354,8 +346,7 @@ void ActorPoseKeeperTRSV::updatePoseRotate(const sead::Vector3f& rot) {
 void ActorPoseKeeperTRSV::updatePoseQuat(const sead::Quatf& quat) {
     sead::Vector3f tmp;
     quat.calcRPY(tmp);
-    mRotate = {sead::Mathf::rad2deg(tmp.x), sead::Mathf::rad2deg(tmp.y),
-               sead::Mathf::rad2deg(tmp.z)};
+    mRotate = {sead::Mathf::rad2deg(tmp.x), sead::Mathf::rad2deg(tmp.y), sead::Mathf::rad2deg(tmp.z)};
 }
 void ActorPoseKeeperTRSV::updatePoseMtx(const sead::Matrix34f* mtx) {
     rotationAndTranslationFromMatrix(mTrans, mRotate, mtx);

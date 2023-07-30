@@ -22,7 +22,6 @@ struct {
     NERVE_MAKE(Player, Fall);
     NERVE_MAKE(Player, Damage);
 } NrvPlayer;
-
 }  // namespace
 
 Player::Player(const char* actorName, const char* archiveName, s32 port) : al::LiveActor(actorName), mArchiveName(archiveName), mPort(port) {}

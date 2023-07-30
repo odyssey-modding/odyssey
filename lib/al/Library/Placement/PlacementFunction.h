@@ -32,8 +32,7 @@ void getDisplayName(const char** name, const al::PlacementInfo& placementInfo);
 bool tryGetDisplayName(const char** name, const al::ActorInitInfo& initInfo);
 bool tryGetDisplayName(const char** name, const al::PlacementInfo& placementInfo);
 
-bool tryGetPlacementInfoByKey(al::PlacementInfo* outPlacementInfo,
-                              const al::PlacementInfo& placementInfo, const char* key);
+bool tryGetPlacementInfoByKey(al::PlacementInfo* outPlacementInfo, const al::PlacementInfo& placementInfo, const char* key);
 
 void getPlacementTargetFile(const char** targetFile, const al::PlacementInfo& placementInfo);
 
@@ -134,16 +133,11 @@ void getPlacementId(al::PlacementId* placementId, const al::PlacementInfo& place
 
 bool tryGetBoolArgOrFalse(const al::ActorInitInfo& initInfo, const char* key);
 s32 getCountPlacementInfo(const al::PlacementInfo& placementInfo);
-void getPlacementInfoByKey(al::PlacementInfo* outPlacementInfo, const al::PlacementInfo&,
-                           const char* key);
-void getPlacementInfoByIndex(al::PlacementInfo* outPlacementInfo, const al::PlacementInfo&,
-                             s32 index);
-bool tryGetPlacementInfoByIndex(al::PlacementInfo* outPlacementInfo, const al::PlacementInfo&,
-                                s32 index);
-bool getPlacementInfoAndKeyNameByIndex(al::PlacementInfo* outPlacementInfo, const char** outKey,
-                                       const al::PlacementInfo&, s32 index);
-bool tryGetPlacementInfoAndKeyNameByIndex(al::PlacementInfo* outPlacementInfo, const char** outKey,
-                                          const al::PlacementInfo&, s32 index);
+void getPlacementInfoByKey(al::PlacementInfo* outPlacementInfo, const al::PlacementInfo&, const char* key);
+void getPlacementInfoByIndex(al::PlacementInfo* outPlacementInfo, const al::PlacementInfo&, s32 index);
+bool tryGetPlacementInfoByIndex(al::PlacementInfo* outPlacementInfo, const al::PlacementInfo&, s32 index);
+bool getPlacementInfoAndKeyNameByIndex(al::PlacementInfo* outPlacementInfo, const char** outKey, const al::PlacementInfo&, s32 index);
+bool tryGetPlacementInfoAndKeyNameByIndex(al::PlacementInfo* outPlacementInfo, const char** outKey, const al::PlacementInfo&, s32 index);
 
 al::PlacementId* createPlacementId(const al::ActorInitInfo& initInfo);
 al::PlacementId* createPlacementId(const al::PlacementInfo& placementInfo);
@@ -155,18 +149,14 @@ bool isEqualPlacementId(al::PlacementId* placementId, const al::PlacementInfo& p
 
 bool isExistRail(const al::ActorInitInfo& initInfo, const char* linkName);
 
-bool tryGetRailIter(al::PlacementInfo& railPlacementInfo, const al::PlacementInfo& placementInfo,
-                    const char* linkName);
-bool tryGetLinksInfo(al::PlacementInfo& railPlacementInfo, const al::PlacementInfo& placementInfo,
-                     const char* linkName);
-bool tryGetMoveParameterRailIter(al::PlacementInfo& railPlacementInfo,
-                                 const al::PlacementInfo& placementInfo);
-bool tryGetRailPointPos(sead::Vector3f* railPoint,
-                        const al::PlacementInfo& placementInfo);
+bool tryGetRailIter(al::PlacementInfo& railPlacementInfo, const al::PlacementInfo& placementInfo, const char* linkName);
+bool tryGetLinksInfo(al::PlacementInfo& railPlacementInfo, const al::PlacementInfo& placementInfo, const char* linkName);
+bool tryGetMoveParameterRailIter(al::PlacementInfo& railPlacementInfo, const al::PlacementInfo& placementInfo);
+bool tryGetRailPointPos(sead::Vector3f* railPoint, const al::PlacementInfo& placementInfo);
 void getRailPointHandlePrev(sead::Vector3f* railPoint, const al::PlacementInfo& placementInfo);
 void tryGetRailPointHandlePrev(sead::Vector3f* railPoint, const al::PlacementInfo& placementInfo);
 void getRailPointHandleNext(sead::Vector3f* railPoint, const al::PlacementInfo& placementInfo);
-void tryGetRailPointHandleNext(sead::Vector3f* railPoint, al::PlacementInfo const& placementInfo);
+void tryGetRailPointHandleNext(sead::Vector3f* railPoint, const al::PlacementInfo& placementInfo);
 
 bool isExistGraphRider(const al::ActorInitInfo& initInfo);
 
@@ -180,58 +170,35 @@ bool isExistLinkChild(const al::PlacementInfo& placementInfo, const char* linkNa
 s32 calcLinkNestNum(const al::ActorInitInfo& initInfo, const char* linkName);
 s32 calcLinkNestNum(const al::PlacementInfo& placementInfo, const char* linkName);
 
-void getLinksInfo(al::PlacementInfo* linkPlacementInfo, const al::PlacementInfo& placementInfo,
-                  const char* linkName);
-void getLinksInfoByIndex(al::PlacementInfo* linkPlacementInfo,
-                         const al::PlacementInfo& placementInfo, const char* linkName, s32);
-void getLinksInfo(al::PlacementInfo* linkPlacementInfo, const al::ActorInitInfo& initInfo,
-                  const char* linkName);
-void getLinksInfoByIndex(al::PlacementInfo* linkPlacementInfo, const al::ActorInitInfo& initInfo,
-                         const char* linkName, s32);
-bool tryGetLinksInfo(al::PlacementInfo* linkPlacementInfo, const al::ActorInitInfo& initInfo,
-                     const char* linkName);
+void getLinksInfo(al::PlacementInfo* linkPlacementInfo, const al::PlacementInfo& placementInfo, const char* linkName);
+void getLinksInfoByIndex(al::PlacementInfo* linkPlacementInfo, const al::PlacementInfo& placementInfo, const char* linkName, s32);
+void getLinksInfo(al::PlacementInfo* linkPlacementInfo, const al::ActorInitInfo& initInfo, const char* linkName);
+void getLinksInfoByIndex(al::PlacementInfo* linkPlacementInfo, const al::ActorInitInfo& initInfo, const char* linkName, s32);
+bool tryGetLinksInfo(al::PlacementInfo* linkPlacementInfo, const al::ActorInitInfo& initInfo, const char* linkName);
 
-void getLinksMatrix(sead::Matrix34f* matrix, const al::ActorInitInfo& initInfo,
-                    const char* linkName);
-void getLinksMatrixByIndex(sead::Matrix34f*, const al::ActorInitInfo& initInfo,
-                           const char* linkName, s32);
-void getLinkTR(sead::Vector3f* trans, sead::Vector3f* rotate,
-               const al::PlacementInfo& placementInfo, const char* linkName);
-void getLinkTR(sead::Vector3f* trans, sead::Vector3f* rotate, const al::ActorInitInfo& initInfo,
-               const char* linkName);
-void getLinkTR(sead::Vector3f* trans, sead::Vector3f* rotate, const al::AreaInitInfo& initInfo,
-               const char* linkName);
-void getLinksQT(sead::Quatf* quat, sead::Vector3f* trans, const al::ActorInitInfo& initInfo,
-                const char* linkName);
-void getLinksQT(sead::Quatf* quat, sead::Vector3f* trans, const al::PlacementInfo& placementInfo,
-                const char* linkName);
+void getLinksMatrix(sead::Matrix34f* matrix, const al::ActorInitInfo& initInfo, const char* linkName);
+void getLinksMatrixByIndex(sead::Matrix34f*, const al::ActorInitInfo& initInfo, const char* linkName, s32);
+void getLinkTR(sead::Vector3f* trans, sead::Vector3f* rotate, const al::PlacementInfo& placementInfo, const char* linkName);
+void getLinkTR(sead::Vector3f* trans, sead::Vector3f* rotate, const al::ActorInitInfo& initInfo, const char* linkName);
+void getLinkTR(sead::Vector3f* trans, sead::Vector3f* rotate, const al::AreaInitInfo& initInfo, const char* linkName);
+void getLinksQT(sead::Quatf* quat, sead::Vector3f* trans, const al::ActorInitInfo& initInfo, const char* linkName);
+void getLinksQT(sead::Quatf* quat, sead::Vector3f* trans, const al::PlacementInfo& placementInfo, const char* linkName);
 
-bool tryGetLinksQT(sead::Quatf*, sead::Vector3f*, const al::ActorInitInfo& initInfo,
-                   const char* linkName);
-bool tryGetLinksQTS(sead::Quatf*, sead::Vector3f*, sead::Vector3f*,
-                    const al::ActorInitInfo& initInfo, const char* linkName);
-bool tryGetLinksMatrixTR(sead::Matrix34f* matrix, const al::ActorInitInfo& initInfo,
-                         const char* linkName);
-bool tryGetLinksMatrixTR(sead::Matrix34f* matrix, const al::AreaInitInfo& initInfo,
-                         const char* linkName);
-bool tryGetLinksMatrixTRS(sead::Matrix34f* matrix, const al::ActorInitInfo& initInfo,
-                          const char* linkName);
-bool tryGetLinksTrans(sead::Vector3f* trans, const al::ActorInitInfo& initInfo,
-                      const char* linkName);
-bool tryGetLinksTrans(sead::Vector3f* trans, const al::PlacementInfo& placementInfo,
-                      const char* linkName);
+bool tryGetLinksQT(sead::Quatf*, sead::Vector3f*, const al::ActorInitInfo& initInfo, const char* linkName);
+bool tryGetLinksQTS(sead::Quatf*, sead::Vector3f*, sead::Vector3f*, const al::ActorInitInfo& initInfo, const char* linkName);
+bool tryGetLinksMatrixTR(sead::Matrix34f* matrix, const al::ActorInitInfo& initInfo, const char* linkName);
+bool tryGetLinksMatrixTR(sead::Matrix34f* matrix, const al::AreaInitInfo& initInfo, const char* linkName);
+bool tryGetLinksMatrixTRS(sead::Matrix34f* matrix, const al::ActorInitInfo& initInfo, const char* linkName);
+bool tryGetLinksTrans(sead::Vector3f* trans, const al::ActorInitInfo& initInfo, const char* linkName);
+bool tryGetLinksTrans(sead::Vector3f* trans, const al::PlacementInfo& placementInfo, const char* linkName);
 bool tryGetLinksQuat(sead::Quatf* quat, const al::ActorInitInfo& initInfo, const char* linkName);
-bool tryGetLinksTR(sead::Vector3f* trans, sead::Vector3f* rotate, const al::ActorInitInfo& initInfo,
-                   const char* linkName);
+bool tryGetLinksTR(sead::Vector3f* trans, sead::Vector3f* rotate, const al::ActorInitInfo& initInfo, const char* linkName);
 
-void getChildTrans(sead::Vector3f* trans, const al::PlacementInfo& placementInfo,
-                   const char* linkName);
+void getChildTrans(sead::Vector3f* trans, const al::PlacementInfo& placementInfo, const char* linkName);
 void getChildTrans(sead::Vector3f* trans, const al::ActorInitInfo& initInfo, const char* linkName);
 void getChildTrans(sead::Vector3f* trans, const al::AreaInitInfo& initInfo, const char* linkName);
-void getChildLinkT(sead::Vector3f* trans, const al::ActorInitInfo& initInfo, const char* linkName,
-                   s32 index);
-void getChildLinkTR(sead::Vector3f* trans, sead::Vector3f* rotate,
-                    const al::ActorInitInfo& initInfo, const char* linkName, s32 index);
+void getChildLinkT(sead::Vector3f* trans, const al::ActorInitInfo& initInfo, const char* linkName, s32 index);
+void getChildLinkTR(sead::Vector3f* trans, sead::Vector3f* rotate, const al::ActorInitInfo& initInfo, const char* linkName, s32 index);
 
 s32 calcMatchNameLinkCount(const al::PlacementInfo& placementInfo, const char* linkName);
 s32 calcLinkCountClassName(const al::PlacementInfo& placementInfo, const char* linkName);
@@ -239,8 +206,7 @@ s32 calcLinkCountClassName(const al::PlacementInfo& placementInfo, const char* l
 bool tryGetZoneMatrixTR(sead::Matrix34f* matrix, const al::ActorInitInfo& initInfo);
 bool tryGetDisplayOffset(sead::Vector3f* offset, const al::ActorInitInfo& initInfo);
 bool tryGetDisplayOffset(sead::Vector3f* offset, const al::PlacementInfo& placementInfo);
-bool tryGetChildDisplayOffset(sead::Vector3f* offset, const al::ActorInitInfo& initInfo,
-                              const char* linkName);
+bool tryGetChildDisplayOffset(sead::Vector3f* offset, const al::ActorInitInfo& initInfo, const char* linkName);
 bool tryGetDisplayRotate(sead::Vector3f* rotate, const al::ActorInitInfo& initInfo);
 bool tryGetDisplayScale(sead::Vector3f* scale, const al::ActorInitInfo& initInfo);
 

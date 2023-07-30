@@ -1,7 +1,7 @@
 #pragma once
 
-#include <al/Library/IUse/IUseCamera.h>
-#include <al/Library/IUse/IUseHioNode.h>
+#include <al/Library/Camera/CameraDirector.h>
+#include <al/Library/HostIO/HioNode.h>
 #include <common/aglRenderBuffer.h>
 #include <basis/seadTypes.h>
 #include <container/seadPtrArray.h>

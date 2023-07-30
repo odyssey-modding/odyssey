@@ -255,7 +255,7 @@ public:
     u8 getTypeCode() const override;
     void writeContainer(sead::WriteStream*) const override;  // TODO implementation missing
     void write(sead::WriteStream*) const override;
-    void print(s32) const override;  // TODO implementation missing
+    void print(s32) const override;                          // TODO implementation missing
     bool isHash() const override;
 
 private:

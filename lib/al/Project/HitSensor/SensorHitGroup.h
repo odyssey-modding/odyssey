@@ -9,6 +9,7 @@ private:
     s32 mMaxSensors;
     s32 mSensorCount = 0;
     HitSensor** mSensors;
+
 public:
     SensorHitGroup(s32 maxSensors, const char* groupName);
 };

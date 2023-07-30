@@ -1,5 +1,7 @@
 #pragma once
 
+#include <basis/seadTypes.h>
+
 namespace al {
 class ActorInitInfo;
 class ISceneObj;
@@ -19,4 +21,9 @@ public:
     void setSceneObj(al::ISceneObj*, s32);
     void initAfterPlacementSceneObj(const al::ActorInitInfo&);
 };
-}
+
+class IUseSceneObjHolder {
+public:
+    virtual SceneObjHolder* getSceneObjHolder() const = 0;
+};
+}  // namespace al

@@ -1,9 +1,10 @@
 #pragma once
 
-#include <prim/seadSafeString.h>
-#include <al/Library/IUse/IUse.h>
+#include <al/Library/Audio/AudioKeeper.h>
 #include <al/Library/Nerve/NerveExecutor.h>
 #include <al/Library/System/GameSystemInfo.h>
+#include <al/Project/Scene/SceneCreator.h>
+#include <prim/seadSafeString.h>
 
 namespace al {
 class GameSystemInfo;
@@ -21,6 +22,7 @@ class Sequence : public al::NerveExecutor, public al::IUseAudioKeeper, public al
     al::AudioKeeper* mAudioKeeper;
     al::GameDrawInfo* mGameDrawInfo;
     bool mIsAlive;
+
 public:
     Sequence(const char* name);
     virtual ~Sequence() override;
@@ -34,10 +36,11 @@ public:
     virtual al::SceneCreator* getSceneCreator() const override;
     virtual void setSceneCreator(al::SceneCreator* sceneCreator) override;
 
-    al::AudioKeeper* getAudioKeeper() const override;
-    void initAudio(const al::GameSystemInfo&, const char*, int, int, int, const char*);
+    void initAudio(const al::GameSystemInfo&, const char*, s32, s32, s32, const char*);
     void initAudioKeeper(const char*);
-    void initDrawSystemInfo(const al::SequenceInitInfo&);
+    void initDrawSystemInfo(const al::SequenceInitInfo& initInfo);
+
+    al::AudioKeeper* getAudioKeeper() const override;
     al::AudioSystemInfo* getAudioSystemInfo();
 
 protected:

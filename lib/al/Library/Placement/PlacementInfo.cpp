@@ -7,4 +7,4 @@ void PlacementInfo::set(const al::ByamlIter& placement_iter, const al::ByamlIter
     mPlacementIter = placement_iter;
     mZoneIter = zone_iter;
 }
-}
+}  // namespace al
