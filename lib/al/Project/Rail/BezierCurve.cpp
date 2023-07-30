@@ -4,8 +4,7 @@ namespace al {
 
 BezierCurve::BezierCurve() = default;
 
-void BezierCurve::set(const sead::Vector3f& start, const sead::Vector3f& startHandle,
-                      const sead::Vector3f& endHandle, const sead::Vector3f& end) {
+void BezierCurve::set(const sead::Vector3f& start, const sead::Vector3f& startHandle, const sead::Vector3f& endHandle, const sead::Vector3f& end) {
     sead::Vector3f diff1 = startHandle - start;
     sead::Vector3f diff2 = endHandle - startHandle;
     sead::Vector3f diff3 = end - endHandle;
@@ -39,9 +38,7 @@ f32 BezierCurve::calcLength(f32 startParam, f32 endParam, s32 stepCount) const {
         }
     }
 
-    return std::floor((halfStepSize * 0.33333f) *
-                      (avgVelocity + (sumVelFullStep * 2) + (sumVelHalfStep * 4)) * 1024.0f) /
-           1024.f;
+    return std::floor((halfStepSize * 0.33333f) * (avgVelocity + (sumVelFullStep * 2) + (sumVelHalfStep * 4)) * 1024.0f) / 1024.f;
 }
 
 void BezierCurve::calcPos(sead::Vector3f* pos, f32 param) const {
@@ -121,8 +118,7 @@ f32 BezierCurve::calcNearestParam(const sead::Vector3f& pos, f32 interval) const
     return bestParam;
 }
 
-f32 BezierCurve::calcNearestLength(f32* param, const sead::Vector3f& pos, f32 max,
-                                     f32 interval) const {
+f32 BezierCurve::calcNearestLength(f32* param, const sead::Vector3f& pos, f32 max, f32 interval) const {
     f32 bestParam = -1.0;
     f32 currentParam = 0.0;
     f32 bestDist = 3.4028e38;
@@ -142,8 +138,7 @@ f32 BezierCurve::calcNearestLength(f32* param, const sead::Vector3f& pos, f32 ma
 }
 
 // NON_MATCHING: Difference in loading for calcNearestParam
-void BezierCurve::calcNearestPos(sead::Vector3f* nearest, const sead::Vector3f& pos,
-                                 f32 interval) const {
+void BezierCurve::calcNearestPos(sead::Vector3f* nearest, const sead::Vector3f& pos, f32 interval) const {
     calcPos(nearest, calcNearestParam(pos, interval));
 }
 

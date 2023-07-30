@@ -44,12 +44,12 @@ public:
     int getPadRumbleLevel() const;
     void setPadRumbleLevel(int);
     void write(al::ByamlWriter*) override;
-    void read(al::ByamlIter const&) override;
+    void read(const al::ByamlIter&) override;
 };
 
 namespace rs {
-GameConfigData* getGameConfigData(al::LayoutActor const*);
-void saveGameConfigData(al::LayoutActor const*);
-void applyGameConfigData(al::Scene*, GameConfigData const*);
-bool isUseOpenListAdditionalButton(al::IUseSceneObjHolder const*);
+GameConfigData* getGameConfigData(const al::LayoutActor*);
+void saveGameConfigData(const al::LayoutActor*);
+void applyGameConfigData(al::Scene*, const GameConfigData*);
+bool isUseOpenListAdditionalButton(const al::IUseSceneObjHolder*);
 }  // namespace rs

@@ -1,11 +1,10 @@
-#include <al/Library/LiveActor/LiveActorGroup.h>
 #include <al/Library/LiveActor/ActorFlagFunction.h>
 #include <al/Library/LiveActor/LiveActor.h>
+#include <al/Library/LiveActor/LiveActorGroup.h>
 
 namespace al {
 LiveActorGroup::LiveActorGroup(const char* groupName, s32 maxActors)
-    : mGroupName(groupName), mMaxActorCount(maxActors), mActors(new LiveActor*[maxActors]) {
-}
+    : mGroupName(groupName), mMaxActorCount(maxActors), mActors(new LiveActor*[maxActors]) {}
 
 s32 LiveActorGroup::registerActor(al::LiveActor* pActor) {
     this->mActors[this->mActorCount] = pActor;

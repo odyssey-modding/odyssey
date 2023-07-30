@@ -5,16 +5,16 @@
 #include <al/Library/LiveActor/ActorMovementFunction.h>
 #include <al/Library/Nerve/NerveUtil.h>
 
-#include <Player/HackerJudge.h>
-#include <al/Library/LiveActor/LiveActorFunction.h>
-#include "Util/Hack.h"
-#include "Util/StageSceneFunction.h"
+#include <Player/Judge/HackerJudge.h>
 #include <al/Library/HitSensor/Messages.h>
 #include <al/Library/LiveActor/ActorClippingFunction.h>
 #include <al/Library/LiveActor/ActorInitFunction.h>
 #include <al/Library/LiveActor/ActorPoseKeeper.h>
 #include <al/Library/LiveActor/ActorSensorFunction.h>
+#include <al/Library/LiveActor/LiveActorFunction.h>
 #include <al/Library/Math/MathUtil.h>
+#include "Util/Hack.h"
+#include "Util/StageSceneFunction.h"
 
 namespace {
 NERVE_IMPL(AnagramAlphabetCharacter, Wait);
@@ -43,7 +43,7 @@ struct {
 
 }  // namespace
 
-void AnagramAlphabetCharacter::init(al::ActorInitInfo const& info) {
+void AnagramAlphabetCharacter::init(const al::ActorInitInfo& info) {
     al::initActorChangeModel(this, info);
     al::initNerve(this, &NrvAnagramAlphabetCharacter.Wait, 0);
     al::initSubActorKeeperNoFile(this, info, 1);
@@ -73,7 +73,7 @@ void AnagramAlphabetCharacter::attackSensor(al::HitSensor* target, al::HitSensor
 }
 */
 
-bool AnagramAlphabetCharacter::receiveMsg(al::SensorMsg const*, al::HitSensor*, al::HitSensor*) {
+bool AnagramAlphabetCharacter::receiveMsg(const al::SensorMsg*, al::HitSensor*, al::HitSensor*) {
     return 0;
 }
 

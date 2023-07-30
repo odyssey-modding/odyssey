@@ -1,7 +1,7 @@
 #pragma once
 
-#include <container/seadBuffer.h>
 #include <al/Library/Placement/PlacementId.h>
+#include <container/seadBuffer.h>
 
 namespace al {
 class PlacementInfo;

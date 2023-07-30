@@ -9,8 +9,7 @@ class DemoActorHolder;
 class LiveActor;
 class Scene;
 
-void registDemoRequesterToAddDemoInfo(const al::LiveActor* actor, const al::ActorInitInfo& initInfo,
-                                      s32 index);
+void registDemoRequesterToAddDemoInfo(const al::LiveActor* actor, const al::ActorInitInfo& initInfo, s32 index);
 void registActorToDemoInfo(al::LiveActor* actor, const al::ActorInitInfo& initInfo);
 void addDemoActorFromAddDemoInfo(const al::LiveActor* actor, const al::AddDemoInfo* info);
 void addDemoActorFromDemoActorHolder(const al::LiveActor* actor, const al::DemoActorHolder* holder);
@@ -23,5 +22,5 @@ void invalidateLODWithSubActor(al::LiveActor*);
 }  // namespace al
 
 namespace alDemoUtilTmp {
-bool isActiveDemo(al::LiveActor const*);
+bool isActiveDemo(const al::LiveActor*);
 }

@@ -5,31 +5,31 @@
 
 #include "AnagramAlphabet.h"
 
-#include "IUse/IUsePlayerHack.h"
-#include "Player/CapTargetInfo.h"
 #include "MapObj/CapTargetParts.h"
+#include "Player/CapTargetInfo.h"
 #include "Player/PlayerHackStartShaderCtrl.h"
 
+class IUsePlayerHack;
 class HackerJudgeNormalFall;
 class HackerJudgeStartRun;
 
 class AnagramAlphabetCharacter : public al::LiveActor {
-    CapTargetInfo *mCapTargetInfo;
-    sead::Matrix34f *unkMtx;
-    AnagramAlphabet *mParent;
-    IUsePlayerHack *mHackerParent;
-    CapTargetParts *mCapTargetParts;
-    HackerJudgeNormalFall *mHackerJudgeNormalFall;
-    HackerJudgeStartRun *mHackerJudgeStartRun;
-    PlayerHackStartShaderCtrl *mPlayerHackStartShaderCtrl;
+    CapTargetInfo* mCapTargetInfo;
+    sead::Matrix34f* unkMtx;
+    AnagramAlphabet* mParent;
+    IUsePlayerHack* mHackerParent;
+    CapTargetParts* mCapTargetParts;
+    HackerJudgeNormalFall* mHackerJudgeNormalFall;
+    HackerJudgeStartRun* mHackerJudgeStartRun;
+    PlayerHackStartShaderCtrl* mPlayerHackStartShaderCtrl;
     int mSwingTimer;
-    
-    public:
-    AnagramAlphabetCharacter(char const*);
 
-    void init(al::ActorInitInfo const&);
+public:
+    AnagramAlphabetCharacter(const char*);
+
+    void init(const al::ActorInitInfo&);
     void attackSensor(al::HitSensor*, al::HitSensor*);
-    bool receiveMsg(al::SensorMsg const*, al::HitSensor*, al::HitSensor*);
+    bool receiveMsg(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
     void setComplete(void);
     void killCapTarget(void);
 

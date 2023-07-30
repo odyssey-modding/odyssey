@@ -22,7 +22,7 @@ bool tryExpandClippingByShadowMaskLength(al::LiveActor* actor, sead::Vector3f*);
 bool tryExpandClippingByDepthShadowLength(al::LiveActor* actor, sead::Vector3f*);
 bool tryExpandClippingByExpandObject(al::LiveActor*, const al::ActorInitInfo& initInfo);
 bool isClipped(const al::LiveActor*);
-bool isInvalidClipping(const al::LiveActor*);
+bool isInvalidClipping(const al::LiveActor* actor);
 void invalidateClipping(al::LiveActor* actor);
 void validateClipping(al::LiveActor* actor);
 void onDrawClipping(al::LiveActor* actor);
@@ -33,3 +33,11 @@ bool isInClippingFrustum(const al::LiveActor* actor, const sead::Vector3f&, f32,
 bool isInClippingFrustum(const al::ClippingDirector* director, const sead::Vector3f&, f32, f32, s32);
 bool isInClippingFrustumAllView(const al::LiveActor* actor, const sead::Vector3f& pos, f32, f32);
 }  // namespace al
+namespace alActorFunction {
+    void invalidateFarClipping(al::LiveActor *);
+    void validateFarClipping(al::LiveActor *);
+    f32 getFarClipDistance(const al::LiveActor*);
+    bool isInvalidFarClipping(const al::LiveActor*);
+    bool isDrawClipping(const al::LiveActor* actor);
+    bool checkActiveViewGroupAny(const al::LiveActor* actor);
+};

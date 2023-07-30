@@ -1,8 +1,17 @@
 #pragma once
 
+#include <al/Library/Area/AreaObjDirector.h>
+#include <al/Library/Audio/AudioKeeper.h>
+#include <al/Library/Camera/CameraDirector.h>
+#include <al/Library/Collision/CollisionDirector.h>
+#include <al/Library/Effect/EffectKeeper.h>
+#include <al/Library/HostIO/HioNode.h>
+#include <al/Library/LiveActor/ActorClippingFunction.h>
+#include <al/Library/Nerve/NerveKeeper.h>
+#include <al/Library/Rail/RailRider.h>
+#include <al/Library/Scene/SceneObjHolder.h>
+#include <al/Library/Stage/StageSwitchKeeper.h>
 #include <math/seadMatrix.h>
-#include "ActorClippingFunction.h"
-#include <al/Library/IUse/IUse.h>
 
 namespace al {
 class ActorPoseKeeperBase;
@@ -13,13 +22,9 @@ class ActorScoreKeeper;
 class Collider;
 class CollisionParts;
 class ModelKeeper;
-class NerveKeeper;
 class HitSensorKeeper;
 class ScreenPointKeeper;
-class EffectKeeper;
-class AudioKeeper;
 class HitReactionKeeper;
-class StageSwitchKeeper;
 class RailKeeper;
 class ShadowKeeper;
 class ActorPrePassLightKeeper;
@@ -123,25 +128,24 @@ public:
     void initSubActorKeeper(al::SubActorKeeper*);
     void initSceneInfo(al::ActorSceneInfo*);
 
-    al::ActorPoseKeeperBase* getPoseKeeper() const { return mPoseKeeper;};
-    al::ActorExecuteInfo* getLayoutExecuteInfo() const { return mLayoutExecuteInfo;};
-    al::ActorActionKeeper* getActorActionKeeper() const { return mActorActionKeeper;};
-    al::ActorItemKeeper* getActorItemKeeper() const { return mActorItemKeeper;};
-    al::ActorScoreKeeper* getActorScoreKeeper() const { return mActorScoreKeeper;};
-    al::Collider* getCollider() const { return mCollider;};
-    al::CollisionParts* getCollisionParts() const { return mCollisionParts;};
-    al::ModelKeeper* getModelKeeper() const { return mModelKeeper;};
-    al::HitSensorKeeper* getHitSensorKeeper() const { return mHitSensorKeeper;};
-    al::ScreenPointKeeper* getScreenPointKeeper() const { return mScreenPointKeeper;};
-    al::HitReactionKeeper* getHitReactionKeeper() const { return mHitReactionKeeper;};
-    al::RailKeeper* getRailKeeper() const { return mRailKeeper;};
-    al::ShadowKeeper* getShadowKeeper() const { return mShadowKeeper;};
-    al::ActorPrePassLightKeeper* getActorPrePassLightKeeper() const { return mActorPrePassLightKeeper;};
-    al::ActorOcclusionKeeper* getActorOcclusionKeeper() const { return mActorOcclusionKeeper;};
-    al::SubActorKeeper* getSubActorKeeper() const { return mSubActorKeeper;};
-    al::ActorParamHolder* getActorParamHolder() const { return mActorParamHolder;};
-    al::LiveActorFlag* getFlags() const { return mFlags;};
-    
+    al::ActorPoseKeeperBase* getPoseKeeper() const { return mPoseKeeper; };
+    al::ActorExecuteInfo* getLayoutExecuteInfo() const { return mLayoutExecuteInfo; };
+    al::ActorActionKeeper* getActorActionKeeper() const { return mActorActionKeeper; };
+    al::ActorItemKeeper* getActorItemKeeper() const { return mActorItemKeeper; };
+    al::ActorScoreKeeper* getActorScoreKeeper() const { return mActorScoreKeeper; };
+    al::Collider* getCollider() const { return mCollider; };
+    al::CollisionParts* getCollisionParts() const { return mCollisionParts; };
+    al::ModelKeeper* getModelKeeper() const { return mModelKeeper; };
+    al::HitSensorKeeper* getHitSensorKeeper() const { return mHitSensorKeeper; };
+    al::ScreenPointKeeper* getScreenPointKeeper() const { return mScreenPointKeeper; };
+    al::HitReactionKeeper* getHitReactionKeeper() const { return mHitReactionKeeper; };
+    al::RailKeeper* getRailKeeper() const { return mRailKeeper; };
+    al::ShadowKeeper* getShadowKeeper() const { return mShadowKeeper; };
+    al::ActorPrePassLightKeeper* getActorPrePassLightKeeper() const { return mActorPrePassLightKeeper; };
+    al::ActorOcclusionKeeper* getActorOcclusionKeeper() const { return mActorOcclusionKeeper; };
+    al::SubActorKeeper* getSubActorKeeper() const { return mSubActorKeeper; };
+    al::ActorParamHolder* getActorParamHolder() const { return mActorParamHolder; };
+    al::LiveActorFlag* getFlags() const { return mFlags; };
 };
 
 struct LiveActorFlag {

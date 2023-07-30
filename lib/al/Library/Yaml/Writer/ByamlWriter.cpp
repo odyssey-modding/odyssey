@@ -1,16 +1,15 @@
 #include <al/Library/Yaml/Writer/ByamlWriter.h>
 
-#include <heap/seadHeapMgr.h>
-#include <stream/seadStream.h>
 #include <al/Library/Yaml/ByamlIter.h>
 #include <al/Library/Yaml/Writer/ByamlWriterBigDataList.h>
 #include <al/Library/Yaml/Writer/ByamlWriterData.h>
 #include <al/Library/Yaml/Writer/ByamlWriterStringTable.h>
+#include <heap/seadHeapMgr.h>
+#include <stream/seadStream.h>
 
 namespace al {
 
-ByamlWriter::ByamlWriter(sead::Heap* heap, bool _alwaysFalse)
-    : mHeap(heap), _mAlwaysFalse(_alwaysFalse) {
+ByamlWriter::ByamlWriter(sead::Heap* heap, bool _alwaysFalse) : mHeap(heap), _mAlwaysFalse(_alwaysFalse) {
     sead::ScopedCurrentHeapSetter setter(mHeap);
     mStringTable1 = new ByamlWriterStringTable();
     mStringTable2 = new ByamlWriterStringTable();

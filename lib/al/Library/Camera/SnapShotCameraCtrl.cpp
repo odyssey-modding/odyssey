@@ -3,7 +3,7 @@
 
 namespace al {
 #ifdef NON_MATCHING
-void SnapShotCameraCtrl::load(al::ByamlIter const& iter) {
+void SnapShotCameraCtrl::load(const al::ByamlIter& iter) {
     al::ByamlIter param;
     if (!al::tryGetByamlIterByKey(&param, iter, "SnapShotParam"))
         return;

@@ -1,10 +1,8 @@
-#include <al/Library/Layout/LayoutPartsActorKeeper.h>
 #include <al/Library/Layout/LayoutActor.h>
+#include <al/Library/Layout/LayoutPartsActorKeeper.h>
 
 namespace al {
-void LayoutPartsActorKeeper::resisterPartsActor(al::LayoutActor* actor) {
-
-}
+void LayoutPartsActorKeeper::resisterPartsActor(al::LayoutActor* actor) {}
 void LayoutPartsActorKeeper::appear() {
     for (s32 i = 0; i < mNumActors; i++) {
         mPartsActors[i]->appear();

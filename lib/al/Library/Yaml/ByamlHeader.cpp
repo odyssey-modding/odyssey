@@ -1,10 +1,10 @@
 #include <al/Library/Yaml/ByamlHeader.h>
 
+#include <al/Library/Yaml/ByamlData.h>
 #include <byteswap.h>
 #include <cstring>
 #include <prim/seadEndian.h>
 #include <stream/seadStream.h>
-#include <al/Library/Yaml/ByamlData.h>
 
 #define BYAML_LE_TAG 'YB'
 
@@ -37,8 +37,7 @@ u32 ByamlHeader::getDataOffset() const {
 
 ByamlStringTableIter::ByamlStringTableIter() = default;
 
-ByamlStringTableIter::ByamlStringTableIter(const u8* data, bool isRev)
-    : mData(data), isRev(isRev) {}
+ByamlStringTableIter::ByamlStringTableIter(const u8* data, bool isRev) : mData(data), isRev(isRev) {}
 
 s32 ByamlStringTableIter::getSize() const {
     u32 type_and_size = *reinterpret_cast<const u32*>(mData);
@@ -197,8 +196,7 @@ bool verifiByaml(const u8* data) {
     u32 rootOffset = isRev ? bswap_32(biggerData[3]) : biggerData[3];
 
     return (((!hashOffset && !stringOffset) || rootOffset) &&
-            (!hashOffset || ((!stringOffset || afterHashOffset <= stringOffset) &&
-                             (!rootOffset || afterHashOffset <= rootOffset)))) &&
+            (!hashOffset || ((!stringOffset || afterHashOffset <= stringOffset) && (!rootOffset || afterHashOffset <= rootOffset)))) &&
            (afterStringOffset <= rootOffset || !stringOffset || !rootOffset);
 }
 
@@ -209,8 +207,7 @@ bool verifiByamlHeader(const u8* data) {
 }
 
 bool verifiByamlStringTable(const u8* data, bool isRev) {
-    const al::ByamlStringTableIter* strings =
-        reinterpret_cast<const al::ByamlStringTableIter*>(data);
+    const al::ByamlStringTableIter* strings = reinterpret_cast<const al::ByamlStringTableIter*>(data);
     const s32* address_table = reinterpret_cast<const s32*>(data + 4);
 
     u32 type_and_size = *reinterpret_cast<const u32*>(data);
@@ -243,19 +240,15 @@ bool verifiByamlStringTable(const u8* data, bool isRev) {
     // TODO: improve this. Matching, but ugly
     if (isRev) {
         for (s32 i = 0; i < size - 1; i++) {
-            const char* c1 =
-                (const char*)&data[isRev ? bswap_32(address_table[i]) : address_table[i]];
-            const char* c2 =
-                (const char*)&data[isRev ? bswap_32(address_table[i + 1]) : address_table[i + 1]];
+            const char* c1 = (const char*)&data[isRev ? bswap_32(address_table[i]) : address_table[i]];
+            const char* c2 = (const char*)&data[isRev ? bswap_32(address_table[i + 1]) : address_table[i + 1]];
             if (strcmp(c1, c2) > 0)
                 return false;
         }
     } else {
         for (s32 i = 0; i < size - 1; i++) {
-            const char* c1 =
-                (const char*)&data[isRev ? bswap_32(address_table[i]) : address_table[i]];
-            const char* c2 =
-                (const char*)&data[false ? bswap_32(address_table[i + 1]) : address_table[i + 1]];
+            const char* c1 = (const char*)&data[isRev ? bswap_32(address_table[i]) : address_table[i]];
+            const char* c2 = (const char*)&data[false ? bswap_32(address_table[i + 1]) : address_table[i + 1]];
             if (strcmp(c1, c2) > 0)
                 return false;
         }

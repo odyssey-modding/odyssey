@@ -1,5 +1,5 @@
-#include <al/Library/Nerve/NerveKeeper.h>
 #include <al/Library/Nerve/Nerve.h>
+#include <al/Library/Nerve/NerveKeeper.h>
 #include <al/Library/Nerve/NerveStateCtrl.h>
 
 namespace al {

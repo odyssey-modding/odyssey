@@ -9,7 +9,3 @@ struct {
 } NrvGameSystem;
 
 }  // namespace
-
-void GameSystem::init() {
-    
-}

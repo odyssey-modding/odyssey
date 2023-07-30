@@ -25,14 +25,34 @@ void onCollide(al::LiveActor* actor) {
 void offCollide(al::LiveActor* actor) {
     actor->getFlags()->isCollideOff = true;
 }
-void validateMaterialCode(al::LiveActor* actor) {}
-void invalidateMaterialCode(al::LiveActor* actor) {}
-void validatePuddleMaterial(al::LiveActor* actor) {}
-void invalidatePuddleMaterial(al::LiveActor* actor) {}
-bool isAreaTarget(const al::LiveActor* actor) {}
-void onAreaTarget(al::LiveActor* actor) {}
-void offAreaTarget(al::LiveActor* actor) {}
-void isUpdateMovementEffectAudioCollisionSensor(const al::LiveActor* actor) {}
-void onUpdateMovementEffectAudioCollisionSensor(al::LiveActor* actor) {}
-void offUpdateMovementEffectAudioCollisionSensor(al::LiveActor* actor) {}
+void validateMaterialCode(al::LiveActor* actor) {
+    actor->getFlags()->isMaterialCodeValid = true;
 }
+void invalidateMaterialCode(al::LiveActor* actor) {
+    actor->getFlags()->isMaterialCodeValid = false;
+}
+void validatePuddleMaterial(al::LiveActor* actor) {
+    actor->getFlags()->isPuddleMaterialValid = true;
+}
+void invalidatePuddleMaterial(al::LiveActor* actor) {
+    actor->getFlags()->isPuddleMaterialValid = false;
+}
+bool isAreaTarget(const al::LiveActor* actor) {
+    return actor->getFlags()->isAreaTargetOn;
+}
+void onAreaTarget(al::LiveActor* actor) {
+    actor->getFlags()->isAreaTargetOn = true;
+}
+void offAreaTarget(al::LiveActor* actor) {
+    actor->getFlags()->isAreaTargetOn = true;
+}
+bool isUpdateMovementEffectAudioCollisionSensor(const al::LiveActor* actor) {
+    return actor->getFlags()->isUpdateOn;
+}
+void onUpdateMovementEffectAudioCollisionSensor(al::LiveActor* actor) {
+    actor->getFlags()->isUpdateOn = true;
+}
+void offUpdateMovementEffectAudioCollisionSensor(al::LiveActor* actor) {
+    actor->getFlags()->isUpdateOn = false;
+}
+}  // namespace al

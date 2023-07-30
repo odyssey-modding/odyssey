@@ -1,5 +1,5 @@
-#include <al/Project/Item/ActorScoreKeeper.h>
 #include <al/Library/Yaml/ByamlIter.h>
+#include <al/Project/Item/ActorScoreKeeper.h>
 
 al::ActorScoreKeeper::ActorScoreKeeper() = default;
 

@@ -509,4 +509,4 @@ s32 getMainJoyPadSingleRightPort() {
 s32 getMainJoyPadSingleLeftPort() {
     return 2;
 }
-}
+}  // namespace al

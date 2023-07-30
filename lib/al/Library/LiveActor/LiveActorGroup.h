@@ -1,7 +1,7 @@
 #pragma once
 
-#include <basis/seadTypes.h>
 #include <al/Library/HostIO/HioNode.h>
+#include <basis/seadTypes.h>
 
 namespace al {
 class LiveActor;

@@ -9,11 +9,13 @@ class ResourceSystem;
 class SaveDataDirector;
 class SystemKit {
     friend class alProjectInterface;
+
 private:
     al::MemorySystem* mMemorySystem;
     al::FileLoader* mFileLoader;
     al::ResourceSystem* mResourceSystem;
     al::SaveDataDirector* mSaveDataDirector;
+
 public:
     SystemKit();
 
@@ -27,7 +29,7 @@ public:
     al::ResourceSystem* getResourceSystem() { return mResourceSystem; }
     al::SaveDataDirector* getSaveDataDirector() { return mSaveDataDirector; }
 };
-}
+}  // namespace al
 
 class alProjectInterface {
     static al::SystemKit* getSystemKit();

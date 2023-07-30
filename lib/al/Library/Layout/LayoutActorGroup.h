@@ -7,6 +7,5 @@ class LayoutActor;
 
 class LayoutActorGroup {
 private:
-
 };
-}
+}  // namespace al

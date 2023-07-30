@@ -15,4 +15,4 @@ ViewIdHolder* ViewIdHolder::tryCreate(const al::PlacementInfo& placementInfo) {
 void ViewIdHolder::init(const al::PlacementInfo& placementInfo) {
     mPlacementIds = new al::PlacementId[al::calcLinkChildNum(placementInfo, "ViewGroup")];
 }
-}
+}  // namespace al

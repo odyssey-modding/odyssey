@@ -1,8 +1,8 @@
 #pragma once
 
+#include <al/Library/HostIO/HioNode.h>
 #include <math/seadMatrix.h>
 #include <math/seadVector.h>
-#include <al/Library/IUse/IUseHioNode.h>
 
 namespace al {
 class AudioDirector;
@@ -16,7 +16,6 @@ class SeKeeper;
 class BgmKeeper;
 
 class AudioKeeper : public al::IUseHioNode {
-    void *field_0;
     AudioEventController* mAudioEventController;
     AudioEffectController* mAudioEffectController;
     AudioRequestKeeperSyncedBgm* mAudioRequestKeeperSyncedBgm;
@@ -25,24 +24,29 @@ class AudioKeeper : public al::IUseHioNode {
     AudioMic* mAudioMic;
 
 public:
-    AudioKeeper(al::AudioDirector const*);
+    AudioKeeper(const al::AudioDirector*);
     ~AudioKeeper();
 
-    void initSeKeeper(al::AudioDirector const*, char const*, sead::Vector3f const*,
-                      sead::Matrix34f const*, al::ModelKeeper const*, al::CameraDirector*);
-    void initBgmKeeper(al::AudioDirector const*, char const*);
-    void validate(void);
-    void invalidate(void);
-    void startClipped(void);
-    void endClipped(void);
-    void appear(void);
-    void kill(void);
+    void initSeKeeper(const al::AudioDirector*, const char*, const sead::Vector3f*, const sead::Matrix34f*, const al::ModelKeeper*,
+                      al::CameraDirector*);
+    void initBgmKeeper(const al::AudioDirector*, const char*);
+    void validate();
+    void invalidate();
+    void startClipped();
+    void endClipped();
+    void appear();
+    void kill();
 
-    AudioEventController* getAudioEventController() const { return mAudioEventController; };
-    AudioEffectController* getAudioEffectController() const { return mAudioEffectController; };
-    AudioRequestKeeperSyncedBgm* getAudioRequestKeeperSyncedBgm() const { return mAudioRequestKeeperSyncedBgm; };
-    SeKeeper* getSeKeeper() const { return mSeKeeper; };
-    BgmKeeper* getBgmKeeper() const { return mBgmKeeper; };
-    AudioMic* getAudioMic() const { return mAudioMic; };
+    al::AudioEventController* getAudioEventController() const { return mAudioEventController; };
+    al::AudioEffectController* getAudioEffectController() const { return mAudioEffectController; };
+    al::AudioRequestKeeperSyncedBgm* getAudioRequestKeeperSyncedBgm() const { return mAudioRequestKeeperSyncedBgm; };
+    al::SeKeeper* getSeKeeper() const { return mSeKeeper; };
+    al::BgmKeeper* getBgmKeeper() const { return mBgmKeeper; };
+    al::AudioMic* getAudioMic() const { return mAudioMic; };
+};
+
+class IUseAudioKeeper {
+public:
+    virtual al::AudioKeeper* getAudioKeeper() const = 0;
 };
 }  // namespace al

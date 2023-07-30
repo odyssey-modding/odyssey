@@ -36,4 +36,9 @@ public:
         return static_cast<T*>(mParent);
     }
 };
+
+class IUseNerve {
+public:
+    virtual NerveKeeper* getNerveKeeper() const = 0;
+};
 }  // namespace al

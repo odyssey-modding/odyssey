@@ -14,8 +14,7 @@ private:
 
 public:
     RailPart();
-    void init(const sead::Vector3f&, const sead::Vector3f&, const sead::Vector3f&,
-              const sead::Vector3f&);
+    void init(const sead::Vector3f&, const sead::Vector3f&, const sead::Vector3f&, const sead::Vector3f&);
     void calcPos(sead::Vector3f*, f32) const;
     void calcVelocity(sead::Vector3f*, f32) const;
     void calcDir(sead::Vector3f*, f32) const;

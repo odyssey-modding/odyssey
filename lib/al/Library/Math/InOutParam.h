@@ -1,5 +1,7 @@
 #pragma once
 
+#include <basis/seadTypes.h>
+
 namespace al {
 class ByamlIter;
 
@@ -9,6 +11,7 @@ private:
     f32 mInMax;
     f32 mOutMin;
     f32 mOutMax;
+
 public:
     InOutParam();
     InOutParam(const al::InOutParam& src);
@@ -21,4 +24,4 @@ public:
     f32 calcSqrtValue(f32 value);
     f32 calcSquareValue(f32 value);
 };
-}
+}  // namespace al

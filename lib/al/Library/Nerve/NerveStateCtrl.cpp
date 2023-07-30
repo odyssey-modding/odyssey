@@ -1,6 +1,6 @@
-#include <al/Library/Nerve/NerveStateCtrl.h>
 #include <al/Library/Nerve/NerveKeeper.h>
 #include <al/Library/Nerve/NerveStateBase.h>
+#include <al/Library/Nerve/NerveStateCtrl.h>
 
 namespace al {
 // todo -- some scheduling problems with mStateCount's incrementation

@@ -15,44 +15,42 @@ class ModelKeeper;
 class CameraDirector;
 
 class SeKeeper {
-    public:
-    static void create(al::AudioSystemInfo const*, al::SeDirector*, char const*, sead::Vector3<float> const*, sead::Matrix34<float> const*,
-                       al::ModelKeeper const*, al::CameraDirector*);
-    SeKeeper(al::AudioSystemInfo const*, al::SeDirector*, char const*, sead::Vector3<float> const*, sead::Matrix34<float> const*,
-             al::ModelKeeper const*, al::CameraDirector*);
+public:
+    static void create(const al::AudioSystemInfo*, al::SeDirector*, const char*, const sead::Vector3f*, const sead::Matrix34f*,
+                       const al::ModelKeeper*, al::CameraDirector*);
+    SeKeeper(const al::AudioSystemInfo*, al::SeDirector*, const char*, const sead::Vector3f*, const sead::Matrix34f*, const al::ModelKeeper*,
+             al::CameraDirector*);
 
     void tryLoadAddonSoundArchive(al::SeadAudioPlayer*);
-    void requestPlaySe(char const*, float, char const*, al::SePlayParamList const*, al::MeInfo const*, bool, char const*,
-                       sead::Vector3<float> const*);
-    void tryRequestPlaySe(char const*, float, char const*, al::SePlayParamList const*, al::MeInfo const*, bool, char const*,
-                          sead::Vector3<float> const*);
-    void requestPlaySeIdLocal(al::SeRequestParam*, char const*);
-    void requestPlayLoopSeSequence(char const*, al::MeInfo const*, int);
-    void stopSe(char const*, int, bool, char const*);
-    void tryFindPlayInfo(char const*) const;
-    void setLifeTimeForHoldCall(char const*, unsigned int, char const*);
-    void stopAll(int, char const*);
-    void separatePlayingSePosFromEmitter(void);
-    void tryGetCurrentStreamSamplePos(char const*, char const*) const;
-    void isPlaying(char const*);
-    void checkIsPlayingSe(char const*, char const*);
-    void validate(void);
-    void invalidate(void);
-    void startClipped(void);
-    void endClipped(void);
-    void appear(void);
-    void kill(void);
-    void resetPosition(void);
+    void requestPlaySe(const char*, float, const char*, const al::SePlayParamList*, const al::MeInfo*, bool, const char*, const sead::Vector3f*);
+    void tryRequestPlaySe(const char*, float, const char*, const al::SePlayParamList*, const al::MeInfo*, bool, const char*, const sead::Vector3f*);
+    void requestPlaySeIdLocal(al::SeRequestParam*, const char*);
+    void requestPlayLoopSeSequence(const char*, const al::MeInfo*, int);
+    void stopSe(const char*, int, bool, const char*);
+    void tryFindPlayInfo(const char*) const;
+    void setLifeTimeForHoldCall(const char*, unsigned int, const char*);
+    void stopAll(int, const char*);
+    void separatePlayingSePosFromEmitter();
+    void tryGetCurrentStreamSamplePos(const char*, const char*) const;
+    void isPlaying(const char*);
+    void checkIsPlayingSe(const char*, const char*);
+    void validate();
+    void invalidate();
+    void startClipped();
+    void endClipped();
+    void appear();
+    void kill();
+    void resetPosition();
     void setIsInWater(bool);
-    void getWaterState(void);
+    void getWaterState();
     void setIsMaterialWet(bool);
     void setIsMaterialPuddle(bool);
-    void tryUpdateMaterial(char const*);
+    void tryUpdateMaterial(const char*);
     void setSeSourceVolume(float);
-    void setSyncParamPtr(float const*, char const*);
-    void setSyncParamPtrInt(int const*, char const*);
-    void setEmitterPoseMtxPtr(sead::Matrix34<float> const*, char const*);
-    void setEmitterPosePosPtr(sead::Vector3<float> const*, char const*);
+    void setSyncParamPtr(const float*, const char*);
+    void setSyncParamPtrInt(const int*, const char*);
+    void setEmitterPoseMtxPtr(const sead::Matrix34f*, const char*);
+    void setEmitterPosePosPtr(const sead::Vector3f*, const char*);
     void loadSe(al::IAudioResourceLoader*);
 };
 }  // namespace al

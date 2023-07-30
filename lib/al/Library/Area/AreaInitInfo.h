@@ -13,13 +13,11 @@ private:
     al::SceneObjHolder* mSceneObjHolder = nullptr;
 
 public:
-    AreaInitInfo() { };
-    AreaInitInfo(const al::PlacementInfo& placementInfo,
-                 al::StageSwitchDirector* stageSwitchDirector, al::SceneObjHolder* sceneObjHolder);
+    AreaInitInfo(){};
+    AreaInitInfo(const al::PlacementInfo& placementInfo, al::StageSwitchDirector* stageSwitchDirector, al::SceneObjHolder* sceneObjHolder);
     AreaInitInfo(const al::PlacementInfo& placementInfo, const al::AreaInitInfo& initInfo);
 
-    void set(const al::PlacementInfo& placementInfo, al::StageSwitchDirector* stageSwitchDirector,
-             al::SceneObjHolder* sceneObjHolder);
+    void set(const al::PlacementInfo& placementInfo, al::StageSwitchDirector* stageSwitchDirector, al::SceneObjHolder* sceneObjHolder);
 
     al::StageSwitchDirector* getStageSwitchDirector() const { return mStageSwitchDirector; }
     al::SceneObjHolder* getSceneObjHolder() const { return mSceneObjHolder; }

@@ -2,8 +2,7 @@
 #include <al/Library/Placement/PlacementInfo.h>
 
 namespace al {
-PlacementId::PlacementId()
-    : mId(nullptr), mUnitConfigName(nullptr), mZoneId(nullptr), mCommonID(nullptr) {}
+PlacementId::PlacementId() : mId(nullptr), mUnitConfigName(nullptr), mZoneId(nullptr), mCommonID(nullptr) {}
 
 PlacementId::PlacementId(const char* p_0, const char* pUnitConfig, const char* pID)
     : mId(p_0), mUnitConfigName(pUnitConfig), mZoneId(pID), mCommonID(nullptr) {}
@@ -20,4 +19,4 @@ void PlacementId::init(const al::PlacementInfo& rInfo) {
 bool PlacementId::isValid() const {
     return mCommonID || mId;
 }
-}
+}  // namespace al

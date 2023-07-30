@@ -1,7 +1,15 @@
 #pragma once
 
+#include <al/Library/Audio/AudioKeeper.h>
+#include <al/Library/Camera/CameraDirector.h>
+#include <al/Library/Effect/EffectKeeper.h>
+#include <al/Library/HostIO/HioNode.h>
+#include <al/Library/Nerve/NerveKeeper.h>
+#include <al/Library/Scene/SceneObjHolder.h>
+#include <al/Library/Layout/LayoutKeeper.h>
+#include <al/Library/Layout/LayoutActionKeeper.h>
+#include <al/Library/Message/MessageSystem.h>
 #include <prim/seadSafeString.h>
-#include <al/Library/IUse/IUse.h>
 
 namespace al {
 class NerveKeeper;
@@ -43,7 +51,7 @@ private:
     bool mIsAlive;
 
 public:
-    LayoutActor(char const*);
+    LayoutActor(const char*);
 
     virtual void appear();
     virtual void kill();
@@ -62,7 +70,7 @@ public:
     virtual const al::MessageSystem* getMessageSystem() const override;
 
     void initLayoutKeeper(al::LayoutKeeper*);
-    void initActionKeeper(void);
+    void initActionKeeper();
     void initTextPaneAnimator(al::LayoutTextPaneAnimator*);
     void initExecuteInfo(al::LayoutExecuteInfo*);
     void initHitReactionKeeper(al::HitReactionKeeper*);

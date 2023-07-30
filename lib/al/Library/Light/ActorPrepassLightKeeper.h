@@ -27,6 +27,16 @@ class ActorPrePassLightKeeper {
     };
     static_assert(sizeof(UserColor) == 0x18);
 
+private:
+    ParameterIo* mParameterIo;
+    ParameterBool* mIsIgnoreHideModel;
+    ParameterArray* mLightParameters;
+    ParameterArray* mUserColorParameters;
+    sead::PtrArray<PrePassLightBase*> mLights;
+    sead::PtrArray<UserColor*> mUserColors;
+    LiveActor* mLiveActor;
+    bool mIsIgnorePrePassLightYaml;
+
 public:
     ActorPrePassLightKeeper(LiveActor*);
     void init(const Resource*, const ActorInitInfo&, const char*);
@@ -41,16 +51,6 @@ public:
     sead::Color4f* findUserColor(const char*);
 
     static bool isExistFile(const Resource*, const char*);
-
-private:
-    ParameterIo* mParameterIo;
-    ParameterBool* mIsIgnoreHideModel;
-    ParameterArray* mLightParameters;
-    ParameterArray* mUserColorParameters;
-    sead::PtrArray<PrePassLightBase*> mLights;
-    sead::PtrArray<UserColor*> mUserColors;
-    LiveActor* mLiveActor;
-    bool mIsIgnorePrePassLightYaml;
 };
 static_assert(sizeof(ActorPrePassLightKeeper) == 0x50);
 }  // namespace al

@@ -2,18 +2,21 @@
 
 #include <al/Library/LiveActor/LiveActor.h>
 
-struct PlayerHackStartShaderParam {
-
-};
+struct PlayerHackStartShaderParam;
 
 class PlayerHackStartShaderCtrl {
-    public:
-    PlayerHackStartShaderCtrl(al::LiveActor*, PlayerHackStartShaderParam*);
-    void setHost(al::LiveActor*);
-    void start(void);
-    void update(void);
-    void end(void);
-    al::LiveActor *mParent;
-    // TODO: fill this class out
-    char unknown[0x30];
+private:
+    al::LiveActor* mParent;
+    s32 mTime;
+    bool mActive;
+    sead::Color4f mColor;
+    sead::Quatf mQuat;
+    PlayerHackStartShaderParam* mParam;
+
+public:
+    PlayerHackStartShaderCtrl(al::LiveActor* host, PlayerHackStartShaderParam* param);
+    void setHost(al::LiveActor* host);
+    void start();
+    void update();
+    void end();
 };

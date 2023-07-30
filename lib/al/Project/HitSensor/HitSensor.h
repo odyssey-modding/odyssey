@@ -1,7 +1,5 @@
 #pragma once
 
 namespace al {
-class HitSensor {
-
-};
-}
+class HitSensor {};
+}  // namespace al

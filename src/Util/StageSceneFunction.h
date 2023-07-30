@@ -11,12 +11,12 @@ class IJudge;
 namespace rs {
     void resetJudge(IJudge *);
     bool updateJudge(IJudge *);
-    bool isJudge(IJudge const*);
+    bool isJudge(const IJudge*);
     bool updateJudgeAndResult(IJudge *);
     void judgeAndResetReturnTrue(IJudge *);
-    void isEnableShowDemoAfterOpenMoonRockFirst(al::LiveActor const*);
-    void isFirstDemoOpenMoonRock(al::LiveActor const*);
-    void isEnableShowDemoMoonRockMapWorld(al::LiveActor const*);
-    void showDemoAfterOpenMoonRockFirst(al::LiveActor const*);
-    void showDemoMoonRockMapWorld(al::LiveActor const*);
+    void isEnableShowDemoAfterOpenMoonRockFirst(const al::LiveActor*);
+    void isFirstDemoOpenMoonRock(const al::LiveActor*);
+    void isEnableShowDemoMoonRockMapWorld(const al::LiveActor*);
+    void showDemoAfterOpenMoonRockFirst(const al::LiveActor*);
+    void showDemoMoonRockMapWorld(const al::LiveActor*);
 }

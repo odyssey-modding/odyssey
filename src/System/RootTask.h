@@ -10,12 +10,13 @@ private:
     // TODO: Remove once RootTask implements sead::Task
     char taskImplDetails[0x200];
     GameSystem* mGameSystem;
-    void* field_208;
-    sead::DrawContext* drawContext;
+    sead::hostio::Node* mHostIoNode;
+    sead::DrawContext* mDrawContext;
 public:
     RootTask();
-    void enter();
-    void draw();
-    void calc();
-    void prepare();
+    ~RootTask();
+    void enter() override;
+    void draw() override;
+    void calc() override;
+    void prepare() override;
 };

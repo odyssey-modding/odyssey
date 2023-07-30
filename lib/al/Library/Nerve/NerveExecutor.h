@@ -1,8 +1,8 @@
 #pragma once
 
-#include <math/seadVector.h>
 #include <al/Library/HostIO/HioNode.h>
-#include <al/Library/IUse/IUseNerve.h>
+#include <al/Library/Nerve/NerveKeeper.h>
+#include <math/seadVector.h>
 
 namespace al {
 class Nerve;

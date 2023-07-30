@@ -22,11 +22,10 @@ public:
     Resource(const sead::SafeString& path);
     Resource(const sead::SafeString& path, sead::ArchiveRes* archive);
     bool isExistFile(const sead::SafeString& name) const;
-    bool isExistByml(char const*) const;
-    u32 getSize(void) const;
+    bool isExistByml(const char*) const;
+    u32 getSize() const;
     u32 getEntryNum(const sead::SafeString&) const;
-    const char* getEntryName(const sead::BufferedSafeString* outName, const sead::SafeString&,
-                             u32) const;
+    const char* getEntryName(const sead::BufferedSafeString* outName, const sead::SafeString&, u32) const;
     u32 getFileSize(const sead::SafeString& name) const;
     const u8* getByml(const sead::SafeString& name) const;
     void* getFile(const sead::SafeString& name) const;

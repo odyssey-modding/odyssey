@@ -184,8 +184,7 @@ bool ByamlIter::tryGetIterByKey(ByamlIter* iter, const char* key) const {
     return iter->isValid();
 }
 bool ByamlIter::tryConvertIter(ByamlIter* iter, const ByamlData* data) const {
-    if (data->getType() == ByamlDataType::TYPE_ARRAY ||
-        data->getType() == ByamlDataType::TYPE_HASH) {
+    if (data->getType() == ByamlDataType::TYPE_ARRAY || data->getType() == ByamlDataType::TYPE_HASH) {
         *iter = {mData, &mData[data->getValue()]};
         return true;
     }

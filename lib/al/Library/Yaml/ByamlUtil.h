@@ -1,10 +1,10 @@
 #pragma once
 
+#include <al/Library/Yaml/ByamlData.h>
+#include <al/Library/Yaml/ByamlIter.h>
 #include <gfx/seadColor.h>
 #include <math/seadBoundBox.h>
 #include <math/seadVector.h>
-#include <al/Library/Yaml/ByamlData.h>
-#include <al/Library/Yaml/ByamlIter.h>
 
 namespace sead {
 class WriteStream;

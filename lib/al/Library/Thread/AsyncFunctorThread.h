@@ -1,9 +1,9 @@
 #pragma once
 
+#include <al/Library/Thread/FunctorV0M.h>
 #include <basis/seadTypes.h>
 #include <mc/seadCoreInfo.h>
 #include <prim/seadSafeString.h>
-#include <al/Library/Thread/FunctorV0M.h>
 
 namespace sead {
 class DelegateThread;
@@ -18,8 +18,7 @@ private:
     bool mIsDone = true;
 
 public:
-    AsyncFunctorThread(const sead::SafeString& functor_name, const FunctorBase& functor,
-                       s32 priority, s32 stack_size, sead::CoreId id);
+    AsyncFunctorThread(const sead::SafeString& functor_name, const FunctorBase& functor, s32 priority, s32 stack_size, sead::CoreId id);
     virtual ~AsyncFunctorThread();
 
     void threadFunction(sead::Thread* unused_1, s64 unused_2);
