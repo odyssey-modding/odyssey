@@ -1,0 +1,13 @@
+add_subdirectory(HitSensor)
+add_subdirectory(Item)
+add_subdirectory(Layout)
+add_subdirectory(Memory)
+add_subdirectory(Play)
+add_subdirectory(Rail)
+add_subdirectory(SaveData)
+add_subdirectory(Scene)
+add_subdirectory(Screen)
+add_subdirectory(Stage)
+add_subdirectory(Thread)
+add_subdirectory(Yaml)
+
