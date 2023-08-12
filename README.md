@@ -1,5 +1,5 @@
-# OdysseyDecomp
-Decompilation of Super Mario Odyssey 1.0.0.
+# Odyssey Decompilation Project ![Decompiled Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/GRAnimated/odyssey/progresspy/data/shields.json)
+Decompilation of Super Mario Odyssey 1.0.0. 
 
 *Sorted function map can be found [here](https://docs.google.com/spreadsheets/d/198vrkkDqktrRDLInSAkK2HsG5hy1Fl8cmCNRMND3nCY/edit).*
 
