@@ -7,7 +7,7 @@
 #include <prim/seadSafeString.h>
 
 namespace al {
-class GameSystemInfo;
+struct GameSystemInfo;
 class SequenceInitInfo;
 class AudioSystemInfo;
 class AudioDirector;
@@ -20,7 +20,7 @@ class Sequence : public al::NerveExecutor, public al::IUseAudioKeeper, public al
     al::SceneCreator* mSceneCreator;
     al::AudioDirector* mAudioDirector;
     al::AudioKeeper* mAudioKeeper;
-    al::GameDrawInfo* mGameDrawInfo;
+    al::DrawSystemInfo* mGameDrawInfo;
     bool mIsAlive;
 
 public:
@@ -44,6 +44,6 @@ public:
     al::AudioSystemInfo* getAudioSystemInfo();
 
 protected:
-    al::GameDrawInfo* getDrawInfo() const { return mGameDrawInfo; }
+    al::DrawSystemInfo* getDrawInfo() const { return mGameDrawInfo; }
 };
 }  // namespace al

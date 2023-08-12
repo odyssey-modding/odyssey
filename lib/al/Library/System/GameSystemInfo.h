@@ -15,27 +15,28 @@ class AudioSystem;
 class GamePadSystem;
 class HtmlViewer;
 class WaveVibrationHolder;
+class NfpDirector;
+class ApplicationMessageReceiver;
 
-struct GameDrawInfo {
+struct DrawSystemInfo {
     agl::RenderBuffer* dockedRenderBuffer;
     agl::RenderBuffer* handheldRenderBuffer;
     bool isDocked;
     agl::DrawContext* drawContext;
 };
 
-class GameSystemInfo {
-public:
-    u64 _0;
-    al::EffectSystem* mEffectSys;                   // 0x08
-    al::LayoutSystem* mLayoutSys;                   // 0x10
-    al::MessageSystem* mMessageSys;                 // 0x18
-    al::NetworkSystem* mNetworkSys;                 // 0x20
-    al::AudioSystem* mAudioSys;                     // 0x28
-    al::GamePadSystem* mGamePadSys;                 // 0x30
-    al::GameDrawInfo* mDrawInfo;                    // 0x38 from Application::sInstance + 0x30
-    ProjectNfpDirector* mProjNfpDirector;           // 0x48
-    al::HtmlViewer* mHtmlViewer;                    // 0x50
-    ApplicationMessageReceiver* mMessageReciever;   // 0x58
-    al::WaveVibrationHolder* mWaveVibrationHolder;  // 0x60
+struct GameSystemInfo {
+    al::AudioSystem* audioSystem;
+    al::EffectSystem* effectSystem;
+    al::LayoutSystem* layoutSystem;
+    al::MessageSystem* messageSystem;
+    al::NetworkSystem* networkSystem;
+    void* field_28;
+    al::GamePadSystem* gamePadSystem;
+    al::DrawSystemInfo* drawSystemInfo;
+    al::NfpDirector* nfpDirector;
+    al::HtmlViewer* htmlViewer;
+    al::ApplicationMessageReceiver* applicationMessageReciever;
+    al::WaveVibrationHolder* waveVibrationHolder;
 };
 }  // namespace al

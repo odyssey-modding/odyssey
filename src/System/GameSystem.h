@@ -5,7 +5,7 @@
 
 namespace al {
 class Sequence;
-class GameSystemInfo;
+struct GameSystemInfo;
 class AudioSystem;
 class AudioInfoListWithParts;
 class AccountHolder;

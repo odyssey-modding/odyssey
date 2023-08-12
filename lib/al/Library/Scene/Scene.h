@@ -16,6 +16,7 @@ class SceneMsgCtrl;
 class ScreenCoverCtrl;
 class SceneInitInfo;
 class GraphicsInitArg;
+struct DrawSystemInfo;
 class Scene : public al::NerveExecutor, public al::IUseAudioKeeper, public al::IUseCamera, public al::IUseSceneObjHolder {
 private:
     bool mIsAlive;
@@ -29,12 +30,12 @@ private:
     al::ScreenCoverCtrl* mScreenCoverCtrl;
     al::AudioDirector* mAudioDirector;
     al::AudioKeeper* mAudioKeeper;
-    al::NerveKeeper* mNerveKeeper;
+    al::DrawSystemInfo* mDrawSystemInfo;
 
 public:
     Scene(const char* name);
     virtual ~Scene();
-    virtual void init(const al::SceneInitInfo&);
+    virtual void init(const al::SceneInitInfo& initInfo);
     virtual void appear();
     virtual void kill();
     virtual void movement();
