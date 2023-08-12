@@ -3,9 +3,6 @@
 #include <basis/seadTypes.h>
 #include <common/aglRenderBuffer.h>
 
-class ProjectNfpDirector;
-class ApplicationMessageReceiver;
-
 namespace al {
 class EffectSystem;
 class LayoutSystem;
@@ -15,6 +12,7 @@ class AudioSystem;
 class GamePadSystem;
 class HtmlViewer;
 class WaveVibrationHolder;
+class FontHolder;
 class NfpDirector;
 class ApplicationMessageReceiver;
 
@@ -34,6 +32,7 @@ struct GameSystemInfo {
     void* field_28;
     al::GamePadSystem* gamePadSystem;
     al::DrawSystemInfo* drawSystemInfo;
+    al::FontHolder* fontHolder;
     al::NfpDirector* nfpDirector;
     al::HtmlViewer* htmlViewer;
     al::ApplicationMessageReceiver* applicationMessageReciever;
