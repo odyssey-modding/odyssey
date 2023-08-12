@@ -1,22 +1,14 @@
 {
-    "version": 1,
-    "timestamp": 1691160323,
-    "git_hash": "2fef6bc33535a8cfd5e342a88591ef6f965641de",
-    "num_total": 66810,
-    "code_size_total": 11821704,
     "matching": {
-        "count": 3018,
-        "percentage": 4.517287831162999,
-        "code_size": 242756
-    },
-    "equivalent": {
-        "count": 23,
-        "percentage": 0.03442598413411166,
-        "code_size": 5232
+        "label": "matching",
+        "message": "4.51729%"
     },
     "non_matching_minor": {
-        "count": 9,
-        "percentage": 0.01347103726986978,
-        "code_size": 2164
+        "label": "non-matching (minor issues)",
+        "message": "0.03443%"
+    },
+    "non_matching_major": {
+        "label": "non-matching (major issues)",
+        "message": "0.01347%"
     }
 }
