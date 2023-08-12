@@ -57,16 +57,19 @@ Additionally, you'll also need:
         * set up [Clang 4.0.1](https://releases.llvm.org/download.html#4.0.1) by downloading it from the official LLVM website
         * create a build directory in `build/`
     * If something goes wrong, follow the instructions given to you by the script.
+    * If you wish to use a CMake generator that isn't Ninja, use `--cmake_backend` to specify it.
 
 ## 3. Build
 
 To start the build, just run
 
 ```shell
-ninja -C build
+python tools/build.py
 ```
 
-By default, Ninja will perform a multithreaded build. There is no need to pass -j manually.
+By default, a multithreaded build is performed. No need to specify `-j` manually.
+
+Use `--clean` to perform a clean build, and `--verbose` to enable verbose output.
 
 To check whether everything built correctly, just run `tools/check` after the build completes.
 

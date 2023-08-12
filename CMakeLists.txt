@@ -23,6 +23,16 @@ file(GLOB_RECURSE SOURCES_AL ${PROJECT_SOURCE_DIR}/lib/al/*.cpp ${PROJECT_SOURCE
 
 add_executable(odyssey ${SOURCES_GAME} ${SOURCES_AL})
 
+# Writing sources to a file so build.py script knows the sources
+set(SOURCES_OUTPUT_FILE "${CMAKE_BINARY_DIR}/.build_sources")
+file(WRITE ${SOURCES_OUTPUT_FILE} "")
+
+get_target_property(SOURCES_COMBINED odyssey SOURCES)
+
+foreach (SOURCE ${SOURCES_COMBINED})
+  file(APPEND ${SOURCES_OUTPUT_FILE} "${SOURCE}\n")
+endforeach()
+
 target_include_directories(odyssey PRIVATE src)
 
 target_compile_definitions(odyssey PRIVATE NON_MATCHING)
