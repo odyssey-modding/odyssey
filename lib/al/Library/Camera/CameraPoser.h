@@ -10,6 +10,7 @@
 #include <math/seadMatrix.h>
 #include <math/seadQuat.h>
 #include <math/seadVector.h>
+#include "CameraStartInfo.h"
 #include "SnapShotCameraCtrl.h"
 
 namespace al {
@@ -22,7 +23,6 @@ class CameraOffsetCtrlPreset;
 class CameraParamMoveLimit;
 class GyroCameraCtrl;
 class CameraViewInfo;
-class CameraStartInfo;
 class CameraObjectRequestInfo;
 class CameraTurnInfo;
 class CameraPoserFlag;
@@ -37,12 +37,12 @@ class CameraPoser : public al::HioNode,
                     public al::IUseRail {
 private:
     const char* mPoserName;
-    float field_38;
+    f32 field_38;
     sead::Vector3f mPosition;
     sead::Vector3f mTargetTrans = sead::Vector3f::ex;
     sead::Vector3f mCameraUp = sead::Vector3f::ey;
-    float mFovyDegree = 35.0f;
-    float field_64;
+    f32 mFovyDegree = 35.0f;
+    f32 field_64;
     sead::Matrix34f mViewMtx = sead::Matrix34f::ident;
     bool field_98 = false;
     al::CameraViewInfo* mViewInfo;
@@ -53,8 +53,8 @@ private:
     al::CameraAngleSwingInfo* mAngleSwingInfo;
     al::CameraArrowCollider* mArrowCollider;
     al::CameraOffsetCtrlPreset* mOffsetCtrlPreset;
-    float* mLocalInterpole;
-    float* mLookAtInterpole;
+    f32* mLocalInterpole;
+    f32* mLookAtInterpole;
     al::CameraParamMoveLimit* mParamMoveLimit;
     void* field_f8;
     al::GyroCameraCtrl* mGyroCtrl;
@@ -62,8 +62,8 @@ private:
     al::AudioKeeper* mAudioKeeper;
     al::NerveKeeper* mNerveKeeper;
     al::RailKeeper* mRailKeeper;
-    int* field_128;
-    int* field_130;
+    s32* field_128;
+    s32* field_130;
     sead::Vector3f* mOrthoProjectionParam;
 
 public:
@@ -100,12 +100,12 @@ public:
     bool isEndInterpoleByStep() const;
     bool isFirstCalc() const;
 
-    void initNerve(const al::Nerve*, int);
+    void initNerve(const al::Nerve*, s32);
     void initArrowCollider(al::CameraArrowCollider*);
     void initAudioKeeper(const char*);
     void initRail(const al::PlacementInfo&);
     void initLocalInterpole();
-    void initLookAtInterpole(float);
+    void initLookAtInterpole(f32);
     void initOrthoProjectionParam();
     void tryInitAreaLimitter(const al::PlacementInfo&);
 
@@ -127,7 +127,7 @@ public:
     void startSnapShotModeCore();
     void endSnapShotModeCore();
 
-    float getFovyDegree() const;
+    f32 getFovyDegree() const;
 
     sead::Vector3f getPosition() const { return mPosition; };
     sead::Vector3f getTargetTrans() const { return mTargetTrans; };

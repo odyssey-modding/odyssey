@@ -11,6 +11,6 @@ bool isInvalidClipping(const al::LiveActor* actor) {
 }  // namespace al
 namespace alActorFunction {
 bool isDrawClipping(const al::LiveActor* actor) {
-    actor->getFlags()->isDrawClipped;
+    return actor->getFlags()->isDrawClipped;
 }
 };  // namespace alActorFunction

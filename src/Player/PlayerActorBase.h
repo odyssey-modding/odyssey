@@ -10,9 +10,10 @@ private:
     PlayerHackKeeper* mPlayerHackKeeper;
     sead::Matrix34f* mViewMtx;
     s32 port;
+
 public:
     void init(const al::ActorInitInfo& info) override;
-    virtual void initPlayer(al::ActorInitInfo const&,PlayerInitInfo const&);
+    virtual void initPlayer(al::ActorInitInfo const&, PlayerInitInfo const&);
     virtual IUsePlayerCollision* getPlayerCollision();
     virtual PlayerHackKeeper* getPlayerHackKeeper() const override;
     virtual void isEnableDemo();
@@ -41,5 +42,11 @@ public:
     virtual void movement() override;
     virtual void checkDeathArea();
     virtual void sendCollisionMsg();
-    virtual void receivePushMsg(al::SensorMsg const*,al::HitSensor *,al::HitSensor *,float);
+    virtual void receivePushMsg(al::SensorMsg const*, al::HitSensor*, al::HitSensor*, float);
+};
+
+class IUsePlayerCollision {
+public:
+    // TODO: Does this return PlayerCollider or something else?
+    virtual void* getPlayerCollision() const = 0;
 };

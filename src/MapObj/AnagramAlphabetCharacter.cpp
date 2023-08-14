@@ -1,20 +1,20 @@
 #include "AnagramAlphabetCharacter.h"
+#include <Player/Judge/HackerJudge.h>
+#include "Util/Hack.h"
+#include "Util/StageSceneFunction.h"
 #include <al/Library/LiveActor/ActorActionFunction.h>
 #include <al/Library/LiveActor/ActorCollisionFunction.h>
 #include <al/Library/LiveActor/ActorFlagFunction.h>
 #include <al/Library/LiveActor/ActorMovementFunction.h>
 #include <al/Library/Nerve/NerveUtil.h>
-
-#include <Player/Judge/HackerJudge.h>
 #include <al/Library/HitSensor/Messages.h>
 #include <al/Library/LiveActor/ActorClippingFunction.h>
 #include <al/Library/LiveActor/ActorInitFunction.h>
 #include <al/Library/LiveActor/ActorPoseKeeper.h>
 #include <al/Library/LiveActor/ActorSensorFunction.h>
 #include <al/Library/LiveActor/LiveActorFunction.h>
-#include <al/Library/Math/MathUtil.h>
-#include "Util/Hack.h"
-#include "Util/StageSceneFunction.h"
+#include <al/Library/Math/MathAngleUtil.h>
+#include <al/Library/Math/MathLerpUtil.h>
 
 namespace {
 NERVE_IMPL(AnagramAlphabetCharacter, Wait);
@@ -176,17 +176,18 @@ void AnagramAlphabetCharacter::exeHackGoal() {
         al::startHitReaction(this, "ゴールデモ開始");
     }
     sead::Vector3f rot;
-    unkMtx->getRotation(rot);
+    field_110->getRotation(rot);
 
     sead::Vector3f pos;
-    unkMtx->getTranslation(pos);
+    field_110->getTranslation(pos);
 
     al::turnToDirection(this, rot, 20.0);
     auto transPtr = al::getTransPtr(this);
     auto trans = al::getTrans(this);
     al::lerpVec(transPtr, trans, pos, 0.5);
-    if (al::isGreaterEqualStep(this, 0LL)) return;
-    al::updatePoseMtx(this, unkMtx);
+    if (al::isGreaterEqualStep(this, 0LL))
+        return;
+    al::updatePoseMtx(this, field_110);
     rs::endHackDir(&this->mHackerParent, rot);
     al::validateClipping(this);
     al::setNerve(this, &NrvAnagramAlphabetCharacter.Wait);

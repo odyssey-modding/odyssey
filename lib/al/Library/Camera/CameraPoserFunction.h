@@ -5,11 +5,10 @@
 #include <math/seadMatrix.h>
 #include <math/seadQuat.h>
 #include <math/seadVector.h>
-
 #include "CameraPoser.h"
+#include "CameraStartInfo.h"
 
 namespace al {
-class CameraStartInfo;
 class CameraObjectRequestInfo;
 class PlacementInfo;
 }  // namespace al

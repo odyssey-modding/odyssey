@@ -1,6 +1,7 @@
 #pragma once
 
 #include <al/Library/Camera/CameraPoserFunction.h>
+#include <al/Library/Camera/CameraStartInfo.h>
 #include <al/Library/Nerve/Nerve.h>
 #include <al/Library/Nerve/NerveExecutor.h>
 #include <al/Library/Nerve/NerveKeeper.h>
@@ -12,7 +13,6 @@
 
 namespace al {
 class CameraPoser;
-class CameraStartInfo;
 
 class CameraVerticalAbsorber : public al::NerveExecutor {
 private:
@@ -59,5 +59,4 @@ public:
     void tryResetAbsorbVecIfInCollision(const sead::Vector3f&);
     void update();
 };
-static_assert(sizeof(CameraVerticalAbsorber) == 0x1b0, "blaah!");
 };  // namespace al

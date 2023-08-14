@@ -1,28 +1,27 @@
 #pragma once
 
-#include <al/Library/LiveActor/LiveActor.h>
-#include <al/Library/Nerve/NerveSetupUtil.h>
-
 #include "AnagramAlphabet.h"
-
 #include "MapObj/CapTargetParts.h"
 #include "Player/CapTargetInfo.h"
 #include "Player/PlayerHackStartShaderCtrl.h"
+#include <al/Library/Nerve/NerveSetupUtil.h>
+#include <al/Library/LiveActor/LiveActor.h>
 
 class IUsePlayerHack;
 class HackerJudgeNormalFall;
 class HackerJudgeStartRun;
 
 class AnagramAlphabetCharacter : public al::LiveActor {
+private:
     CapTargetInfo* mCapTargetInfo;
-    sead::Matrix34f* unkMtx;
+    sead::Matrix34f* field_110;
     AnagramAlphabet* mParent;
     IUsePlayerHack* mHackerParent;
     CapTargetParts* mCapTargetParts;
     HackerJudgeNormalFall* mHackerJudgeNormalFall;
     HackerJudgeStartRun* mHackerJudgeStartRun;
     PlayerHackStartShaderCtrl* mPlayerHackStartShaderCtrl;
-    int mSwingTimer;
+    s32 mSwingTimer;
 
 public:
     AnagramAlphabetCharacter(const char*);
@@ -30,18 +29,18 @@ public:
     void init(const al::ActorInitInfo&);
     void attackSensor(al::HitSensor*, al::HitSensor*);
     bool receiveMsg(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
-    void setComplete(void);
-    void killCapTarget(void);
+    void setComplete();
+    void killCapTarget();
 
-    void exeWait(void);
-    void exeWaitHack(void);
-    void exeWaitHackStart(void);
-    void exeHackStart(void);
-    void exeHackWait(void);
-    void exeHackMove(void);
-    void exeHackFall(void);
-    void exeHackEnd(void);
-    void exeHackGoal(void);
-    void exeSet(void);
-    void exeComplete(void);
+    void exeWait();
+    void exeWaitHack();
+    void exeWaitHackStart();
+    void exeHackStart();
+    void exeHackWait();
+    void exeHackMove();
+    void exeHackFall();
+    void exeHackEnd();
+    void exeHackGoal();
+    void exeSet();
+    void exeComplete();
 };

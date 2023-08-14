@@ -6,7 +6,7 @@ namespace al {
 class LiveActor;
 
 class NerveStateBase : public al::NerveExecutor {
-private:
+protected:
     bool mIsDead = true;
 
 public:
@@ -22,7 +22,7 @@ public:
 };
 
 class ActorStateBase : public al::NerveStateBase {
-private:
+protected:
     al::LiveActor* mActor;
 
 public:
