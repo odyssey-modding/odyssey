@@ -61,12 +61,9 @@ void FootPrint::setAnimationByMetamorphosis(char const* animName) {
     al::tryStartVisAnimIfExist(this, animName);
 }
 
-// NON_MATCHING: Virtual function stuff that I'm confused by
-#ifdef NON_MATCHING
 void FootPrint::control() {
     if (mConnector->isMoved())
         al::connectPoseQT(this, mConnector);
 }
-#endif
 
 }  // namespace al
