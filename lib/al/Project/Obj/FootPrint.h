@@ -1,25 +1,26 @@
 #pragma once
 
-#include <al/Library/Collision/PartsConnector.h>
 #include <al/Library/LiveActor/LiveActor.h>
 
 namespace al {
+class CollisionPartsConnector;
+
 class FootPrint : public al::LiveActor {
 private:
     al::CollisionPartsConnector* mConnector = nullptr;
-    char const* mMaterialName = nullptr;
+    const char* mMaterialName = nullptr;
 
 public:
-    FootPrint(al::ActorInitInfo const&, char const*);
+    FootPrint(const al::ActorInitInfo&, const char*);
     void appear();
     void startDisappear();
     bool isDisappear() const;
     void exeAppear();
     void exeDisappear();
-    void setAnimationByMaterial(char const*);
-    void setAnimationByCharacter(char const*);
-    void setAnimationByMetamorphosis(char const*);
-    void setFollowCollisionParts(al::CollisionParts const*);
+    void setAnimationByMaterial(const char*);
+    void setAnimationByCharacter(const char*);
+    void setAnimationByMetamorphosis(const char*);
+    void setFollowCollisionParts(const al::CollisionParts*);
     void control();
 };
 }  // namespace al

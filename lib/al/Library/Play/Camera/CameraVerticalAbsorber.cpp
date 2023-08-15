@@ -1,8 +1,15 @@
 #include "CameraVerticalAbsorber.h"
+#include <al/Library/Camera/CameraPoserFunction.h>
+#include <al/Library/Camera/CameraStartInfo.h>
 #include <al/Library/Math/MathAngleUtil.h>
-#include <al/Library/Yaml/ByamlUtil.h>
 #include <al/Library/Math/MathLerpUtil.h>
 #include <al/Library/Math/MathVectorUtil.h>
+#include <al/Library/Nerve/Nerve.h>
+#include <al/Library/Nerve/NerveKeeper.h>
+#include <al/Library/Nerve/NerveSetupUtil.h>
+#include <al/Library/Nerve/NerveUtil.h>
+#include <al/Library/Yaml/ByamlUtil.h>
+#include <al/Library/Yaml/ByamlIter.h>
 
 namespace {
 using namespace al;

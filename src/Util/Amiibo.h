@@ -1,5 +1,7 @@
 #pragma once
 
+#include <basis/seadTypes.h>
+
 namespace al {
 class NfpCharacterId;
 class NfpInfo;
@@ -13,12 +15,12 @@ public:
 };
 
 namespace rs {
-void calcSearchAmiiboBit(int*, int*, int*, int);
-int createCharacterIdS32(al::NfpCharacterId const&);
-bool isEnableUseStageSceneAmiibo(al::NfpInfo const&);
-bool isExistAmiiboMstxtData(al::IUseMessageSystem const*, al::NfpInfo const&);
-const char* getAmiiboMstxtLabel(bool*, al::IUseMessageSystem const*, int, int, int);
-bool tryFindAmiiboCostumeItemInfo(ShopItem::ItemInfo**, ShopItem::ItemInfo**, al::NfpCharacterId const&, int, al::IUseSceneObjHolder*);
+void calcSearchAmiiboBit(int*, s32*, s32*, s32);
+s32 createCharacterIdS32(const al::NfpCharacterId&);
+bool isEnableUseStageSceneAmiibo(const al::NfpInfo&);
+bool isExistAmiiboMstxtData(const al::IUseMessageSystem*, const al::NfpInfo&);
+const char* getAmiiboMstxtLabel(bool*, const al::IUseMessageSystem*, s32, s32, s32);
+bool tryFindAmiiboCostumeItemInfo(ShopItem::ItemInfo**, ShopItem::ItemInfo**, const al::NfpCharacterId&, s32, al::IUseSceneObjHolder*);
 void resetHelpAmiibo(al::IUseSceneObjHolder const*);
 void getSearchAmiiboData(al::IUseSceneObjHolder const*);  // TODO: find type
 void appearCoinCollectHintEffect(al::IUseSceneObjHolder const*);

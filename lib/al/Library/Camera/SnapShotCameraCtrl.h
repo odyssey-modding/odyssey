@@ -3,26 +3,24 @@
 #include <al/Library/Audio/AudioKeeper.h>
 #include <al/Library/Collision/CollisionDirector.h>
 #include <al/Library/Nerve/NerveExecutor.h>
-#include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Yaml/ByamlIter.h>
-#include <al/Library/Yaml/ByamlUtil.h>
 #include <gfx/seadCamera.h>
 
 namespace al {
 class SnapShotCameraSceneInfo;
 class ICameraInput;
 
-struct SnapShotCameraCtrlParam {  // Guessed name
+struct SnapShotParam {  // Guessed name
     bool gotMin = false;
     bool gotMax = false;
-    f32 mMinFovyDegree = 40.f;
-    f32 mMaxFovyDegree = 85.f;
+    f32 mMinFovyDegree = 40.0f;
+    f32 mMaxFovyDegree = 85.0f;
 };
 
 class SnapShotCameraCtrl : public al::NerveExecutor, public al::IUseAudioKeeper {
 private:
     const al::SnapShotCameraSceneInfo* mCameraSceneInfo = nullptr;
-    al::SnapShotCameraCtrlParam* mParam = nullptr;
+    al::SnapShotParam* mParam = nullptr;
     bool mIsValidLookAtOffset = false;
     sead::Vector3f mLookAtOffset = sead::Vector3f(0, 0, 0);
     sead::Vector3f field_38 = sead::Vector3f(0, 0, 0);

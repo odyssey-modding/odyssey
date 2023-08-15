@@ -26,16 +26,16 @@ struct {
 
 }  // namespace
 
-EnemyCap* EnemyCap::createEnemyCap(char const* name) {
+EnemyCap* EnemyCap::createEnemyCap(const char* name) {
     return new EnemyCap(name);
 }
 
-EnemyCap::EnemyCap(char const* name) : al::LiveActor(name) {}
+EnemyCap::EnemyCap(const char* name) : al::LiveActor(name) {}
 
 static al::EnemyStateBlowDownParam* fallbackStateBlowDownParam = new al::EnemyStateBlowDownParam();
 
 #ifdef NON_MATCHING
-void EnemyCap::initPartsFixFile(al::LiveActor* actor, al::ActorInitInfo const& initInfo, char const* archiveName, char const* suffix) {
+void EnemyCap::initPartsFixFile(al::LiveActor* actor, const al::ActorInitInfo& initInfo, const char* archiveName, const char* suffix) {
     mCap = actor;
     mCapBaseMtx = mCap->getBaseMtx();
     al::initChildActorWithArchiveNameNoPlacementInfo(this, initInfo, archiveName, 0);
@@ -107,7 +107,7 @@ void EnemyCap::exeBlowDown() {
     kill();
 }
 
-void EnemyCap::startBlowDown(al::HitSensor const* source) {
+void EnemyCap::startBlowDown(const al::HitSensor* source) {
     if (al::isNerve(this, &NrvEnemyCap.BlowDown))
         return;
     mStateBlowDown->start(source);
@@ -130,17 +130,17 @@ void EnemyCap::setBlowDownParam(al::EnemyStateBlowDownParam const* param) {
 }
 
 namespace rs {
-EnemyCap* tryCreateEnemyCap(al::LiveActor* actor, al::ActorInitInfo const& info) {
+EnemyCap* tryCreateEnemyCap(al::LiveActor* actor, const al::ActorInitInfo& info) {
     const char* str = 0;
     al::tryGetStringArg(&str, info, "CapName");
     return rs::tryCreateEnemyCapSuffix(actor, info, str, str);
 }
 
-EnemyCap* tryCreateEnemyCap(al::LiveActor* actor, al::ActorInitInfo const& info, char const* archiveName) {
+EnemyCap* tryCreateEnemyCap(al::LiveActor* actor, const al::ActorInitInfo& info, const char* archiveName) {
     return rs::tryCreateEnemyCapSuffix(actor, info, archiveName, archiveName);
 }
 
-EnemyCap* tryCreateEnemyCapSuffix(al::LiveActor* actor, al::ActorInitInfo const& info, char const* archiveName, char const* suffix) {
+EnemyCap* tryCreateEnemyCapSuffix(al::LiveActor* actor, const al::ActorInitInfo& info, const char* archiveName, const char* suffix) {
     if (!archiveName)
         return 0;
     auto cap = new EnemyCap("帽子");
@@ -153,7 +153,7 @@ EnemyCap* tryCreateEnemyCapSuffix(al::LiveActor* actor, al::ActorInitInfo const&
     return cap;
 }
 
-bool tryStartEnemyCapBlowDown(EnemyCap* cap, al::HitSensor const* sensor) {
+bool tryStartEnemyCapBlowDown(EnemyCap* cap, const al::HitSensor* sensor) {
     if (!cap || al::isNerve(cap, &NrvEnemyCap.BlowDown))
         return false;
     if (al::isNerve(cap, &NrvEnemyCap.BlowDown))

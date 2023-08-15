@@ -13,7 +13,7 @@ private:
 
 public:
     void init(const al::ActorInitInfo& info) override;
-    virtual void initPlayer(al::ActorInitInfo const&, PlayerInitInfo const&);
+    virtual void initPlayer(const al::ActorInitInfo&, const PlayerInitInfo&);
     virtual IUsePlayerCollision* getPlayerCollision();
     virtual PlayerHackKeeper* getPlayerHackKeeper() const override;
     virtual void isEnableDemo();
@@ -42,7 +42,7 @@ public:
     virtual void movement() override;
     virtual void checkDeathArea();
     virtual void sendCollisionMsg();
-    virtual void receivePushMsg(al::SensorMsg const*, al::HitSensor*, al::HitSensor*, float);
+    virtual void receivePushMsg(const al::SensorMsg*, al::HitSensor*, al::HitSensor*, float);
 };
 
 class IUsePlayerCollision {

@@ -16,8 +16,8 @@ struct {
 }  // namespace
 
 namespace rs {
-bool isMsgCapAttack(al::SensorMsg const*);
-void requestHitReactionToAttacker(al::SensorMsg const*, al::HitSensor const*, al::HitSensor const*);
+bool isMsgCapAttack(const al::SensorMsg*);
+void requestHitReactionToAttacker(const al::SensorMsg*, const al::HitSensor*, const al::HitSensor*);
 }  // namespace rs
 
 EnemyStateDamageCap::EnemyStateDamageCap(al::LiveActor* actor) : al::ActorStateBase("キャプチャ敵の帽子反応ステート", actor) {
@@ -30,11 +30,11 @@ void EnemyStateDamageCap::kill() {
     mIsDead = true;
 }
 
-void EnemyStateDamageCap::createEnemyCap(al::ActorInitInfo const& info, char const* name) {
+void EnemyStateDamageCap::createEnemyCap(const al::ActorInitInfo& info, const char* name) {
     mEnemyCap = rs::tryCreateEnemyCap(mActor, info, name);
 }
 
-bool EnemyStateDamageCap::tryReceiveMsgCapBlow(al::SensorMsg const* msg, al::HitSensor* source, al::HitSensor* target) {
+bool EnemyStateDamageCap::tryReceiveMsgCapBlow(const al::SensorMsg* msg, al::HitSensor* source, al::HitSensor* target) {
     if (!mEnemyCap)
         return false;
     if (al::isAlive(mEnemyCap) && !mEnemyCap->isBlowDown() && rs::isMsgCapAttack(msg)) {

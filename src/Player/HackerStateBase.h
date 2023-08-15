@@ -9,5 +9,5 @@ private:
     IUsePlayerHack* mPlayer;
 
 public:
-    HackerStateBase(char const* name, al::LiveActor* actor, IUsePlayerHack** player);
+    HackerStateBase(const char* name, al::LiveActor* actor, IUsePlayerHack** player);
 };

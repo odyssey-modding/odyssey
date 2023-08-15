@@ -20,7 +20,7 @@ struct {
 }  // namespace
 
 #ifdef NON_MATCHING
-EnemyStateReset::EnemyStateReset(al::LiveActor* actor, al::ActorInitInfo const& info, EnemyCap* cap) : al::ActorStateBase("リセット状態", actor) {
+EnemyStateReset::EnemyStateReset(al::LiveActor* actor, const al::ActorInitInfo& info, EnemyCap* cap) : al::ActorStateBase("リセット状態", actor) {
     mPos = sead::Vector3f::zero;
     mRot = sead::Vector3f::zero;
     mValidDistance = 4000.0f;

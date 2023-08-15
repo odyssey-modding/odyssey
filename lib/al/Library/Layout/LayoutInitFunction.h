@@ -18,18 +18,18 @@ struct LayoutInitInfo : public LayoutSceneInfo {
     al::AudioDirector* mAudioDirector;
     al::LayoutSystem* mLayoutSystem;
 
-    void init(al::ExecuteDirector*, al::EffectSystemInfo const*, al::SceneObjHolder*, al::AudioDirector const*, al::CameraDirector*,
-              al::LayoutSystem const*, al::MessageSystem const*, al::GamePadSystem const*, al::PadRumbleDirector*);
+    void init(al::ExecuteDirector*, const al::EffectSystemInfo*, al::SceneObjHolder*, const al::AudioDirector*, al::CameraDirector*,
+              const al::LayoutSystem*, const al::MessageSystem*, const al::GamePadSystem*, al::PadRumbleDirector*);
 
     al::MessageSystem* getMessageSystem(void) const;
 };
 
-void initLayoutActor(al::LayoutActor*, al::LayoutInitInfo const&, char const*, char const*);
-void initLayoutActorLocalized(al::LayoutActor*, al::LayoutInitInfo const&, char const*, char const*);
-void initLayoutActorUseOtherMessage(al::LayoutActor*, al::LayoutInitInfo const&, char const*, char const*, char const*);
-void initLayoutTextPaneAnimator(al::LayoutActor*, char const*);
-void initLayoutTextPaneAnimatorWithShadow(al::LayoutActor*, char const*);
-void initLayoutPartsActor(al::LayoutActor*, al::LayoutActor*, al::LayoutInitInfo const&, char const*, char const*);
-void initLayoutPartsActorLocalized(al::LayoutActor*, al::LayoutActor*, al::LayoutInitInfo const&, char const*, char const*);
+void initLayoutActor(al::LayoutActor*, const al::LayoutInitInfo&, const char*, const char*);
+void initLayoutActorLocalized(al::LayoutActor*, const al::LayoutInitInfo&, const char*, const char*);
+void initLayoutActorUseOtherMessage(al::LayoutActor*, const al::LayoutInitInfo&, const char*, const char*, const char*);
+void initLayoutTextPaneAnimator(al::LayoutActor*, const char*);
+void initLayoutTextPaneAnimatorWithShadow(al::LayoutActor*, const char*);
+void initLayoutPartsActor(al::LayoutActor*, al::LayoutActor*, const al::LayoutInitInfo&, const char*, const char*);
+void initLayoutPartsActorLocalized(al::LayoutActor*, al::LayoutActor*, const al::LayoutInitInfo&, const char*, const char*);
 
 }  // namespace al

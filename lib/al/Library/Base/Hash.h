@@ -2,7 +2,6 @@
 
 #include <basis/seadTypes.h>
 #include <cstdarg>
-#include <cstring>
 
 namespace al {
 s32 calcHashCode(const char*);

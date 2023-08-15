@@ -1,18 +1,13 @@
 #pragma once
 
-#include <al/Library/Camera/CameraPoserFunction.h>
-#include <al/Library/Camera/CameraStartInfo.h>
-#include <al/Library/Nerve/Nerve.h>
 #include <al/Library/Nerve/NerveExecutor.h>
-#include <al/Library/Nerve/NerveKeeper.h>
-#include <al/Library/Nerve/NerveSetupUtil.h>
-#include <al/Library/Nerve/NerveUtil.h>
-#include <al/Library/Yaml/ByamlIter.h>
 #include <gfx/seadCamera.h>
 #include <gfx/seadProjection.h>
 
 namespace al {
+class ByamlIter;
 class CameraPoser;
+struct CameraStartInfo;
 
 class CameraVerticalAbsorber : public al::NerveExecutor {
 private:
@@ -20,18 +15,18 @@ private:
     sead::LookAtCamera mLookAtCamera;
     sead::PerspectiveProjection mProjection;
     sead::Vector3f mTargetInterp;
-    float mLerp1;
-    float mAbsorbScreenPosUp;
-    float mAbsorbScreenPosDown;
+    f32 mLerp1;
+    f32 mAbsorbScreenPosUp;
+    f32 mAbsorbScreenPosDown;
     bool mAdvanceAbsorbUp;
-    float mAdvanceAbsorbScreenPosUp;
+    f32 mAdvanceAbsorbScreenPosUp;
     bool mIsExistCollisionUnderTarget;
     sead::Vector3f mUnderTargetCollisionPos;
     sead::Vector3f mUnderTargetCollisionNormal;
-    float mLerp2;
-    float mKeepInFrameOffsetUp;
-    float mKeepInFrameOffsetDown;
-    float mHighJumpJudgeSpeedV;
+    f32 mLerp2;
+    f32 mKeepInFrameOffsetUp;
+    f32 mKeepInFrameOffsetDown;
+    f32 mHighJumpJudgeSpeedV;
     sead::Vector3f mPrevTargetTrans;
     sead::Vector3f mTargetFront;
     sead::Vector3f mPrevTargetFront;

@@ -6,7 +6,7 @@
 class ButtonMiiverse : public al::LayoutActor {
 public:
     ButtonMiiverse();
-    void init(al::LayoutInitInfo const&);
+    void init(const al::LayoutInitInfo&);
     bool isOn() const;
     void setOff();
     void validate();

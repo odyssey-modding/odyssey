@@ -11,8 +11,8 @@ private:
 public:
     EnemyStateDamageCap(al::LiveActor* actor);
     void kill();
-    void createEnemyCap(al::ActorInitInfo const&, char const*);
-    bool tryReceiveMsgCapBlow(al::SensorMsg const*, al::HitSensor*, al::HitSensor*);
+    void createEnemyCap(const al::ActorInitInfo&, const char*);
+    bool tryReceiveMsgCapBlow(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
     bool isCapOn() const;
     void blowCap(al::HitSensor*);
     void resetCap();

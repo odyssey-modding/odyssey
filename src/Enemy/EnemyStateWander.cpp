@@ -20,7 +20,7 @@ struct {
 
 }  // namespace
 
-EnemyStateWander::EnemyStateWander(al::LiveActor* actor, char const* stateName) : al::ActorStateBase("さんぽ状態", actor) {
+EnemyStateWander::EnemyStateWander(al::LiveActor* actor, const char* stateName) : al::ActorStateBase("さんぽ状態", actor) {
     mRandNum = 0;
     mWalkSpeed = -1.0f;
     mStateName = stateName;
@@ -102,7 +102,7 @@ bool EnemyStateWander::isFall() const {
     return al::isNerve(this, &NrvEnemyStateWander.Fall);
 }
 
-void EnemyStateWander::changeWalkAnim(char const* animName) {
+void EnemyStateWander::changeWalkAnim(const char* animName) {
     if (al::isActionPlaying(mActor, mStateName))
         al::startAction(mActor, animName);
     mStateName = animName;

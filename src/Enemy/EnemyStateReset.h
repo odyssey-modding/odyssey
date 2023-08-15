@@ -13,7 +13,7 @@ private:
     EnemyCap* mEnemyCap;
 
 public:
-    EnemyStateReset(al::LiveActor*, al::ActorInitInfo const&, EnemyCap*);
+    EnemyStateReset(al::LiveActor*, const al::ActorInitInfo&, EnemyCap*);
     void appear();
     void kill();
     void exeWait();

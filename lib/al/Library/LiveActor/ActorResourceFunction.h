@@ -1,41 +1,42 @@
 #pragma once
 
-#include <al/Library/LiveActor/LiveActor.h>
-#include <al/Library/Resource/Resource.h>
-#include <al/Library/Yaml/ByamlIter.h>
 #include <prim/seadSafeString.h>
 
 namespace al {
-class ParameterIo;
+class ActorInitInfo;
 class ActorResource;
+class ByamlIter;
+class LiveActor;
+class ParameterIo;
+class Resource;
 
-bool isExistModelResource(al::LiveActor const*);
-bool isExistAnimResource(al::LiveActor const*);
-bool tryGetAnimResource(al::LiveActor const*);
-bool isExistModelResourceYaml(al::LiveActor const*, char const*, char const*);
-void getModelResource(al::LiveActor const*);
-bool isExistAnimResourceYaml(al::LiveActor const*, char const*, char const*);
-void getAnimResource(al::LiveActor const*);
-bool isExistModelOrAnimResourceYaml(al::LiveActor const*, char const*, char const*);
-u8* getModelResourceYaml(al::LiveActor const*, char const*, char const*);
-u8* getAnimResourceYaml(al::LiveActor const*, char const*, char const*);
-u8* getModelOrAnimResourceYaml(al::LiveActor const*, char const*, char const*);
-u8* getMapPartsResourceYaml(al::ActorInitInfo const&, char const*);
-bool tryGetMapPartsResourceYaml(al::ActorInitInfo const&, char const*);
-bool tryMakeInitFileName(sead::BufferedSafeStringBase<char>*, al::Resource const*, char const*, char const*, char const*);
-bool tryGetSuffixIter(al::ByamlIter*, al::Resource const*, char const*, char const*);
-bool tryGetInitFileIterAndName(al::ByamlIter*, sead::BufferedSafeStringBase<char>*, al::Resource const*, char const*, char const*, char const*);
-bool tryGetActorInitFileIterAndName(al::ByamlIter*, sead::BufferedSafeStringBase<char>*, al::Resource const*, char const*, char const*);
-bool tryGetActorInitFileIter(al::ByamlIter*, al::Resource const*, char const*, char const*);
-bool tryGetActorInitFileIterAndName(al::ByamlIter*, sead::BufferedSafeStringBase<char>*, al::LiveActor const*, char const*, char const*);
-bool tryGetActorInitFileIter(al::ByamlIter*, al::LiveActor const*, char const*, char const*);
-bool tryGetActorInitFileName(sead::BufferedSafeStringBase<char>*, al::Resource const*, char const*, char const*);
-bool tryGetActorInitFileName(sead::BufferedSafeStringBase<char>*, al::ActorResource const*, char const*, char const*);
-bool tryGetActorInitFileName(sead::BufferedSafeStringBase<char>*, al::LiveActor const*, char const*, char const*);
-bool tryGetActorInitFileSuffixName(sead::BufferedSafeStringBase<char>*, al::Resource const*, char const*, char const*);
-bool tryGetActorInitFileSuffixName(sead::BufferedSafeStringBase<char>*, al::LiveActor const*, char const*, char const*);
-bool tryGetActorInitFileSuffixName(al::LiveActor const*, char const*, char const*);
-bool tryGetActorInitFileSuffixName(al::Resource const*, char const*, char const*);
-void initParameterIoAsActorInfo(al::ParameterIo*, al::LiveActor const*, char const*, char const*);
-void initParameterIoAndLoad(al::ParameterIo*, al::LiveActor const*, char const*, char const*);
+bool isExistModelResource(const al::LiveActor*);
+bool isExistAnimResource(const al::LiveActor*);
+bool tryGetAnimResource(const al::LiveActor*);
+bool isExistModelResourceYaml(const al::LiveActor*, const char *, const char *);
+void getModelResource(const al::LiveActor*);
+bool isExistAnimResourceYaml(const al::LiveActor*, const char *, const char *);
+void getAnimResource(const al::LiveActor*);
+bool isExistModelOrAnimResourceYaml(const al::LiveActor*, const char *, const char *);
+u8* getModelResourceYaml(const al::LiveActor*, const char *, const char *);
+u8* getAnimResourceYaml(const al::LiveActor*, const char *, const char *);
+u8* getModelOrAnimResourceYaml(const al::LiveActor*, const char *, const char *);
+u8* getMapPartsResourceYaml(al::ActorInitInfo const&, const char *);
+bool tryGetMapPartsResourceYaml(al::ActorInitInfo const&, const char *);
+bool tryMakeInitFileName(sead::BufferedSafeString*, const al::Resource*, const char *, const char *, const char *);
+bool tryGetSuffixIter(al::ByamlIter*, const al::Resource*, const char *, const char *);
+bool tryGetInitFileIterAndName(al::ByamlIter*, sead::BufferedSafeString*, const al::Resource*, const char *, const char *, const char *);
+bool tryGetActorInitFileIterAndName(al::ByamlIter*, sead::BufferedSafeString*, const al::Resource*, const char *, const char *);
+bool tryGetActorInitFileIter(al::ByamlIter*, const al::Resource*, const char *, const char *);
+bool tryGetActorInitFileIterAndName(al::ByamlIter*, sead::BufferedSafeString*, const al::LiveActor*, const char *, const char *);
+bool tryGetActorInitFileIter(al::ByamlIter*, const al::LiveActor*, const char *, const char *);
+bool tryGetActorInitFileName(sead::BufferedSafeString*, const al::Resource*, const char *, const char *);
+bool tryGetActorInitFileName(sead::BufferedSafeString*, al::ActorResource const*, const char *, const char *);
+bool tryGetActorInitFileName(sead::BufferedSafeString*, const al::LiveActor*, const char *, const char *);
+bool tryGetActorInitFileSuffixName(sead::BufferedSafeString*, const al::Resource*, const char *, const char *);
+bool tryGetActorInitFileSuffixName(sead::BufferedSafeString*, const al::LiveActor*, const char *, const char *);
+bool tryGetActorInitFileSuffixName(const al::LiveActor*, const char *, const char *);
+bool tryGetActorInitFileSuffixName(const al::Resource*, const char *, const char *);
+void initParameterIoAsActorInfo(al::ParameterIo*, const al::LiveActor*, const char *, const char *);
+void initParameterIoAndLoad(al::ParameterIo*, const al::LiveActor*, const char *, const char *);
 }  // namespace al

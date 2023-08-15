@@ -2,7 +2,6 @@
 
 #include <prim/seadSafeString.h>
 #include <prim/seadStringUtil.h>
-#include <strings.h>
 
 namespace al {
 template <s32 L>
@@ -21,7 +20,7 @@ class MatchStr;
 const char* getBaseName(const char*);
 const char* createStringIfInStack(const char*);
 const char* createConcatString(const char*, const char*);
-al::StringTmp<128> createFileNameBySuffix(sead::BufferedSafeStringBase<char>*, const char*, const char*);
+al::StringTmp<128> createFileNameBySuffix(sead::BufferedSafeString*, const char*, const char*);
 void outputValueWithComma(char*, u32, unsigned long, bool, bool);
 void extractString(char*, const char*, u32, u32);
 
@@ -32,18 +31,18 @@ typedef void (*callback_str)(const char*, const char*, void*);
 const char* getSubStringUnmatched(const char**, const char*, const al::MatchStr&, callback_str, void*);
 const char* getSubStringUnmatched(const char*, const al::MatchStr&);
 
-s32 extractBaseNameW(sead::BufferedSafeStringBase<char16_t>*, const sead::SafeStringBase<char16_t>&);
+s32 extractBaseNameW(sead::WBufferedSafeString*, const sead::WSafeString&);
 void removeExtensionString(char*, u32, const char*);
 void removeStringFromEnd(char*, u32, const char*, const char*);
 void translateCharacters(char*, const char*, const char*);
 
-bool tryReplaceString(sead::BufferedSafeStringBase<char>*, const char*, const char*);
-bool tryReplaceString(sead::BufferedSafeStringBase<char>*, const char*, const char*, const char*);
-bool tryReplaceStringNoRecursive(sead::BufferedSafeStringBase<char>*, const char*, const char*, const char*);
+bool tryReplaceString(sead::BufferedSafeString*, const char*, const char*);
+bool tryReplaceString(sead::BufferedSafeString*, const char*, const char*, const char*);
+bool tryReplaceStringNoRecursive(sead::BufferedSafeString*, const char*, const char*, const char*);
 
 bool isEqualString(const char16_t*, const char16_t*);
 bool isEqualSubString(const char*, const char*);
-bool isEqualSubString(const sead::SafeStringBase<char>&, const sead::SafeStringBase<char>&);
+bool isEqualSubString(const sead::SafeString&, const sead::SafeString&);
 bool isStartWithString(const char*, const char*);
 bool isEndWithString(const char*, const char*);
 bool isMatchString(const char*, const al::MatchStr&);
@@ -57,7 +56,7 @@ void copyStringW(char16_t*, const char16_t*, u32);
 bool isInStack(const void*);
 
 bool isEqualString(const char*, const char*);
-bool isEqualString(const sead::SafeStringBase<char>&, const sead::SafeStringBase<char>&);
+bool isEqualString(const sead::SafeString&, const sead::SafeString&);
 bool isEqualStringCase(const char*, const char*);
-bool isEqualStringCase(const sead::SafeStringBase<char>&, const sead::SafeStringBase<char>&);
-};  // namespace al
+bool isEqualStringCase(const sead::SafeString&, const sead::SafeString&);
+}  // namespace al

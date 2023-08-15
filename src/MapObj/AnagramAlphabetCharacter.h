@@ -4,8 +4,6 @@
 #include "MapObj/CapTargetParts.h"
 #include "Player/CapTargetInfo.h"
 #include "Player/PlayerHackStartShaderCtrl.h"
-#include <al/Library/Nerve/NerveSetupUtil.h>
-#include <al/Library/LiveActor/LiveActor.h>
 
 class IUsePlayerHack;
 class HackerJudgeNormalFall;

@@ -27,7 +27,7 @@ struct {
 
 ButtonMiiverse::ButtonMiiverse() : al::LayoutActor("Miiverse") {}
 
-void ButtonMiiverse::init(al::LayoutInitInfo const& info) {
+void ButtonMiiverse::init(const al::LayoutInitInfo& info) {
     al::initLayoutActor(this, info, "ButtonMiiverse", 0);
     initNerve(&NrvButtonMiiverse.Wait, 0);
     appear();

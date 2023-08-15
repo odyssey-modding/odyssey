@@ -1,7 +1,5 @@
 #include "GameSystem.h"
-#include "Application.h"
-#include "System/GameConfigData.h"
-#include <al/Library/System/GameSystemInfo.h>
+#include <al/Library/Nerve/NerveSetupUtil.h>
 
 namespace {
 

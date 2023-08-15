@@ -11,7 +11,7 @@
 #include <al/Library/Shadow/DepthShadowDrawer.h>
 
 namespace rs {
-bool isMsgStartHack(al::SensorMsg const*);
+bool isMsgStartHack(const al::SensorMsg*);
 }
 
 namespace {
@@ -22,7 +22,7 @@ NERVE_MAKE(EnemyStateHackStart, DiveIn);
 NERVE_MAKE(EnemyStateHackStart, HackStart);
 }  // namespace
 
-EnemyStateHackStartParam::EnemyStateHackStartParam(char const* actionName, char const* visAnimName, char const* mtpAnimName, bool hasSubActors,
+EnemyStateHackStartParam::EnemyStateHackStartParam(const char* actionName, const char* visAnimName, const char* mtpAnimName, bool hasSubActors,
                                                    bool updateSubActorShadowMap) {
     mActionName = actionName;
     mVisAnimName = visAnimName;
@@ -33,7 +33,7 @@ EnemyStateHackStartParam::EnemyStateHackStartParam(char const* actionName, char 
 
 static EnemyStateHackStartParam fallbackParam("HackStart", 0, 0, 0, 0);
 
-EnemyStateHackStart::EnemyStateHackStart(al::LiveActor* rootActor, EnemyStateHackStartParam const* param, PlayerHackStartShaderParam* shaderParam)
+EnemyStateHackStart::EnemyStateHackStart(al::LiveActor* rootActor, const EnemyStateHackStartParam* param, PlayerHackStartShaderParam* shaderParam)
     : al::ActorStateBase("憑依開始", rootActor) {
     if (param) {
         mParam = param;
@@ -132,7 +132,7 @@ void EnemyStateHackStart::exeHackStart() {
 }
 
 namespace EnemyStateHackFunction {
-void startHackSwitchShadow(al::LiveActor* actor, EnemyStateHackStartParam const* param) {
+void startHackSwitchShadow(al::LiveActor* actor, const EnemyStateHackStartParam* param) {
     if (al::isExistDepthShadowMapCtrl(actor)) {
         al::invalidateShadow(actor);
         al::offDepthShadowModel(actor);

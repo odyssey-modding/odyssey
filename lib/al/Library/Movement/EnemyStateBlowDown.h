@@ -1,11 +1,12 @@
 #pragma once
 
-#include <al/Library/LiveActor/LiveActor.h>
 #include <al/Library/Nerve/NerveStateBase.h>
-#include "basis/seadTypes.h"
+#include <basis/seadTypes.h>
 
 namespace al {
-struct EnemyStateBlowDownParam;  // has to be defined here due to order of functions, this Param class could be its own file though
+struct EnemyStateBlowDownParam;
+class HitSensor;
+class LiveActor;
 
 class EnemyStateBlowDown : public al::ActorStateBase {
 private:
@@ -14,11 +15,11 @@ private:
     bool mIsInvalidClipping;
 
 public:
-    EnemyStateBlowDown(al::LiveActor*, al::EnemyStateBlowDownParam const*, char const*);
-    void start(al::HitSensor const*);
-    void start(sead::Vector3f const&);
-    void start(al::HitSensor const*, al::HitSensor const*);
-    void start(al::LiveActor const*);
+    EnemyStateBlowDown(al::LiveActor*, const al::EnemyStateBlowDownParam*, const char*);
+    void start(const al::HitSensor*);
+    void start(const sead::Vector3f&);
+    void start(const al::HitSensor*, const al::HitSensor*);
+    void start(const al::LiveActor*);
     void appear();
     void kill();
     void control();
@@ -36,8 +37,8 @@ struct EnemyStateBlowDownParam {
     bool mFaceAwayFromActor = true;
 
     EnemyStateBlowDownParam();
-    EnemyStateBlowDownParam(char const* actionName);
-    EnemyStateBlowDownParam(char const* actionName, float gravityStrength, float velocityStrength, float velocityMultiplier, float velocityScale,
+    EnemyStateBlowDownParam(const char* actionName);
+    EnemyStateBlowDownParam(const char* actionName, float gravityStrength, float velocityStrength, float velocityMultiplier, float velocityScale,
                             int blowDownLength, bool faceAwayFromActor);
 };
 }  // namespace al

@@ -6,6 +6,7 @@
 #include <al/Library/LiveActor/ActorCollisionFunction.h>
 #include <al/Library/LiveActor/ActorFlagFunction.h>
 #include <al/Library/LiveActor/ActorMovementFunction.h>
+#include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Nerve/NerveUtil.h>
 #include <al/Library/HitSensor/Messages.h>
 #include <al/Library/LiveActor/ActorClippingFunction.h>

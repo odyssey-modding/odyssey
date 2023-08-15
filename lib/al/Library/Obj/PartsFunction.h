@@ -5,24 +5,24 @@
 namespace al {
 class HostSyncTowerCamera;
 
-void createCollisionObj(al::LiveActor const*, al::ActorInitInfo const&, char const*, al::HitSensor*, char const*, char const*);
-void createCollisionObjMtx(al::LiveActor const*, al::ActorInitInfo const&, char const*, al::HitSensor*, sead::Matrix34f const*, char const*);
-void createPartsModel(al::LiveActor*, al::ActorInitInfo const&, char const*, char const*, sead::Matrix34f const*);
-void createPartsModelFile(al::LiveActor*, al::ActorInitInfo const&, char const*, char const*, char const*);
-void createPartsModelFileSuffix(al::LiveActor*, al::ActorInitInfo const&, char const*, char const*, char const*, char const*);
-void createSimplePartsModel(al::LiveActor*, al::ActorInitInfo const&, char const*, char const*, char const*);
-void createSimplePartsModelSuffix(al::LiveActor*, al::ActorInitInfo const&, char const*, char const*, char const*, char const*);
-void createPartsModelSuffix(al::LiveActor*, al::ActorInitInfo const&, char const*, char const*, char const*, sead::Matrix34f const*);
-void createPartsModelJoint(al::LiveActor*, al::ActorInitInfo const&, char const*, char const*, char const*);
-void createPartsModelSuffixJoint(al::LiveActor*, al::ActorInitInfo const&, char const*, char const*, char const*, char const*);
+void createCollisionObj(const al::LiveActor*, const al::ActorInitInfo&, const char*, al::HitSensor*, const char*, const char*);
+void createCollisionObjMtx(const al::LiveActor*, const al::ActorInitInfo&, const char*, al::HitSensor*, const sead::Matrix34f*, const char*);
+void createPartsModel(al::LiveActor*, const al::ActorInitInfo&, const char*, const char*, const sead::Matrix34f*);
+void createPartsModelFile(al::LiveActor*, const al::ActorInitInfo&, const char*, const char*, const char*);
+void createPartsModelFileSuffix(al::LiveActor*, const al::ActorInitInfo&, const char*, const char*, const char*, const char*);
+void createSimplePartsModel(al::LiveActor*, const al::ActorInitInfo&, const char*, const char*, const char*);
+void createSimplePartsModelSuffix(al::LiveActor*, const al::ActorInitInfo&, const char*, const char*, const char*, const char*);
+void createPartsModelSuffix(al::LiveActor*, const al::ActorInitInfo&, const char*, const char*, const char*, const sead::Matrix34f*);
+void createPartsModelJoint(al::LiveActor*, const al::ActorInitInfo&, const char*, const char*, const char*);
+void createPartsModelSuffixJoint(al::LiveActor*, const al::ActorInitInfo&, const char*, const char*, const char*, const char*);
 void appearBreakModelRandomRotateY(al::LiveActor*);
-bool updateSyncHostVisible(bool*, al::LiveActor*, al::LiveActor const*, bool);
-bool isTraceModelRandomRotate(al::LiveActor const*);
-void createBreakModel(al::LiveActor const*, al::ActorInitInfo const&, char const*, char const*, char const*, sead::Matrix34f const*, char const*);
-void createHostSyncTowerCamera(al::LiveActor*, al::ActorInitInfo const&);
+bool updateSyncHostVisible(bool*, al::LiveActor*, const al::LiveActor*, bool);
+bool isTraceModelRandomRotate(const al::LiveActor*);
+void createBreakModel(const al::LiveActor*, const al::ActorInitInfo&, const char*, const char*, const char*, const sead::Matrix34f*, const char*);
+void createHostSyncTowerCamera(al::LiveActor*, const al::ActorInitInfo&);
 void activateHostSyncTowerCamera(al::HostSyncTowerCamera*);
 void deactivateHostSyncTowerCamera(al::HostSyncTowerCamera*);
 void updateHostSyncTowerCamera(al::HostSyncTowerCamera*);
-bool tryCreateLinksKeyMoveCameraObj(al::ActorInitInfo const&, char const*);
-bool tryCreateLinksKeyMoveCameraObjWithInterpole(al::ActorInitInfo const&, char const*);
+bool tryCreateLinksKeyMoveCameraObj(const al::ActorInitInfo&, const char*);
+bool tryCreateLinksKeyMoveCameraObjWithInterpole(const al::ActorInitInfo&, const char*);
 }  // namespace al

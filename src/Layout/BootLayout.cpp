@@ -17,7 +17,7 @@ NERVE_MAKE(BootLayout, EndWipe);
 NERVE_MAKE(BootLayout, End);
 }  // namespace
 
-BootLayout::BootLayout(al::LayoutInitInfo const& info) : al::LayoutActor("[起動]BootLoading") {
+BootLayout::BootLayout(const al::LayoutInitInfo& info) : al::LayoutActor("[起動]BootLoading") {
     al::initLayoutActor(this, info, "BootLoading", 0);
     mParBg = new al::LayoutActor("[起動]BG");
     al::initLayoutPartsActor(mParBg, this, info, "ParBG", 0);

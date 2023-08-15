@@ -8,7 +8,7 @@ private:
     al::LayoutActor* mParBg = nullptr;
 
 public:
-    BootLayout(al::LayoutInitInfo const&);
+    BootLayout(const al::LayoutInitInfo&);
     void appear();
     void kill();
     void startWipe();

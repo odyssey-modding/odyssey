@@ -10,11 +10,11 @@
 #include <math/seadMatrix.h>
 #include <math/seadQuat.h>
 #include <math/seadVector.h>
-#include "CameraStartInfo.h"
 #include "SnapShotCameraCtrl.h"
 
 namespace al {
 
+struct CameraStartInfo;
 class CameraVerticalAbsorber;
 class CameraAngleCtrlInfo;
 class CameraAngleSwingInfo;

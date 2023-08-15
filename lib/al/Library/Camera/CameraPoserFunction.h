@@ -6,9 +6,9 @@
 #include <math/seadQuat.h>
 #include <math/seadVector.h>
 #include "CameraPoser.h"
-#include "CameraStartInfo.h"
 
 namespace al {
+struct CameraStartInfo;
 class CameraObjectRequestInfo;
 class PlacementInfo;
 }  // namespace al

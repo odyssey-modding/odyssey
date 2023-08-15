@@ -19,30 +19,30 @@ private:
     al::EnemyStateBlowDown* mStateBlowDown = nullptr;
 
 public:
-    static EnemyCap* createEnemyCap(char const*);
+    static EnemyCap* createEnemyCap(const char*);
 
-    EnemyCap(char const*);
-    void initPartsFixFile(al::LiveActor*, al::ActorInitInfo const&, char const*, char const*);
+    EnemyCap(const char*);
+    void initPartsFixFile(al::LiveActor*, const al::ActorInitInfo&, const char*, const char*);
     void makeActorAlive();
     void updatePose();
     void calcAnim();
     void exeWait();
     void syncHostVisible();
     void exeBlowDown();
-    void startBlowDown(al::HitSensor const* source);
+    void startBlowDown(const al::HitSensor* source);
     void startBlowDown();
     bool isBlowDown() const;
-    void setBlowDownParam(al::EnemyStateBlowDownParam const*);
+    void setBlowDownParam(const al::EnemyStateBlowDownParam*);
 
     al::LiveActor* getCap() { return mCap; };
     al::EnemyStateBlowDown* getStateBlowDown() { return mStateBlowDown; };
 };
 
 namespace rs {
-EnemyCap* tryCreateEnemyCap(al::LiveActor*, al::ActorInitInfo const&);
-EnemyCap* tryCreateEnemyCap(al::LiveActor*, al::ActorInitInfo const&, char const*);
-EnemyCap* tryCreateEnemyCapSuffix(al::LiveActor*, al::ActorInitInfo const&, char const*, char const*);
-bool tryStartEnemyCapBlowDown(EnemyCap*, al::HitSensor const*);
+EnemyCap* tryCreateEnemyCap(al::LiveActor*, const al::ActorInitInfo&);
+EnemyCap* tryCreateEnemyCap(al::LiveActor*, const al::ActorInitInfo&, const char*);
+EnemyCap* tryCreateEnemyCapSuffix(al::LiveActor*, const al::ActorInitInfo&, const char*, const char*);
+bool tryStartEnemyCapBlowDown(EnemyCap*, const al::HitSensor*);
 bool tryStartEnemyCapBlowDown(EnemyCap*);
 bool tryAppearEnemyCap(EnemyCap*);
 bool isOnEnemyCap(EnemyCap*);

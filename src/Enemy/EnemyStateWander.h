@@ -10,7 +10,7 @@ private:
     bool mIsHalfProbability;
 
 public:
-    EnemyStateWander(al::LiveActor* actor, char const* stateName);
+    EnemyStateWander(al::LiveActor* actor, const char* stateName);
     void appear();
 
     void exeWait();
@@ -20,5 +20,5 @@ public:
     bool isWait() const;
     bool isWalk() const;
     bool isFall() const;
-    void changeWalkAnim(char const*);
+    void changeWalkAnim(const char*);
 };

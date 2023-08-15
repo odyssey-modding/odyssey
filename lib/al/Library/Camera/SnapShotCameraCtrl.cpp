@@ -1,4 +1,6 @@
 #include "SnapShotCameraCtrl.h"
+#include <al/Library/Nerve/NerveSetupUtil.h>
+#include <al/Library/Yaml/ByamlUtil.h>
 
 namespace {
 using namespace al;
@@ -13,17 +15,16 @@ struct {
 
 namespace al {
 
-#ifdef NON_MATCHING
+// NON_MATCHING
 SnapShotCameraCtrl::SnapShotCameraCtrl(const al::SnapShotCameraSceneInfo* info) : al::NerveExecutor("スナップショットモード中のカメラ制御") {
     mCameraSceneInfo = info;
     initNerve(&NrvSnapShotCameraCtrl.Reset, 0);
 
-    al::SnapShotCameraCtrlParam* param = new al::SnapShotCameraCtrlParam();
+    al::SnapShotParam* param = new al::SnapShotParam();
     mParam = param;
 }
-#endif
 
-#ifdef NON_MATCHING
+// NON_MATCHING
 void SnapShotCameraCtrl::load(const al::ByamlIter& iter) {
     auto param = mParam;
     al::ByamlIter paramIter;
@@ -34,5 +35,4 @@ void SnapShotCameraCtrl::load(const al::ByamlIter& iter) {
     if (al::tryGetByamlF32(&mParam->mMaxFovyDegree, paramIter, "MaxFovyDegree"))
         param->gotMax = true;
 }
-#endif
 }  // namespace al

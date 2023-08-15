@@ -22,7 +22,7 @@ private:
     bool mNeedToFaceToDirection;
 
 public:
-    EnemyStateRunAway(al::LiveActor*, ParamEnemyStateRunAway const*, char const*);
+    EnemyStateRunAway(al::LiveActor*, const ParamEnemyStateRunAway*, const char*);
     void appear();
     void calcRunDirBase(sead::Vector3f*);
     void exeRun();

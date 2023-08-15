@@ -29,5 +29,5 @@ public:
     void endForceNormalMode();
     bool isForceNormalMode() const;
     virtual void write(al::ByamlWriter*);
-    virtual void read(al::ByamlIter const&);
+    virtual void read(const al::ByamlIter&);
 };

@@ -15,7 +15,7 @@ NERVE_MAKE(FootPrint, Disappear);
 
 namespace al {
 
-FootPrint::FootPrint(al::ActorInitInfo const& info, char const* name) : al::LiveActor("足跡オブジェ") {
+FootPrint::FootPrint(const al::ActorInitInfo& info, const char* name) : al::LiveActor("足跡オブジェ") {
     al::initChildActorWithArchiveNameNoPlacementInfo(this, info, name, 0);
     al::initNerve(this, &Appear, 0);
     mConnector = new al::CollisionPartsConnector();
@@ -48,16 +48,16 @@ bool FootPrint::isDisappear() const {
     return al::isNerve(this, &Disappear);
 }
 
-void FootPrint::setAnimationByMaterial(char const* materialName) {
+void FootPrint::setAnimationByMaterial(const char* materialName) {
     al::startMtsAnim(this, materialName);
     mMaterialName = materialName;
 }
 
-void FootPrint::setAnimationByCharacter(char const* characterName) {
+void FootPrint::setAnimationByCharacter(const char* characterName) {
     al::tryStartMtsAnimIfExist(this, characterName);
 }
 
-void FootPrint::setAnimationByMetamorphosis(char const* animName) {
+void FootPrint::setAnimationByMetamorphosis(const char* animName) {
     al::tryStartVisAnimIfExist(this, animName);
 }
 

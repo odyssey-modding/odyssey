@@ -7,11 +7,11 @@ namespace al {
 class LiveActor;
 class PadRumbleKeeper;
 
-void addPlayerAccelStick(al::LiveActor*, sead::Vector3f*, f32, s32, sead::Matrix34f const*);
-void addPlayerAccelStickGravity(al::LiveActor*, sead::Vector3f*, f32, sead::Vector3f const&, s32, sead::Matrix34f const*);
-void addPlayerAccelInputGravity(al::LiveActor*, sead::Vector3f*, sead::Vector2<f32> const&, f32, sead::Vector3f const&, sead::Matrix34f const*);
-bool tryCalcTouchWorldPosPlane(al::IUseCamera const*, sead::Vector3f*, sead::Vector3f const&, sead::Vector3f const&);
-bool tryCalcTouchWorldPosPlaneXZ(al::IUseCamera const*, sead::Vector3f*, f32);
+void addPlayerAccelStick(al::LiveActor*, sead::Vector3f*, f32, s32, const sead::Matrix34f*);
+void addPlayerAccelStickGravity(al::LiveActor*, sead::Vector3f*, f32, const sead::Vector3f&, s32, const sead::Matrix34f*);
+void addPlayerAccelInputGravity(al::LiveActor*, sead::Vector3f*, sead::Vector2<f32> const&, f32, const sead::Vector3f&, const sead::Matrix34f*);
+bool tryCalcTouchWorldPosPlane(const al::IUseCamera*, sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&);
+bool tryCalcTouchWorldPosPlaneXZ(const al::IUseCamera*, sead::Vector3f*, f32);
 
 class PlayerHolder {
 private:
@@ -67,7 +67,7 @@ void findNearestPlayerActor(al::LiveActor const*);
 bool tryFindNearestPlayerActor(al::LiveActor const*);
 void findNearestPlayerPos(al::LiveActor const*);
 bool tryFindNearestPlayerPos(sead::Vector3f*, al::LiveActor const*);
-bool tryFindNearestPlayerDisatanceFromTarget(f32*, al::LiveActor const*, sead::Vector3f const&);
+bool tryFindNearestPlayerDisatanceFromTarget(f32*, al::LiveActor const*, const sead::Vector3f&);
 bool isNearPlayer(al::LiveActor const*, f32);
 bool isNearPlayerH(al::LiveActor const*, f32);
 bool isNearPlayerHCondition(al::LiveActor const*, f32, bool (*)(al::LiveActor const*));
@@ -77,7 +77,7 @@ void calcPlayerListOrderByDistance(al::LiveActor const*, al::LiveActor const**, 
 void calcAlivePlayerActor(al::LiveActor const*, al::LiveActor const**, u32);
 bool tryFindNearestPlayerActorCondition(al::LiveActor const*, bool (*)(al::LiveActor const*));
 bool tryFindNearestPlayerPosCondition(sead::Vector3f*, al::LiveActor const*, bool (*)(al::LiveActor const*));
-bool isResetablePlayerPos(al::LiveActor const*, sead::Vector3f const&, f32, f32);
+bool isResetablePlayerPos(al::LiveActor const*, const sead::Vector3f&, f32, f32);
 bool isResetablePlayerPos(al::LiveActor const*, f32);
 void faceToPlayer(al::LiveActor*);
 

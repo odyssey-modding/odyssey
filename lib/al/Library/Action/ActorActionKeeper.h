@@ -14,9 +14,9 @@ class LiveActor;
 
 class ActorActionKeeper {
 private:
-    const char* field_0;
     al::LiveActor* mRootActor;
-    void* field_10;
+    const char* mName;
+    bool mIsActionRunning;
     al::ActionAnimCtrl* mActionAnimCtrl;
     al::NerveActionCtrl* mNerveActionCtrl;
     al::ActionFlagCtrl* mActionFlagCtrl;
@@ -27,12 +27,12 @@ private:
     al::ActionScreenEffectCtrl* mActionScreenEffectCtrl;
 
 public:
-    static ActorActionKeeper* tryCreate(al::LiveActor*, al::ActorResource const*, char const*, char const*);
-    void startAction(char const*);
-    bool tryStartActionNoAnim(char const*);
+    static ActorActionKeeper* tryCreate(al::LiveActor*, const al::ActorResource*, const char*, const char*);
+    void startAction(const char*);
+    bool tryStartActionNoAnim(const char*);
     void updatePrev();
     void updatePost();
-    ActorActionKeeper(al::LiveActor*, char const*, al::ActionAnimCtrl*, al::NerveActionCtrl*, al::ActionFlagCtrl*, al::ActionEffectCtrl*,
+    ActorActionKeeper(al::LiveActor*, const char*, al::ActionAnimCtrl*, al::NerveActionCtrl*, al::ActionFlagCtrl*, al::ActionEffectCtrl*,
                       al::ActionSeCtrl*, al::ActionBgmCtrl*, al::ActionPadAndCameraCtrl*, al::ActionScreenEffectCtrl*);
     void init();
 };

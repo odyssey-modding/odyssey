@@ -9,7 +9,6 @@ NERVE_IMPL(EnemyStateRunAway, Run);
 NERVE_IMPL(EnemyStateRunAway, PanicRun);
 NERVE_IMPL(EnemyStateRunAway, PanicRunCollided);
 
-// Nintendo didn't use a struct for these nerves
 NERVE_MAKE(EnemyStateRunAway, Run);
 NERVE_MAKE(EnemyStateRunAway, PanicRun);
 NERVE_MAKE(EnemyStateRunAway, PanicRunCollided);

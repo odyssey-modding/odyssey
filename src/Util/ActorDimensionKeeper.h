@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Player/PlayerActorBase.h"
 #include <al/Library/LiveActor/LiveActor.h>
 #include <math/seadVector.h>
 
 class In2DAreaMoveControl;
+class IUsePlayerCollision;
 
 class ActorDimensionKeeper {
     const al::LiveActor* mLiveActor;
@@ -41,31 +41,31 @@ class MtxConnector;
 }
 
 namespace rs {
-ActorDimensionKeeper* createDimensionKeeper(al::LiveActor const*);
+ActorDimensionKeeper* createDimensionKeeper(const al::LiveActor*);
 void updateDimensionKeeper(ActorDimensionKeeper*);
 const char* getSpecialPurposeName2DOnly();
 void createAndSetFilter2DOnly(al::LiveActor*);
 void createCollisionPartsFilter2DOnly();
-bool is2D(IUseDimension const*);
-bool isIn2DArea(IUseDimension const*);
-bool is3D(IUseDimension const*);
-bool isChange2D(IUseDimension const*);
-bool isChange3D(IUseDimension const*);
-bool isNearSnapSurface(IUseDimension const*, f32);
-void calcLockDirection(sead::Vector3f*, IUseDimension const*);
-void calcDimensionGravity(sead::Vector3f*, IUseDimension const*, sead::Vector3f const&);
-void setDimensionGravity(al::LiveActor*, IUseDimension const*);
-void syncDimensionPoseGravity(al::LiveActor*, IUseDimension const*);
-void calcLockedMoveVec(sead::Vector3f*, IUseDimension const*, f32);
-void pushOutFrom2DArea(al::LiveActor*, IUseDimension const*, f32, f32);
-void snap2D(al::LiveActor*, IUseDimension const*, f32);
-void snap2DGravity(al::LiveActor*, IUseDimension const*, f32);
-void snap2DUp(al::LiveActor*, IUseDimension const*, f32);
-void snap2DParallelizeFront(al::LiveActor*, IUseDimension const*, f32);
-void snap2DGravityPoseWithRotateCenter(al::LiveActor*, IUsePlayerCollision*, IUseDimension const*, f32, f32, sead::Vector3f const&);
-void calcSnap2DPosition(sead::Vector3f*, IUseDimension const*, sead::Vector3f const&, f32);
-void attachMtxConnectorTo2DCollision(al::MtxConnector*, al::LiveActor const*, sead::Vector3f const&, sead::Vector3f const&);
-void attachMtxConnectorTo2DCollision(al::MtxConnector*, al::LiveActor const*, bool);
-void attachMtxConnectorTo2DCollision(al::MtxConnector*, al::LiveActor const*, f32, f32);
-void syncVisAnimFrame2D(al::LiveActor*, char const*, bool);
+bool is2D(const IUseDimension*);
+bool isIn2DArea(const IUseDimension*);
+bool is3D(const IUseDimension*);
+bool isChange2D(const IUseDimension*);
+bool isChange3D(const IUseDimension*);
+bool isNearSnapSurface(const IUseDimension*, f32);
+void calcLockDirection(sead::Vector3f*, const IUseDimension*);
+void calcDimensionGravity(sead::Vector3f*, const IUseDimension*, const sead::Vector3f&);
+void setDimensionGravity(al::LiveActor*, const IUseDimension*);
+void syncDimensionPoseGravity(al::LiveActor*, const IUseDimension*);
+void calcLockedMoveVec(sead::Vector3f*, const IUseDimension*, f32);
+void pushOutFrom2DArea(al::LiveActor*, const IUseDimension*, f32, f32);
+void snap2D(al::LiveActor*, const IUseDimension*, f32);
+void snap2DGravity(al::LiveActor*, const IUseDimension*, f32);
+void snap2DUp(al::LiveActor*, const IUseDimension*, f32);
+void snap2DParallelizeFront(al::LiveActor*, const IUseDimension*, f32);
+void snap2DGravityPoseWithRotateCenter(al::LiveActor*, IUsePlayerCollision*, const IUseDimension*, f32, f32, const sead::Vector3f&);
+void calcSnap2DPosition(sead::Vector3f*, const IUseDimension*, const sead::Vector3f&, f32);
+void attachMtxConnectorTo2DCollision(al::MtxConnector*, const al::LiveActor*, const sead::Vector3f&, const sead::Vector3f&);
+void attachMtxConnectorTo2DCollision(al::MtxConnector*, const al::LiveActor*, bool);
+void attachMtxConnectorTo2DCollision(al::MtxConnector*, const al::LiveActor*, f32, f32);
+void syncVisAnimFrame2D(al::LiveActor*, const char*, bool);
 }  // namespace rs
