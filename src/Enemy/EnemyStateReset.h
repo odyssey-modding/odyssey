@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Enemy/EnemyCap.h"
-#include <al/Library/LiveActor/LiveActor.h>
 
 class EnemyStateReset : public al::ActorStateBase {
 private:

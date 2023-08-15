@@ -5,6 +5,7 @@
 
 class PlayerInitInfo;
 class IUsePlayerCollision;
+class PlayerCollider;
 class PlayerActorBase : public al::LiveActor, public IUsePlayerHack {
 private:
     PlayerHackKeeper* mPlayerHackKeeper;
@@ -47,6 +48,5 @@ public:
 
 class IUsePlayerCollision {
 public:
-    // TODO: Does this return PlayerCollider or something else?
-    virtual void* getPlayerCollision() const = 0;
+    virtual PlayerCollider* getPlayerCollision() const = 0;
 };

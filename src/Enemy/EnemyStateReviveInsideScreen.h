@@ -1,6 +1,7 @@
 #pragma once
 
 #include <al/Library/Nerve/NerveStateBase.h>
+#include <math/seadVector.h>
 #include <math/seadQuat.h>
 
 class EnemyStateReviveInsideScreen : public al::ActorStateBase {

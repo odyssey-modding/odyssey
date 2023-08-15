@@ -1,8 +1,11 @@
 #pragma once
 
-#include <al/Library/LiveActor/LiveActor.h>
+#include <basis/seadTypes.h>
+#include <math/seadVector.h>
+#include <gfx/seadColor.h>
 
 namespace al {
+class LiveActor;
 class DepthShadowMapInfo;
 class ShadowMaskBase;
 class ShadowMaskDrawCategory;
@@ -82,7 +85,7 @@ void setDepthShadowMapBottomGradationLength(const al::LiveActor*, const char*, f
 void getDepthShadowMapBottomGradationLength(const al::LiveActor*, const char*);
 bool isAppendSubActorDepthShadowMap(const al::LiveActor*);
 void getShadowMaskDropLengthMax(const al::LiveActor*);
-void setShadowMaskColor(const al::LiveActor*, const char*, sead::Color4f const&);
+void setShadowMaskColor(const al::LiveActor*, const char*, const sead::Color4f&);
 void getShadowMaskColor(const al::LiveActor*, const char*);
 void setShadowMaskIntensity(const al::LiveActor*, const char*, f32);
 void getShadowMaskIntensity(const al::LiveActor*, const char*);

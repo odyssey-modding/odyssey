@@ -1,8 +1,9 @@
 #pragma once
 
-#include <al/Library/LiveActor/LiveActor.h>
-
 namespace al {
+class LiveActor;
+class HitSensor;
+class ActorInitInfo;
 class HostSyncTowerCamera;
 
 void createCollisionObj(const al::LiveActor*, const al::ActorInitInfo&, const char*, al::HitSensor*, const char*, const char*);

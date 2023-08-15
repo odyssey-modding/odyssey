@@ -1,14 +1,14 @@
-#include "EnemyStateReset.h"
-#include "Util/Hack.h"
-#include <al/Library/Nerve/NerveSetupUtil.h>
+#include "Enemy/EnemyStateReset.h"
 #include <al/Library/LiveActor/ActorActionFunction.h>
 #include <al/Library/LiveActor/ActorAnimFunction.h>
 #include <al/Library/LiveActor/ActorModelFunction.h>
 #include <al/Library/LiveActor/ActorMovementFunction.h>
 #include <al/Library/LiveActor/ActorSensorFunction.h>
+#include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Nerve/NerveUtil.h>
 #include <al/Library/Placement/PlacementFunction.h>
 #include <al/Library/Player/PlayerHolder.h>
+#include "Util/Hack.h"
 
 namespace {
 NERVE_IMPL(EnemyStateReset, Wait);
@@ -67,8 +67,6 @@ void EnemyStateReset::kill() {
 void EnemyStateReset::exeWait() {
     if (al::isStep(this, 2))
         al::resetRotatePosition(mActor, mRot, mPos);
-    if (!al::isGreaterEqualStep(this, 2))
-        return;
-    if (al::isResetablePlayerPos(mActor, mValidDistance))
+    if (al::isGreaterEqualStep(this, 2) && al::isResetablePlayerPos(mActor, mValidDistance))
         kill();
 }

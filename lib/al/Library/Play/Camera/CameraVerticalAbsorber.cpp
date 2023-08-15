@@ -100,7 +100,7 @@ void CameraVerticalAbsorber::update() {
     mLookAtCamera.getPos() = mCameraPoser->getPosition();
     mLookAtCamera.getAt() = mCameraPoser->getTargetTrans();
     mLookAtCamera.getUp() = mCameraPoser->getCameraUp();
-    if (mLookAtCamera.getUp().length() > 0.f)
+    if (mLookAtCamera.getUp().length() > 0.0f)
         mLookAtCamera.getUp().normalize();
     if (!mUnusedBool && !mIsInvalidated) {
         mLookAtCamera.getAt() -= mTargetInterp;
@@ -126,7 +126,7 @@ void CameraVerticalAbsorber::update() {
         sead::Vector3f offsetTrans = sead::Vector3f::zero;
         alCameraPoserFunction::calcTargetTransWithOffset(&offsetTrans, mCameraPoser);
         alCameraPoserFunction::calcOffsetCameraKeepInFrameV(&gravity, &mLookAtCamera, offsetTrans, mCameraPoser, mKeepInFrameOffsetUp,
-                                                            alCameraPoserFunction::isPlayerTypeHighJump(mCameraPoser) ? 300.f :
+                                                            alCameraPoserFunction::isPlayerTypeHighJump(mCameraPoser) ? 300.0f :
                                                                                                                         mKeepInFrameOffsetDown);
         prevTargetTrans = mTargetInterp - gravity;
     }

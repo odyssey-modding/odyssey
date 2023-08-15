@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LayoutSceneInfo.h"
+#include "al/Library/Layout/LayoutSceneInfo.h"
 
 namespace al {
 class ExecuteDirector;
@@ -21,7 +21,7 @@ struct LayoutInitInfo : public LayoutSceneInfo {
     void init(al::ExecuteDirector*, const al::EffectSystemInfo*, al::SceneObjHolder*, const al::AudioDirector*, al::CameraDirector*,
               const al::LayoutSystem*, const al::MessageSystem*, const al::GamePadSystem*, al::PadRumbleDirector*);
 
-    al::MessageSystem* getMessageSystem(void) const;
+    al::MessageSystem* getMessageSystem() const;
 };
 
 void initLayoutActor(al::LayoutActor*, const al::LayoutInitInfo&, const char*, const char*);

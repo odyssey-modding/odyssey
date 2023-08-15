@@ -1,9 +1,15 @@
 #pragma once
 
-#include "Player/PlayerHackKeeper.h"
-#include "Player/PlayerHackStartShaderCtrl.h"
 #include <al/Library/Nerve/NerveStateBase.h>
-#include <al/Library/LiveActor/LiveActor.h>
+
+namespace al {
+    class SensorMsg;
+    class HitSensor;
+}
+
+class IUsePlayerHack;
+class PlayerHackStartShaderCtrl;
+struct PlayerHackStartShaderParam;
 
 struct EnemyStateHackStartParam {
     const char* mActionName;

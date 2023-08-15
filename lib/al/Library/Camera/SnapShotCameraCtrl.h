@@ -1,14 +1,17 @@
 #pragma once
 
 #include <al/Library/Audio/AudioKeeper.h>
-#include <al/Library/Collision/CollisionDirector.h>
 #include <al/Library/Nerve/NerveExecutor.h>
-#include <al/Library/Yaml/ByamlIter.h>
-#include <gfx/seadCamera.h>
+
+namespace sead {
+    class LookAtCamera;
+}
 
 namespace al {
 class SnapShotCameraSceneInfo;
 class ICameraInput;
+class IUseCollision;
+class ByamlIter;
 
 struct SnapShotParam {  // Guessed name
     bool gotMin = false;
@@ -25,13 +28,13 @@ private:
     sead::Vector3f mLookAtOffset = sead::Vector3f(0, 0, 0);
     sead::Vector3f field_38 = sead::Vector3f(0, 0, 0);
     bool mIsValidZoomFovy = false;
-    f32 mFovyDegree = 0.f;
-    f32 field_4C = 0.f;
-    f32 field_50 = 0.f;
+    f32 mFovyDegree = 0.0f;
+    f32 field_4C = 0.0f;
+    f32 field_50 = 0.0f;
     f32 mMaxZoomOutFovyDegree = -1.0f;
     bool mIsValidRoll = false;
-    f32 mRollDegree = 0.f;
-    f32 mRollTarget = 0.f;
+    f32 mRollDegree = 0.0f;
+    f32 mRollTarget = 0.0f;
     u32 field_64 = -1;
     bool field_6C = false;
 

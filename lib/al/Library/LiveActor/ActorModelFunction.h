@@ -42,7 +42,7 @@ bool isSilhouetteModelHidden(const al::LiveActor* actor);
 void showSilhouetteModelIfHide(al::LiveActor* actor);
 void hideSilhouetteModelIfShow(al::LiveActor* actor);
 void setModelAlphaMask(al::LiveActor* actor, f32);
-float getModelAlphaMask(const al::LiveActor* actor);
+f32 getModelAlphaMask(const al::LiveActor* actor);
 bool isModelAlphaMask(const al::LiveActor* actor);
 void updateModelAlphaMaskCameraDistance(al::LiveActor* actor, f32, f32, f32, f32);
 bool isExistZPrePass(const al::LiveActor* actor);

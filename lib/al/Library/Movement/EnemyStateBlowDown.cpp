@@ -1,4 +1,4 @@
-#include "EnemyStateBlowDown.h"
+#include <al/Library/Movement/EnemyStateBlowDown.h>
 #include <al/Library/LiveActor/ActorActionFunction.h>
 #include <al/Library/LiveActor/ActorClippingFunction.h>
 #include <al/Library/LiveActor/ActorCollisionFunction.h>
@@ -33,7 +33,7 @@ void EnemyStateBlowDown::start(sead::Vector3f const& dir) {
     al::setVelocity(actor, direction - velocity);
 }
 
-void EnemyStateBlowDown::start(al::HitSensor const* sensor1, al::HitSensor const* sensor2) {
+void EnemyStateBlowDown::start(const al::HitSensor* sensor1, const al::HitSensor* sensor2) {
     sead::Vector3f dir = al::getSensorPos(sensor1) - al::getSensorPos(sensor2);
 
     al::verticalizeVec(&dir, al::getGravity(mActor), dir);
@@ -44,7 +44,7 @@ void EnemyStateBlowDown::start(al::HitSensor const* sensor1, al::HitSensor const
     start(-dir);
 }
 
-void EnemyStateBlowDown::start(al::LiveActor const* actor) {
+void EnemyStateBlowDown::start(const al::LiveActor* actor) {
     sead::Vector3f dir;
     al::calcFrontDir(&dir, actor);
 
@@ -89,11 +89,11 @@ void EnemyStateBlowDown::control() {
 
 EnemyStateBlowDownParam::EnemyStateBlowDownParam() {}
 
-EnemyStateBlowDownParam::EnemyStateBlowDownParam(char const* actionName) {  // tools/check doesn't want to find this function for some reason
+EnemyStateBlowDownParam::EnemyStateBlowDownParam(const char* actionName) {
     mActionName = actionName;
 }
 
-EnemyStateBlowDownParam::EnemyStateBlowDownParam(char const* actionName, f32 gravityStrength, f32 velocityStrength, f32 velocityMultiplier,
+EnemyStateBlowDownParam::EnemyStateBlowDownParam(const char* actionName, f32 gravityStrength, f32 velocityStrength, f32 velocityMultiplier,
                                                  f32 velocityScale, s32 blowDownLength, bool faceAwayFromActor) {
     mActionName = actionName;
     mGravityStrength = gravityStrength;

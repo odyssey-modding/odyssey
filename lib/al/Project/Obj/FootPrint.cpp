@@ -1,8 +1,8 @@
-#include "FootPrint.h"
 #include <al/Library/Collision/PartsConnector.h>
 #include <al/Library/LiveActor/ActorAnimFunction.h>
 #include <al/Library/LiveActor/ActorInitFunction.h>
 #include <al/Library/Nerve/NerveSetupUtil.h>
+#include <al/Project/Obj/FootPrint.h>
 
 namespace {
 using namespace al;

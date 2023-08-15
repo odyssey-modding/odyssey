@@ -24,7 +24,7 @@ bool isInRange(s32, s32, s32);
 bool isInRange(f32, f32, f32);
 void normalize(sead::Vector2f*);
 void normalize(sead::Vector3f*);
-void normalize(sead::Matrix33<f32>*);
+void normalize(sead::Matrix33f*);
 void normalize(sead::Matrix34f*);
 bool tryNormalizeOrZero(sead::Vector2f*);
 bool tryNormalizeOrZero(sead::Vector2f*, const sead::Vector2f&);

@@ -47,8 +47,8 @@ void calcNearVecFromAxis2(sead::Vector3f*, const sead::Vector3f&, const sead::Ve
 void calcNearVecFromAxis3(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&, const sead::Vector3f&, const sead::Vector3f&);
 void calcDirVerticalAny(sead::Vector3f*, const sead::Vector3f&);
 void calcDirSlide(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&);
-void calcNearVecFromAxis3(sead::Vector3f*, const sead::Vector3f&, sead::Quatf const&);
-void calcQuatLocalAxisAll(sead::Quatf const&, sead::Vector3f*, sead::Vector3f*, sead::Vector3f*);
+void calcNearVecFromAxis3(sead::Vector3f*, const sead::Vector3f&, const sead::Quatf&);
+void calcQuatLocalAxisAll(const sead::Quatf&, sead::Vector3f*, sead::Vector3f*, sead::Vector3f*);
 void addRandomVector(sead::Vector3f*, const sead::Vector3f&, f32);
 void turnRandomVector(sead::Vector3f*, const sead::Vector3f&, f32);
 void makeAxisFrontUp(sead::Vector3f*, sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&);

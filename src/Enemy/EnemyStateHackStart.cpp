@@ -1,14 +1,15 @@
-#include "EnemyStateHackStart.h"
-#include "Player/PlayerHackKeeper.h"
-#include "Util/Hack.h"
-#include <al/Library/Nerve/NerveSetupUtil.h>
+#include "Enemy/EnemyStateHackStart.h"
 #include <al/Library/LiveActor/ActorActionFunction.h>
 #include <al/Library/LiveActor/ActorAnimFunction.h>
 #include <al/Library/LiveActor/ActorFlagFunction.h>
 #include <al/Library/LiveActor/ActorMovementFunction.h>
 #include <al/Library/LiveActor/LiveActorFunction.h>
+#include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Nerve/NerveUtil.h>
 #include <al/Library/Shadow/DepthShadowDrawer.h>
+#include "Player/PlayerHackKeeper.h"
+#include "Player/PlayerHackStartShaderCtrl.h"
+#include "Util/Hack.h"
 
 namespace rs {
 bool isMsgStartHack(const al::SensorMsg*);
@@ -44,7 +45,7 @@ EnemyStateHackStart::EnemyStateHackStart(al::LiveActor* rootActor, const EnemySt
     mPlayerHackStartShaderCtrl = new PlayerHackStartShaderCtrl(rootActor, shaderParam);
 }
 
-IUsePlayerHack* EnemyStateHackStart::tryStart(al::SensorMsg const* sensor, al::HitSensor* source, al::HitSensor* target) {
+IUsePlayerHack* EnemyStateHackStart::tryStart(const al::SensorMsg* sensor, al::HitSensor* source, al::HitSensor* target) {
     if (!rs::isMsgStartHack(sensor))
         return 0;
     al::setVelocityZero(mActor);
@@ -67,7 +68,7 @@ bool EnemyStateHackStart::isHackStart() const {
 }
 
 float EnemyStateHackStart::calcHackStartNerveRate() const {
-    if (al::isNerve(this, &HackStart)) {
+    if (isHackStart()) {
         s32 frameMax = al::getActionFrameMax(mActor, mParam->mActionName);
         return al::calcNerveRate(this, frameMax);
     }
@@ -78,9 +79,9 @@ void EnemyStateHackStart::exeDiveIn() {
     if (!rs::isHackStartDemoEnterMario(mHackActor))
         return;
     if (mParam->mActionName)
-        return al::setNerve(this, &HackStart);
+        al::setNerve(this, &HackStart);
     else
-        return kill();
+        kill();
 }
 
 void EnemyStateHackStart::exeHackStart() {
@@ -90,11 +91,9 @@ void EnemyStateHackStart::exeHackStart() {
 
         if (mParam->mHasSubActors) {
             s32 subActorNum = al::getSubActorNum(mActor);
-            if (subActorNum >= 1) {
-                for (s32 i = 0; i < subActorNum; i++) {
-                    if (al::isExistAction(al::getSubActor(mActor, i), mParam->mActionName)) {
-                        al::startAction(al::getSubActor(mActor, i), mParam->mActionName);
-                    }
+            for (s32 i = 0; i < subActorNum; i++) {
+                if (al::isExistAction(al::getSubActor(mActor, i), mParam->mActionName)) {
+                    al::startAction(al::getSubActor(mActor, i), mParam->mActionName);
                 }
             }
         }
@@ -112,14 +111,12 @@ void EnemyStateHackStart::exeHackStart() {
         }
         if (mParam->mUpdateSubActorShadowMap) {
             s32 subActorNum = al::getSubActorNum(mActor);
-            if (subActorNum >= 1) {
-                for (s32 i = 0; i < subActorNum; i++) {
-                    al::LiveActor* subActor = al::getSubActor(mActor, i);
-                    if (al::isExistDepthShadowMapCtrl(subActor)) {
-                        al::invalidateShadow(subActor);
-                        al::offDepthShadowModel(subActor);
-                        al::validateDepthShadowMap(subActor);
-                    }
+            for (s32 i = 0; i < subActorNum; i++) {
+                al::LiveActor* subActor = al::getSubActor(mActor, i);
+                if (al::isExistDepthShadowMapCtrl(subActor)) {
+                    al::invalidateShadow(subActor);
+                    al::offDepthShadowModel(subActor);
+                    al::validateDepthShadowMap(subActor);
                 }
             }
         }
@@ -144,8 +141,6 @@ void startHackSwitchShadow(al::LiveActor* actor, const EnemyStateHackStartParam*
         return;
 
     s32 subActorNum = al::getSubActorNum(actor);
-    if (subActorNum < 1)
-        return;
     for (s32 i = 0; i < subActorNum; i++) {
         al::LiveActor* subActor = al::getSubActor(actor, i);
         if (al::isExistDepthShadowMapCtrl(subActor)) {
@@ -168,8 +163,6 @@ void endHackSwitchShadow(al::LiveActor* actor, EnemyStateHackStartParam const* p
         return;
 
     s32 subActorNum = al::getSubActorNum(actor);
-    if (subActorNum < 1)
-        return;
     for (s32 i = 0; i < subActorNum; i++) {
         al::LiveActor* subActor = al::getSubActor(actor, i);
         if (al::isExistDepthShadowMapCtrl(subActor)) {

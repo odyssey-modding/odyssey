@@ -1,4 +1,4 @@
-#include "ActorDimensionKeeper.h"
+#include "Util/ActorDimensionKeeper.h"
 #include <al/Library/LiveActor/ActorPoseKeeper.h>
 #include <container/seadPtrArray.h>
 
@@ -24,17 +24,8 @@ void ActorDimensionKeeper::forceEndChange2DKeep() {
     mIsCurrently2D = false;
 }
 
-void ActorDimensionKeeper::update() {
-    sead::PtrArray<al::LiveActor*> actors;
-    actors.setBuffer(8, nullptr);
-
-    if (mIsValid) {
-        auto actorPos = al::getTrans(mLiveActor);
-    }
-}
-
 namespace rs {
-ActorDimensionKeeper* createDimensionKeeper(al::LiveActor const* actor) {
+ActorDimensionKeeper* createDimensionKeeper(const al::LiveActor* actor) {
     return new ActorDimensionKeeper(actor);
 }
 
@@ -47,24 +38,24 @@ const char* getSpecialPurposeName2DOnly() {
     return "2DOnly";
 }
 
-bool is2D(IUseDimension const* iuse) {
+bool is2D(const IUseDimension* iuse) {
     return iuse->getActorDimensionKeeper()->getIs2D();
 }
 
-bool isIn2DArea(IUseDimension const* iuse) {
+bool isIn2DArea(const IUseDimension* iuse) {
     return iuse->getActorDimensionKeeper()->getIsIn2DArea();
 }
 
-bool is3D(IUseDimension const* iuse) {
+bool is3D(const IUseDimension* iuse) {
     auto keeper = iuse->getActorDimensionKeeper();
     return !keeper->getIs2D() && !keeper->getIsCurrently2D();
 }
 
-bool isChange2D(IUseDimension const* iuse) {
+bool isChange2D(const IUseDimension* iuse) {
     return iuse->getActorDimensionKeeper()->getIsCanChange2D();
 }
 
-bool isChange3D(IUseDimension const* iuse) {
+bool isChange3D(const IUseDimension* iuse) {
     return iuse->getActorDimensionKeeper()->getIsCanChange3D();
 }
 

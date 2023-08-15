@@ -1,17 +1,17 @@
-#include "EnemyCap.h"
+#include "Enemy/EnemyCap.h"
+#include <al/Library/Base/String.h>
 #include <al/Library/LiveActor/ActorActionFunction.h>
 #include <al/Library/LiveActor/ActorFlagFunction.h>
+#include <al/Library/LiveActor/ActorInitFunction.h>
 #include <al/Library/LiveActor/ActorModelFunction.h>
 #include <al/Library/LiveActor/ActorMovementFunction.h>
+#include <al/Library/LiveActor/ActorResourceFunction.h>
 #include <al/Library/LiveActor/LiveActorFunction.h>
+#include <al/Library/Math/MathAngleUtil.h>
+#include <al/Library/Movement/EnemyStateBlowDown.h>
 #include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Nerve/NerveUtil.h>
 #include <al/Library/Obj/PartsFunction.h>
-#include <al/Library/Base/String.h>
-#include <al/Library/LiveActor/ActorInitFunction.h>
-#include <al/Library/LiveActor/ActorResourceFunction.h>
-#include <al/Library/Math/MathAngleUtil.h>
-#include <al/Library/Movement/EnemyStateBlowDown.h>
 #include <al/Library/Placement/PlacementFunction.h>
 #include <al/Library/Yaml/ByamlUtil.h>
 
@@ -96,7 +96,7 @@ void EnemyCap::exeBlowDown() {
         al::offSyncClippingSubActor(mCap, this);
         al::offSyncAlphaMaskSubActor(mCap, this);
     }
-    al::rotateQuatXDirDegree(this, -15.f);
+    al::rotateQuatXDirDegree(this, -15.0f);
     if (!al::updateNerveState(this))
         return;
     al::offCollide(this);
@@ -124,7 +124,7 @@ bool EnemyCap::isBlowDown() const {
     return al::isNerve(this, &NrvEnemyCap.BlowDown);
 }
 
-void EnemyCap::setBlowDownParam(al::EnemyStateBlowDownParam const* param) {
+void EnemyCap::setBlowDownParam(const al::EnemyStateBlowDownParam* param) {
     mStateBlowDown->setParam(param);
 }
 
@@ -153,8 +153,7 @@ EnemyCap* tryCreateEnemyCapSuffix(al::LiveActor* actor, const al::ActorInitInfo&
 }
 
 bool tryStartEnemyCapBlowDown(EnemyCap* cap, const al::HitSensor* sensor) {
-    if (!cap || al::isNerve(cap, &NrvEnemyCap.BlowDown))
-        return false;
+    if (!isOnEnemyCap(cap)) return false;
     if (al::isNerve(cap, &NrvEnemyCap.BlowDown))
         return true;
     cap->getStateBlowDown()->start(sensor);
@@ -163,8 +162,7 @@ bool tryStartEnemyCapBlowDown(EnemyCap* cap, const al::HitSensor* sensor) {
 }
 
 bool tryStartEnemyCapBlowDown(EnemyCap* cap) {
-    if (!cap || al::isNerve(cap, &NrvEnemyCap.BlowDown))
-        return false;
+    if (!isOnEnemyCap(cap)) return false;
     if (al::isNerve(cap, &NrvEnemyCap.BlowDown))
         return true;
     cap->getStateBlowDown()->start(cap->getCap());

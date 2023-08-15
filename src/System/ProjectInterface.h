@@ -1,7 +1,9 @@
 #pragma once
 
-#include <al/Library/System/SystemKit.h>
+namespace al {
+    class SystemKit;
+}
 
 namespace alProjectInterface {
 al::SystemKit* getSystemKit();
-};
+}

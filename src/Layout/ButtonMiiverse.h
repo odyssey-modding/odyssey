@@ -1,7 +1,10 @@
 #pragma once
 
 #include <al/Library/Layout/LayoutActor.h>
-#include <al/Library/Layout/LayoutInitFunction.h>
+
+namespace al {
+class LayoutInitInfo;
+}
 
 class ButtonMiiverse : public al::LayoutActor {
 public:

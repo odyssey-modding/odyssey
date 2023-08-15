@@ -1,6 +1,11 @@
 #pragma once
 
-#include <al/Library/Yaml/Writer/ByamlWriter.h>
+#include <basis/seadTypes.h>
+
+namespace al {
+    class ByamlIter;
+    class ByamlWriter;
+}
 
 class PlayerHitPointData {
 private:

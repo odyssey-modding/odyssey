@@ -1,8 +1,14 @@
 #pragma once
 
+#include <math/seadMatrix.h>
 #include <math/seadQuat.h>
 #include <math/seadVector.h>
-#include <al/Library/LiveActor/LiveActor.h>
+
+namespace al {
+class LiveActor;
+class HitSensor;
+class SensorMsg;
+}  // namespace al
 
 class IUsePlayerHack;
 class IUsePlayerCollision;
@@ -73,8 +79,7 @@ void calcHackerWallInputDir(sead::Vector3f*, sead::Vector3f*, const IUsePlayerHa
 void addHackActorAccelStick(al::LiveActor*, const IUsePlayerHack*, sead::Vector3f*, f32, const sead::Vector3f&);
 void calcHackMovePower(const IUsePlayerHack*);
 void checkHackerMoveDir(const IUsePlayerHack*, const sead::Vector3f&, const sead::Vector3f&, f32);
-void calcHackerTrampleJumpParam(f32*, f32*, s32*, al::LiveActor*, const IUsePlayerHack*, f32, f32, f32, f32, f32, s32, f32, f32,
-                                f32, f32, f32);
+void calcHackerTrampleJumpParam(f32*, f32*, s32*, al::LiveActor*, const IUsePlayerHack*, f32, f32, f32, f32, f32, s32, f32, f32, f32, f32, f32);
 bool isOnHackMoveStick(const IUsePlayerHack*);
 bool isHoldHackJump(const IUsePlayerHack*);
 bool isOnHackMoveStickDeepDown(const IUsePlayerHack*);

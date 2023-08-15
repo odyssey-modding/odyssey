@@ -1,12 +1,17 @@
 #pragma once
 
-#include <al/Library/LiveActor/LiveActor.h>
 #include <math/seadVector.h>
+
+namespace al {
+    class LiveActor;
+    class MtxConnector;
+}
 
 class In2DAreaMoveControl;
 class IUsePlayerCollision;
 
 class ActorDimensionKeeper {
+private:
     const al::LiveActor* mLiveActor;
     bool mIsValid = true;
     bool mIs2D = false;
@@ -35,10 +40,6 @@ class IUseDimension {
 public:
     virtual ActorDimensionKeeper* getActorDimensionKeeper() const = 0;
 };
-
-namespace al {
-class MtxConnector;
-}
 
 namespace rs {
 ActorDimensionKeeper* createDimensionKeeper(const al::LiveActor*);

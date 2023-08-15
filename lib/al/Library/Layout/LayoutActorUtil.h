@@ -1,12 +1,18 @@
 #pragma once
 
-#include <common/aglTextureData.h>
-#include <gfx/seadColor.h>
 #include <math/seadMatrix.h>
 #include <math/seadVector.h>
 
 namespace nn::ui2d {
 class TextureInfo;
+}
+
+namespace sead {
+    class Color4u8;
+}
+
+namespace agl {
+    class TextureData;
 }
 
 namespace al {
@@ -23,14 +29,14 @@ void getLocalTrans(const al::IUseLayout*);
 void getLocalTransPtr(const al::IUseLayout*);
 void calcScale(sead::Vector3f*, const al::IUseLayout*);
 void getLocalScale(const al::IUseLayout*);
-void setLocalTrans(al::IUseLayout*, sead::Vector3f const&);
+void setLocalTrans(al::IUseLayout*, const sead::Vector3f&);
 void setLocalTrans(al::IUseLayout*, const sead::Vector2f&);
 void setLocalScale(al::IUseLayout*, float);
 void setLocalScale(al::IUseLayout*, const sead::Vector2f&);
 void setLocalAlpha(al::IUseLayout*, float);
 void calcPaneTrans(sead::Vector3f*, const al::IUseLayout*, const char*);
 void calcPaneMtx(sead::Matrix34f*, const al::IUseLayout*, const char*);
-void calcPaneTrans(sead::Vector2<float>*, const al::IUseLayout*, const char*);
+void calcPaneTrans(sead::Vector2f*, const al::IUseLayout*, const char*);
 void calcPaneScale(sead::Vector3f*, const al::IUseLayout*, const char*);
 void calcPaneSize(sead::Vector3f*, const al::IUseLayout*, const char*);
 void getPaneMtx(const al::IUseLayout*, const char*);
@@ -43,7 +49,7 @@ void setPaneLocalScale(al::IUseLayout*, const char*, const sead::Vector2f&);
 void setPaneLocalSize(al::IUseLayout*, const char*, const sead::Vector2f&);
 void setPaneLocalAlpha(al::IUseLayout*, const char*, float);
 void getPaneLocalTrans(const al::IUseLayout*, const char*);
-void getPaneLocalSize(sead::Vector2<float>*, const al::IUseLayout*, const char*);
+void getPaneLocalSize(sead::Vector2f*, const al::IUseLayout*, const char*);
 void getPaneLocalRotate(const al::IUseLayout*, const char*);
 void getPaneLocalScale(const al::IUseLayout*, const char*);
 void getTextBoxDrawRectSize(const al::IUseLayout*, const char*);
@@ -65,7 +71,7 @@ void findHitPaneFromScreenPos(const al::IUseLayout*, const sead::Vector2f&);
 bool isExistHitPaneFromScreenPos(const al::IUseLayout*, const sead::Vector2f&);
 bool isTouchPosInPane(const al::IUseLayout*, const char*);
 void setCursorPanePos(al::IUseLayout*, const al::IUseLayout*);
-void setPaneVtxColor(const al::IUseLayout*, const char*, sead::Color4u8 const&);
+void setPaneVtxColor(const al::IUseLayout*, const char*, const sead::Color4u8&);
 bool isTriggerTouchPane(const al::IUseLayout*, const char*);
 bool isHoldTouchPane(const al::IUseLayout*, const char*);
 bool isReleaseTouchPane(const al::IUseLayout*, const char*);
@@ -86,7 +92,7 @@ void setPaneNumberDigit4(al::IUseLayout*, const char*, s32, u16);
 void setPaneNumberDigit5(al::IUseLayout*, const char*, s32, u16);
 void setPaneStringFormat(al::IUseLayout*, const char*, const char*, ...);
 void setTextPositionCenterH(al::IUseLayout*, const char*);
-void initPaneMessage(al::IUseLayout*, const char*, const al::MessageHolder*, const char*, unsigned s32);
+void initPaneMessage(al::IUseLayout*, const char*, const al::MessageHolder*, const char*, u32);
 void setPaneSystemMessage(al::LayoutActor*, const char*, const char*, const char*);
 void setPaneStageMessage(al::LayoutActor*, const char*, const char*, const char*);
 void getPaneStringBuffer(const al::IUseLayout*, const char*);

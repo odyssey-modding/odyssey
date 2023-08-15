@@ -21,8 +21,8 @@ public:
     void init(const sead::Matrix34f*, const sead::Matrix34f&, const al::CollisionParts*);
     void getConnectingSensor() const;
 
-    virtual bool isConnecting() const override;
-    virtual void clear() override;
+    bool isConnecting() const override;
+    void clear() override;
     virtual bool isMoved() const;
     bool isConnectInvalidCollision() const;
 };

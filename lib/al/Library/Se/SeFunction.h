@@ -1,11 +1,14 @@
 #pragma once
 
-#include <al/Library/Audio/AudioKeeper.h>
-#include <al/Library/Se/SeKeeper.h>
+#include <math/seadMatrix.h>
+#include <math/seadVector.h>
 #include <prim/seadSafeString.h>
 
 namespace al {
 class ISeModifier;
+class IUseAudioKeeper;
+class MeInfo;
+class SePlayParamList;
 
 void startSe(const al::IUseAudioKeeper*, sead::SafeString const&);
 void verifySeKeeperNull(const al::IUseAudioKeeper*, sead::SafeString const&);

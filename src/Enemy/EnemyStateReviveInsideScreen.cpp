@@ -1,5 +1,4 @@
-#include "EnemyStateReviveInsideScreen.h"
-#include <al/Library/Nerve/NerveSetupUtil.h>
+#include "Enemy/EnemyStateReviveInsideScreen.h"
 #include <al/Library/Action/ActorActionKeeper.h>
 #include <al/Library/LiveActor/ActorActionFunction.h>
 #include <al/Library/LiveActor/ActorClippingFunction.h>
@@ -7,6 +6,7 @@
 #include <al/Library/LiveActor/ActorMovementFunction.h>
 #include <al/Library/LiveActor/ActorPoseKeeper.h>
 #include <al/Library/LiveActor/LiveActor.h>
+#include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Nerve/NerveUtil.h>
 #include <al/Library/Se/SeFunction.h>
 
