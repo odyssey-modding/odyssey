@@ -4,11 +4,13 @@
 #include <math/seadVector.h>
 
 namespace nn::util::neon {
-    class MatrixColumnMajor4x3fType;
-    class MatrixColumnMajor4x4fType;
-}
+class MatrixColumnMajor4x3fType;
+class MatrixColumnMajor4x4fType;
+}  // namespace nn::util::neon
 
 namespace al {
+template <typename T>
+class Matrix43;
 
 void makeBayerMatrix(s32*, s32);
 void f32ToF16(f32);
@@ -66,9 +68,9 @@ void turnMtxYDirDegree(sead::Matrix34f*, const sead::Matrix34f&, const sead::Vec
 void turnMtxZDirDegree(sead::Matrix34f*, const sead::Matrix34f&, const sead::Vector3f&, f32);
 void calcCameraPosFromViewMtx(sead::Vector3f*, const sead::Matrix34f&);
 void calcMtxMul(sead::Vector3f*, const sead::Matrix34f&, const sead::Vector3f&);
-// void calcMtxMul(sead::Vector3f *,al::Matrix43<f32> const&,const sead::Vector3f&);
+void calcMtxMul(sead::Vector3f*, al::Matrix43<f32> const&, const sead::Vector3f&);
 void calcMtxScale(sead::Vector3f*, const sead::Matrix34f&);
-// void calcMtxScale(sead::Vector3f *,al::Matrix43<f32> const&);
+void calcMtxScale(sead::Vector3f*, al::Matrix43<f32> const&);
 void normalizeMtxScale(sead::Matrix34f*, const sead::Matrix34f&);
 void tryNormalizeMtxScaleOrIdentity(sead::Matrix34f*, const sead::Matrix34f&);
 void calcMtxLocalTrans(sead::Vector3f*, const sead::Matrix34f&, const sead::Vector3f&);
@@ -87,7 +89,7 @@ void calcMovedInertiaTensor(sead::Matrix33f*, sead::Matrix33f const&, const sead
 void calcInertiaTensorByMovedTensorAndCenter(sead::Matrix33f*, sead::Matrix33f const&, const sead::Vector3f&, f32);
 void calcInertiaTensorSphere(sead::Matrix33f*, f32, f32);
 void calcInertiaTensorBox(sead::Matrix33f*, const sead::Vector3f&, f32);
-void makeMtx34f(sead::Matrix34f *,nn::util::neon::MatrixColumnMajor4x3fType const&);
-void makeMtx44f(sead::Matrix44f *,nn::util::neon::MatrixColumnMajor4x4fType const&);
+void makeMtx34f(sead::Matrix34f*, nn::util::neon::MatrixColumnMajor4x3fType const&);
+void makeMtx44f(sead::Matrix44f*, nn::util::neon::MatrixColumnMajor4x4fType const&);
 
 };  // namespace al
