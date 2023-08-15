@@ -11,7 +11,6 @@ private:
     sead::Vector3f mLocalTrans = sead::Vector3f(0.0f, 0.0f, 0.0f);
     sead::Vector3f mLocalRotate = sead::Vector3f(0.0f, 0.0f, 0.0f);
     sead::Vector3f mLocalScale = sead::Vector3f(1.0f, 1.0f, 1.0f);
-    ;
     bool mCapVisible = false;
     bool mUseFollowMtxScale = false;
     bool field_142 = false;
