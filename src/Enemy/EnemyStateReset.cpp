@@ -19,13 +19,7 @@ struct {
 
 }  // namespace
 
-#ifdef NON_MATCHING
 EnemyStateReset::EnemyStateReset(al::LiveActor* actor, const al::ActorInitInfo& info, EnemyCap* cap) : al::ActorStateBase("リセット状態", actor) {
-    mPos = sead::Vector3f::zero;
-    mRot = sead::Vector3f::zero;
-    mValidDistance = 4000.0f;
-    mIsRevive = true;
-    mInvalidateSensors = false;
     mEnemyCap = cap;
 
     initNerve(&NrvEnemyStateReset.Wait, 0);
@@ -33,7 +27,6 @@ EnemyStateReset::EnemyStateReset(al::LiveActor* actor, const al::ActorInitInfo& 
     al::tryGetRotate(&mRot, info);
     al::tryGetArg(&mIsRevive, info, "IsRevive");
 }
-#endif
 
 void EnemyStateReset::appear() {
     auto actor = mActor;  // getting the actor in each function call below causes mismatch, have to declare a variable up here for it

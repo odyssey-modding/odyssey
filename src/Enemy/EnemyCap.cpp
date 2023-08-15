@@ -34,7 +34,7 @@ EnemyCap::EnemyCap(const char* name) : al::LiveActor(name) {}
 
 static al::EnemyStateBlowDownParam* fallbackStateBlowDownParam = new al::EnemyStateBlowDownParam();
 
-#ifdef NON_MATCHING
+// NON_MATCHING: Unsure how the al::StringTmp here works
 void EnemyCap::initPartsFixFile(al::LiveActor* actor, const al::ActorInitInfo& initInfo, const char* archiveName, const char* suffix) {
     mCap = actor;
     mCapBaseMtx = mCap->getBaseMtx();
@@ -62,7 +62,6 @@ void EnemyCap::initPartsFixFile(al::LiveActor* actor, const al::ActorInitInfo& i
     mUseLocalScale = al::tryGetByamlKeyBoolOrFalse(resourceYaml, "UseLocalScale");
     makeActorAlive();
 }
-#endif
 
 void EnemyCap::makeActorAlive() {
     al::invalidateClipping(this);

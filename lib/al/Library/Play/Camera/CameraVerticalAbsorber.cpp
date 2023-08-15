@@ -89,7 +89,7 @@ void CameraVerticalAbsorber::load(const al::ByamlIter& data) {
     mAdvanceAbsorbScreenPosUp = al::getByamlKeyFloat(it2, "AdvanceAbsorbScreenPosUp");
 };
 
-#ifdef NON_MATCHING
+// NON_MATCHING
 void CameraVerticalAbsorber::update() {
     if (mIsStopUpdate)
         return;
@@ -133,7 +133,6 @@ void CameraVerticalAbsorber::update() {
     mPrevTargetTrans = mCameraPoser->getTargetTrans() - prevTargetTrans;
     mPrevTargetFront = mTargetFront;
 }
-#endif
 
 void CameraVerticalAbsorber::exeFollowGround(){
 

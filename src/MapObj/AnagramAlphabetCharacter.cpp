@@ -168,7 +168,7 @@ void AnagramAlphabetCharacter::exeHackEnd() {
     al::setNerve(this, &NrvAnagramAlphabetCharacter.Wait);
 }
 
-#ifdef NON_MATCHING
+// NON_MATCHING: Mismatching vector math
 void AnagramAlphabetCharacter::exeHackGoal() {
     if (al::isFirstStep(this)) {
         al::startAction(this, "Wait");
@@ -197,7 +197,6 @@ void AnagramAlphabetCharacter::exeHackGoal() {
     al::setNerve(this, &NrvAnagramAlphabetCharacter.Set);
     return al::startHitReaction(this, "ゴールデモ終了");
 }
-#endif
 
 void AnagramAlphabetCharacter::exeSet() {
     if (al::isFirstStep(this))

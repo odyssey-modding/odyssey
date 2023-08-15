@@ -49,7 +49,7 @@ void Player::exeWait() {
     al::setNerve(this, &NrvPlayer.Run);
 }
 
-#ifdef NON_MATCHING
+// NON_MATCHING: Incomplete
 void Player::exeRun() {
     if (al::isFirstStep(this)) {
         al::startAction(this, "Run");
@@ -58,4 +58,3 @@ void Player::exeRun() {
     al::addVelocityToGravity(this, 2.0);
     al::scaleVelocity(this, 0.7);
 }
-#endif

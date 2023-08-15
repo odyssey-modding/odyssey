@@ -14,7 +14,7 @@ NERVE_MAKE(EnemyStateRunAway, PanicRun);
 NERVE_MAKE(EnemyStateRunAway, PanicRunCollided);
 }  // namespace
 
-#ifdef NON_MATCHING
+// NON_MATCHING: Mismatching Vector math, should be equivalent
 void EnemyStateRunAway::appear() {
     mIsDead = false;
     if (mParam->mShouldFaceDir)
@@ -32,4 +32,3 @@ void EnemyStateRunAway::appear() {
     }
     al::setNerve(this, &PanicRun);
 }
-#endif

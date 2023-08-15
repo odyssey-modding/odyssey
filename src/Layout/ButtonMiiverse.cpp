@@ -82,13 +82,12 @@ void ButtonMiiverse::exeHoldOff() {
     al::setNerve(this, &NrvButtonMiiverse.Wait);
 }
 
-#ifdef NON_MATCHING  // Not sure about this one
+// NON_MATCHING
 void ButtonMiiverse::exeDecide() {
     if (al::isFirstStep(this))
         al::startAction(this, "Decide", 0);
     al::setNerveAtActionEnd(this, &NrvButtonMiiverse.OnWait);
 }
-#endif
 
 void ButtonMiiverse::exeOnWait() {
     if (al::isFirstStep(this))
