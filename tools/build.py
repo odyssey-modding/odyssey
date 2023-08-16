@@ -47,13 +47,16 @@ def main():
                     real_source_paths.append(str(file_path))
     
     # Checking if real files/files from build folder match
-    with open(build_sources_path, 'r') as f:
-        paths = f.read().splitlines()
-        paths.sort()
-        real_source_paths.sort()
+    if os.path.isfile(build_sources_path):
+        with open(build_sources_path, 'r') as f:
+            paths = f.read().splitlines()
+            paths.sort()
+            real_source_paths.sort()
 
-        if paths != real_source_paths:
-            touch_cmake_lists()
+            if paths != real_source_paths:
+                touch_cmake_lists()
+    else:
+        touch_cmake_lists()
     
     subprocess.run(cmake_args)
 
