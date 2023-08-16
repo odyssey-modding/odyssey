@@ -7,6 +7,7 @@ import subprocess
 from typing import Optional
 from common import setup_common as setup
 from enum import Enum
+import shutil
 
 TARGET_PATH = setup.get_target_path()
 TARGET_ELF_PATH = setup.get_target_elf_path()
@@ -66,8 +67,13 @@ def create_build_dir(ver, cmake_backend):
         print(">>> build directory already exists: nothing to do")
         return
 
-    subprocess.check_call(
-        ['cmake', '-G', cmake_backend, f'-DCMAKE_CXX_FLAGS=-D{ver.name}', '-DCMAKE_BUILD_TYPE=RelWithDebInfo', '-DCMAKE_TOOLCHAIN_FILE=toolchain/ToolchainNX64.cmake', '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache', '-B', str(build_dir)])
+    try:
+        subprocess.check_call(
+            ['cmake', '-G', cmake_backend, f'-DCMAKE_CXX_FLAGS=-D{ver.name}', '-DCMAKE_BUILD_TYPE=RelWithDebInfo', '-DCMAKE_TOOLCHAIN_FILE=toolchain/ToolchainNX64.cmake', '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache', '-B', str(build_dir)])
+    except subprocess.CalledProcessError:
+        shutil.rmtree(build_dir)
+        raise
+
     print(">>> created build directory") 
 
 def main():
