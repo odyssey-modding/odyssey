@@ -129,6 +129,7 @@ public:
     void initSceneInfo(al::ActorSceneInfo*);
 
     al::ActorPoseKeeperBase* getPoseKeeper() const { return mPoseKeeper; };
+    al::ActorPoseKeeperBase* getMutPoseKeeper() { return mPoseKeeper; };
     al::ActorExecuteInfo* getLayoutExecuteInfo() const { return mLayoutExecuteInfo; };
     al::ActorActionKeeper* getActorActionKeeper() const { return mActorActionKeeper; };
     al::ActorItemKeeper* getActorItemKeeper() const { return mActorItemKeeper; };
