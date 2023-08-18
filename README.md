@@ -45,16 +45,11 @@ Additionally, you'll also need:
     * To dump it from a Switch, follow [the instructions on the wiki](https://zeldamods.org/wiki/Help:Dumping_games#Dumping_binaries_.28executable_files.29).
     * You do not need to dump the entire game (RomFS + ExeFS + DLC). Just dumping the 1.0 ExeFS is sufficient.
 
-3. Download Clang 3.9.1 manually
-    * As we're not sure about the right compiler version yet, it won't be downloaded automatically. 
-    * Download a prebuilt binary (version 3.9.1) from [LLVM](https://releases.llvm.org/download.html#3.9.1), matching your environment.
-    * Extract it to `toolchain/clang-3.9.1`, so that the file `toolchain/clang-3.9.1/bin/clang` exists.
-
-4. Run `tools/setup.py [path to the NSO]`
+3. Run `tools/setup.py [path to the NSO]`
     * This will:
         * install tools/check to check for differences in decompiled code
         * convert the executable if necessary
-        * set up [Clang 4.0.1](https://releases.llvm.org/download.html#4.0.1) by downloading it from the official LLVM website
+        * set up [Clang 3.9.1](https://releases.llvm.org/download.html#3.9.1) and [4.0.1](https://releases.llvm.org/download.html#4.0.1) by downloading it from the official LLVM website
         * create a build directory in `build/`
     * If something goes wrong, follow the instructions given to you by the script.
     * If you wish to use a CMake generator that isn't Ninja, use `--cmake_backend` to specify it.
