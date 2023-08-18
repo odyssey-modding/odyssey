@@ -8,8 +8,8 @@
 
 namespace al {
 struct GameSystemInfo;
-class SequenceInitInfo;
-class AudioSystemInfo;
+struct SequenceInitInfo;
+struct AudioSystemInfo;
 class AudioDirector;
 class Scene;
 
