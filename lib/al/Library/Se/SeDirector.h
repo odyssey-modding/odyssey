@@ -29,22 +29,22 @@ struct MeInfo;
 class Projection;
 
 struct SeDirectorInitInfo {
-    s32 maxRequests;
-    s32 playerCount;
-    s32 listenerCount;
-    const char* defaultListenerName;
-    const char* defaultStageEffectName;
-    bool useMeInfo;
-    bool useLoopSequencer;
-    u32* field_28;
-    s32 field_30;  // length of field_28
-    sead::Vector3f* cameraPos;
-    sead::Matrix34f* cameraMatrix;
-    al::Projection* cameraProjection;
-    sead::Vector3f* cameraAt;
-    void* field_58;
-    f32 interiorSize;
-    f32 pitchModifier;
+    s32 maxRequests = -1;
+    s32 playerCount = -1;
+    s32 listenerCount = -1;
+    const char* defaultListenerName = "注視点";
+    const char* defaultStageEffectName = nullptr;
+    bool useMeInfo = false;
+    bool useLoopSequencer = false;
+    u32* field_28 = nullptr;
+    s32 field_30 = -1;  // length of field_28
+    sead::Vector3f* cameraPos = nullptr;
+    sead::Matrix34f* cameraMatrix = nullptr;
+    al::Projection* cameraProjection = nullptr;
+    sead::Vector3f* cameraAt = nullptr;
+    void* field_58 = nullptr;
+    f32 interiorSize = -1;
+    f32 pitchModifier = 1;
 };
 
 class SeDirector {

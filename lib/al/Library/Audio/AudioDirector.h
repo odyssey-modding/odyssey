@@ -26,14 +26,14 @@ class AudioMaximizer;
 class DemoDirector;
 
 struct AudioDirectorInitInfo {
-    al::AudioSystemInfo* audioSystemInfo;
-    al::Sequence* sequence;
-    const char* currentStage;
-    s32 scenarioNo;
-    al::DemoDirector* demoDirector;
+    al::AudioSystemInfo* audioSystemInfo = nullptr;
+    al::AreaObjDirector* areaObjDirector = nullptr;
+    const char* currentStage = nullptr;
+    s32 scenarioNo = 0;
+    al::DemoDirector* demoDirector = nullptr;
     al::SeDirectorInitInfo seDirectorInitInfo;
     al::BgmDirectorInitInfo bgmDirectorInitInfo;
-    const char* duckingName;
+    const char* duckingName = nullptr;
 };
 
 class AudioDirector : public al::HioNode, public al::IUseAreaObj, public al::IAudioSystemPause {
@@ -49,7 +49,7 @@ private:
     al::AudioEventController* mAudioEventController;
     al::AudioRequestKeeperSyncedBgm* mAudioRequestKeeperSyncedBgm;
     al::AudioSystemInfo* mAudioSystemInfo;
-    al::Sequence* mSequence;
+    al::AreaObjDirector* mAreaObjDirector;
     al::AudioDuckingDirector* mAudioDuckingDirector;
     sead::PtrArray<PauseEntry> mPauseEntries;
     bool mIsEffectControllerFinalizing;

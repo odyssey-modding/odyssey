@@ -19,8 +19,8 @@ class IBgmParamsChanger;
 class AudioBusSendController;
 
 struct BgmDirectorInitInfo {
-    bool isScene;
-    const char* stageName;
+    bool isScene = false;
+    const char* stageName = nullptr;
 };
 
 class BgmDirector : public al::IUseActiveBgmLine {

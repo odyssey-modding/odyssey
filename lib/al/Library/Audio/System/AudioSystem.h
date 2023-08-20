@@ -66,5 +66,7 @@ public:
     void addAudiioFrameProccess(aal::IAudioFrameProcess*);
     void removeAudiioFrameProccess(aal::IAudioFrameProcess*);
     void pauseSystemImmediately(bool, const char*, bool);
+
+    al::AudioSystemInfo* getAudioSystemInfo() const { return mAudioSystemInfo; }
 };
 }  // namespace al
