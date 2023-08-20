@@ -10,7 +10,7 @@ class MeInfoKeeper;
 class SeMaterialInfoKeeper;
 class SeCategoryHolder;
 class SeSituationKeeper;
-class SeStageInfo;
+struct SeStageInfo;
 class SeSourceKeeper;
 class SeBarrierKeeper;
 class SeLoopSequencer;
@@ -83,7 +83,7 @@ public:
     void initAfterInitPlacement(al::AreaObjDirector*);
     void finalize();
     void update();
-    void isSystemPaused();
+    void isSystemPaused() const;
     void setPlayerHolder(const al::PlayerHolder*);
     void notifyIsModeHandheld(bool);
     void addRequest(al::SeRequestParam*, const char*, s32, bool);
@@ -91,11 +91,11 @@ public:
     void pauseSystem(bool, const char*, u32);
     void startSituation(const char*, s32, s32, s32);
     void endSituation(const char*, s32);
-    void checkIsActiveSituation(const char*);
-    void getDuckingVolume();
-    void getListener(s32);
+    void checkIsActiveSituation(const char*) const;
+    void getDuckingVolume() const;
+    void getListener(s32) const;
     void setAudioBusSendController(al::AudioBusSendController*);
     void requestPlayLoopSeSequence(const char*, const al::MeInfo*, s32);
-    const char* getStageEffectName();
+    const char* getStageEffectName() const;
 };
 }  // namespace al

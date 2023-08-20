@@ -1,7 +1,7 @@
 #pragma once
 
 #include <container/seadPtrArray.h>
-#include "IUseActiveBgmLine.h"
+#include "al/Library/Bgm/IUseActiveBgmLine.h"
 
 namespace al {
 class BgmDataBase;
@@ -74,18 +74,18 @@ public:
     void endSituation(sead::PtrArray<al::IBgmParamsChanger>*, const char*, bool, bool);
     void disableLineChange();
     bool isDisableLineChange();
-    bool isUsedLineGroupName(const char*);
-    void getPlayingBgmLine(const char*);
-    void getBgmLineByLineName(const char*);
-    void getActiveBgmLine();
-    void getActiveBgmLineWithoutUpperLayer();
-    void getLoopEndSamplePosition(const char*);
+    bool isUsedLineGroupName(const char*) const;
+    void getPlayingBgmLine(const char*) const;
+    void getBgmLineByLineName(const char*) const;
+    al::BgmLine* getActiveBgmLine() const override;
+    void getActiveBgmLineWithoutUpperLayer() const;
+    void getLoopEndSamplePosition(const char*) const;
     void setAudioBusSendController(al::AudioBusSendController*);
-    al::BgmMultiPlayingController* tryAllocMultiPlayingController();
-    void tryReleaseMultiPlayingController(al::BgmMultiPlayingController*);
+    al::BgmMultiPlayingController*  tryAllocMultiPlayingController();
+    bool tryReleaseMultiPlayingController(al::BgmMultiPlayingController*);
     void deactiveAllBgmMultiPlayingController(s32);
     s32 getBgmLineNum(bool);
     void getBgmLineAccessor(s32, bool);
-    void getBgmLineIndex(const char*, bool);
+    void getBgmLineIndex(const char*, bool) const;
 };
 }  // namespace al

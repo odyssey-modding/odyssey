@@ -1,10 +1,11 @@
 #pragma once
 
+#include <container/seadPtrArray.h>
+#include "al/Library/Audio/AudioSystemPauseController.h"
 #include "al/Library/Area/AreaObjDirector.h"
 #include "al/Library/Bgm/BgmDirector.h"
 #include "al/Library/HostIO/HioNode.h"
 #include "al/Library/Se/SeDirector.h"
-#include "AudioSystemPauseController.h"
 
 namespace aal {
 class IAudioFrameProcess;
@@ -19,7 +20,7 @@ struct AudioSystemInfo;
 class Sequence;
 class AudioDuckingDirector;
 class AudioFrameProcessMgr;
-struct AudioEffectController;
+class AudioEffectController;
 class PlayerHolder;
 class AudioMaximizer;
 class DemoDirector;
@@ -68,7 +69,7 @@ public:
     void updateFinalizeUnsafeModuleInParallelThread();
     bool isFinalizedUnsafeModuleInParallelThread();
     void finalize();
-    bool isSystemPauseNow();
+    bool isSystemPauseNow() const;
     void setPlayerHolder(const al::PlayerHolder* playerHolder);
     void addAudiioFrameProccess(aal::IAudioFrameProcess* frameProcess);
     void removeAudiioFrameProccess(aal::IAudioFrameProcess* frameProcess);
