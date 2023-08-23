@@ -40,19 +40,19 @@ void PlayerStateGroundSpin::exeGroundSpin() {
     if (al::isFirstStep(this)) {
         mPlayerAnimator->startAnim(mIsSpinClockwise ? "SpinGroundR" : "SpinGroundL");
     }
-    sead::Vector3f someVector = {0.0f, 0.0f, 0.0f};
-    mGroundMoveCtrl->updateNormalAndSnap(&someVector);
+    sead::Vector3f velocity = {0.0f, 0.0f, 0.0f};
+    mGroundMoveCtrl->updateNormalAndSnap(&velocity);
     sead::Vector3f input = {0.0f, 0.0f, 0.0f};
     mPlayerInput->calcMoveInput(&input, mGroundMoveCtrl->getGroundNormal());
-    someVector *= mPlayerConst->getGroundSpinBrakeRate();
-    float someVectorLength = someVector.length();
+    velocity *= mPlayerConst->getGroundSpinBrakeRate();
+    float velocityLength = velocity.length();
     float grndSpinMax = mPlayerConst->getGroundSpinMoveSpeedMax();
-    someVectorLength = someVectorLength > grndSpinMax ? someVectorLength : grndSpinMax;
-    someVector += mPlayerConst->getGroundSpinAccelRate()*input;
-    al::limitLength(&someVector, someVector, someVectorLength);
-    al::setVelocity(getActor(), someVector - mGroundMoveCtrl->getGroundNormal()*mPlayerConst->getGravityMove());
+    velocityLength = velocityLength > grndSpinMax ? velocityLength : grndSpinMax;
+    velocity += mPlayerConst->getGroundSpinAccelRate() * input;
+    al::limitLength(&velocity, velocity, velocityLength);
+    al::setVelocity(getActor(), velocity - mGroundMoveCtrl->getGroundNormal() * mPlayerConst->getGravityMove());
     sead::Vector3f frontDir = {0.0f, 0.0f, 0.0f};
-    if (!al::tryNormalizeOrZero(&frontDir, someVector)) {
+    if (!al::tryNormalizeOrZero(&frontDir, velocity)) {
         al::calcFrontDir(&frontDir, getActor());
     }
     rs::slerpUpFront(getActor(), sead::Vector3f::ey, frontDir, mPlayerConst->getSlerpQuatRate(), 0.0);
