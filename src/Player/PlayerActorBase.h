@@ -5,17 +5,24 @@
 
 class PlayerInitInfo;
 class IUsePlayerCollision;
+class PlayerInfo;
+class PlayerPuppet;
+class PlayerAnimator;
+
+namespace al {
+    class DemoActor;
+}
+
 class PlayerActorBase : public al::LiveActor, public IUsePlayerHack {
 private:
-    PlayerHackKeeper* mPlayerHackKeeper;
     sead::Matrix34f* mViewMtx;
-    s32 port;
+    s32 mPortNo;
 public:
     void init(const al::ActorInitInfo& info) override;
     virtual void initPlayer(al::ActorInitInfo const&,PlayerInitInfo const&);
-    virtual IUsePlayerCollision* getPlayerCollision();
+    virtual IUsePlayerCollision* getPlayerCollision() const;
     virtual PlayerHackKeeper* getPlayerHackKeeper() const override;
-    virtual void isEnableDemo();
+    virtual bool isEnableDemo();
     virtual void startDemo();
     virtual void endDemo();
     virtual void startDemoPuppetable();
@@ -31,12 +38,12 @@ public:
     virtual void endDemoKeepBind();
     virtual void startDemoKeepCarry();
     virtual void endDemoKeepCarry();
-    virtual void getDemoActor();
-    virtual void getDemoAnimator();
-    virtual void isDamageStopDemo();
-    virtual void getPlayerPuppet();
-    virtual void getPlayerInfo();
-    virtual void getPortNo();
+    virtual al::DemoActor* getDemoActor();
+    virtual PlayerAnimator* getDemoAnimator();
+    virtual bool isDamageStopDemo() const;
+    virtual PlayerPuppet* getPlayerPuppet();
+    virtual PlayerInfo* getPlayerInfo() const;
+    virtual s32 getPortNo() const;
     virtual void getViewMtx();
     virtual void movement() override;
     virtual void checkDeathArea();
