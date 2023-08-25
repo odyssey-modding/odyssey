@@ -20,6 +20,7 @@ class CapTargetInfo;
 class PlayerHackStartTexKeeper;
 
 class PlayerHackKeeper {
+private:
     al::LiveActor* mParent;
     HackCap* mHackCap;
     PlayerRecoverySafetyPoint* mRecoverySafePoint;
@@ -52,13 +53,15 @@ class PlayerHackKeeper {
     sead::Vector3i mLastPosition; // unsure
 
 public:
-    PlayerHackKeeper(al::LiveActor* player, HackCap* cap, PlayerRecoverySafetyPoint* safetyPoint, const PlayerInput* input, const sead::Matrix34f* mtx, PlayerDamageKeeper* damageKeeper, const IPlayerModelChanger* modelChanger, const IUsePlayerHeightCheck* heightCheck);
+    PlayerHackKeeper(al::LiveActor* player, HackCap* cap, PlayerRecoverySafetyPoint* safetyPoint,
+                     const PlayerInput* input, const sead::Matrix34f* mtx, PlayerDamageKeeper* damageKeeper,
+                     const IPlayerModelChanger* modelChanger, const IUsePlayerHeightCheck* heightCheck);
+
     void recordHack();
     void killHackDemoModel();
     void appearHackDemoModel(const sead::Matrix34f&, float);
     void updateHackDemoModel(const sead::Matrix34f&, float);
     void deleteHackDemoModelEffect();
-
     void setPuppetable(bool isPuppetable) { mIsPuppetable = isPuppetable; };
     bool isPuppetable2() const { return mIsPuppetable2; };
     bool isHack() const { return mIsHack; };

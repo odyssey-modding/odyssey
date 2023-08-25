@@ -18,8 +18,9 @@ private:
     sead::Matrix34f* mViewMtx;
     s32 mPortNo;
 public:
-    void init(const al::ActorInitInfo& info) override;
+    virtual void movement() override;
     virtual void initPlayer(al::ActorInitInfo const&,PlayerInitInfo const&);
+    void init(const al::ActorInitInfo& info) override;
     virtual IUsePlayerCollision* getPlayerCollision() const;
     virtual PlayerHackKeeper* getPlayerHackKeeper() const override;
     virtual bool isEnableDemo();
@@ -45,7 +46,6 @@ public:
     virtual PlayerInfo* getPlayerInfo() const;
     virtual s32 getPortNo() const;
     virtual void getViewMtx();
-    virtual void movement() override;
     virtual void checkDeathArea();
     virtual void sendCollisionMsg();
     virtual void receivePushMsg(al::SensorMsg const*,al::HitSensor *,al::HitSensor *,float);

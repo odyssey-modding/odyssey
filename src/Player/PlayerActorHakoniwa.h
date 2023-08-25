@@ -48,7 +48,6 @@ class WaterSurfaceShadow;
 class WorldEndBorderKeeper;
 class ComboCounter;
 class PlayerSeCtrl;
-
 class PlayerStateWait;
 class PlayerStateSquat;
 class PlayerStateRunHakoniwa2D3D;
@@ -78,7 +77,6 @@ class PlayerStateHack;
 class PlayerStateEndHack;
 class PlayerStateCameraSubjective;
 class PlayerStateAbyss;
-
 class PlayerJudgeAirForceCount;
 class PlayerJudgeCameraSubjective;
 class PlayerJudgeCapCatchPop;
@@ -118,6 +116,7 @@ class PlayerJudgeWallHitDownRolling;
 class PlayerJudgeWallKeep;
 
 class PlayerActorHakoniwa : public PlayerActorBase, public IUseDimension {
+private:
     PlayerInfo* mPlayerInfo;
     PlayerConst* mPlayerConst;
     PlayerInput* mPlayerInput;
@@ -240,7 +239,6 @@ class PlayerActorHakoniwa : public PlayerActorBase, public IUseDimension {
     PlayerJudgeWallKeep* mJudgeWallKeep;
     bool isReduceOxygen;
 
-
 public:
     PlayerActorHakoniwa(const char*);
     void initAfterPlacement() override;
@@ -278,7 +276,6 @@ public:
     void sendCollisionMsg() override;
     void receivePushMsg(const al::SensorMsg*, al::HitSensor*, al::HitSensor*, f32) override;
     ActorDimensionKeeper* getActorDimensionKeeper() const override;
-
     void updateModelShadowDropLength();
     void executeAfterCapTarget();
     void syncSensorAndCollision();

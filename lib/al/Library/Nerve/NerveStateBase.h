@@ -11,13 +11,12 @@ private:
 
 public:
     NerveStateBase(const char* stateName);
-    ~NerveStateBase();
+    inline ~NerveStateBase();
     virtual void init();
     virtual void appear();
     virtual void kill();
     virtual bool update();
     virtual void control();
-
     bool isDead() const { return mIsDead; }
     void setDead(bool isDead) { mIsDead = isDead; };
 };
@@ -25,9 +24,8 @@ public:
 class ActorStateBase : public al::NerveStateBase {
 private:
     al::LiveActor* mActor;
-
 public:
-    ActorStateBase(const char* stateName, al::LiveActor* actor);
+    ActorStateBase(const char* stateName, al::LiveActor* parent);
     al::LiveActor* getActor() const { return mActor; };
 };
 
