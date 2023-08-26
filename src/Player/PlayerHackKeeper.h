@@ -1,13 +1,13 @@
 #pragma once
 
-#include <math/seadMatrix.h>
 #include <container/seadPtrArray.h>
+#include <math/seadMatrix.h>
 
 namespace al {
-    class LiveActor;
-    class HitSensor;
-    class CollisionPartsFilterBase;
-} // namespace al
+class LiveActor;
+class HitSensor;
+class CollisionPartsFilterBase;
+}  // namespace al
 
 class PlayerRecoverySafetyPoint;
 class HackCap;
@@ -50,12 +50,14 @@ private:
     al::LiveActor* mHackModel;
     sead::PtrArray<void> mHackModelSlices;
     sead::Matrix34f* field_b8;
-    sead::Vector3i mLastPosition; // unsure
+    s32 field_c0;
+    s32 field_c4;
+    s32 field_c8;
 
 public:
-    PlayerHackKeeper(al::LiveActor* player, HackCap* cap, PlayerRecoverySafetyPoint* safetyPoint,
-                     const PlayerInput* input, const sead::Matrix34f* mtx, PlayerDamageKeeper* damageKeeper,
-                     const IPlayerModelChanger* modelChanger, const IUsePlayerHeightCheck* heightCheck);
+    PlayerHackKeeper(al::LiveActor* player, HackCap* cap, PlayerRecoverySafetyPoint* safetyPoint, const PlayerInput* input,
+                     const sead::Matrix34f* mtx, PlayerDamageKeeper* damageKeeper, const IPlayerModelChanger* modelChanger,
+                     const IUsePlayerHeightCheck* heightCheck);
 
     void recordHack();
     void killHackDemoModel();

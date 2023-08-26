@@ -3,9 +3,8 @@
 #include <math/seadVector.h>
 
 namespace al {
-    class LiveActor;
-} // namespace al
-
+class LiveActor;
+}  // namespace al
 
 class PlayerConst;
 class PlayerInput;
@@ -15,6 +14,7 @@ class IJudge;
 class PlayerActionTurnControl;
 
 class PlayerActionGroundMoveControl {
+private:
     al::LiveActor* mParent;
     const PlayerConst* mPlayerConst;
     const PlayerInput* mPlayerInput;
@@ -32,8 +32,8 @@ class PlayerActionGroundMoveControl {
     f32 mGravityMove;
     f32 mBrakeSpeed;
     s32 mCounterBorder;
-    s32 field_0x60;
-    bool field_0x64;
+    s32 field_60;
+    bool field_64;
     IJudge* mJudge;
     f32 field_70;
     s32 field_74;
@@ -63,14 +63,14 @@ class PlayerActionGroundMoveControl {
     bool field_d5;
 
 public:
-    PlayerActionGroundMoveControl(al::LiveActor* parent, const PlayerConst* playerConst, const PlayerInput* input, const IUsePlayerCollision* collision);
+    PlayerActionGroundMoveControl(al::LiveActor* parent, const PlayerConst* playerConst, const PlayerInput* input,
+                                  const IUsePlayerCollision* collision);
     ~PlayerActionGroundMoveControl() = default;
     void appear();
     float calcAccelRate(float) const;
     void calcInitBrakeOnCounter();
-    void setup(float maxSpeed, float minSpeed, int runFrame, int stickOnBrakeFrame, int brakeFrame, float gravityMove, float , int counterBorder);
+    void setup(float maxSpeed, float minSpeed, int runFrame, int stickOnBrakeFrame, int brakeFrame, float gravityMove, float, int counterBorder);
     void updateNormalAndSnap(sead::Vector3f*);
     void set_field_c4() { field_c4 = true; };
     sead::Vector3f& getGroundNormal() { return mGroundNormal; };
-
 };

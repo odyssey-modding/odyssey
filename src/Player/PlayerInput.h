@@ -1,26 +1,25 @@
 #pragma once
 
-#include <math/seadVectorFwd.h>
 #include <math/seadMatrix.h>
+#include <math/seadVector.h>
 
 namespace al {
-    class LiveActor;
-} // namespace al
+class LiveActor;
+}  // namespace al
 
 class IUsePlayerCollision;
 class IUseDimension;
 
 class PlayerInput {
-
 public:
-    PlayerInput(const al::LiveActor*,const IUsePlayerCollision*,const IUseDimension*);
+    PlayerInput(const al::LiveActor*, const IUsePlayerCollision*, const IUseDimension*);
     ~PlayerInput() = default;
     void update();
     void updateWallAlong();
     void updateSnapMoveArea();
     void updateInput3D();
     sead::Vector2f& getMoveInputRaw(bool) const;
-    void calcMoveInputImpl(sead::Vector3f*, const sead::Vector3f&, bool ,bool ,bool);
+    void calcMoveInputImpl(sead::Vector3f*, const sead::Vector3f&, bool, bool, bool);
     void updateInput2D();
     void resetAlongWall();
     bool isNoInput();
@@ -135,8 +134,9 @@ public:
     sead::Vector2f& getSwingVelRightHand() const;
     sead::Vector2f& getSwingLeftHandDir() const;
     sead::Vector2f& getSwingRightHandDir() const;
-    void calcHoldMoveInput2D(sead::Vector3f*, const al::LiveActor*, const IUseDimension*, const sead::Vector2f&, const sead::Vector3f&, const sead::Matrix34f*);
-    void calcHoldMoveInput3D(sead::Vector3f*, const sead::Vector3f&,const sead::Matrix34f*);
+    void calcHoldMoveInput2D(sead::Vector3f*, const al::LiveActor*, const IUseDimension*, const sead::Vector2f&, const sead::Vector3f&,
+                             const sead::Matrix34f*);
+    void calcHoldMoveInput3D(sead::Vector3f*, const sead::Vector3f&, const sead::Matrix34f*);
     void snapWallAlongInput(sead::Vector3f*, const sead::Vector3f&);
     void snapAreaInput(sead::Vector3f*, const sead::Vector3f&);
     void resetHoldInfo3D();

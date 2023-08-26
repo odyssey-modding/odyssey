@@ -1,17 +1,17 @@
 #pragma once
 
-#include <prim/seadSafeString.h>
 #include <math/seadMatrix.h>
+#include <prim/seadSafeString.h>
 
 namespace al {
-    class ActorDitherAnimator;
-} // namespace al
+class ActorDitherAnimator;
+}  // namespace al
 
 class PlayerModelHolder;
 
 class PlayerAnimator {
 public:
-    PlayerAnimator(const PlayerModelHolder*,al::ActorDitherAnimator *);
+    PlayerAnimator(const PlayerModelHolder*, al::ActorDitherAnimator*);
     ~PlayerAnimator() = default;
     void startAnim(const sead::SafeString&);
     void updateAnimFrame();
@@ -48,7 +48,7 @@ public:
     void startUpperBodyAnimSubParts(const sead::SafeString&);
     void startUpperBodyAnimAndHeadVisKeep(const sead::SafeString&);
     void clearUpperBodyAnim();
-    void setBlendWeight(f32,f32,f32,f32,f32,f32);
+    void setBlendWeight(f32, f32, f32, f32, f32, f32);
     f32 getBlendWeight(s32);
     void startAnimDead();
     void startPress();
@@ -74,7 +74,7 @@ public:
     void recordRunStartAnimRate(f32);
     void calcModelJointRootMtx(sead::Matrix34f*);
     void startPartsAnim(const sead::SafeString&);
-    void setPartsAnimRate(f32,const char*);
-    void setPartsAnimFrame(f32,const char*);
+    void setPartsAnimRate(f32, const char*);
+    void setPartsAnimFrame(f32, const char*);
     void copyAnimLocal();
 };

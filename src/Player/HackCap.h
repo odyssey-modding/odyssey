@@ -18,15 +18,11 @@ class CapTargetInfo;
 
 class HackCap : public al::LiveActor {
 public:
-    enum class SwingHandType {
-        Left,
-        Right
-    };
+    enum class SwingHandType { Left, Right };
 
-    HackCap(const al::LiveActor*, const char*, const PlayerInput*, const PlayerAreaChecker*,
-            const PlayerWallActionHistory*, const PlayerCapActionHistory*, const PlayerEyeSensorHitHolder*,
-            const PlayerSeparateCapFlag*, const IUsePlayerCollision*, const IUsePlayerHeightCheck*,
-            const PlayerWetControl*, const PlayerWetControl*, HackCapJudgePreInputSeparateThrow*, 
+    HackCap(const al::LiveActor*, const char*, const PlayerInput*, const PlayerAreaChecker*, const PlayerWallActionHistory*,
+            const PlayerCapActionHistory*, const PlayerEyeSensorHitHolder*, const PlayerSeparateCapFlag*, const IUsePlayerCollision*,
+            const IUsePlayerHeightCheck*, const PlayerWetControl*, const PlayerWetControl*, HackCapJudgePreInputSeparateThrow*,
             HackCapJudgePreInputSeparateJump*);
 
     void init(const al::ActorInitInfo&);
@@ -52,15 +48,14 @@ public:
     void syncHackDamageVisibility(bool);
     void endHack();
     void startSpinAttack(const char*);
-    void startThrow(bool, const sead::Vector3f&, const sead::Vector3f&,float, const sead::Vector2f&,
-                    const sead::Vector2f&, const sead::Vector3f&,bool, const sead::Vector3f&,
-                    HackCap::SwingHandType, bool, float, int);
+    void startThrow(bool, const sead::Vector3f&, const sead::Vector3f&, float, const sead::Vector2f&, const sead::Vector2f&, const sead::Vector3f&,
+                    bool, const sead::Vector3f&, SwingHandType, bool, float, int);
 
     void startThrowSeparatePlay(const sead::Vector3f&, const sead::Vector3f&, float, bool);
     void startThrowSeparatePlayJump(const sead::Vector3f&, const sead::Vector3f&, float);
     void startCatch(const char*, bool, const sead::Vector3f&);
     void forcePutOn();
-    void forceHack(al::HitSensor*, const CapTargetInfo*); // :eyes:
+    void forceHack(al::HitSensor*, const CapTargetInfo*);
     void resetLockOnParam();
     void setupStartLockOn();
     void cancelCapState();
@@ -72,7 +67,7 @@ public:
     void recordCapJump(PlayerWallActionHistory*);
     void getFlyingSpeedMax();
     void getThrowSpeed();
-    void requestLockOnHitReaction(const CapTargetInfo*,const char*);
+    void requestLockOnHitReaction(const CapTargetInfo*, const char*);
     void startPuppet();
     void endPuppet();
     void hidePuppetCap();
@@ -98,8 +93,8 @@ public:
     void updateThrowJoint();
     void setupThrowStart();
     void getThrowHeight();
-    void checkEnableThrowStartSpace(sead::Vector3f*, sead::Vector3f*, sead::Vector3f*, const sead::Vector3f&,
-                                    float, float, bool, const sead::Vector3f&);
+    void checkEnableThrowStartSpace(sead::Vector3f*, sead::Vector3f*, sead::Vector3f*, const sead::Vector3f&, float, float, bool,
+                                    const sead::Vector3f&);
     void updateWaterArea();
     void getThrowRange();
     void getThrowBrakeTime();
@@ -135,7 +130,6 @@ public:
     void trySendAttackCollideAndReaction(bool*);
     void stayWallHit();
     void endHackThrow();
-
     bool isFlying() const;
     bool isNoPutOnHide() const;
     bool isEnableThrow() const;
@@ -164,7 +158,6 @@ public:
     bool isThrowTypeRolling() const;
     bool isEnableHackThrowAutoCatch() const;
     bool isEnableCapTouchJumpInput() const;
-
     void exeLockOn();
     void exeHack();
     void exeSpinAttack();

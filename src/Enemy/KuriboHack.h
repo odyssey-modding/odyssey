@@ -19,64 +19,63 @@ class PlayerCeilingCheck;
 class DisregardReceiver;
 
 namespace al {
-    class WaterSurfaceFinder;
-    class JointSpringControllerHolder;
+class WaterSurfaceFinder;
+class JointSpringControllerHolder;
 
-} // namespace al
+}  // namespace al
 
 class KuriboHack : public al::LiveActor {
-private:
-    CapTargetInfo *mCapTargetInfo;
-    EnemyStateSwoon *mStateSwoon;
-    EnemyStateReset *mStateReset;
-    EnemyStateWander *mStateWander;
-    ActorStateSandGeyser *mStateSandGeyser;
-    KuriboStateHack *mStateHack;
-    EnemyStateBlowDown *mStateBlowDown;
-    al::JointSpringControllerHolder *mJointSpringControllerHolder;
-    bool field_148; // used a lot, in conjunction with jointspringcontrollerholder
-    EnemyCap *mEnemyCap;
+public:
+    CapTargetInfo* mCapTargetInfo;
+    EnemyStateSwoon* mStateSwoon;
+    EnemyStateReset* mStateReset;
+    EnemyStateWander* mStateWander;
+    ActorStateSandGeyser* mStateSandGeyser;
+    KuriboStateHack* mStateHack;
+    EnemyStateBlowDown* mStateBlowDown;
+    al::JointSpringControllerHolder* mJointSpringControllerHolder;
+    bool mIsKuriboActive;  // really abstract name... only false when kuribo is swooning, chase end, and right after damage taken
+    EnemyCap* mEnemyCap;
     bool mEyebrowOff;
-    KuriboHack *mKuriboTowerTop;
+    KuriboHack* mKuriboTowerBottom;
     bool mIsGold;
-    s32 mChaseTimer; // name unsure
-    CollisionPartsFilterBase *mCollisionPartsFilterBase;
-    sead::Vector3f field_178; // some sort of distance
+    s32 mChaseEndTimer;  // name unsure
+    CollisionPartsFilterBase* mCollisionPartsFilterBase;
+    sead::Vector3f mNextKuriboTrans;  // position of the goomba directly above in a tower
     f32 mClippingRadius;
-    PlayerPushReceiver *mPlayerPushReceiver;
-    CollisionMultiShape *mCollisionMultiShape;
-    CollisionShapeKeeper *mCollisionShapeKeeper;
+    PlayerPushReceiver* mPlayerPushReceiver;
+    CollisionMultiShape* mCollisionMultiShape;
+    CollisionShapeKeeper* mCollisionShapeKeeper;
     f32 mSandSinkJumpHeight;
-    s32 mKuriboTowerIdx; // name unsure
+    s32 mKuriboTowerIdx;  // name unsure
     s32 mStartRideTimer;
-    s32 mDetachTimer;
-    u32 mTowerSize;
+    s32 field_1ac;
+    u32 mHackEndTimer;
     s32 mShiftType;
     s32 mCapCancelLockOnTimer;
-    f32 mTransY;
-    PlayerCeilingCheck *mPlayerCeilingCheck;
-    bool mIsNearCeiling;
+    f32 mLastHackEndPosY;
+    PlayerCeilingCheck* mPlayerCeilingCheck;
+    bool mIsHackJustEnded;
     sead::Vector3f mHackEndPos;
     s32 mHipDropTimer;
-    const char *mJointName;
+    const char* mJointName;
     sead::Matrix34f mCapLockOnMtx;
     sead::Matrix34f mInitMtx;
-    al::LiveActor *mSensorHost;
+    al::LiveActor* mSensorHost;
     sead::Vector3f mHostDistance;
-    al::HitSensor *mHipDropProbe;
+    al::HitSensor* mHipDropProbe;
     sead::Vector3f mHipDropProbeTrans;
-    al::WaterSurfaceFinder *mWaterSurfaceFinder;
+    al::WaterSurfaceFinder* mWaterSurfaceFinder;
     sead::Matrix34f mWaterSurfaceEffectMtx;
     sead::Matrix34f mSandSurfaceEffectMtx;
-    bool unused_2e0; // set true in ctor, only ever checked if false
-    sead::OffsetList<KuriboHack> mKuriboTowerList;
-    void *unused_300;
-    void *unused_308;
-    DisregardReceiver *mDisregardReceiver;
-    u32 mColliderTimer; // really really unsure
+    bool unused_2e0;  // set true in ctor, only ever checked if false
+    sead::OffsetList<KuriboHack> mKuriboTowerOffsetList;
+    sead::ListNode mKuriboTowerList;
+    DisregardReceiver* mDisregardReceiver;
+    u32 field_318;
 
-public:KuriboHack(const char *);
-    void init(const al::ActorInitInfo &) override;
+    KuriboHack(const char*);
+    void init(const al::ActorInitInfo&) override;
     void initAfterPlacement() override;
     void appear() override;
     void makeActorAlive() override;
@@ -86,20 +85,21 @@ public:KuriboHack(const char *);
     void calcAnim() override;
     void startClipped() override;
     void endClipped() override;
-    void attackSensor(al::HitSensor *, al::HitSensor *) override;
-    bool receiveMsg(const al::SensorMsg *, al::HitSensor *, al::HitSensor *) override;
+    void attackSensor(al::HitSensor*, al::HitSensor*) override;
+    bool receiveMsg(const al::SensorMsg*, al::HitSensor*, al::HitSensor*) override;
     void control() override;
     void updateCollider() override;
-    bool tryCreateEnemyCap(const al::ActorInitInfo &);
+
+    bool tryCreateEnemyCap(const al::ActorInitInfo&);
     void setNerveRideOnCommon();
     void resetRideOnPosBottomWithDefaultParam();
     void onSnapShotMode();
     void offSnapShotMode();
     void onDynamics();
-    void detach(KuriboHack *);
+    void detach(KuriboHack*);
     void checkSandSinkPrecisely() const;
-    void solveCollisionInHacking(const sead::Vector3f &);
-    void pushFrom(KuriboHack *, const sead::Vector3f &);
+    void solveCollisionInHacking(const sead::Vector3f&);
+    void pushFrom(KuriboHack*, const sead::Vector3f&);
     void updateCapLockOnMtx();
     void forceStartClipped();
     void appearFall();
@@ -138,12 +138,12 @@ public:KuriboHack(const char *);
     void exeDrown();
     void exeEatBind();
     void prepareKillByShineGet();
-    bool tryReceiveMsgHack(const al::SensorMsg *, al::HitSensor *, al::HitSensor *);
-    bool tryReceiveMsgWaitHack(const al::SensorMsg *, al::HitSensor *, al::HitSensor *);
-    bool tryReceiveMsgRideOn(const al::SensorMsg *, al::HitSensor *, al::HitSensor *);
-    bool tryReceiveMsgEatBind(const al::SensorMsg *, al::HitSensor *, al::HitSensor *);
-    bool tryReceiveMsgNormal(const al::SensorMsg *, al::HitSensor *, al::HitSensor *);
-    void transferGroup(sead::OffsetList<KuriboHack> *);
+    bool tryReceiveMsgHack(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
+    bool tryReceiveMsgWaitHack(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
+    bool tryReceiveMsgRideOn(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
+    bool tryReceiveMsgEatBind(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
+    bool tryReceiveMsgNormal(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
+    void transferGroup(sead::OffsetList<KuriboHack>*);
     void eraseFromHost();
     void notifyJumpSink(f32);
     bool isSinking() const;
@@ -151,16 +151,16 @@ public:KuriboHack(const char *);
     void resetRideOnPosBottom(f32);
     void validateSpecialPush(u32);
     void startRideOnRotation();
-    void applyRideOnQuat(const sead::Quatf &);
+    void applyRideOnQuat(const sead::Quatf&);
     bool isInvalidHackDamage() const;
-    void validateHipDropProbe(al::HitSensor *);
+    void validateHipDropProbe(al::HitSensor*);
     void indexInHostList() const;
     void getRideOnRowSize();
     bool isCapWorn() const;
     bool isEnableHack() const;
-    bool trySetHipDropActor(const al::SensorMsg *, al::HitSensor *);
+    bool trySetHipDropActor(const al::SensorMsg*, al::HitSensor*);
     void addCapToHackDemo();
-    bool tryReceiveMsgPush(const al::SensorMsg *, al::HitSensor *, al::HitSensor *);
-    bool tryRideOnHack(const al::SensorMsg *, al::HitSensor *, al::HitSensor *);
-    void notifyKillByShineGetToGroup(const al::SensorMsg *, al::HitSensor *, al::HitSensor *);
+    bool tryReceiveMsgPush(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
+    bool tryRideOnHack(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
+    void notifyKillByShineGetToGroup(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
 };

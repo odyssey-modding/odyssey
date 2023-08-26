@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameDataHolderWriter.h"
+#include "System/GameDataHolderWriter.h"
 
 namespace al {
     class IUseSceneObjHolder;
@@ -10,6 +10,6 @@ namespace al {
 class GameDataHolderAccessor : public GameDataHolderWriter
 {
 public:
-    GameDataHolderAccessor(const al::IUseSceneObjHolder* IUseObjHolder);
+    GameDataHolderAccessor(const al::IUseSceneObjHolder* iUseSceneObjHolder);
     GameDataHolderAccessor(const al::SceneObjHolder* objHolder);
 };

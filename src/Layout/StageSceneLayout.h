@@ -21,6 +21,7 @@ namespace al {
 } // namespace al
 
 class StageSceneLayout : public al::NerveStateBase {
+private:
     CoinCounter* mCoinCounter;
     CounterLifeCtrl* mCounterLifeCtrl;
     ShineCounter* mShineCounter;
@@ -38,6 +39,7 @@ class StageSceneLayout : public al::NerveStateBase {
 
 public:
     StageSceneLayout(const char*, const al::LayoutInitInfo&, const al::PlayerHolder*, const al::SubCameraRenderer*);
+    ~StageSceneLayout() override;
     void startActionAll(const char*);
     void control();
     void updatePlayGuideMenuText();
@@ -80,5 +82,4 @@ public:
     void updateKidsModeLayout();
     void startShineCountAnim(bool);
     bool isEndShineCountAnim() const;
-    ~StageSceneLayout();
 };

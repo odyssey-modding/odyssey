@@ -11,17 +11,15 @@
 #include "Util/Math.h"
 
 namespace {
-    NERVE_IMPL(PlayerStateGroundSpin, GroundSpin);
-    struct {
-        NERVE_MAKE(PlayerStateGroundSpin, GroundSpin);
-    } nrvPlayerStateGroundSpin;
+NERVE_IMPL(PlayerStateGroundSpin, GroundSpin);
+struct {
+    NERVE_MAKE(PlayerStateGroundSpin, GroundSpin);
+} nrvPlayerStateGroundSpin;
 }  // namespace
 
-PlayerStateGroundSpin::PlayerStateGroundSpin(al::LiveActor *parent, const IUsePlayerCollision *collision,
-                                             const PlayerInput *input,
-                                             const PlayerConst *playerConst, PlayerAnimator *animator)
-        : ActorStateBase("地上スピン", parent), mCollision(collision), mPlayerInput(input), mPlayerConst(playerConst),
-          mPlayerAnimator(animator) {
+PlayerStateGroundSpin::PlayerStateGroundSpin(al::LiveActor* parent, const IUsePlayerCollision* collision, const PlayerInput* input,
+                                             const PlayerConst* playerConst, PlayerAnimator* animator)
+    : ActorStateBase("地上スピン", parent), mCollision(collision), mPlayerInput(input), mPlayerConst(playerConst), mPlayerAnimator(animator) {
     mGroundMoveCtrl = new PlayerActionGroundMoveControl(parent, playerConst, input, collision);
     mGroundMoveCtrl->set_field_c4();
     mGroundMoveCtrl->setup(0.0f, 0.0f, 0, 0, 0, 0.0f, 0.0f, 0);
@@ -51,12 +49,12 @@ void PlayerStateGroundSpin::exeGroundSpin() {
     velocityLength = velocityLength > grndSpinMax ? velocityLength : grndSpinMax;
     velocity += mPlayerConst->getGroundSpinAccelRate() * input;
     al::limitLength(&velocity, velocity, velocityLength);
-    al::setVelocity(getActor(), velocity - mGroundMoveCtrl->getGroundNormal() * mPlayerConst->getGravityMove());
+    al::setVelocity(getParent(), velocity - mGroundMoveCtrl->getGroundNormal() * mPlayerConst->getGravityMove());
     sead::Vector3f frontDir = {0.0f, 0.0f, 0.0f};
     if (!al::tryNormalizeOrZero(&frontDir, velocity)) {
-        al::calcFrontDir(&frontDir, getActor());
+        al::calcFrontDir(&frontDir, getParent());
     }
-    rs::slerpUpFront(getActor(), sead::Vector3f::ey, frontDir, mPlayerConst->getSlerpQuatRate(), 0.0);
+    rs::slerpUpFront(getParent(), sead::Vector3f::ey, frontDir, mPlayerConst->getSlerpQuatRate(), 0.0);
     if (!al::isLessStep(this, mPlayerConst->getGroundSpinFrame())) {
         kill();
     }

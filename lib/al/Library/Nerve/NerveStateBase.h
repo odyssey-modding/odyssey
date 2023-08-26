@@ -11,7 +11,7 @@ private:
 
 public:
     NerveStateBase(const char* stateName);
-    inline ~NerveStateBase();
+    __attribute__((always_inline)) ~NerveStateBase() {}
     virtual void init();
     virtual void appear();
     virtual void kill();
@@ -23,10 +23,11 @@ public:
 
 class ActorStateBase : public al::NerveStateBase {
 private:
-    al::LiveActor* mActor;
+    al::LiveActor* mParent;
+
 public:
     ActorStateBase(const char* stateName, al::LiveActor* parent);
-    al::LiveActor* getActor() const { return mActor; };
+    al::LiveActor* getParent() const { return mParent; };
 };
 
 }  // namespace al

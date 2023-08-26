@@ -28,5 +28,5 @@ bool NerveStateBase::update() {
 
 void NerveStateBase::control() {}
 
-ActorStateBase::ActorStateBase(const char* name, al::LiveActor* parent) : al::NerveStateBase(name), mActor(parent) {}
+ActorStateBase::ActorStateBase(const char* name, al::LiveActor* parent) : al::NerveStateBase(name), mParent(parent) {}
 }  // namespace al
