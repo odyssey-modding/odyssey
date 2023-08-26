@@ -2,7 +2,6 @@
 
 namespace al {
 NerveStateBase::NerveStateBase(const char* stateName) : al::NerveExecutor(stateName) {}
-NerveStateBase::~NerveStateBase() = default;
 
 void NerveStateBase::init() {}
 

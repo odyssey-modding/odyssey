@@ -74,18 +74,18 @@ void PlayerStateHack::exeHackDemo() {
     sead::Vector3f cameraFront;
     sead::Vector3f reverseCameraFront;
 
-    auto actor = getParent();
+    auto parent = getParent();
     auto hackActor = mHackKeeper->getHack();
 
     if (al::isFirstStep(this)) {
         mAnimator->startAnim("Wait");
-        al::offCollide(actor);
-        al::setVelocityZero(actor);
+        al::offCollide(parent);
+        al::setVelocityZero(parent);
         sead::Matrix34f sideFrontPosMtx = sead::Matrix34f::ident;
         frontDir = {0.0f, 0.0f, 0.0f};
         upDir = {0.0f, 0.0f, 0.0f};
-        al::calcFrontDir(&frontDir, actor);
-        al::calcUpDir(&upDir, actor);
+        al::calcFrontDir(&frontDir, parent);
+        al::calcUpDir(&upDir, parent);
         al::makeMtxSideFrontPos(&sideFrontPosMtx, -upDir, frontDir, mSensorTrans);
         mHackKeeper->appearHackDemoModel(sideFrontPosMtx, 0.02);
     } else if (al::isStep(this, 1)) {
@@ -126,17 +126,17 @@ void PlayerStateHack::exeHackDemo() {
         sead::Vector3CalcCommon<f32>::sub(frontDir, mNewSensorTrans, beforeLerpSensorTrans);
 
         if (!al::tryNormalizeOrZero(&frontDir)) {
-            sead::Vector3f* actorTrans = &al::getTrans(actor);
+            sead::Vector3f* actorTrans = &al::getTrans(parent);
             sead::Vector3CalcCommon<f32>::sub(frontDir, *capTrans, *actorTrans);
             if (!al::tryNormalizeOrZero(&frontDir)) {
-                al::calcFrontDir(&frontDir, actor);
+                al::calcFrontDir(&frontDir, parent);
             }
         }
-        upDir = -al::getGravity(actor);
+        upDir = -al::getGravity(parent);
         if (al::isParallelDirection(upDir, frontDir, 0.01)) {
-            al::calcFrontDir(&upDir, actor);
+            al::calcFrontDir(&upDir, parent);
             if (al::isParallelDirection(upDir, frontDir, 0.01)) {
-                al::calcUpDir(&upDir, actor);
+                al::calcUpDir(&upDir, parent);
             }
         }
         al::makeMtxFrontUpPos(&mPossessTraceMtx, frontDir, upDir, mNewSensorTrans);
@@ -144,7 +144,7 @@ void PlayerStateHack::exeHackDemo() {
         downDir = -upDir;
         cameraFront = {0.0f, 0.0f, 0.0f};
 
-        al::calcCameraFront(&cameraFront, actor, 0);
+        al::calcCameraFront(&cameraFront, parent, 0);
         if (al::isParallelDirection(downDir, cameraFront, 0.01)) {
             if (al::isReverseDirection(downDir, cameraFront, 0.01)) {
                 downDir *= -1;
@@ -180,13 +180,13 @@ void PlayerStateHack::exeHackDemo() {
 }
 
 void PlayerStateHack::exeHackDemoPuppetable() {
-    auto actor = getParent();
+    auto parent = getParent();
     if (al::isFirstStep(this)) {
         mAnimator->startAnim("Wait");
         mModelChanger->hideModel();
-        al::offCollide(actor);
-        al::setVelocityZero(actor);
-        al::tryKillEmitterAndParticleAll(actor);
+        al::offCollide(parent);
+        al::setVelocityZero(parent);
+        al::tryKillEmitterAndParticleAll(parent);
     }
     if (!mHackKeeper->getHackSensor() || !mHackKeeper->isHackDemoStarted()) {
         mHackCap->noticeHackDemoPuppetableEnd();
@@ -197,32 +197,28 @@ void PlayerStateHack::exeHackDemoPuppetable() {
 }
 
 bool PlayerStateHack::isEnableCancelHack() const {
-    if (al::isNerve(this, &nrvPlayerStateHack.Hack) && (!mHackKeeper->getHackSensor() || !mHackKeeper->isStartedHacking())) {
-        return al::isGreaterEqualStep(this, 13);
-    }
-    return false;
+    return al::isNerve(this, &nrvPlayerStateHack.Hack) && (!mHackKeeper->getHackSensor() || !mHackKeeper->isStartedHacking()) &&
+           al::isGreaterEqualStep(this, 13);
 }
 
 bool PlayerStateHack::isEnableChangeState() const {
-    auto hackKeeper = mHackKeeper;
-    if (hackKeeper->isHack() || (hackKeeper->getHackSensor() && hackKeeper->isStartedHacking()) || al::isNerve(this, &nrvPlayerStateHack.HackDemo)) {
+    if (mHackKeeper->isHack())
         return false;
-    } else {
-        return !al::isNerve(this, &nrvPlayerStateHack.HackDemoPuppetable);
-    }
+    if (mHackKeeper->getHackSensor() && mHackKeeper->isStartedHacking())
+        return false;
+    if (al::isNerve(this, &nrvPlayerStateHack.HackDemo))
+        return false;
+    if (al::isNerve(this, &nrvPlayerStateHack.HackDemoPuppetable))
+        return false;
+    return true;
 }
 
 bool PlayerStateHack::isEnableModelSyncShowHide() const {
-    if (al::isNerve(this, &nrvPlayerStateHack.Hack))
-        return mHackKeeper->isHack();
-    else
-        return true;
+    return !al::isNerve(this, &nrvPlayerStateHack.Hack) || mHackKeeper->isHack();
 }
 
 bool PlayerStateHack::isIgnoreUpdateCollider() const {
-    if (isDead())
-        return true;
-    return !al::isNerve(this, &End);
+    return isDead() || !al::isNerve(this, &End);
 }
 
 void PlayerStateHack::prepareEndHack() {
@@ -251,14 +247,11 @@ void PlayerStateHack::prepareStartHack(const al::HitSensor* source, const al::Hi
     mHackCap->startHack();
     sead::Vector3f upDir;
     al::calcUpDir(&upDir, getParent());
-    f32 sensorDistance = al::calcDistance(source, target);
-    sensorDistance -= 200.0f;
-    sensorDistance = (sensorDistance < 0.0f ? 0.0f : sensorDistance) / 30.f;
-    s32 sensorDistInt = (s32)(sensorDistance >= 0 ? sensorDistance + 0.5f : sensorDistance - 0.5f);
+    f32 sensorDistance = sead::Mathf::max(al::calcDistance(source, target) - 200.0f, 0.0f) / 30.0f;
 
-    s32 newSensorDistInt = (sensorDistInt + 15) > 30 ? 30 : sensorDistInt + 15;
+    s32 sensorDistInt = (s32)(sensorDistance >= 0 ? sensorDistance + 0.5f : sensorDistance - 0.5f);  // potential sead::Mathf func
 
-    mHackDemoStartLength = sensorDistInt < 0 ? 15 : newSensorDistInt;
+    mHackDemoStartLength = sead::Mathi::clamp(sensorDistInt + 15, 15, 30);
     mTrans = al::getTrans(getParent());
     sead::Vector3f sensorTrans = al::getSensorPos(target) + upDir * 0.0f;
 

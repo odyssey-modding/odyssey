@@ -64,13 +64,13 @@ public:
     void appearHackDemoModel(const sead::Matrix34f&, float);
     void updateHackDemoModel(const sead::Matrix34f&, float);
     void deleteHackDemoModelEffect();
-    void setPuppetable(bool isPuppetable) { mIsPuppetable = isPuppetable; };
-    bool isPuppetable2() const { return mIsPuppetable2; };
-    bool isHack() const { return mIsHack; };
-    bool isHackDemoStarted() const { return mIsHackDemoStarted; };
-    bool isStartedHacking() const { return mIsStartedHacking; };
-    al::LiveActor* getHack() const { return mHackActor; };
-    al::HitSensor* getHackSensor() const { return mHackHitSensor; };
+    void setPuppetable(bool isPuppetable) { mIsPuppetable = isPuppetable; }
+    bool isPuppetable2() const { return mIsPuppetable2; }
+    bool isHack() const { return mIsHack; }
+    bool isHackDemoStarted() const { return mIsHackDemoStarted; }
+    bool isStartedHacking() const { return mIsStartedHacking; }
+    al::LiveActor* getHack() const { return mHackActor; }
+    al::HitSensor* getHackSensor() const { return mHackHitSensor; }
 };
 
 class IUsePlayerHack {
