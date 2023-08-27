@@ -197,8 +197,13 @@ void PlayerStateHack::exeHackDemoPuppetable() {
 }
 
 bool PlayerStateHack::isEnableCancelHack() const {
-    return al::isNerve(this, &nrvPlayerStateHack.Hack) && (!mHackKeeper->getHackSensor() || !mHackKeeper->isStartedHacking()) &&
-           al::isGreaterEqualStep(this, 13);
+    if (!al::isNerve(this, &nrvPlayerStateHack.Hack))
+        return false;
+    if (mHackKeeper->getHackSensor() && mHackKeeper->isStartedHacking())
+        return false;
+    if (!al::isGreaterEqualStep(this, 13))
+        return false;
+    return true;
 }
 
 bool PlayerStateHack::isEnableChangeState() const {
@@ -245,18 +250,15 @@ void PlayerStateHack::prepareStageStartHack() {
 
 void PlayerStateHack::prepareStartHack(const al::HitSensor* source, const al::HitSensor* target) {
     mHackCap->startHack();
+    
     sead::Vector3f upDir;
     al::calcUpDir(&upDir, getParent());
-    f32 sensorDistance = sead::Mathf::max(al::calcDistance(source, target) - 200.0f, 0.0f) / 30.0f;
 
+    f32 sensorDistance = sead::Mathf::clampMin(al::calcDistance(source, target) - 200.0f, 0.0f) / 30.0f;
     s32 sensorDistInt = (s32)(sensorDistance >= 0 ? sensorDistance + 0.5f : sensorDistance - 0.5f);  // potential sead::Mathf func
-
     mHackDemoStartLength = sead::Mathi::clamp(sensorDistInt + 15, 15, 30);
+
     mTrans = al::getTrans(getParent());
-    sead::Vector3f sensorTrans = al::getSensorPos(target) + upDir * 0.0f;
-
-    mSensorTrans = sensorTrans;
-    mNewSensorTrans = sensorTrans;
-
+    mNewSensorTrans = mSensorTrans = al::getSensorPos(target) + upDir * 0.0f;
     al::startHitReaction(getParent(), "ひょうい開始");
 }
