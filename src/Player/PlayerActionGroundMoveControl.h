@@ -65,12 +65,11 @@ private:
 public:
     PlayerActionGroundMoveControl(al::LiveActor* parent, const PlayerConst* playerConst, const PlayerInput* input,
                                   const IUsePlayerCollision* collision);
-    ~PlayerActionGroundMoveControl() = default;
     void appear();
     float calcAccelRate(float) const;
     void calcInitBrakeOnCounter();
     void setup(float maxSpeed, float minSpeed, int runFrame, int stickOnBrakeFrame, int brakeFrame, float gravityMove, float, int counterBorder);
     void updateNormalAndSnap(sead::Vector3f*);
     void set_field_c4() { field_c4 = true; };
-    sead::Vector3f& getGroundNormal() { return mGroundNormal; };
+    const sead::Vector3f& getGroundNormal() const { return mGroundNormal; };
 };

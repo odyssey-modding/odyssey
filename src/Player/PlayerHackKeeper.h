@@ -48,7 +48,7 @@ private:
     CapTargetInfo* mStageStartCapTargetInfo;
     PlayerHackStartTexKeeper* mHackStartTexKeeper;
     al::LiveActor* mHackModel;
-    sead::PtrArray<void> mHackModelSlices;
+    sead::PtrArray<sead::Matrix34f> mHackModelSlices;
     sead::Matrix34f* field_b8;
     s32 field_c0;
     s32 field_c4;
