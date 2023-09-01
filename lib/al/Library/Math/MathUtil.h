@@ -25,6 +25,11 @@ bool isNearZero(const sead::Vector3f& value, f32 tolerance);
 bool isNearZero(const sead::Matrix34f& value, f32 tolerance);
 bool isNearZeroOrGreater(f32 value, f32 tolerance);
 bool isNearZeroOrLess(f32 value, f32 tolerance);
+bool isParallelDirection(const sead::Vector3f& dir1, sead::Vector3f const& dir2, float tolerance);
+bool isReverseDirection(const sead::Vector3f& dir1, sead::Vector3f const& dir2, float tolerance);
+
+bool tryNormalizeOrZero(sead::Vector3f* out, const sead::Vector3f& in);
+bool tryNormalizeOrZero(sead::Vector3f* out);
 
 f32 modf(f32 a, f32 b);
 
@@ -36,11 +41,17 @@ void calcQuatFront(sead::Vector3f* out, const sead::Quatf& quat);
 void makeMtxRotateTrans(sead::Matrix34f* out, const sead::Vector3f& rotate, const sead::Vector3f& trans);
 void makeMtxFrontUpPos(sead::Matrix34f* out, const sead::Vector3f& front, const sead::Vector3f& up, const sead::Vector3f& pos);
 void makeMtxUpFrontPos(sead::Matrix34f* out, const sead::Vector3f& up, const sead::Vector3f& front, const sead::Vector3f& pos);
+void makeMtxSideFrontPos(sead::Matrix34f* out, const sead::Vector3f& side, const sead::Vector3f& front, const sead::Vector3f& pos);
+void makeQuatAxisRotation(sead::Quatf* out, const sead::Vector3f& dir1, const sead::Vector3f& dir2, const sead::Vector3f& dir3, float);
 
+
+void alongVectorNormalH(sead::Vector3f* out, const sead::Vector3f& param_2, const sead::Vector3f& param_3, const sead::Vector3f& param_4);
+
+bool limitLength(sead::Vector3f* out, const sead::Vector3f& vector, float length);
 void separateVectorHV(sead::Vector3f*, sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&);
 
 void lerpVec(sead::Vector2f*, const sead::Vector2f&, const sead::Vector2f&, float);
-void lerpVec(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&, float);
 void lerpVecHV(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&, const sead::Vector3f&, float, float);
+void lerpVec(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&, float);
 
 }  // namespace al

@@ -2,7 +2,6 @@
 
 namespace al {
 NerveStateBase::NerveStateBase(const char* stateName) : al::NerveExecutor(stateName) {}
-NerveStateBase::~NerveStateBase() = default;
 
 void NerveStateBase::init() {}
 
@@ -28,5 +27,5 @@ bool NerveStateBase::update() {
 
 void NerveStateBase::control() {}
 
-ActorStateBase::ActorStateBase(const char* name, al::LiveActor* actor) : al::NerveStateBase(name), mActor(actor) {}
+ActorStateBase::ActorStateBase(const char* name, al::LiveActor* parent) : al::NerveStateBase(name), mParent(parent) {}
 }  // namespace al
