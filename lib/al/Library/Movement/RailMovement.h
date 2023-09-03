@@ -6,13 +6,13 @@
 namespace al {
 class SwingMovement : public NerveExecutor {
 private:
-    s32 field_10;
-    s32 mDelayRate;
-    f32 mSwingAngle;
-    s32 mSwingCycle;
-    s32 mStopTime;
-    f32 mOffsetRotate;
-    f32 field_28;
+    s32 field_10 = 0;
+    s32 mDelayRate = 0;
+    f32 mSwingAngle = 45.0;
+    s32 mSwingCycle = 240;
+    s32 mStopTime = 6;
+    f32 mOffsetRotate = 0.0;
+    f32 field_28 = 0.0;
 
 public:
     SwingMovement();
