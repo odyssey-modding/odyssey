@@ -8,11 +8,11 @@ class SwingMovement : public NerveExecutor {
 private:
     s32 field_10 = 0;
     s32 mDelayRate = 0;
-    f32 mSwingAngle = 45.0;
-    s32 mSwingCycle = 240;
+    f32 mSwingAngle = 45.0f;
+    s32 mSwingCycle = 240.0f;
     s32 mStopTime = 6;
-    f32 mOffsetRotate = 0.0;
-    f32 field_28 = 0.0;
+    f32 mOffsetRotate = 0.0f;
+    f32 field_28 = 0.0f;
 
 public:
     SwingMovement();
