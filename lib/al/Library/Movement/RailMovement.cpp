@@ -18,13 +18,15 @@ struct {
 
 namespace al {
 
-SwingMovement::SwingMovement() : al::NerveExecutor("スイング動作計算"), mSwingAngle(45.0), mSwingCycle(240),
-    mStopTime(6), field_10(0), mDelayRate(0), mOffsetRotate(0.0), field_28(0.0) {
+SwingMovement::SwingMovement()
+    : al::NerveExecutor("スイング動作計算"), mSwingAngle(45.0), mSwingCycle(240), mStopTime(6), field_10(0), mDelayRate(0), mOffsetRotate(0.0),
+      field_28(0.0) {
     initNerve(&NrvSwingMovement.Stop, 0);
 }
 
-SwingMovement::SwingMovement(const al::ActorInitInfo& initInfo) : al::NerveExecutor("スイング動作計算"), mSwingAngle(45.0), mSwingCycle(240),
-    mStopTime(6), field_10(0), mDelayRate(0), mOffsetRotate(0.0), field_28(0.0) {
+SwingMovement::SwingMovement(const al::ActorInitInfo& initInfo)
+    : al::NerveExecutor("スイング動作計算"), mSwingAngle(45.0), mSwingCycle(240), mStopTime(6), field_10(0), mDelayRate(0), mOffsetRotate(0.0),
+      field_28(0.0) {
     tryGetArg(&mSwingAngle, initInfo, "SwingAngle");
     tryGetArg(&mSwingCycle, initInfo, "SwingCycle");
     tryGetArg(&mDelayRate, initInfo, "DelayRate");
@@ -35,10 +37,6 @@ SwingMovement::SwingMovement(const al::ActorInitInfo& initInfo) : al::NerveExecu
 
     updateRotate();
     initNerve(&NrvSwingMovement.Stop, 0);
-}
-
-bool SwingMovement::updateRotate() {
-    return true;
 }
 
 void SwingMovement::exeMove() {
