@@ -1,5 +1,6 @@
-#include <al/Library/Math/MathSpeedUtil.h>
 #include <al/Library/Movement/RailMovement.h>
+
+#include <al/Library/Math/MathSpeedUtil.h>
 #include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Placement/PlacementFunction.h>
 
