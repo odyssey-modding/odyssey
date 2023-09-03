@@ -9,7 +9,7 @@ private:
     s32 field_10;
     s32 mDelayRate;
     f32 mSwingAngle;
-    f32 mSwingCycle;
+    s32 mSwingCycle;
     s32 mStopTime;
     f32 mOffsetRotate;
     f32 field_28;
