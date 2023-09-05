@@ -2,12 +2,14 @@
 
 #include <math/seadMatrix.h>
 #include <math/seadVector.h>
+#include "al/Library/Factory/Factory.h"
 #include "al/Library/HostIO/HioNode.h"
 #include "al/Library/Scene/SceneObjHolder.h"
 #include "al/Library/Stage/StageSwitchKeeper.h"
 
 namespace al {
 class AreaInitInfo;
+class AreaObjGroup;
 class AreaShape;
 class PlacementInfo;
 class SceneObjHolder;
@@ -38,4 +40,15 @@ public:
 
     s32 getPriority() { return mPriority; };
 };
+
+class AreaObjFactory : public al::Factory<al::AreaObj* (*)()> {
+private:
+    s32 mUnknown; // might be empty space
+    AreaObjGroup** mAreaGroups = nullptr;
+    s32 mNumBuffers = 0;
+public:
+    AreaObjFactory(const char* factoryName);
+    s32 tryFindAddBufferSize(const char* bufferName) const;
+};
+
 }  // namespace al

@@ -29,6 +29,7 @@ public:
 
     virtual const char* convertName(const char* name) const { return name; }
     al::NameToCreator<T>* getFactoryEntries() const { return mFactoryEntries; }
+    int getNumFactoryEntries() const { return mNumFactoryEntries; }
 };
 
 }  // namespace al

@@ -12,10 +12,10 @@ class AreaInitInfo;
 
 class AreaObjDirector {
 private:
-    al::AreaObjFactory* mFactory;
-    al::AreaObjMtxConnecterHolder* mMtxConnecterHolder;
-    al::AreaObjGroup** mAreaGroups;
-    u32 mAreaGroupCount;
+    al::AreaObjFactory* mFactory = nullptr;
+    al::AreaObjMtxConnecterHolder* mMtxConnecterHolder = nullptr;
+    al::AreaObjGroup** mAreaGroups = nullptr;
+    u32 mAreaGroupCount = 0;
 
 public:
     AreaObjDirector();
@@ -25,7 +25,7 @@ public:
     void placement(const al::AreaInitInfo& initInfo);
     void placement(const al::AreaInitInfo& initInfo, s32);
     void createAreaObjGroup(const al::AreaInitInfo& initInfo);
-    void createAreaObjGroupBuffer(const al::AreaInitInfo& initInfo);
+    void createAreaObjGroupBuffer();
     void placementAreaObj(const al::AreaInitInfo& initInfo);
     al::AreaObjGroup* getAreaObjGroup(const char* name);
     bool isExistAreaGroup(const char* name);

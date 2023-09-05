@@ -1,8 +1,10 @@
 #include "al/Library/Area/AreaObj.h"
 
 #include "al/Library/Area/AreaInitInfo.h"
+#include "al/Library/Area/AreaObjGroup.h"
 #include "al/Library/Area/AreaShape.h"
 #include "al/Library/Factory/Factory.h"
+#include "al/Library/LiveActor/ActorInitFunction.h"
 #include "al/Library/Placement/PlacementFunction.h"
 #include "al/Library/Placement/PlacementInfo.h"
 #include "al/Library/Stage/ListenStageSwitch.h"
@@ -80,6 +82,35 @@ void AreaObj::validate() {
 
 void AreaObj::invalidate() {
     isValid = false;
+}
+
+// not even CLOSE to matching
+AreaObj* createAreaObj(const al::ActorInitInfo& actorInitInfo, const char* name) {
+    al::AreaInitInfo areaInitInfo;
+    areaInitInfo.set(actorInitInfo.getPlacementInfo(), actorInitInfo.getStageSwitchDirector(), actorInitInfo.getSceneObjHolder());
+    AreaObj* areaObj = new AreaObj(name);
+    areaObj->init(areaInitInfo);
+    return areaObj;
+}
+
+template <typename T>
+AreaObj* createAreaObjFunction(const char* name) {
+    return new T(name);
+}
+
+AreaObjFactory::AreaObjFactory(const char* factoryName) : Factory<al::AreaObj* (*)()>(factoryName) {}
+
+// pretty close
+s32 AreaObjFactory::tryFindAddBufferSize(const char* bufferName) const {
+    if (mAreaGroups == nullptr || mNumBuffers < 1)
+        return 0;
+    
+    s32 offset = 0;
+    while (!isEqualString(bufferName, (*mAreaGroups)[offset].getName())) {
+        if (++offset >= mNumBuffers)
+            return 0;        
+    }
+    return (*mAreaGroups)[offset].getBufferSize();
 }
 
 }  // namespace al

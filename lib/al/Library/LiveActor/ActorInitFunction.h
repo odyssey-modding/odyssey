@@ -116,7 +116,9 @@ public:
     void initViewIdHostActor(const ActorInitInfo&, const LiveActor*);
     void initNoViewId(const PlacementInfo*, const ActorInitInfo&);
 
-    const al::PlacementInfo& getPlacementInfo();
+    const al::PlacementInfo& getPlacementInfo() const { return *mPlacementInfo; };
+    al::StageSwitchDirector* getStageSwitchDirector() const { return mStageSwitchDirector; };
+    al::SceneObjHolder* getSceneObjHolder() const { return mActorSceneInfo.mSceneObjHolder; };
 };
 
 void initActor(al::LiveActor* actor, const al::ActorInitInfo& initInfo);
