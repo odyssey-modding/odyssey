@@ -39,12 +39,7 @@ void AreaObj::init(const al::AreaInitInfo& initInfo) {
     alPlacementFunction::tryGetModelName(&modelName, *mPlacementInfo);
 
     al::AreaShapeFactory areaShapeFactory("エリアシェイプファクトリー");
-    const char* entryName = areaShapeFactory.convertName(modelName);
-    const al::NameToCreator<al::AreaShape* (*)()>* factoryEntries = areaShapeFactory.getFactoryEntries();
-    while (!al::isEqualString(entryName, factoryEntries->mName)) {
-        factoryEntries++;
-    }
-    mAreaShape = factoryEntries->mCreationFunction();
+    mAreaShape = areaShapeFactory.getCreationFunction(modelName)();
 
     mAreaShape->setBaseMtxPtr(&mMatrixTR);
     sead::Vector3f scale({1.0, 1.0, 1.0});
@@ -100,17 +95,16 @@ AreaObj* createAreaObjFunction(const char* name) {
 
 AreaObjFactory::AreaObjFactory(const char* factoryName) : Factory<al::AreaObj* (*)()>(factoryName) {}
 
-// pretty close
 s32 AreaObjFactory::tryFindAddBufferSize(const char* bufferName) const {
-    if (mAreaGroups == nullptr || mNumBuffers < 1)
+    if (mAddBuffer == nullptr || mNumBuffers < 1)
         return 0;
     
     s32 offset = 0;
-    while (!isEqualString(bufferName, (*mAreaGroups)[offset].getName())) {
+    while (!isEqualString(bufferName, mAddBuffer[offset].name)) {
         if (++offset >= mNumBuffers)
             return 0;        
     }
-    return (*mAreaGroups)[offset].getBufferSize();
+    return mAddBuffer[offset].size;
 }
 
 }  // namespace al

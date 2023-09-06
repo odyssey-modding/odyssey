@@ -1,5 +1,7 @@
 #pragma once
 
+#include "al/Library/String/StringUtil.h"
+
 namespace al {
 template <typename T>
 struct NameToCreator {
@@ -30,6 +32,24 @@ public:
     virtual const char* convertName(const char* name) const { return name; }
     al::NameToCreator<T>* getFactoryEntries() const { return mFactoryEntries; }
     int getNumFactoryEntries() const { return mNumFactoryEntries; }
+
+    T getCreationFunction(const char* entryName) const {
+        const char* name = convertName(entryName);
+        const al::NameToCreator<T>* entries = mFactoryEntries;
+        while(!al::isEqualString(name, entries->mName)) {
+            entries++;
+        }
+        return entries->mCreationFunction;
+    }
+
+    s32 getEntryIndex(const char* entryName) const {
+        const char* name = convertName(entryName);
+        for (s32 i = 0; i < mNumFactoryEntries; i++) {
+            if (al::isEqualString(name, mFactoryEntries[i].mName))
+                return i;
+        }
+        return -1;
+    }
 };
 
 }  // namespace al

@@ -41,14 +41,23 @@ public:
     s32 getPriority() { return mPriority; };
 };
 
+// TODO find better name
+struct AddBuffer {
+    const char* name;
+    s32 size;
+};
+
 class AreaObjFactory : public al::Factory<al::AreaObj* (*)()> {
 private:
-    s32 mUnknown; // might be empty space
-    AreaObjGroup** mAreaGroups = nullptr;
+    AddBuffer* mAddBuffer = nullptr;
     s32 mNumBuffers = 0;
+
 public:
     AreaObjFactory(const char* factoryName);
     s32 tryFindAddBufferSize(const char* bufferName) const;
+
+    AddBuffer* getBuffer() const { return mAddBuffer; };
+    s32 getNumBuffers() const { return mNumBuffers; };
 };
 
 }  // namespace al

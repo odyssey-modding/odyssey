@@ -22,6 +22,5 @@ public:
     void registerAreaObj(al::AreaObj* newAreaObj);
 
     const char* getName() const { return mGroupName; };
-    s32 getBufferSize() const { return mCapacity; };
 };
 }  // namespace al
