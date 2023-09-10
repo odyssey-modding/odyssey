@@ -33,19 +33,24 @@ public:
     al::NameToCreator<T>* getFactoryEntries() const { return mFactoryEntries; }
     int getNumFactoryEntries() const { return mNumFactoryEntries; }
 
-    T getCreationFunction(const char* entryName) const {
-        const char* name = convertName(entryName);
+    T getCreationFunction(const char* name) const {
+        const char* entryName = convertName(name);
+        s32 nEntries = getNumFactoryEntries();
         const al::NameToCreator<T>* entries = mFactoryEntries;
-        while(!al::isEqualString(name, entries->mName)) {
-            entries++;
+        for (s32 i=0; i<nEntries; i++) {
+            if (isEqualString(entryName, entries[i].mName)) {
+                return entries[i].mCreationFunction;
+            }
         }
-        return entries->mCreationFunction;
+        return nullptr;
     }
 
     s32 getEntryIndex(const char* entryName) const {
         const char* name = convertName(entryName);
-        for (s32 i = 0; i < mNumFactoryEntries; i++) {
-            if (al::isEqualString(name, mFactoryEntries[i].mName))
+        s32 nFactoryEntries = mNumFactoryEntries;
+        const al::NameToCreator<T>* entries = mFactoryEntries;
+        for (s32 i = 0; i < nFactoryEntries; i++) {
+            if (al::isEqualString(name, entries[i].mName))
                 return i;
         }
         return -1;

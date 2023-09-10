@@ -12,7 +12,7 @@ class AreaInitInfo;
 
 class AreaObjDirector {
 private:
-    al::AreaObjFactory* mFactory = nullptr;
+    const al::AreaObjFactory* mFactory = nullptr;
     al::AreaObjMtxConnecterHolder* mMtxConnecterHolder = nullptr;
     al::AreaObjGroup** mAreaGroups = nullptr;
     u32 mAreaGroupCount = 0;

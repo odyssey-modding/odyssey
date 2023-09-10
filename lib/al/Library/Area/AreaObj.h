@@ -47,7 +47,7 @@ struct AddBuffer {
     s32 size;
 };
 
-class AreaObjFactory : public al::Factory<al::AreaObj* (*)()> {
+class AreaObjFactory : public al::Factory<al::AreaObj* (*)(const char* name)> {
 private:
     AddBuffer* mAddBuffer = nullptr;
     s32 mNumBuffers = 0;

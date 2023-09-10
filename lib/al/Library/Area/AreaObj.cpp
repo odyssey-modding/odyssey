@@ -28,7 +28,6 @@ void AreaObj::initStageSwitchKeeper() {
     mStageSwitchKeeper = new al::StageSwitchKeeper();
 }
 
-// NOT MATCHING -- 1 instruction out of order for `const char* entryName = areaShapeFactory.convertName(modelName);`
 void AreaObj::init(const al::AreaInitInfo& initInfo) {
     mPlacementInfo = new al::PlacementInfo(initInfo);
     mSceneObjHolder = initInfo.getSceneObjHolder();
@@ -40,6 +39,7 @@ void AreaObj::init(const al::AreaInitInfo& initInfo) {
 
     al::AreaShapeFactory areaShapeFactory("エリアシェイプファクトリー");
     mAreaShape = areaShapeFactory.getCreationFunction(modelName)();
+    // mAreaShape = areaShapeFactory.getFactoryEntries()[areaShapeFactory.getEntryIndex(modelName)].mCreationFunction();
 
     mAreaShape->setBaseMtxPtr(&mMatrixTR);
     sead::Vector3f scale({1.0, 1.0, 1.0});
@@ -93,7 +93,7 @@ AreaObj* createAreaObjFunction(const char* name) {
     return new T(name);
 }
 
-AreaObjFactory::AreaObjFactory(const char* factoryName) : Factory<al::AreaObj* (*)()>(factoryName) {}
+AreaObjFactory::AreaObjFactory(const char* factoryName) : Factory<al::AreaObj* (*)(const char* name)>(factoryName) {}
 
 s32 AreaObjFactory::tryFindAddBufferSize(const char* bufferName) const {
     if (mAddBuffer == nullptr || mNumBuffers < 1)
