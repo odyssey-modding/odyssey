@@ -1,11 +1,11 @@
 {
     "matching": {
         "label": "matching",
-        "message": "4.59063%"
+        "message": "4.84059%"
     },
     "non_matching_minor": {
         "label": "non-matching (minor issues)",
-        "message": "0.03443%"
+        "message": "0.03592%"
     },
     "non_matching_major": {
         "label": "non-matching (major issues)",
