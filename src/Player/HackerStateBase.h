@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Player/PlayerHackKeeper.h"
+class IUsePlayerHack;
+
 #include <al/Library/Nerve/NerveStateBase.h>
 
 class HackerStateBase : public al::NerveStateBase {

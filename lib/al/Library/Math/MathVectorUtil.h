@@ -4,7 +4,7 @@
 #include <math/seadVector.h>
 
 namespace al {
-void separateScalarAndDirection(f32*, sead::Vector2f*, const sead::Vector2f &);
+void separateScalarAndDirection(f32*, sead::Vector2f*, const sead::Vector2f&);
 void separateScalarAndDirection(f32*, sead::Vector3f*, const sead::Vector3f&);
 void limitVectorSeparateHV(sead::Vector3f*, const sead::Vector3f&, f32, f32);
 void parallelizeVec(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&);
@@ -21,7 +21,7 @@ void limitCylinderInPos(sead::Vector3f*, const sead::Vector3f&, const sead::Vect
 void limitCylinderInDir(sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&, const sead::Vector3f&);
 void roundOffVec(sead::Vector3f*, const sead::Vector3f&);
 void roundOffVec(sead::Vector3f*);
-void roundOffVec(sead::Vector2f*, const sead::Vector2f &);
+void roundOffVec(sead::Vector2f*, const sead::Vector2f&);
 void roundOffVec(sead::Vector2f*);
 void snapToGrid(f32, f32, f32);
 void snapVecToGrid(sead::Vector3f*, const sead::Vector3f&, f32, const sead::Vector3f&);

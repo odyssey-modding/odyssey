@@ -20,8 +20,7 @@ SnapShotCameraCtrl::SnapShotCameraCtrl(const al::SnapShotCameraSceneInfo* info) 
     mCameraSceneInfo = info;
     initNerve(&NrvSnapShotCameraCtrl.Reset, 0);
 
-    al::SnapShotParam* param = new al::SnapShotParam();
-    mParam = param;
+    mParam = new al::SnapShotParam();
 }
 
 void SnapShotCameraCtrl::load(const al::ByamlIter& iter) {

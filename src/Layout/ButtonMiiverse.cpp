@@ -43,11 +43,11 @@ void ButtonMiiverse::setOff() {
 
 void ButtonMiiverse::validate() {
     if (al::isNerve(this, &NrvButtonMiiverse.Disable))
-        al::setNerve(this, &NrvButtonMiiverse.Wait);
+        setOff();
 }
 
 void ButtonMiiverse::forceValidate() {
-    al::setNerve(this, &NrvButtonMiiverse.Wait);
+    setOff();
 }
 
 void ButtonMiiverse::invalidate() {
@@ -66,20 +66,18 @@ void ButtonMiiverse::exeHoldOn() {
     if (al::isFirstStep(this))
         al::startAction(this, "Touch", 0);
     if (al::isReleaseTouchPane(this, "Hit"))
-        return al::setNerve(this, &NrvButtonMiiverse.Decide);
-    if (al::isTouchPosInPane(this, "Hit"))
-        return;
-    al::setNerve(this, &NrvButtonMiiverse.HoldOff);
+        al::setNerve(this, &NrvButtonMiiverse.Decide);
+    else if (!al::isTouchPosInPane(this, "Hit"))
+        al::setNerve(this, &NrvButtonMiiverse.HoldOff);
 }
 
 void ButtonMiiverse::exeHoldOff() {
     if (al::isFirstStep(this))
         al::startAction(this, "Touch", 0);
     if (al::isTouchPosInPane(this, "Hit"))
-        return al::setNerve(this, &NrvButtonMiiverse.HoldOn);
-    if (!al::isPadReleaseTouch())
-        return;
-    al::setNerve(this, &NrvButtonMiiverse.Wait);
+        al::setNerve(this, &NrvButtonMiiverse.HoldOn);
+    else if (al::isPadReleaseTouch())
+        setOff();
 }
 
 // NON_MATCHING

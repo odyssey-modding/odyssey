@@ -10,7 +10,7 @@
 #include <al/Library/Math/MathLengthUtil.h>
 
 namespace al {
-void EnemyStateBlowDown::start(al::HitSensor const* sensor) {
+void EnemyStateBlowDown::start(const al::HitSensor* sensor) {
     sead::Vector3f dir = al::getSensorPos(sensor) - al::getTrans(mActor);
 
     al::verticalizeVec(&dir, al::getGravity(mActor), dir);
@@ -21,7 +21,7 @@ void EnemyStateBlowDown::start(al::HitSensor const* sensor) {
     start(-dir);
 }
 
-void EnemyStateBlowDown::start(sead::Vector3f const& dir) {
+void EnemyStateBlowDown::start(const sead::Vector3f& dir) {
     if (mParam->mFaceAwayFromActor) {
         al::faceToDirection(mActor, -dir);
     }

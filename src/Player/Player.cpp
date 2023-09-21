@@ -43,10 +43,9 @@ void Player::exeWait() {
     al::scaleVelocity(this, 0.7f);
 
     if (al::isPadTriggerA(mPort))
-        return al::setNerve(this, &NrvPlayer.Jump);
-    else if (al::isNearZero(al::getLeftStick(mPort), 0.001f))
-        return;
-    al::setNerve(this, &NrvPlayer.Run);
+        al::setNerve(this, &NrvPlayer.Jump);
+    else if (!al::isNearZero(al::getLeftStick(mPort), 0.001f))
+        al::setNerve(this, &NrvPlayer.Run);
 }
 
 // NON_MATCHING: Incomplete

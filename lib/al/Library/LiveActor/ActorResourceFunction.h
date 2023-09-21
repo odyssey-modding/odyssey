@@ -21,8 +21,8 @@ bool isExistModelOrAnimResourceYaml(const al::LiveActor*, const char*, const cha
 u8* getModelResourceYaml(const al::LiveActor*, const char*, const char*);
 u8* getAnimResourceYaml(const al::LiveActor*, const char*, const char*);
 u8* getModelOrAnimResourceYaml(const al::LiveActor*, const char*, const char*);
-u8* getMapPartsResourceYaml(al::ActorInitInfo const&, const char*);
-bool tryGetMapPartsResourceYaml(al::ActorInitInfo const&, const char*);
+u8* getMapPartsResourceYaml(const al::ActorInitInfo&, const char*);
+bool tryGetMapPartsResourceYaml(const al::ActorInitInfo&, const char*);
 bool tryMakeInitFileName(sead::BufferedSafeString*, const al::Resource*, const char*, const char*, const char*);
 bool tryGetSuffixIter(al::ByamlIter*, const al::Resource*, const char*, const char*);
 bool tryGetInitFileIterAndName(al::ByamlIter*, sead::BufferedSafeString*, const al::Resource*, const char*, const char*, const char*);

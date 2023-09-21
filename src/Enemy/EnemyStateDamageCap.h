@@ -1,7 +1,6 @@
 #pragma once
 
 #include <al/Library/Nerve/NerveStateBase.h>
-#include "Enemy/EnemyCap.h"
 
 namespace al {
     class ActorInitInfo;
@@ -9,6 +8,8 @@ namespace al {
     class LiveActor;
     class SensorMsg;
 }
+
+class EnemyCap;
 
 class EnemyStateDamageCap : public al::ActorStateBase {
 private:

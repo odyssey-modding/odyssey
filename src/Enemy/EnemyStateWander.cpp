@@ -1,10 +1,10 @@
 #include "Enemy/EnemyStateWander.h"
-#include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/LiveActor/ActorActionFunction.h>
 #include <al/Library/LiveActor/ActorCollisionFunction.h>
 #include <al/Library/LiveActor/ActorMovementFunction.h>
 #include <al/Library/LiveActor/ActorPoseKeeper.h>
 #include <al/Library/Math/MathRandomUtil.h>
+#include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Nerve/NerveUtil.h>
 
 namespace {
@@ -84,10 +84,11 @@ void EnemyStateWander::exeWalk() {
 void EnemyStateWander::exeFall() {
     if (al::isFirstStep(this))
         al::startAction(mActor, "Fall");
-    if (al::isOnGround(mActor, 0))
-        return al::setNerve(this, &NrvEnemyStateWander.Wait);
-    al::scaleVelocity(mActor, 0.98f);
-    al::addVelocityToGravity(mActor, 2.0f);
+    if (!al::isOnGround(mActor, 0)) {
+        al::scaleVelocity(mActor, 0.98f);
+        al::addVelocityToGravity(mActor, 2.0f);
+    } else
+        al::setNerve(this, &NrvEnemyStateWander.Wait);
 }
 
 bool EnemyStateWander::isWait() const {

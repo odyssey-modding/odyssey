@@ -25,7 +25,7 @@ bool checkGetAchievement(GameDataHolderAccessor, const char*);
 bool checkGetAchievement(const al::LayoutActor*, s32);
 u64 findAchievementGetTime(const al::LayoutActor*, s32);
 const char* findAchievementGetTime(const al::LayoutActor*, const char*);
-sead::Vector3f findAchievementTrans(const al::LayoutActor*, s32);
+sead::Vector3f* findAchievementTrans(const al::LayoutActor*, s32);
 s32 getAchievementNum(const al::LayoutActor*);
 s32 calcReceivedAchievementNum(const GameDataHolder*);
 s32 getTotalCoinNum(const GameDataHolder*);

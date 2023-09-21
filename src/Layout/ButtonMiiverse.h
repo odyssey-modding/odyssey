@@ -3,7 +3,7 @@
 #include <al/Library/Layout/LayoutActor.h>
 
 namespace al {
-class LayoutInitInfo;
+struct LayoutInitInfo;
 }
 
 class ButtonMiiverse : public al::LayoutActor {

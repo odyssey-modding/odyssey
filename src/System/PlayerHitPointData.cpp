@@ -9,8 +9,5 @@ void PlayerHitPointData::setKidsModeFlag(bool isKidsMode) {
 void PlayerHitPointData::init() {
     mIsHaveMaxUpItem = false;
     mIsForceNormalHealth = false;
-    if (mIsKidsMode)
-        mCurrentHit = 6;
-    else
-        mCurrentHit = 3;
+    mCurrentHit = !mIsKidsMode ? 3 : 6;
 }

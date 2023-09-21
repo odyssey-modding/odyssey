@@ -46,20 +46,20 @@ void EnemyCap::initPartsFixFile(al::LiveActor* actor, const al::ActorInitInfo& i
     al::StringTmp<128> test("");
 
     al::createFileNameBySuffix(&test, "InitPartsFixInfo", suffix);
-    if (!al::isExistModelResourceYaml(mCap, test.cstr(), 0))
-        return makeActorAlive();
-    al::ByamlIter resourceYaml = al::getModelResourceYaml(mCap, test.cstr(), 0);
-    const char* jointName = 0;
-    resourceYaml.tryGetStringByKey(&jointName, "JointName");
-    if (jointName)
-        mCapBaseMtx = al::getJointMtxPtr(mCap, jointName);
-    al::tryGetByamlV3f(&mLocalTrans, resourceYaml, "LocalTrans");
-    al::tryGetByamlV3f(&mLocalRotate, resourceYaml, "LocalRotate");
-    al::tryGetByamlV3f(&mLocalScale, resourceYaml, "LocalScale");
-    if (!al::isNearZero(mLocalTrans, 0.001f) || !al::isNearZero(mLocalRotate, 0.001f))
-        mIsAtOrigin = true;
-    mUseFollowMtxScale = al::tryGetByamlKeyBoolOrFalse(resourceYaml, "UseFollowMtxScale");
-    mUseLocalScale = al::tryGetByamlKeyBoolOrFalse(resourceYaml, "UseLocalScale");
+    if (al::isExistModelResourceYaml(mCap, test.cstr(), 0)) {
+        al::ByamlIter resourceYaml = al::getModelResourceYaml(mCap, test.cstr(), 0);
+        const char* jointName = 0;
+        resourceYaml.tryGetStringByKey(&jointName, "JointName");
+        if (jointName)
+            mCapBaseMtx = al::getJointMtxPtr(mCap, jointName);
+        al::tryGetByamlV3f(&mLocalTrans, resourceYaml, "LocalTrans");
+        al::tryGetByamlV3f(&mLocalRotate, resourceYaml, "LocalRotate");
+        al::tryGetByamlV3f(&mLocalScale, resourceYaml, "LocalScale");
+        if (!al::isNearZero(mLocalTrans, 0.001f) || !al::isNearZero(mLocalRotate, 0.001f))
+            mIsAtOrigin = true;
+        mUseFollowMtxScale = al::tryGetByamlKeyBoolOrFalse(resourceYaml, "UseFollowMtxScale");
+        mUseLocalScale = al::tryGetByamlKeyBoolOrFalse(resourceYaml, "UseLocalScale");
+    }
     makeActorAlive();
 }
 
@@ -107,14 +107,14 @@ void EnemyCap::exeBlowDown() {
 }
 
 void EnemyCap::startBlowDown(const al::HitSensor* source) {
-    if (al::isNerve(this, &NrvEnemyCap.BlowDown))
+    if (isBlowDown())
         return;
     mStateBlowDown->start(source);
     al::setNerve(this, &NrvEnemyCap.BlowDown);
 }
 
 void EnemyCap::startBlowDown() {
-    if (al::isNerve(this, &NrvEnemyCap.BlowDown))
+    if (isBlowDown())
         return;
     mStateBlowDown->start(mCap);
     al::setNerve(this, &NrvEnemyCap.BlowDown);
@@ -153,8 +153,9 @@ EnemyCap* tryCreateEnemyCapSuffix(al::LiveActor* actor, const al::ActorInitInfo&
 }
 
 bool tryStartEnemyCapBlowDown(EnemyCap* cap, const al::HitSensor* sensor) {
-    if (!isOnEnemyCap(cap)) return false;
-    if (al::isNerve(cap, &NrvEnemyCap.BlowDown))
+    if (!isOnEnemyCap(cap))
+        return false;
+    if (cap->isBlowDown())
         return true;
     cap->getStateBlowDown()->start(sensor);
     al::setNerve(cap, &NrvEnemyCap.BlowDown);
@@ -162,8 +163,9 @@ bool tryStartEnemyCapBlowDown(EnemyCap* cap, const al::HitSensor* sensor) {
 }
 
 bool tryStartEnemyCapBlowDown(EnemyCap* cap) {
-    if (!isOnEnemyCap(cap)) return false;
-    if (al::isNerve(cap, &NrvEnemyCap.BlowDown))
+    if (!isOnEnemyCap(cap))
+        return false;
+    if (cap->isBlowDown())
         return true;
     cap->getStateBlowDown()->start(cap->getCap());
     al::setNerve(cap, &NrvEnemyCap.BlowDown);
@@ -178,7 +180,7 @@ bool tryAppearEnemyCap(EnemyCap* cap) {
 }
 
 bool isOnEnemyCap(EnemyCap* cap) {
-    return cap && !al::isNerve(cap, &NrvEnemyCap.BlowDown);
+    return cap && !cap->isBlowDown();
 }
 
 }  // namespace rs

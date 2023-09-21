@@ -54,4 +54,4 @@ public:
     void tryResetAbsorbVecIfInCollision(const sead::Vector3f&);
     void update();
 };
-};  // namespace al
+}  // namespace al

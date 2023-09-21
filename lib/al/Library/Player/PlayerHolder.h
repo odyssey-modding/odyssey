@@ -1,9 +1,11 @@
 #pragma once
 
-#include <al/Library/Camera/CameraDirector.h>
 #include <basis/seadTypes.h>
+#include <math/seadVector.h>
+#include <math/seadMatrix.h>
 
 namespace al {
+class IUseCamera;
 class LiveActor;
 class PadRumbleKeeper;
 

@@ -36,13 +36,12 @@ void EnemyStateDamageCap::createEnemyCap(const al::ActorInitInfo& info, const ch
 }
 
 bool EnemyStateDamageCap::tryReceiveMsgCapBlow(const al::SensorMsg* msg, al::HitSensor* source, al::HitSensor* target) {
-    if (isCapOn() && rs::isMsgCapAttack(msg)) {
-        rs::requestHitReactionToAttacker(msg, target, source);
-        mEnemyCap->startBlowDown(source);
-        al::setNerve(this, &NrvEnemyStateDamageCap.Wait);
-        return true;
-    }
-    return false;
+    if (!isCapOn() || !rs::isMsgCapAttack(msg))
+        return false;
+    rs::requestHitReactionToAttacker(msg, target, source);
+    mEnemyCap->startBlowDown(source);
+    al::setNerve(this, &NrvEnemyStateDamageCap.Wait);
+    return true;
 }
 
 bool EnemyStateDamageCap::isCapOn() const {

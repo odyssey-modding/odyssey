@@ -1,6 +1,12 @@
 #pragma once
 
-#include "Enemy/EnemyCap.h"
+#include <al/Library/Nerve/NerveStateBase.h>
+
+namespace al {
+    class ActorInitInfo;
+}
+
+class EnemyCap;
 
 class EnemyStateReset : public al::ActorStateBase {
 private:

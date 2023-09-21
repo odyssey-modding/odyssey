@@ -92,4 +92,4 @@ void calcInertiaTensorBox(sead::Matrix33f*, const sead::Vector3f&, f32);
 void makeMtx34f(sead::Matrix34f*, const nn::util::neon::MatrixColumnMajor4x3fType&);
 void makeMtx44f(sead::Matrix44f*, const nn::util::neon::MatrixColumnMajor4x4fType&);
 
-};  // namespace al
+}  // namespace al

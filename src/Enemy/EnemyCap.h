@@ -1,7 +1,11 @@
 #pragma once
 
 #include <al/Library/LiveActor/LiveActor.h>
-#include <al/Library/Movement/EnemyStateBlowDown.h>
+
+namespace al {
+class EnemyStateBlowDown;
+class EnemyStateBlowDownParam;
+}
 
 class EnemyCap : public al::LiveActor {
 private:

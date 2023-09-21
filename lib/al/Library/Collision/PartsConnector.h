@@ -1,7 +1,7 @@
 #pragma once
 
 #include <math/seadMatrix.h>
-#include "PartsMtxConnector.h"
+#include "al/Library/Collision/PartsMtxConnector.h"
 
 namespace al {
 class ActorInitInfo;

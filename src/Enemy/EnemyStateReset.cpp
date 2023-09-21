@@ -8,6 +8,7 @@
 #include <al/Library/Nerve/NerveUtil.h>
 #include <al/Library/Placement/PlacementFunction.h>
 #include <al/Library/Player/PlayerHolder.h>
+#include "Enemy/EnemyCap.h"
 #include "Util/Hack.h"
 
 namespace {
@@ -19,9 +20,8 @@ struct {
 
 }  // namespace
 
-EnemyStateReset::EnemyStateReset(al::LiveActor* actor, const al::ActorInitInfo& info, EnemyCap* cap) : al::ActorStateBase("リセット状態", actor) {
-    mEnemyCap = cap;
-
+EnemyStateReset::EnemyStateReset(al::LiveActor* actor, const al::ActorInitInfo& info, EnemyCap* cap)
+    : al::ActorStateBase("リセット状態", actor), mEnemyCap(cap) {
     initNerve(&NrvEnemyStateReset.Wait, 0);
     al::tryGetTrans(&mPos, info);
     al::tryGetRotate(&mRot, info);
@@ -32,8 +32,10 @@ void EnemyStateReset::appear() {
     auto actor = mActor;  // getting the actor in each function call below causes mismatch, have to declare a variable up here for it
 
     mIsDead = false;
-    if (!mIsRevive)
-        return actor->kill();
+    if (!mIsRevive) {
+        actor->kill();
+        return;
+    }
 
     al::setVelocityZero(actor);
     al::invalidateClipping(actor);

@@ -81,9 +81,8 @@ void EnemyStateReviveInsideScreen::exeAppearSign() {
         al::resetQuatPosition(mActor, mReviveQuat, mRevivePos);
         al::startAction(mActor, "AppearSign");
     }
-    if (!al::isGreaterEqualStep(this, 150)) {
-        return;
+    if (al::isGreaterEqualStep(this, 150)) {
+        al::startHitReaction(mActor, "出現");
+        kill();
     }
-    al::startHitReaction(mActor, "出現");
-    kill();
 }

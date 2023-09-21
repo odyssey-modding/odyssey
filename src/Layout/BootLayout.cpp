@@ -1,6 +1,7 @@
 #include "BootLayout.h"
-#include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Layout/LayoutActionFunction.h>
+#include <al/Library/Layout/LayoutInitFunction.h>
+#include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Nerve/NerveUtil.h>
 
 namespace {
