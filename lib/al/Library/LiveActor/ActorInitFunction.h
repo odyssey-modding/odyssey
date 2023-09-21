@@ -118,7 +118,7 @@ public:
 
     const al::PlacementInfo& getPlacementInfo() const { return *mPlacementInfo; };
     al::StageSwitchDirector* getStageSwitchDirector() const { return mStageSwitchDirector; };
-    al::SceneObjHolder* getSceneObjHolder() const { return mActorSceneInfo.mSceneObjHolder; };
+    al::SceneObjHolder* getActorSceneObjHolder() const { return mActorSceneInfo.mSceneObjHolder; };
 };
 
 void initActor(al::LiveActor* actor, const al::ActorInitInfo& initInfo);

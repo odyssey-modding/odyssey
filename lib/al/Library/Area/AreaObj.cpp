@@ -4,12 +4,10 @@
 #include "al/Library/Area/AreaObjGroup.h"
 #include "al/Library/Area/AreaShape.h"
 #include "al/Library/Factory/Factory.h"
-#include "al/Library/LiveActor/ActorInitFunction.h"
 #include "al/Library/Placement/PlacementFunction.h"
 #include "al/Library/Placement/PlacementInfo.h"
 #include "al/Library/Stage/ListenStageSwitch.h"
 #include "al/Library/Stage/StageSwitchUtil.h"
-#include "al/Library/String/StringUtil.h"
 #include "al/Library/Thread/FunctorV0M.h"
 
 namespace al {
@@ -38,8 +36,9 @@ void AreaObj::init(const al::AreaInitInfo& initInfo) {
     alPlacementFunction::tryGetModelName(&modelName, *mPlacementInfo);
 
     al::AreaShapeFactory areaShapeFactory("エリアシェイプファクトリー");
-    mAreaShape = areaShapeFactory.getCreationFunction(modelName)();
-    // mAreaShape = areaShapeFactory.getFactoryEntries()[areaShapeFactory.getEntryIndex(modelName)].mCreationFunction();
+    AreaShape* (*creatorFunc)() = nullptr;
+    areaShapeFactory.getEntryIndex(modelName, &creatorFunc);
+    mAreaShape = creatorFunc();
 
     mAreaShape->setBaseMtxPtr(&mMatrixTR);
     sead::Vector3f scale({1.0, 1.0, 1.0});
@@ -77,34 +76,6 @@ void AreaObj::validate() {
 
 void AreaObj::invalidate() {
     isValid = false;
-}
-
-// not even CLOSE to matching
-AreaObj* createAreaObj(const al::ActorInitInfo& actorInitInfo, const char* name) {
-    al::AreaInitInfo areaInitInfo;
-    areaInitInfo.set(actorInitInfo.getPlacementInfo(), actorInitInfo.getStageSwitchDirector(), actorInitInfo.getSceneObjHolder());
-    AreaObj* areaObj = new AreaObj(name);
-    areaObj->init(areaInitInfo);
-    return areaObj;
-}
-
-template <typename T>
-AreaObj* createAreaObjFunction(const char* name) {
-    return new T(name);
-}
-
-AreaObjFactory::AreaObjFactory(const char* factoryName) : Factory<al::AreaObj* (*)(const char* name)>(factoryName) {}
-
-s32 AreaObjFactory::tryFindAddBufferSize(const char* bufferName) const {
-    if (mAddBuffer == nullptr || mNumBuffers < 1)
-        return 0;
-    
-    s32 offset = 0;
-    while (!isEqualString(bufferName, mAddBuffer[offset].name)) {
-        if (++offset >= mNumBuffers)
-            return 0;        
-    }
-    return mAddBuffer[offset].size;
 }
 
 }  // namespace al
