@@ -81,13 +81,13 @@ void EnemyCap::calcAnim() {
 }
 
 void EnemyCap::exeWait() {
-    if (!al::updateSyncHostVisible(&mCapVisible, this, mCap, field_142))
+    if (!syncHostVisible())
         return;
     al::setModelAlphaMask(this, al::getModelAlphaMask(mCap));
 }
 
-void EnemyCap::syncHostVisible() {
-    al::updateSyncHostVisible(&mCapVisible, this, mCap, field_142);
+bool EnemyCap::syncHostVisible() {
+    return al::updateSyncHostVisible(&mCapVisible, this, mCap, field_142);
 }
 
 void EnemyCap::exeBlowDown() {

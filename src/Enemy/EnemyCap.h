@@ -30,7 +30,7 @@ public:
     void updatePose();
     void calcAnim();
     void exeWait();
-    void syncHostVisible();
+    bool syncHostVisible();
     void exeBlowDown();
     void startBlowDown(const al::HitSensor* source);
     void startBlowDown();

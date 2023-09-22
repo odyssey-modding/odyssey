@@ -1,4 +1,3 @@
-#include <al/Library/Movement/EnemyStateBlowDown.h>
 #include <al/Library/LiveActor/ActorActionFunction.h>
 #include <al/Library/LiveActor/ActorClippingFunction.h>
 #include <al/Library/LiveActor/ActorCollisionFunction.h>
@@ -8,6 +7,7 @@
 #include <al/Library/LiveActor/ActorSensorFunction.h>
 #include <al/Library/Math/MathAngleUtil.h>
 #include <al/Library/Math/MathLengthUtil.h>
+#include <al/Library/Movement/EnemyStateBlowDown.h>
 
 namespace al {
 void EnemyStateBlowDown::start(const al::HitSensor* sensor) {
@@ -75,33 +75,24 @@ void EnemyStateBlowDown::control() {
         if (al::isExistActorCollider(mActor))
             al::onCollide(mActor);
     }
-    if (mParam->mBlowDownLength <= mBlowDownTimer)
-        return kill();
-    if (mParam->mActionName && al::isActionOneTime(mActor, mParam->mActionName) && al::isActionEnd(mActor))
-        return kill();
-    if (al::isExistActorCollider(mActor) && al::isOnGround(mActor, 0))
-        return kill();
-
+    if ((mParam->mBlowDownLength <= mBlowDownTimer) ||
+        (mParam->mActionName && al::isActionOneTime(mActor, mParam->mActionName) && al::isActionEnd(mActor)) ||
+        (al::isExistActorCollider(mActor) && al::isOnGround(mActor, 0))) {
+        kill();
+        return;
+    }
     al::addVelocityToGravity(mActor, mParam->mVelocityMultiplier);
     al::scaleVelocity(mActor, mParam->mVelocityScale);
-    this->mBlowDownTimer++;
+    mBlowDownTimer++;
 }
 
 EnemyStateBlowDownParam::EnemyStateBlowDownParam() {}
 
-EnemyStateBlowDownParam::EnemyStateBlowDownParam(const char* actionName) {
-    mActionName = actionName;
-}
+EnemyStateBlowDownParam::EnemyStateBlowDownParam(const char* actionName) : mActionName(actionName) {}
 
 EnemyStateBlowDownParam::EnemyStateBlowDownParam(const char* actionName, f32 gravityStrength, f32 velocityStrength, f32 velocityMultiplier,
-                                                 f32 velocityScale, s32 blowDownLength, bool faceAwayFromActor) {
-    mActionName = actionName;
-    mGravityStrength = gravityStrength;
-    mVelocityStrength = velocityStrength;
-    mVelocityMultiplier = velocityMultiplier;
-    mVelocityScale = velocityScale;
-    mBlowDownLength = blowDownLength;
-    mFaceAwayFromActor = faceAwayFromActor;
-}
+                                                 f32 velocityScale, s32 blowDownLength, bool faceAwayFromActor)
+    : mActionName(actionName), mGravityStrength(gravityStrength), mVelocityStrength(velocityStrength), mVelocityMultiplier(velocityMultiplier),
+      mVelocityScale(velocityScale), mBlowDownLength(blowDownLength), mFaceAwayFromActor(faceAwayFromActor) {}
 
 }  // namespace al
