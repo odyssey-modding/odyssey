@@ -4,7 +4,7 @@
 
 namespace al {
 class EnemyStateBlowDown;
-class EnemyStateBlowDownParam;
+struct EnemyStateBlowDownParam;
 }
 
 class EnemyCap : public al::LiveActor {
@@ -12,9 +12,9 @@ private:
     al::LiveActor* mCap = nullptr;
     sead::Matrix34f* mCapBaseMtx = nullptr;
     bool mIsAtOrigin = true;
-    sead::Vector3f mLocalTrans = sead::Vector3f(0.0f, 0.0f, 0.0f);
-    sead::Vector3f mLocalRotate = sead::Vector3f(0.0f, 0.0f, 0.0f);
-    sead::Vector3f mLocalScale = sead::Vector3f(1.0f, 1.0f, 1.0f);
+    sead::Vector3f mLocalTrans = {0.0f, 0.0f, 0.0f};
+    sead::Vector3f mLocalRotate = {0.0f, 0.0f, 0.0f};
+    sead::Vector3f mLocalScale = {1.0f, 1.0f, 1.0f};
     bool mCapVisible = false;
     bool mUseFollowMtxScale = false;
     bool field_142 = false;

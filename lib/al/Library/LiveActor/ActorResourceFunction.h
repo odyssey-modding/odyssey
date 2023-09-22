@@ -31,7 +31,7 @@ bool tryGetActorInitFileIter(al::ByamlIter*, const al::Resource*, const char*, c
 bool tryGetActorInitFileIterAndName(al::ByamlIter*, sead::BufferedSafeString*, const al::LiveActor*, const char*, const char*);
 bool tryGetActorInitFileIter(al::ByamlIter*, const al::LiveActor*, const char*, const char*);
 bool tryGetActorInitFileName(sead::BufferedSafeString*, const al::Resource*, const char*, const char*);
-bool tryGetActorInitFileName(sead::BufferedSafeString*, al::ActorResource const*, const char*, const char*);
+bool tryGetActorInitFileName(sead::BufferedSafeString*, const al::ActorResource*, const char*, const char*);
 bool tryGetActorInitFileName(sead::BufferedSafeString*, const al::LiveActor*, const char*, const char*);
 bool tryGetActorInitFileSuffixName(sead::BufferedSafeString*, const al::Resource*, const char*, const char*);
 bool tryGetActorInitFileSuffixName(sead::BufferedSafeString*, const al::LiveActor*, const char*, const char*);

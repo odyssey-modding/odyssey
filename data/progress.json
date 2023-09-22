@@ -5,10 +5,10 @@
     },
     "non_matching_minor": {
         "label": "non-matching (minor issues)",
-        "message": "0.03592%"
+        "message": "0.04041%"
     },
     "non_matching_major": {
         "label": "non-matching (major issues)",
-        "message": "0.01347%"
+        "message": "0.01497%"
     }
 }
