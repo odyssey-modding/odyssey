@@ -75,17 +75,17 @@ public:
     void disableLineChange();
     bool isDisableLineChange();
     bool isUsedLineGroupName(const char*) const;
-    void getPlayingBgmLine(const char*) const;
-    void getBgmLineByLineName(const char*) const;
+    al::BgmLine* getPlayingBgmLine(const char*) const;
+    al::BgmLine* getBgmLineByLineName(const char*) const;
     al::BgmLine* getActiveBgmLine() const override;
-    void getActiveBgmLineWithoutUpperLayer() const;
-    void getLoopEndSamplePosition(const char*) const;
+    al::BgmLine* getActiveBgmLineWithoutUpperLayer() const;
+    s32 getLoopEndSamplePosition(const char*) const;
     void setAudioBusSendController(al::AudioBusSendController*);
-    al::BgmMultiPlayingController*  tryAllocMultiPlayingController();
+    al::BgmMultiPlayingController* tryAllocMultiPlayingController();
     bool tryReleaseMultiPlayingController(al::BgmMultiPlayingController*);
     void deactiveAllBgmMultiPlayingController(s32);
     s32 getBgmLineNum(bool);
-    void getBgmLineAccessor(s32, bool);
+    al::BgmLine* getBgmLineAccessor(s32, bool);
     void getBgmLineIndex(const char*, bool) const;
 };
 }  // namespace al

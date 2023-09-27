@@ -24,6 +24,7 @@ class AreaObjDirector;
 class PlayerHolder;
 struct SeRequestParam;
 class SeEmitter;
+class SeListener;
 class AudioBusSendController;
 struct MeInfo;
 class Projection;
@@ -34,7 +35,7 @@ struct SeDirectorInitInfo {
     s32 listenerCount = -1;
     const char* defaultListenerName = "注視点";
     const char* defaultStageEffectName = nullptr;
-    bool useMeInfo = false;
+    bool useMeInfo = true;
     bool useLoopSequencer = false;
     u32* field_28 = nullptr;
     s32 field_30 = -1;  // length of field_28
@@ -70,7 +71,7 @@ private:
     s32 mSystemPauseCount;
     bool* mUnderThreeChannels;
     bool* mAudioStereoJackOutput;
-    char** field_a8;
+    const char** field_a8;
     s32 field_b0;  // length for field_a8
     al::PadRumbleDirector* mPadRumbleDirector;
 
@@ -78,12 +79,12 @@ public:
     SeDirector();
     void init(const al::AudioDirector*, const al::SeDirectorInitInfo&, const char*, s32, const al::AudioSystemInfo*, al::MeInfoKeeper*,
               const al::IUseActiveBgmLine*);
-    void getSeDataBase();
+    al::SeDataBase* getSeDataBase();
     void init3D(const al::SeDirectorInitInfo&);
     void initAfterInitPlacement(al::AreaObjDirector*);
     void finalize();
     void update();
-    void isSystemPaused() const;
+    bool isSystemPaused() const;
     void setPlayerHolder(const al::PlayerHolder*);
     void notifyIsModeHandheld(bool);
     void addRequest(al::SeRequestParam*, const char*, s32, bool);
@@ -91,9 +92,9 @@ public:
     void pauseSystem(bool, const char*, u32);
     void startSituation(const char*, s32, s32, s32);
     void endSituation(const char*, s32);
-    void checkIsActiveSituation(const char*) const;
-    void getDuckingVolume() const;
-    void getListener(s32) const;
+    bool checkIsActiveSituation(const char*) const;
+    f32 getDuckingVolume() const;
+    al::SeListener* getListener(s32) const;
     void setAudioBusSendController(al::AudioBusSendController*);
     void requestPlayLoopSeSequence(const char*, const al::MeInfo*, s32);
     const char* getStageEffectName() const;

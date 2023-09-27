@@ -26,7 +26,7 @@ struct AudioSystemInitInfo;
 class AudioSystem {
 private:
     al::AudioResourcePlayerKeeper* mAudioResourcePlayerKeeper;
-    al::AudioSoundArchiveInfo** audioResourceLoadingInfo;
+    al::AudioSoundArchiveInfo** mAudioResourceLoadingInfo;
     al::SeDataBase* mSeDataBase;
     al::BgmDataBase* mBgmDataBase;
     al::AudioInfoListWithParts* mBgmMusicalInfoList;

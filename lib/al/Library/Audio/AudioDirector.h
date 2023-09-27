@@ -51,7 +51,7 @@ private:
     al::AudioSystemInfo* mAudioSystemInfo;
     al::AreaObjDirector* mAreaObjDirector;
     al::AudioDuckingDirector* mAudioDuckingDirector;
-    sead::PtrArray<PauseEntry> mPauseEntries;
+    sead::PtrArray<PauseEntry>* mPauseEntries;
     bool mIsEffectControllerFinalizing;
     al::AudioFrameProcessMgr* mAudioFrameProcessMgr;
     al::AudioEffectController* mAudioEffectController;
