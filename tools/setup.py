@@ -7,7 +7,6 @@ import subprocess
 from typing import Optional
 from common import setup_common as setup
 from enum import Enum
-import shutil
 
 TARGET_PATH = setup.get_target_path()
 TARGET_ELF_PATH = setup.get_target_elf_path()
