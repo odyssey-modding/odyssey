@@ -62,19 +62,13 @@ def get_build_dir():
 
 def create_build_dir(ver, cmake_backend):
     if(ver != Version.VER_100): return # TODO remove this when multiple versions should be built
+
     build_dir = get_build_dir()
-    if build_dir.is_dir():
-        print(">>> build directory already exists: nothing to do")
-        return
 
-    try:
-        subprocess.check_call(
-            ['cmake', '-G', cmake_backend, f'-DCMAKE_CXX_FLAGS=-D{ver.name}', '-DCMAKE_BUILD_TYPE=RelWithDebInfo', '-DCMAKE_TOOLCHAIN_FILE=toolchain/ToolchainNX64.cmake', '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache', '-B', str(build_dir)])
-    except subprocess.CalledProcessError:
-        shutil.rmtree(build_dir)
-        raise
+    subprocess.check_call(
+        ['cmake', '-G', cmake_backend, f'-DCMAKE_CXX_FLAGS=-D{ver.name}', '-DCMAKE_BUILD_TYPE=RelWithDebInfo', '-DCMAKE_TOOLCHAIN_FILE=toolchain/ToolchainNX64.cmake', '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache', '-B', str(build_dir)])
 
-    print(">>> created build directory") 
+    print(">>> configured build directory")
 
 def main():
     parser = argparse.ArgumentParser(
