@@ -10,10 +10,7 @@
 #include "Player/PlayerHackKeeper.h"
 #include "Player/PlayerHackStartShaderCtrl.h"
 #include "Util/Hack.h"
-
-namespace rs {
-bool isMsgStartHack(const al::SensorMsg*);
-}
+#include "Util/SensorMsg.h"
 
 namespace {
 NERVE_IMPL(EnemyStateHackStart, DiveIn);

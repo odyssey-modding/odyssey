@@ -12,7 +12,7 @@ class SensorMsg;
 
 class IUsePlayerHack;
 class IUsePlayerCollision;
-class CapTargetInfo;
+struct CapTargetInfo;
 
 namespace rs {
 CapTargetInfo* createCapTargetInfo(al::LiveActor*, const char*);

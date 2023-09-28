@@ -4,27 +4,15 @@
 #include <math/seadVector.h>
 
 namespace nn::util::neon {
-class MatrixColumnMajor4x3fType;
-class MatrixColumnMajor4x4fType;
+struct MatrixColumnMajor4x3fType;
+struct MatrixColumnMajor4x4fType;
 }  // namespace nn::util::neon
 
 namespace al {
 template <typename T>
 class Matrix43;
 
-void makeBayerMatrix(s32*, s32);
-void f32ToF16(f32);
-void f16ToF32(u16);
-class MtxPtrHolder {
-    MtxPtrHolder();
-    void init(s32);
-    void setMtxPtrAndName(s32, const char*, const sead::Matrix34f*);
-    void setMtxPtr(const char*, const sead::Matrix34f*);
-    void findIndex(const char*) const;
-    void findMtxPtr(const char*) const;
-    bool tryFindMtxPtr(const char*) const;
-    bool tryFindIndex(const char*) const;
-};
+typedef Matrix43<f32> Matrix43f;
 
 void makeMtxRotateTrans(sead::Matrix34f*, const sead::Vector3f&, const sead::Vector3f&);
 void makeMtxFromTwoAxis(sead::Matrix34f*, const sead::Vector3f&, const sead::Vector3f&, s32, s32);
@@ -68,9 +56,9 @@ void turnMtxYDirDegree(sead::Matrix34f*, const sead::Matrix34f&, const sead::Vec
 void turnMtxZDirDegree(sead::Matrix34f*, const sead::Matrix34f&, const sead::Vector3f&, f32);
 void calcCameraPosFromViewMtx(sead::Vector3f*, const sead::Matrix34f&);
 void calcMtxMul(sead::Vector3f*, const sead::Matrix34f&, const sead::Vector3f&);
-void calcMtxMul(sead::Vector3f*, al::Matrix43<f32> const&, const sead::Vector3f&);
+void calcMtxMul(sead::Vector3f*, al::Matrix43f const&, const sead::Vector3f&);
 void calcMtxScale(sead::Vector3f*, const sead::Matrix34f&);
-void calcMtxScale(sead::Vector3f*, al::Matrix43<f32> const&);
+void calcMtxScale(sead::Vector3f*, al::Matrix43f const&);
 void normalizeMtxScale(sead::Matrix34f*, const sead::Matrix34f&);
 void tryNormalizeMtxScaleOrIdentity(sead::Matrix34f*, const sead::Matrix34f&);
 void calcMtxLocalTrans(sead::Vector3f*, const sead::Matrix34f&, const sead::Vector3f&);

@@ -4,7 +4,7 @@
 #include "al/Library/Collision/PartsMtxConnector.h"
 
 namespace al {
-class ActorInitInfo;
+struct ActorInitInfo;
 class CollisionDirector;
 class CollisionParts;
 class HitInfo;

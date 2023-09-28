@@ -1,3 +1,4 @@
+#include <al/Library/Movement/EnemyStateBlowDown.h>
 #include <al/Library/LiveActor/ActorActionFunction.h>
 #include <al/Library/LiveActor/ActorClippingFunction.h>
 #include <al/Library/LiveActor/ActorCollisionFunction.h>
@@ -7,7 +8,7 @@
 #include <al/Library/LiveActor/ActorSensorFunction.h>
 #include <al/Library/Math/MathAngleUtil.h>
 #include <al/Library/Math/MathLengthUtil.h>
-#include <al/Library/Movement/EnemyStateBlowDown.h>
+#include <al/Library/Movement/EnemyStateBlowDownParam.h>
 
 namespace al {
 void EnemyStateBlowDown::start(const al::HitSensor* sensor) {
@@ -26,10 +27,10 @@ void EnemyStateBlowDown::start(const sead::Vector3f& dir) {
         al::faceToDirection(mActor, -dir);
     }
 
-    auto actor = mActor;
-    auto direction = dir * mParam->mGravityStrength;
-    auto gravity = al::getGravity(actor);
-    auto velocity = gravity * mParam->mVelocityStrength;
+    auto* actor = mActor;
+    sead::Vector3f direction = dir * mParam->mGravityStrength;
+    sead::Vector3f gravity = al::getGravity(actor);
+    sead::Vector3f velocity = gravity * mParam->mVelocityStrength;
     al::setVelocity(actor, direction - velocity);
 }
 
@@ -85,14 +86,4 @@ void EnemyStateBlowDown::control() {
     al::scaleVelocity(mActor, mParam->mVelocityScale);
     mBlowDownTimer++;
 }
-
-EnemyStateBlowDownParam::EnemyStateBlowDownParam() {}
-
-EnemyStateBlowDownParam::EnemyStateBlowDownParam(const char* actionName) : mActionName(actionName) {}
-
-EnemyStateBlowDownParam::EnemyStateBlowDownParam(const char* actionName, f32 gravityStrength, f32 velocityStrength, f32 velocityMultiplier,
-                                                 f32 velocityScale, s32 blowDownLength, bool faceAwayFromActor)
-    : mActionName(actionName), mGravityStrength(gravityStrength), mVelocityStrength(velocityStrength), mVelocityMultiplier(velocityMultiplier),
-      mVelocityScale(velocityScale), mBlowDownLength(blowDownLength), mFaceAwayFromActor(faceAwayFromActor) {}
-
 }  // namespace al

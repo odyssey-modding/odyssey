@@ -29,7 +29,7 @@ EnemyStateReset::EnemyStateReset(al::LiveActor* actor, const al::ActorInitInfo& 
 }
 
 void EnemyStateReset::appear() {
-    auto actor = mActor;  // getting the actor in each function call below causes mismatch, have to declare a variable up here for it
+    al::LiveActor* actor = mActor;  // getting the actor in each function call below causes mismatch, have to declare a variable up here for it
 
     mIsDead = false;
     if (!mIsRevive) {
@@ -54,7 +54,7 @@ void EnemyStateReset::kill() {
     if (!mIsRevive)
         return;
 
-    auto actor = mActor;
+    al::LiveActor* actor = mActor;
 
     al::validateClipping(actor);
     al::showModelIfHide(actor);

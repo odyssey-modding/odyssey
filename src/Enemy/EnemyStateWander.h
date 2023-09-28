@@ -5,9 +5,9 @@
 class EnemyStateWander : public al::ActorStateBase {
 private:
     const char* mStateName;
-    s32 mRandNum;
-    f32 mWalkSpeed;
-    bool mIsHalfProbability;
+    s32 mRandNum = 0;
+    f32 mWalkSpeed = -1.0f;
+    bool mIsHalfProbability = false;
 
 public:
     EnemyStateWander(al::LiveActor* actor, const char* stateName);

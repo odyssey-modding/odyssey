@@ -3,7 +3,7 @@
 #include <al/Library/LiveActor/LiveActor.h>
 #include "PlayerHackKeeper.h"
 
-class PlayerInitInfo;
+struct PlayerInitInfo;
 class IUsePlayerCollision;
 class PlayerCollider;
 class PlayerActorBase : public al::LiveActor, public IUsePlayerHack {

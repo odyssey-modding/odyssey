@@ -3,15 +3,15 @@
 #include <basis/seadTypes.h>
 
 namespace al {
-class NfpCharacterId;
-class NfpInfo;
+struct NfpCharacterId;
+struct NfpInfo;
 class IUseMessageSystem;
 class IUseSceneObjHolder;
 }  // namespace al
 
 class ShopItem {
 public:
-    class ItemInfo;
+    struct ItemInfo;
 };
 
 namespace rs {

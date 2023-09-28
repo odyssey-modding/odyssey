@@ -6,6 +6,7 @@
 
 namespace {
 using namespace al;
+// This interleaving of macros is required. Perhaps this is one of the few nerves in the game to use multiple structs, for some reason?
 NERVE_IMPL(FootPrint, Appear);
 NERVE_MAKE(FootPrint, Appear);
 NERVE_IMPL(FootPrint, Disappear);

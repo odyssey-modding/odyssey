@@ -20,11 +20,7 @@ struct {
 
 }  // namespace
 
-EnemyStateWander::EnemyStateWander(al::LiveActor* actor, const char* stateName) : al::ActorStateBase("さんぽ状態", actor) {
-    mRandNum = 0;
-    mWalkSpeed = -1.0f;
-    mStateName = stateName;
-    mIsHalfProbability = false;
+EnemyStateWander::EnemyStateWander(al::LiveActor* actor, const char* stateName) : al::ActorStateBase("さんぽ状態", actor), mStateName(stateName) {
     initNerve(&NrvEnemyStateWander.Wait, 0);
 };
 
@@ -38,17 +34,18 @@ void EnemyStateWander::exeWait() {
         al::startAction(mActor, "Wait");
         mRandNum = al::getRandom(60);
     }
-    if (al::isGreaterEqualStep(this, mRandNum + 120)) {
-        return al::setNerve(this, &NrvEnemyStateWander.Walk);
-    }
-    if (!al::isOnGround(mActor, 0))
-        return al::setNerve(this, &NrvEnemyStateWander.Fall);
-    if (al::isFallNextMove(mActor, al::getVelocity(mActor), 50.0f, 200.0f)) {
-        al::scaleVelocity(mActor, -1.0f);
-        al::setVelocityY(mActor, 0.0f);
-    }
-    al::scaleVelocity(mActor, 0.7f);
-    al::addVelocityToGravityFittedGround(mActor, 2.0f, 0);
+    if (!al::isGreaterEqualStep(this, mRandNum + 120)) {
+        if (al::isOnGround(mActor, 0)) {
+            if (al::isFallNextMove(mActor, al::getVelocity(mActor), 50.0f, 200.0f)) {
+                al::scaleVelocity(mActor, -1.0f);
+                al::setVelocityY(mActor, 0.0f);
+            }
+            al::scaleVelocity(mActor, 0.7f);
+            al::addVelocityToGravityFittedGround(mActor, 2.0f, 0);
+        } else
+            al::setNerve(this, &NrvEnemyStateWander.Fall);
+    } else
+        al::setNerve(this, &NrvEnemyStateWander.Walk);
 }
 
 void EnemyStateWander::exeWalk() {

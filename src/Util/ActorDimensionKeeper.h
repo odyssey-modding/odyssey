@@ -3,9 +3,9 @@
 #include <math/seadVector.h>
 
 namespace al {
-    class LiveActor;
-    class MtxConnector;
-}
+class LiveActor;
+class MtxConnector;
+}  // namespace al
 
 class In2DAreaMoveControl;
 class IUsePlayerCollision;
@@ -38,7 +38,7 @@ public:
 
 class IUseDimension {
 public:
-    virtual ActorDimensionKeeper* getActorDimensionKeeper() const = 0;
+    virtual const ActorDimensionKeeper* getActorDimensionKeeper() const = 0;
 };
 
 namespace rs {

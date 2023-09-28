@@ -5,7 +5,7 @@
 
 namespace al {
 class LiveActor;
-class ActorInitInfo;
+struct ActorInitInfo;
 class ClippingDirector;
 
 void initActorClipping(al::LiveActor* actor, const al::ActorInitInfo& initInfo);
@@ -34,10 +34,10 @@ bool isInClippingFrustum(const al::ClippingDirector* director, const sead::Vecto
 bool isInClippingFrustumAllView(const al::LiveActor* actor, const sead::Vector3f& pos, f32, f32);
 }  // namespace al
 namespace alActorFunction {
-    void invalidateFarClipping(al::LiveActor *);
-    void validateFarClipping(al::LiveActor *);
-    f32 getFarClipDistance(const al::LiveActor*);
-    bool isInvalidFarClipping(const al::LiveActor*);
-    bool isDrawClipping(const al::LiveActor* actor);
-    bool checkActiveViewGroupAny(const al::LiveActor* actor);
-};
+void invalidateFarClipping(al::LiveActor*);
+void validateFarClipping(al::LiveActor*);
+f32 getFarClipDistance(const al::LiveActor*);
+bool isInvalidFarClipping(const al::LiveActor*);
+bool isDrawClipping(const al::LiveActor* actor);
+bool checkActiveViewGroupAny(const al::LiveActor* actor);
+};  // namespace alActorFunction

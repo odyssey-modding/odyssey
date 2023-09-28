@@ -9,6 +9,7 @@
 #include <al/Library/LiveActor/LiveActorFunction.h>
 #include <al/Library/Math/MathAngleUtil.h>
 #include <al/Library/Movement/EnemyStateBlowDown.h>
+#include <al/Library/Movement/EnemyStateBlowDownParam.h>
 #include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Nerve/NerveUtil.h>
 #include <al/Library/Obj/PartsFunction.h>
@@ -69,7 +70,7 @@ void EnemyCap::makeActorAlive() {
     al::setVelocityZero(this);
     updatePose();
     al::LiveActor::makeActorAlive();
-    this->mCapVisible = 0;
+    mCapVisible = false;
     al::setNerve(this, &NrvEnemyCap.Wait);
 }
 
@@ -141,7 +142,7 @@ EnemyCap* tryCreateEnemyCap(al::LiveActor* actor, const al::ActorInitInfo& info,
 
 EnemyCap* tryCreateEnemyCapSuffix(al::LiveActor* actor, const al::ActorInitInfo& info, const char* archiveName, const char* suffix) {
     if (!archiveName)
-        return 0;
+        return nullptr;
     auto cap = new EnemyCap("帽子");
     if (!al::isExistSubActorKeeper(actor))
         al::initSubActorKeeperNoFile(actor, info, 1);

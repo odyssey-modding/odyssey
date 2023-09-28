@@ -12,8 +12,8 @@ private:
 
 public:
     BootLayout(const al::LayoutInitInfo&);
-    void appear();
-    void kill();
+    void appear() override;
+    void kill() override;
     void startWipe();
     void endWipe();
     void end();

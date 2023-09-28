@@ -3,11 +3,11 @@
 #include <al/Library/Nerve/NerveStateBase.h>
 
 namespace al {
-    class ActorInitInfo;
-    class HitSensor;
-    class LiveActor;
-    class SensorMsg;
-}
+struct ActorInitInfo;
+class HitSensor;
+class LiveActor;
+class SensorMsg;
+}  // namespace al
 
 class EnemyCap;
 
@@ -28,5 +28,5 @@ public:
     void exeWait();
     void exeDamageCap();
 
-    EnemyCap* getEnemyCap() const { return mEnemyCap; };
+    const EnemyCap* getEnemyCap() { return mEnemyCap; };
 };

@@ -16,15 +16,14 @@ struct {
 namespace al {
 
 // NON_MATCHING: tools/check cannot find this function
-SnapShotCameraCtrl::SnapShotCameraCtrl(const al::SnapShotCameraSceneInfo* info) : al::NerveExecutor("スナップショットモード中のカメラ制御") {
-    mCameraSceneInfo = info;
+SnapShotCameraCtrl::SnapShotCameraCtrl(const al::SnapShotCameraSceneInfo* info)
+    : al::NerveExecutor("スナップショットモード中のカメラ制御"), mCameraSceneInfo(info) {
     initNerve(&NrvSnapShotCameraCtrl.Reset, 0);
-
     mParam = new al::SnapShotParam();
 }
 
 void SnapShotCameraCtrl::load(const al::ByamlIter& iter) {
-    auto param = mParam;
+    auto* param = mParam;
     al::ByamlIter paramIter;
     if (!al::tryGetByamlIterByKey(&paramIter, iter, "SnapShotParam"))
         return;

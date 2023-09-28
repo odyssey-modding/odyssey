@@ -5,10 +5,10 @@
 #include <prim/seadSafeString.h>
 
 namespace al {
-class ISeModifier;
+struct ISeModifier;
 class IUseAudioKeeper;
-class MeInfo;
-class SePlayParamList;
+struct MeInfo;
+struct SePlayParamList;
 
 void startSe(const al::IUseAudioKeeper*, const sead::SafeString&);
 void verifySeKeeperNull(const al::IUseAudioKeeper*, const sead::SafeString&);

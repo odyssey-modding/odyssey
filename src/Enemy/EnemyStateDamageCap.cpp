@@ -4,6 +4,7 @@
 #include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Nerve/NerveUtil.h>
 #include "Enemy/EnemyCap.h"
+#include "Util/SensorMsg.h"
 
 namespace {
 NERVE_IMPL(EnemyStateDamageCap, Wait);
@@ -15,11 +16,6 @@ struct {
 } NrvEnemyStateDamageCap;
 
 }  // namespace
-
-namespace rs {
-bool isMsgCapAttack(const al::SensorMsg*);
-void requestHitReactionToAttacker(const al::SensorMsg*, const al::HitSensor*, const al::HitSensor*);
-}  // namespace rs
 
 EnemyStateDamageCap::EnemyStateDamageCap(al::LiveActor* actor) : al::ActorStateBase("キャプチャ敵の帽子反応ステート", actor) {
     mEnemyCap = nullptr;
