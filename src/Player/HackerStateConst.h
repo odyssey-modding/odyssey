@@ -25,8 +25,8 @@ struct HackerStateConst {
     f32 field_4C = 3.0f;
     f32 field_50 = 1.5f;
     f32 field_54 = 0.7f;
-    f32 field_58 = 0.25f;
-    s32 field_5C = 10;
+    s32 field_58 = 10;
+    f32 field_5C = 0.25f;
     
     HackerStateConst();
 };

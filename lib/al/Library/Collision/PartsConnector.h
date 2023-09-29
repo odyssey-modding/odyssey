@@ -22,9 +22,9 @@ public:
     void getConnectingSensor() const;
 
     bool isConnecting() const override;
-    void clear() override;
     virtual bool isMoved() const;
     bool isConnectInvalidCollision() const;
+    void clear() override;
 };
 
 class SensorConnector;
