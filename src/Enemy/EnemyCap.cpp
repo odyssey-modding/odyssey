@@ -15,6 +15,7 @@
 #include <al/Library/Obj/PartsFunction.h>
 #include <al/Library/Placement/PlacementFunction.h>
 #include <al/Library/Yaml/ByamlUtil.h>
+#include "prim/seadSafeString.h"
 
 namespace {
 NERVE_IMPL(EnemyCap, Wait);
@@ -33,7 +34,7 @@ EnemyCap* EnemyCap::createEnemyCap(const char* name) {
 
 EnemyCap::EnemyCap(const char* name) : al::LiveActor(name) {}
 
-static al::EnemyStateBlowDownParam* fallbackStateBlowDownParam = new al::EnemyStateBlowDownParam();
+static al::EnemyStateBlowDownParam fallbackStateBlowDownParam{};
 
 // NON_MATCHING: Unsure how the al::StringTmp here works
 void EnemyCap::initPartsFixFile(al::LiveActor* actor, const al::ActorInitInfo& initInfo, const char* archiveName, const char* suffix) {
@@ -41,15 +42,14 @@ void EnemyCap::initPartsFixFile(al::LiveActor* actor, const al::ActorInitInfo& i
     mCapBaseMtx = mCap->getBaseMtx();
     al::initChildActorWithArchiveNameNoPlacementInfo(this, initInfo, archiveName, 0);
     al::initNerve(this, &NrvEnemyCap.Wait, 1);
-    mStateBlowDown = new al::EnemyStateBlowDown(this, fallbackStateBlowDownParam, "吹き飛び状態");
+    mStateBlowDown = new al::EnemyStateBlowDown(this, &fallbackStateBlowDownParam, "吹き飛び状態");
     al::initNerveState(this, mStateBlowDown, &NrvEnemyCap.BlowDown, "吹き飛び");
 
     al::StringTmp<128> test("");
-
     al::createFileNameBySuffix(&test, "InitPartsFixInfo", suffix);
     if (al::isExistModelResourceYaml(mCap, test.cstr(), 0)) {
-        al::ByamlIter resourceYaml = al::getModelResourceYaml(mCap, test.cstr(), 0);
-        const char* jointName = 0;
+        al::ByamlIter resourceYaml (al::getModelResourceYaml(mCap, test.cstr(), 0));
+        const char* jointName = nullptr;
         resourceYaml.tryGetStringByKey(&jointName, "JointName");
         if (jointName)
             mCapBaseMtx = al::getJointMtxPtr(mCap, jointName);

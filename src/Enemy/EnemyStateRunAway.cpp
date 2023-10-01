@@ -14,21 +14,23 @@ NERVE_MAKE(EnemyStateRunAway, PanicRun);
 NERVE_MAKE(EnemyStateRunAway, PanicRunCollided);
 }  // namespace
 
-// NON_MATCHING: Mismatching Vector math, should be equivalent
 void EnemyStateRunAway::appear() {
     mIsDead = false;
     if (mParam->mShouldFaceDir)
         mNeedToFaceToDirection = true;
     al::calcFrontDir(&mFrontDir, mActor);
-    if (mScaredOfActor) {
-        sead::Vector3f normalized = al::getTrans(mScaredOfActor) - al::getTrans(mActor);
+    if (!mScaredOfActor) {
+        mFrontDir = sead::Vector3f::ez;
+    } else {
+        auto& s = al::getTrans(mScaredOfActor);
+        auto& t = al::getTrans(mActor);
+        sead::Vector3f normalized;
+        normalized.x = s.x-t.x;
+        normalized.z = s.z-t.z;
         normalized.y = 0.0f;
         al::normalize(&normalized);
-        normalized = -normalized;
 
-        mFrontDir = normalized;
-    } else {
-        mFrontDir = sead::Vector3f::ez;
+        mFrontDir = -normalized;
     }
     al::setNerve(this, &PanicRun);
 }

@@ -54,4 +54,6 @@ public:
     void tryResetAbsorbVecIfInCollision(const sead::Vector3f&);
     void update();
 };
+
+static_assert(sizeof(al::CameraVerticalAbsorber) == 0x1B0, "al::CameraVerticalAbsorber size mismatch");
 }  // namespace al
