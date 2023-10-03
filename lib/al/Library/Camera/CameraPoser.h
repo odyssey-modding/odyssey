@@ -17,15 +17,15 @@ namespace al {
 
 struct CameraStartInfo;
 class CameraVerticalAbsorber;
-class CameraAngleCtrlInfo;
-class CameraAngleSwingInfo;
+struct CameraAngleCtrlInfo;
+struct CameraAngleSwingInfo;
 class CameraArrowCollider;
 class CameraOffsetCtrlPreset;
 class CameraParamMoveLimit;
 class GyroCameraCtrl;
-class CameraViewInfo;
+struct CameraViewInfo;
 class CameraObjectRequestInfo;
-class CameraTurnInfo;
+struct CameraTurnInfo;
 class CameraPoserFlag;
 class RailKeeper;
 

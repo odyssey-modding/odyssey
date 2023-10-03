@@ -3,7 +3,7 @@
 #include <basis/seadTypes.h>
 
 namespace al {
-enum CameraPriority {
+enum class CameraPriority {
     Entrance = 2,
     BossField = 3,
     Capture = 4,

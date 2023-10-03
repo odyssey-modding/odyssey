@@ -30,13 +30,13 @@ public:
 class SensorConnector;
 class Triangle;
 
-void createMtxConnector(const al::LiveActor*);
-void createMtxConnector(const al::LiveActor*, const sead::Quatf&);
-bool tryCreateMtxConnector(const al::LiveActor*, const al::ActorInitInfo&);
-bool tryCreateMtxConnector(const al::LiveActor*, const al::ActorInitInfo&, const sead::Quatf&);
-void createCollisionPartsConnector(const al::LiveActor*, const sead::Quatf&);
-bool tryCreateCollisionPartsConnector(const al::LiveActor*, const al::ActorInitInfo&);
-bool tryCreateCollisionPartsConnector(const al::LiveActor*, const al::ActorInitInfo&, const sead::Quatf&);
+al::MtxConnector* createMtxConnector(const al::LiveActor*);
+al::MtxConnector* createMtxConnector(const al::LiveActor*, const sead::Quatf&);
+al::MtxConnector* tryCreateMtxConnector(const al::LiveActor*, const al::ActorInitInfo&);
+al::MtxConnector* tryCreateMtxConnector(const al::LiveActor*, const al::ActorInitInfo&, const sead::Quatf&);
+al::CollisionPartsConnector* createCollisionPartsConnector(const al::LiveActor*, const sead::Quatf&);
+al::CollisionPartsConnector* tryCreateCollisionPartsConnector(const al::LiveActor*, const al::ActorInitInfo&);
+al::CollisionPartsConnector* tryCreateCollisionPartsConnector(const al::LiveActor*, const al::ActorInitInfo&, const sead::Quatf&);
 bool isMtxConnectorConnecting(const al::MtxConnector*);
 void disconnectMtxConnector(al::MtxConnector*);
 void attachMtxConnectorToCollision(al::MtxConnector*, const al::LiveActor*, const sead::Vector3f&, const sead::Vector3f&);
@@ -74,6 +74,6 @@ void attachToHitInfo(al::CollisionPartsConnector*, const al::HitInfo&, const sea
 void attachToHitInfoNrmToMinusZ(al::CollisionPartsConnector*, const al::HitInfo&);
 void calcConnectInfo(const al::MtxConnector*, sead::Vector3f*, sead::Quatf*, sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&);
 void connectPoseQTUsingConnectInfo(al::LiveActor*, const al::MtxConnector*);
-void getConnectBaseQuat(const al::MtxConnector*);
-void getConnectBaseTrans(const al::MtxConnector*);
+sead::Quatf &getConnectBaseQuat(const al::MtxConnector*);
+sead::Vector3f &getConnectBaseTrans(const al::MtxConnector*);
 }  // namespace al

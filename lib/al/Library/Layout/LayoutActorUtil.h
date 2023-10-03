@@ -8,11 +8,11 @@ class TextureInfo;
 }
 
 namespace sead {
-    class Color4u8;
+class Color4u8;
 }
 
 namespace agl {
-    class TextureData;
+class TextureData;
 }
 
 namespace al {
@@ -25,8 +25,8 @@ void appearLayoutIfDead(al::LayoutActor*);
 bool isActive(const al::LayoutActor*);
 bool isDead(const al::LayoutActor*);
 void calcTrans(sead::Vector3f*, const al::IUseLayout*);
-void getLocalTrans(const al::IUseLayout*);
-void getLocalTransPtr(const al::IUseLayout*);
+sead::Vector3f& getLocalTrans(const al::IUseLayout*);
+sead::Vector3f* getLocalTransPtr(const al::IUseLayout*);
 void calcScale(sead::Vector3f*, const al::IUseLayout*);
 void getLocalScale(const al::IUseLayout*);
 void setLocalTrans(al::IUseLayout*, const sead::Vector3f&);
@@ -39,20 +39,20 @@ void calcPaneMtx(sead::Matrix34f*, const al::IUseLayout*, const char*);
 void calcPaneTrans(sead::Vector2f*, const al::IUseLayout*, const char*);
 void calcPaneScale(sead::Vector3f*, const al::IUseLayout*, const char*);
 void calcPaneSize(sead::Vector3f*, const al::IUseLayout*, const char*);
-void getPaneMtx(const al::IUseLayout*, const char*);
-void getPaneMtxRaw(const al::IUseLayout*, const char*);
-void getGlobalAlpha(const al::IUseLayout*, const char*);
+sead::Matrix34f& getPaneMtx(const al::IUseLayout*, const char*);
+sead::Matrix34f* getPaneMtxRaw(const al::IUseLayout*, const char*);
+f32 getGlobalAlpha(const al::IUseLayout*, const char*);
 void setPaneLocalTrans(al::IUseLayout*, const char*, const sead::Vector2f&);
 void setPaneLocalTrans(al::IUseLayout*, const char*, const sead::Vector3f&);
 void setPaneLocalRotate(al::IUseLayout*, const char*, const sead::Vector3f&);
 void setPaneLocalScale(al::IUseLayout*, const char*, const sead::Vector2f&);
 void setPaneLocalSize(al::IUseLayout*, const char*, const sead::Vector2f&);
 void setPaneLocalAlpha(al::IUseLayout*, const char*, float);
-void getPaneLocalTrans(const al::IUseLayout*, const char*);
+sead::Vector3f& getPaneLocalTrans(const al::IUseLayout*, const char*);
 void getPaneLocalSize(sead::Vector2f*, const al::IUseLayout*, const char*);
-void getPaneLocalRotate(const al::IUseLayout*, const char*);
-void getPaneLocalScale(const al::IUseLayout*, const char*);
-void getTextBoxDrawRectSize(const al::IUseLayout*, const char*);
+sead::Vector3f& getPaneLocalRotate(const al::IUseLayout*, const char*);
+sead::Vector3f& getPaneLocalScale(const al::IUseLayout*, const char*);
+sead::Vector3f& getTextBoxDrawRectSize(const al::IUseLayout*, const char*);
 void showPane(al::IUseLayout*, const char*);
 void hidePane(al::IUseLayout*, const char*);
 void showPaneNoRecursive(al::IUseLayout*, const char*);
@@ -75,8 +75,8 @@ void setPaneVtxColor(const al::IUseLayout*, const char*, const sead::Color4u8&);
 bool isTriggerTouchPane(const al::IUseLayout*, const char*);
 bool isHoldTouchPane(const al::IUseLayout*, const char*);
 bool isReleaseTouchPane(const al::IUseLayout*, const char*);
-void getPaneChildNum(const al::IUseLayout*, const char*);
-void getPaneChildName(const al::IUseLayout*, const char*, s32);
+s32 getPaneChildNum(const al::IUseLayout*, const char*);
+const char *getPaneChildName(const al::IUseLayout*, const char*, s32);
 void setPaneStringLength(al::IUseLayout*, const char*, const char16_t*, u16, u16);
 void setPaneString(al::IUseLayout*, const char*, const char16_t*, u16);
 void setPaneCounterDigit1(al::IUseLayout*, const char*, s32, u16);
