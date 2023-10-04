@@ -4,7 +4,7 @@
 
 namespace al {
 class ExecuteDirector;
-class EffectSystemInfo;
+struct EffectSystemInfo;
 class AudioDirector;
 class LayoutSystem;
 class LayoutActor;

@@ -40,4 +40,4 @@ f32 getFarClipDistance(const al::LiveActor*);
 bool isInvalidFarClipping(const al::LiveActor*);
 bool isDrawClipping(const al::LiveActor* actor);
 bool checkActiveViewGroupAny(const al::LiveActor* actor);
-};  // namespace alActorFunction
+}  // namespace alActorFunction

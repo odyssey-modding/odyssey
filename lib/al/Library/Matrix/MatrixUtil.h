@@ -72,9 +72,9 @@ void calcMtxLocalDirAngleOnPlaneToTarget(const sead::Matrix34f*, const sead::Vec
 void calcMtxLocalDirAngleOnPlaneToDir(const sead::Matrix34f*, const sead::Vector3f&, s32, s32);
 void calcRotAxisOrZero(sead::Vector3f*, const sead::Matrix34f&);
 void calcMxtInvertOrtho(sead::Matrix34f*, const sead::Matrix34f&);
-void calcNearFarByInvProjection(f32*, f32*, sead::Matrix44f const&);
-void calcMovedInertiaTensor(sead::Matrix33f*, sead::Matrix33f const&, const sead::Vector3f&, f32);
-void calcInertiaTensorByMovedTensorAndCenter(sead::Matrix33f*, sead::Matrix33f const&, const sead::Vector3f&, f32);
+void calcNearFarByInvProjection(f32*, f32*, const sead::Matrix44f&);
+void calcMovedInertiaTensor(sead::Matrix33f*, const sead::Matrix33f&, const sead::Vector3f&, f32);
+void calcInertiaTensorByMovedTensorAndCenter(sead::Matrix33f*, const sead::Matrix33f&, const sead::Vector3f&, f32);
 void calcInertiaTensorSphere(sead::Matrix33f*, f32, f32);
 void calcInertiaTensorBox(sead::Matrix33f*, const sead::Vector3f&, f32);
 void makeMtx34f(sead::Matrix34f*, const nn::util::neon::MatrixColumnMajor4x3fType&);

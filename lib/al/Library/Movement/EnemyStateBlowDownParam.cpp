@@ -1,7 +1,7 @@
 #include <al/Library/Movement/EnemyStateBlowDownParam.h>
 
 namespace al {
-EnemyStateBlowDownParam::EnemyStateBlowDownParam() {}
+EnemyStateBlowDownParam::EnemyStateBlowDownParam() = default;
 
 EnemyStateBlowDownParam::EnemyStateBlowDownParam(const char* actionName) : mActionName(actionName) {}
 

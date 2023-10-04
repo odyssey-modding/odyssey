@@ -14,7 +14,7 @@ struct EnemyStateBlowDownParam {
 
     EnemyStateBlowDownParam();
     EnemyStateBlowDownParam(const char* actionName);
-    EnemyStateBlowDownParam(const char* actionName, float gravityStrength, float velocityStrength, float velocityMultiplier, float velocityScale,
-                            int blowDownLength, bool faceAwayFromActor);
+    EnemyStateBlowDownParam(const char* actionName, f32 gravityStrength, f32 velocityStrength, f32 velocityMultiplier, f32 velocityScale,
+                            s32 blowDownLength, bool faceAwayFromActor);
 };
 }  // namespace al
