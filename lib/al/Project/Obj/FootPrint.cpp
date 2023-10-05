@@ -21,7 +21,7 @@ FootPrint::FootPrint(const al::ActorInitInfo& info, const char* name) : al::Live
     al::initNerve(this, &Appear, 0);
     mConnector = new al::CollisionPartsConnector();
     makeActorDead();
-};
+}
 
 void FootPrint::appear() {
     al::LiveActor::appear();

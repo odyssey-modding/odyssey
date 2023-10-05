@@ -24,7 +24,7 @@ EnemyStateDamageCap::EnemyStateDamageCap(al::LiveActor* actor) : al::ActorStateB
 
 void EnemyStateDamageCap::kill() {
     al::setNerve(this, &NrvEnemyStateDamageCap.Wait);
-    mIsDead = true;
+    setDead(true);
 }
 
 void EnemyStateDamageCap::createEnemyCap(const al::ActorInitInfo& info, const char* name) {
@@ -41,9 +41,7 @@ bool EnemyStateDamageCap::tryReceiveMsgCapBlow(const al::SensorMsg* msg, al::Hit
 }
 
 bool EnemyStateDamageCap::isCapOn() const {
-    if (mEnemyCap && al::isAlive(mEnemyCap))
-        return !mEnemyCap->isBlowDown();
-    return false;
+    return mEnemyCap && al::isAlive(mEnemyCap) && !mEnemyCap->isBlowDown();
 }
 
 void EnemyStateDamageCap::blowCap(al::HitSensor* source) {

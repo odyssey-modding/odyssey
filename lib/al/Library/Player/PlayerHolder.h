@@ -1,8 +1,8 @@
 #pragma once
 
 #include <basis/seadTypes.h>
-#include <math/seadVector.h>
 #include <math/seadMatrix.h>
+#include <math/seadVector.h>
 
 namespace al {
 class IUseCamera;
@@ -39,16 +39,16 @@ public:
     al::PadRumbleKeeper* getPadRumbleKeeper(s32 index) const;
 };
 
-void getPlayerNumMax(const al::LiveActor*);
-void getPlayerNumMax(const al::PlayerHolder*);
-void getAlivePlayerNum(const al::LiveActor*);
-void getAlivePlayerNum(const al::PlayerHolder*);
-void getPlayerActor(const al::LiveActor*, s32);
-void getPlayerActor(const al::PlayerHolder*, s32);
-void getPlayerPos(const al::LiveActor*, s32);
-void getPlayerPos(const al::PlayerHolder*, s32);
-bool tryGetPlayerActor(const al::LiveActor*, s32);
-bool tryGetPlayerActor(const al::PlayerHolder*, s32);
+s32 getPlayerNumMax(const al::LiveActor*);
+s32 getPlayerNumMax(const al::PlayerHolder*);
+s32 getAlivePlayerNum(const al::LiveActor*);
+s32 getAlivePlayerNum(const al::PlayerHolder*);
+al::LiveActor* getPlayerActor(const al::LiveActor*, s32);
+al::LiveActor* getPlayerActor(const al::PlayerHolder*, s32);
+sead::Vector3f& getPlayerPos(const al::LiveActor*, s32);
+sead::Vector3f& getPlayerPos(const al::PlayerHolder*, s32);
+al::LiveActor* tryGetPlayerActor(const al::LiveActor*, s32);
+al::LiveActor* tryGetPlayerActor(const al::PlayerHolder*, s32);
 bool isPlayerDead(const al::LiveActor*, s32);
 bool isPlayerDead(const al::PlayerHolder*, s32);
 bool isPlayerAreaTarget(const al::LiveActor*, s32);
@@ -57,27 +57,27 @@ bool tryFindAlivePlayerActorFirst(const al::LiveActor*);
 bool tryFindAlivePlayerActorFirst(const al::PlayerHolder*);
 void findAlivePlayerActorFirst(const al::LiveActor*);
 void findAlivePlayerActorFirst(const al::PlayerHolder*);
-void getPlayerPadRumbleKeeper(const al::LiveActor*, s32);
-void getPlayerPort(const al::PlayerHolder*, s32);
-void getPlayerPort(const al::LiveActor*, s32);
-void findAlivePlayerActorFromPort(const al::PlayerHolder*, s32);
-bool tryFindAlivePlayerActorFromPort(const al::PlayerHolder*, s32);
-void findAlivePlayerActorFromPort(const al::LiveActor*, s32);
-bool tryFindAlivePlayerActorFromPort(const al::LiveActor*, s32);
-void findNearestPlayerId(const al::LiveActor*, f32);
-void findNearestPlayerActor(const al::LiveActor*);
-bool tryFindNearestPlayerActor(const al::LiveActor*);
-void findNearestPlayerPos(const al::LiveActor*);
-bool tryFindNearestPlayerPos(sead::Vector3f*, const al::LiveActor*);
-bool tryFindNearestPlayerDisatanceFromTarget(f32*, const al::LiveActor*, const sead::Vector3f&);
+al::PadRumbleKeeper* getPlayerPadRumbleKeeper(const al::LiveActor*, s32);
+al::PadRumbleKeeper& getPlayerPort(const al::PlayerHolder*, s32);
+al::PadRumbleKeeper& getPlayerPort(const al::LiveActor*, s32);
+al::LiveActor* findAlivePlayerActorFromPort(const al::PlayerHolder*, s32);
+al::LiveActor* tryFindAlivePlayerActorFromPort(const al::PlayerHolder*, s32);
+al::LiveActor* findAlivePlayerActorFromPort(const al::LiveActor*, s32);
+al::LiveActor* tryFindAlivePlayerActorFromPort(const al::LiveActor*, s32);
+s32 findNearestPlayerId(const al::LiveActor*, f32);
+al::LiveActor* findNearestPlayerActor(const al::LiveActor*);
+al::LiveActor* tryFindNearestPlayerActor(const al::LiveActor*);
+sead::Vector3f& findNearestPlayerPos(const al::LiveActor*);
+sead::Vector3f& tryFindNearestPlayerPos(sead::Vector3f*, const al::LiveActor*);
+sead::Vector3f& tryFindNearestPlayerDisatanceFromTarget(f32*, const al::LiveActor*, const sead::Vector3f&);
 bool isNearPlayer(const al::LiveActor*, f32);
 bool isNearPlayerH(const al::LiveActor*, f32);
 bool isNearPlayerHCondition(const al::LiveActor*, f32, bool (*)(const al::LiveActor*));
-void getFarPlayerPosMaxX(const al::LiveActor*);
-void getFarPlayerPosMinX(const al::LiveActor*);
-void calcPlayerListOrderByDistance(const al::LiveActor*, const al::LiveActor**, u32);
-void calcAlivePlayerActor(const al::LiveActor*, const al::LiveActor**, u32);
-bool tryFindNearestPlayerActorCondition(const al::LiveActor*, bool (*)(const al::LiveActor*));
+sead::Vector3f& getFarPlayerPosMaxX(const al::LiveActor*);
+sead::Vector3f& getFarPlayerPosMinX(const al::LiveActor*);
+u32 calcPlayerListOrderByDistance(const al::LiveActor*, const al::LiveActor**, u32);
+u32 calcAlivePlayerActor(const al::LiveActor*, const al::LiveActor**, u32);
+al::LiveActor* tryFindNearestPlayerActorCondition(const al::LiveActor*, bool (*)(const al::LiveActor*));
 bool tryFindNearestPlayerPosCondition(sead::Vector3f*, const al::LiveActor*, bool (*)(const al::LiveActor*));
 bool isResetablePlayerPos(const al::LiveActor*, const sead::Vector3f&, f32, f32);
 bool isResetablePlayerPos(const al::LiveActor*, f32);

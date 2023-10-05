@@ -21,13 +21,9 @@ NERVE_MAKE(EnemyStateHackStart, HackStart);
 }  // namespace
 
 EnemyStateHackStartParam::EnemyStateHackStartParam(const char* actionName, const char* visAnimName, const char* mtpAnimName, bool hasSubActors,
-                                                   bool updateSubActorShadowMap) {
-    mActionName = actionName;
-    mVisAnimName = visAnimName;
-    mMtpAnimName = mtpAnimName;
-    mHasSubActors = hasSubActors;
-    mUpdateSubActorShadowMap = updateSubActorShadowMap;
-}
+                                                   bool updateSubActorShadowMap)
+    : mActionName(actionName), mVisAnimName(visAnimName), mMtpAnimName(mtpAnimName), mHasSubActors(hasSubActors),
+      mUpdateSubActorShadowMap(updateSubActorShadowMap) {}
 
 static EnemyStateHackStartParam fallbackParam("HackStart", 0, 0, 0, 0);
 
@@ -50,7 +46,7 @@ IUsePlayerHack* EnemyStateHackStart::tryStart(const al::SensorMsg* sensor, al::H
 }
 
 void EnemyStateHackStart::kill() {
-    mIsDead = true;
+    setDead(true);
     if (!mHackActor)
         return;
     rs::endHackStartDemo(mHackActor, mActor);
@@ -61,12 +57,12 @@ bool EnemyStateHackStart::isHackStart() const {
     return al::isNerve(this, &HackStart);
 }
 
-float EnemyStateHackStart::calcHackStartNerveRate() const {
+f32 EnemyStateHackStart::calcHackStartNerveRate() const {
     if (isHackStart()) {
         s32 frameMax = al::getActionFrameMax(mActor, mParam->mActionName);
         return al::calcNerveRate(this, frameMax);
     }
-    return 0;
+    return 0.0f;
 }
 
 void EnemyStateHackStart::exeDiveIn() {

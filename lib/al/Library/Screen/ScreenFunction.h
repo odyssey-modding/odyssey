@@ -2,12 +2,12 @@
 
 #include <al/Library/Camera/CameraDirector.h>
 #include <al/Library/HostIO/HioNode.h>
-#include <common/aglRenderBuffer.h>
 #include <basis/seadTypes.h>
+#include <common/aglRenderBuffer.h>
 #include <container/seadPtrArray.h>
-#include <math/seadVector.h>
-#include <math/seadMatrix.h>
 #include <gfx/seadCamera.h>
+#include <math/seadMatrix.h>
+#include <math/seadVector.h>
 
 namespace al {
 
@@ -58,7 +58,7 @@ u32 getSubDisplayHeight();
 
 bool isInScreen(const sead::Vector2f&, f32);
 
-bool calcWorldPosFromScreen(sead::Vector3f* output, const sead::Vector2f&, const sead::Matrix34f&, f32); // Always returns true
+bool calcWorldPosFromScreen(sead::Vector3f* output, const sead::Vector2f&, const sead::Matrix34f&, f32);  // Always returns true
 void calcWorldPosFromScreenPos(sead::Vector3f* output, const al::IUseCamera*, const sead::Vector2f, f32);
 void calcWorldPosFromScreenPos(sead::Vector3f* output, const al::IUseCamera*, const sead::Vector2f, const sead::Vector3f);
 void calcWorldPosFromScreenPos(sead::Vector3f* output, const al::SceneCameraInfo*, const sead::Vector2f, f32, s32);
@@ -99,11 +99,14 @@ void calcCameraPosToWorldPosDirFromScreenPosSub(sead::Vector3f* output, const al
 void calcLineCameraToWorldPosFromScreenPos(sead::Vector3f* output1, sead::Vector3f* output2, const al::IUseCamera*, const sead::Vector2f&);
 void calcLineCameraToWorldPosFromScreenPos(sead::Vector3f* output1, sead::Vector3f* output2, const al::IUseCamera*, const sead::Vector2f&, f32, f32);
 void calcLineCameraToWorldPosFromScreenPos(sead::Vector3f* output1, sead::Vector3f* output2, const al::SceneCameraInfo*, const sead::Vector2f&, s32);
-void calcLineCameraToWorldPosFromScreenPos(sead::Vector3f* output1, sead::Vector3f* output2, const al::SceneCameraInfo*, const sead::Vector2f&, f32, f32, s32);
+void calcLineCameraToWorldPosFromScreenPos(sead::Vector3f* output1, sead::Vector3f* output2, const al::SceneCameraInfo*, const sead::Vector2f&, f32,
+                                           f32, s32);
 void calcLineCameraToWorldPosFromScreenPosSub(sead::Vector3f* output1, sead::Vector3f* output2, const al::IUseCamera*, const sead::Vector2f&);
-void calcLineCameraToWorldPosFromScreenPosSub(sead::Vector3f* output1, sead::Vector3f* output2, const al::IUseCamera*, const sead::Vector2f&, f32, f32);
-} // namespace al
+void calcLineCameraToWorldPosFromScreenPosSub(sead::Vector3f* output1, sead::Vector3f* output2, const al::IUseCamera*, const sead::Vector2f&, f32,
+                                              f32);
+}  // namespace al
 
 namespace ScreenFunction {
-void calcWorldPositionFromCenterScreen(sead::Vector3f*, sead::Vector2f const&, const sead::Vector3f&, sead::Camera const&, sead::Projection const&, sead::Viewport const&);
-} // namespace ScreenFunction
+void calcWorldPositionFromCenterScreen(sead::Vector3f*, const sead::Vector2f&, const sead::Vector3f&, const sead::Camera&, const sead::Projection&,
+                                       const sead::Viewport&);
+}  // namespace ScreenFunction

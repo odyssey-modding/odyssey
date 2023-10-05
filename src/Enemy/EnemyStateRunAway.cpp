@@ -15,7 +15,7 @@ NERVE_MAKE(EnemyStateRunAway, PanicRunCollided);
 }  // namespace
 
 void EnemyStateRunAway::appear() {
-    mIsDead = false;
+    setDead(false);
     if (mParam->mShouldFaceDir)
         mNeedToFaceToDirection = true;
     al::calcFrontDir(&mFrontDir, mActor);

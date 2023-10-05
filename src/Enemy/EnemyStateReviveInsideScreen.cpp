@@ -29,7 +29,7 @@ EnemyStateReviveInsideScreen::EnemyStateReviveInsideScreen(al::LiveActor* actor)
 }
 
 void EnemyStateReviveInsideScreen::appear() {
-    mIsDead = false;
+    setDead(false);
 
     if (al::isHideModel(mActor)) {
         mIsModelHidden = true;
@@ -55,7 +55,7 @@ void EnemyStateReviveInsideScreen::appear() {
 
 void EnemyStateReviveInsideScreen::kill() {
     al::stopSe(mActor, "RevivalSign", 0xFFFFFFFF, 0);
-    mIsDead = true;
+    setDead(true);
     if (!mIsModelHidden)
         al::showModel(mActor);
     if (!mIsInvalidClipping)

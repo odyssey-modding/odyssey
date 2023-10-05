@@ -1,8 +1,8 @@
 #pragma once
 
 #include <basis/seadTypes.h>
-#include <math/seadVector.h>
 #include <gfx/seadColor.h>
+#include <math/seadVector.h>
 
 namespace al {
 class LiveActor;
@@ -61,7 +61,7 @@ void setShadowTextureOffset(al::LiveActor*, const char*, f32, f32);
 void onShadowTextureScroll(al::LiveActor*, const char*);
 void offShadowTextureScroll(al::LiveActor*, const char*);
 void calcShadowMaskSize(sead::Vector3f*, al::LiveActor*, const char*);
-void getShadowMaskDropLength(const al::LiveActor*, const char*);
+f32 getShadowMaskDropLength(const al::LiveActor*, const char*);
 void setShadowMaskDropLength(al::LiveActor*, f32);
 void setShadowMaskDropLength(al::LiveActor*, f32, const char*);
 void setShadowMaskDropLengthScaleWithDrawCategory(al::LiveActor*, f32, al::ShadowMaskDrawCategory);
@@ -70,10 +70,10 @@ void setShadowMaskDropLengthEvenWithTarget(al::ShadowMaskBase*, const char*, con
 void setShadowMaskDropLengthEvenWithTarget(al::ShadowMaskBase*, al::ShadowMaskBase const*, const sead::Vector3f&);
 void setShadowMaskDropLengthEvenWithDrawCategory(al::LiveActor*, al::ShadowMaskDrawCategory, const al::LiveActor*, const char*);
 void setShadowMaskDropLengthEvenPlaneNormal(const al::LiveActor*, const sead::Vector3f&);
-void getDepthShadowMapWidth(const al::LiveActor*, const char*);
-void getDepthShadowMapHeight(const al::LiveActor*, const char*);
+s32 getDepthShadowMapWidth(const al::LiveActor*, const char*);
+s32 getDepthShadowMapHeight(const al::LiveActor*, const char*);
 void setDepthShadowMapSize(const al::LiveActor*, s32, s32, const char*);
-void getDepthShadowMapLength(const al::LiveActor*, const char*);
+s32 getDepthShadowMapLength(const al::LiveActor*, const char*);
 void setDepthShadowMapLength(const al::LiveActor*, f32, const char*);
 void setDepthShadowMapLengthFromActorTransFlag(const al::LiveActor*, bool, const char*);
 void setDepthShadowMapBoundingBox(const al::LiveActor*, const sead::Vector3f&, const sead::Vector3f&, const char*);
@@ -82,16 +82,16 @@ void setDepthShadowMapMaskTypeSelf(const al::LiveActor*, const char*);
 void setEnableDepthShadowMapBottomGradation(const al::LiveActor*, const char*, bool);
 bool isEnableDepthShadowMapBottomGradation(const al::LiveActor*, const char*);
 void setDepthShadowMapBottomGradationLength(const al::LiveActor*, const char*, f32);
-void getDepthShadowMapBottomGradationLength(const al::LiveActor*, const char*);
+f32 getDepthShadowMapBottomGradationLength(const al::LiveActor*, const char*);
 bool isAppendSubActorDepthShadowMap(const al::LiveActor*);
-void getShadowMaskDropLengthMax(const al::LiveActor*);
+f32 getShadowMaskDropLengthMax(const al::LiveActor*);
 void setShadowMaskColor(const al::LiveActor*, const char*, const sead::Color4f&);
-void getShadowMaskColor(const al::LiveActor*, const char*);
+sead::Color4f& getShadowMaskColor(const al::LiveActor*, const char*);
 void setShadowMaskIntensity(const al::LiveActor*, const char*, f32);
-void getShadowMaskIntensity(const al::LiveActor*, const char*);
-void getShadowMaskTextureFixedScale(const al::LiveActor*, const char*);
+f32 getShadowMaskIntensity(const al::LiveActor*, const char*);
+void* getShadowMaskTextureFixedScale(const al::LiveActor*, const char*);
 void setShadowMaskTextureFixedScale(const al::LiveActor*, const char*, f32);
-void getShadowMaskOffset(const al::LiveActor*, const char*);
+sead::Vector3f& getShadowMaskOffset(const al::LiveActor*, const char*);
 void setShadowMaskOffset(const al::LiveActor*, const sead::Vector3f&, const char*);
 bool isExistOcclusionLightPosPtr(const al::LiveActor*, const char*);
 void setOcclusionLightPosPtr(const al::LiveActor*, const char*, const sead::Vector3f*);
@@ -102,9 +102,9 @@ bool isEnableOcclusion(const al::LiveActor*, const char*);
 void calcSphereDoBoundingInfo(sead::Vector3f*, sead::Vector3f*, f32*, f32*, const al::LiveActor*, const char*, f32);
 void calcOcclusionSpherePos(sead::Vector3f*, const al::LiveActor*, const char*);
 void changeOcclusionGroup(const al::LiveActor*, const char*, const char*);
-void getOcclusionSphere(const al::LiveActor*, const char*);
+void* getOcclusionSphere(const al::LiveActor*, const char*);
 void setOcclusionIgnoreHostHide(const al::LiveActor*, bool);
-void findIsInShade(const al::LiveActor*, const sead::Vector3f&);
+bool findIsInShade(const al::LiveActor*, const sead::Vector3f&);
 void requestDepthShadowMapLightDir(const al::LiveActor*, const sead::Vector3f&, const char*);
 void resetRequestDepthShadowMapLightDir(const al::LiveActor*, const char*);
 bool isRequestDepthShadowMapLightDir(const al::LiveActor*, const char*);

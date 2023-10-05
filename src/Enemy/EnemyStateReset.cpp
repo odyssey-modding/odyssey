@@ -31,7 +31,7 @@ EnemyStateReset::EnemyStateReset(al::LiveActor* actor, const al::ActorInitInfo& 
 void EnemyStateReset::appear() {
     al::LiveActor* actor = mActor;  // getting the actor in each function call below causes mismatch, have to declare a variable up here for it
 
-    mIsDead = false;
+    setDead(false);
     if (!mIsRevive) {
         actor->kill();
         return;
@@ -50,7 +50,7 @@ void EnemyStateReset::appear() {
 }
 
 void EnemyStateReset::kill() {
-    mIsDead = true;
+    setDead(true);
     if (!mIsRevive)
         return;
 

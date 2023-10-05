@@ -6,7 +6,7 @@ namespace al {
 class LiveActor;
 
 class NerveStateBase : public al::NerveExecutor {
-protected:
+private:
     bool mIsDead = true;
 
 public:
@@ -18,6 +18,7 @@ public:
     virtual bool update();
     virtual void control();
 
+    void setDead(bool isDead) { mIsDead = isDead; }
     bool isDead() const { return mIsDead; }
 };
 

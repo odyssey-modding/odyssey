@@ -25,7 +25,7 @@ EnemyStateWander::EnemyStateWander(al::LiveActor* actor, const char* stateName) 
 };
 
 void EnemyStateWander::appear() {
-    mIsDead = false;
+    setDead(false);
     al::setNerve(this, &NrvEnemyStateWander.Walk);
 }
 
@@ -34,20 +34,23 @@ void EnemyStateWander::exeWait() {
         al::startAction(mActor, "Wait");
         mRandNum = al::getRandom(60);
     }
-    if (!al::isGreaterEqualStep(this, mRandNum + 120)) {
-        if (al::isOnGround(mActor, 0)) {
-            if (al::isFallNextMove(mActor, al::getVelocity(mActor), 50.0f, 200.0f)) {
-                al::scaleVelocity(mActor, -1.0f);
-                al::setVelocityY(mActor, 0.0f);
-            }
-            al::scaleVelocity(mActor, 0.7f);
-            al::addVelocityToGravityFittedGround(mActor, 2.0f, 0);
-        } else
-            al::setNerve(this, &NrvEnemyStateWander.Fall);
-    } else
+    if (al::isGreaterEqualStep(this, mRandNum + 120)) {
         al::setNerve(this, &NrvEnemyStateWander.Walk);
+        return;
+    }
+    if (!al::isOnGround(mActor, 0)) {
+        al::setNerve(this, &NrvEnemyStateWander.Fall);
+        return;
+    }
+    if (al::isFallNextMove(mActor, al::getVelocity(mActor), 50.0f, 200.0f)) {
+        al::scaleVelocity(mActor, -1.0f);
+        al::setVelocityY(mActor, 0.0f);
+    }
+    al::scaleVelocity(mActor, 0.7f);
+    al::addVelocityToGravityFittedGround(mActor, 2.0f, 0);
 }
 
+// NON_MATCHING: Mismatching vector math
 void EnemyStateWander::exeWalk() {
     if (al::isFirstStep(this)) {
         al::startAction(mActor, mStateName);
@@ -58,21 +61,24 @@ void EnemyStateWander::exeWalk() {
         return al::setNerve(this, &NrvEnemyStateWander.Wait);
     if (!al::isOnGround(mActor, 0))
         return al::setNerve(this, &NrvEnemyStateWander.Fall);
-    f32 directionDegree = 1.0f;
-    if (!mIsHalfProbability)
-        directionDegree = -1.0f;
-    al::rotateQuatYDirDegree(mActor, directionDegree);
+    if (mIsHalfProbability)
+        al::rotateQuatYDirDegree(mActor, 1.0f);
+    else
+        al::rotateQuatYDirDegree(mActor, -1.0f);
 
     sead::Vector3f frontDir = sead::Vector3f::zero;
     al::calcFrontDir(&frontDir, mActor);
+    auto *actor = mActor;
 
-    if (mWalkSpeed <= 0.0f)
-        mWalkSpeed = 1.0f;
-    if (al::isFallNextMove(mActor, (mWalkSpeed * frontDir) + al::getVelocity(mActor), 50.0f, 200.0f)) {
+    float walkSpeed = mWalkSpeed;
+    if (walkSpeed > 0.0f)
+        walkSpeed = 1.0f;
+    auto velocity = al::getVelocity(actor);
+    if (al::isFallNextMove(actor, (walkSpeed * frontDir) + velocity, 50.0f, 200.0f)) {
         al::scaleVelocity(mActor, -1.0f);
         al::setVelocityY(mActor, 0.0f);
     } else {
-        al::addVelocityToDirection(mActor, frontDir, mWalkSpeed);
+        al::addVelocityToDirection(mActor, frontDir, walkSpeed);
     }
     al::scaleVelocity(mActor, 0.7f);
     al::addVelocityToGravityFittedGround(mActor, 2.0f, 0);

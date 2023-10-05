@@ -53,7 +53,7 @@ void EnemyStateBlowDown::start(const al::LiveActor* actor) {
 }
 
 void EnemyStateBlowDown::appear() {
-    mIsDead = false;
+    setDead(false);
     if (al::isInvalidClipping(mActor))
         mIsInvalidClipping = true;
     else {
@@ -64,7 +64,7 @@ void EnemyStateBlowDown::appear() {
 }
 
 void EnemyStateBlowDown::kill() {
-    mIsDead = true;
+    setDead(true);
     if (!mIsInvalidClipping)
         al::validateClipping(mActor);
 }
