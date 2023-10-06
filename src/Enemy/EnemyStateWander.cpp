@@ -71,11 +71,11 @@ void EnemyStateWander::exeWalk() {
     al::calcFrontDir(&frontDir, mActor);
 
     float walkSpeed = mWalkSpeed > 0.0f ? mWalkSpeed : 1.0f;
-    
-    auto *actor = mActor;
-    
+
+    auto* actor = mActor;
+
     const sead::Vector3f& velocity = al::getVelocity(actor);
-    
+
     if (al::isFallNextMove(actor, walkSpeed * frontDir + velocity, 50.0f, 200.0f)) {
         al::scaleVelocity(mActor, -1.0f);
         al::setVelocityY(mActor, 0.0f);
