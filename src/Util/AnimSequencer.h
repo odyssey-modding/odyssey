@@ -8,4 +8,4 @@ class AnimSequencer;
 
 namespace AnimSeqFunc {
 AnimSequencer* createActorAnimSequencer(al::LiveActor*);
-};
+}

@@ -3,7 +3,7 @@
 #include <al/Library/Layout/LayoutActor.h>
 
 namespace al {
-    struct LayoutInitInfo;
+struct LayoutInitInfo;
 }
 
 class BootLayout : public al::LayoutActor {

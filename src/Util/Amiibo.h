@@ -9,6 +9,8 @@ class IUseMessageSystem;
 class IUseSceneObjHolder;
 }  // namespace al
 
+class SearchAmiiboData;
+
 class ShopItem {
 public:
     struct ItemInfo;
@@ -22,7 +24,7 @@ bool isExistAmiiboMstxtData(const al::IUseMessageSystem*, const al::NfpInfo&);
 const char* getAmiiboMstxtLabel(bool*, const al::IUseMessageSystem*, s32, s32, s32);
 bool tryFindAmiiboCostumeItemInfo(ShopItem::ItemInfo**, ShopItem::ItemInfo**, const al::NfpCharacterId&, s32, al::IUseSceneObjHolder*);
 void resetHelpAmiibo(const al::IUseSceneObjHolder*);
-void getSearchAmiiboData(const al::IUseSceneObjHolder*);
+SearchAmiiboData *getSearchAmiiboData(const al::IUseSceneObjHolder*);
 void appearCoinCollectHintEffect(const al::IUseSceneObjHolder*);
 void killCoinCollectHintEffect(const al::IUseSceneObjHolder*);
 }  // namespace rs

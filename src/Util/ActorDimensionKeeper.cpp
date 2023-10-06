@@ -47,7 +47,7 @@ bool isIn2DArea(const IUseDimension* iuse) {
 }
 
 bool is3D(const IUseDimension* iuse) {
-    const ActorDimensionKeeper *keeper = iuse->getActorDimensionKeeper();
+    const ActorDimensionKeeper* keeper = iuse->getActorDimensionKeeper();
     return !keeper->getIs2D() && !keeper->getIsCurrently2D();
 }
 

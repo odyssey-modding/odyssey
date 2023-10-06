@@ -80,7 +80,6 @@ void ButtonMiiverse::exeHoldOff() {
         setOff();
 }
 
-// NON_MATCHING
 void ButtonMiiverse::exeDecide() {
     if (al::isFirstStep(this))
         al::startAction(this, "Decide", 0);

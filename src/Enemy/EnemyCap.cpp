@@ -45,10 +45,10 @@ void EnemyCap::initPartsFixFile(al::LiveActor* actor, const al::ActorInitInfo& i
     mStateBlowDown = new al::EnemyStateBlowDown(this, &fallbackStateBlowDownParam, "吹き飛び状態");
     al::initNerveState(this, mStateBlowDown, &NrvEnemyCap.BlowDown, "吹き飛び");
 
-    al::StringTmp<128> test("");
+    al::StringTmp<128> test;
     al::createFileNameBySuffix(&test, "InitPartsFixInfo", suffix);
     if (al::isExistModelResourceYaml(mCap, test.cstr(), 0)) {
-        al::ByamlIter resourceYaml(al::getModelResourceYaml(mCap, test.cstr(), 0));
+        al::ByamlIter resourceYaml (al::getModelResourceYaml(mCap, test.cstr(), 0));
         const char* jointName = nullptr;
         resourceYaml.tryGetStringByKey(&jointName, "JointName");
         if (jointName)
@@ -156,20 +156,14 @@ EnemyCap* tryCreateEnemyCapSuffix(al::LiveActor* actor, const al::ActorInitInfo&
 bool tryStartEnemyCapBlowDown(EnemyCap* cap, const al::HitSensor* sensor) {
     if (!isOnEnemyCap(cap))
         return false;
-    if (!cap->isBlowDown()) {
-        cap->getStateBlowDown()->start(sensor);
-        al::setNerve(cap, &NrvEnemyCap.BlowDown);
-    }
+    cap->startBlowDown(sensor);
     return true;
 }
 
 bool tryStartEnemyCapBlowDown(EnemyCap* cap) {
     if (!isOnEnemyCap(cap))
         return false;
-    if (!cap->isBlowDown()) {
-        cap->getStateBlowDown()->start(cap->getCap());
-        al::setNerve(cap, &NrvEnemyCap.BlowDown);
-    }
+    cap->startBlowDown();
     return true;
 }
 
