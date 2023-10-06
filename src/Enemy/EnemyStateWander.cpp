@@ -50,23 +50,18 @@ void EnemyStateWander::exeWait() {
     al::addVelocityToGravityFittedGround(mActor, 2.0f, 0);
 }
 
-// NON_MATCHING: Mismatching vector math
 void EnemyStateWander::exeWalk() {
     if (al::isFirstStep(this)) {
         al::startAction(mActor, mStateName);
         mRandNum = al::getRandom(50);
         mIsHalfProbability = al::isHalfProbability();
     }
-    if (al::isGreaterEqualStep(this, mRandNum + 100)) {
-        al::setNerve(this, &NrvEnemyStateWander.Wait);
-        return;
-    }
-    if (!al::isOnGround(mActor, 0)) {
-        al::setNerve(this, &NrvEnemyStateWander.Fall);
-        return;
-    }
+    if (al::isGreaterEqualStep(this, mRandNum + 100))
+        return al::setNerve(this, &NrvEnemyStateWander.Wait);
+    if (!al::isOnGround(mActor, 0))
+        return al::setNerve(this, &NrvEnemyStateWander.Fall);
 
-    // TODO: get this to match with a single function call
+    // TODO: Match this with a single function call
     if (mIsHalfProbability)
         al::rotateQuatYDirDegree(mActor, 1.0f);
     else
@@ -75,12 +70,13 @@ void EnemyStateWander::exeWalk() {
     sead::Vector3f frontDir = sead::Vector3f::zero;
     al::calcFrontDir(&frontDir, mActor);
 
-    auto *actor = mActor;
-
     float walkSpeed = mWalkSpeed > 0.0f ? mWalkSpeed : 1.0f;
-    auto velocity = al::getVelocity(actor);
-    auto test = walkSpeed * frontDir + velocity;
-    if (al::isFallNextMove(actor, test, 50.0f, 200.0f)) {
+    
+    auto *actor = mActor;
+    
+    const sead::Vector3f& velocity = al::getVelocity(actor);
+    
+    if (al::isFallNextMove(actor, walkSpeed * frontDir + velocity, 50.0f, 200.0f)) {
         al::scaleVelocity(mActor, -1.0f);
         al::setVelocityY(mActor, 0.0f);
     } else {
