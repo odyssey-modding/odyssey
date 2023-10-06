@@ -2,15 +2,21 @@
 
 #include "al/Library/Area/AreaObj.h"
 #include "al/Library/Area/AreaInitInfo.h"
+#include "al/Library/Area/TrafficArea.h"
 #include "al/Library/LiveActor/ActorInitFunction.h"
+#include "al/Library/Play/Area/CameraStartParamArea.h"
+#include "al/Library/Play/Area/SeBarrierArea.h"
+#include "al/Library/Play/Area/SePlayArea.h"
+#include "al/Library/Play/Area/ViewCtrlArea.h"
+#include "AreaObj/BirdGatheringSpotArea.h"
+#include "AreaObj/ExtForceArea.h"
+#include "AreaObj/ForceRecoveryKidsArea.h"
+#include "AreaObj/MoveArea2D.h"
+#include "AreaObj/NpcForceMaterialCodeArea.h"
+#include "AreaObj/RouteGuideArea.h"
+#include "AreaObj/StainArea.h"
 
 namespace al {
-
-class CameraStartParamArea;
-class SeBarrierArea;
-class SePlayArea;
-class TrafficArea;
-class ViewCtrlArea;
 
 AreaObj* createAreaObj(const al::ActorInitInfo& actorInitInfo, const char* name) {
     al::AreaInitInfo areaInitInfo;
@@ -26,15 +32,6 @@ al::AreaObj* createAreaObjFunction(const char* name) {
 }
 
 } // namespace al
-
-class BirdGatheringSpotArea;
-class ExtForceArea;
-class ForceRecoveryKidsArea;
-class MoveArea2D;
-class NpcForceMaterialCodeArea;
-class RouteGuideArea;
-class StainArea;
-
 
 static al::NameToCreator<al::AreaObjCreatorFunction> sAreaObjEntries[] = {
     {"AlignDirectionArea", al::createAreaObjFunction<al::AreaObj>},
@@ -149,36 +146,26 @@ static al::NameToCreator<al::AreaObjCreatorFunction> sAreaObjEntries[] = {
     {"WorldEndBorderArea", al::createAreaObjFunction<al::AreaObj>},
     {"YukimaruRacerHoldJumpArea", al::createAreaObjFunction<al::AreaObj>},
     {"YukimaruRacerMinimumSpeedEnforce", al::createAreaObjFunction<al::AreaObj>},
-    // {"BirdGatheringSpotArea", al::createAreaObjFunction<BirdGatheringSpotArea>},
-    // {"CameraStartParamArea", al::createAreaObjFunction<al::CameraStartParamArea>},
-    // {"ExtForceArea", al::createAreaObjFunction<ExtForceArea>},
-    // {"ForceRecoveryKidsArea", al::createAreaObjFunction<ForceRecoveryKidsArea>},
-    // {"NpcForceMaterialCodeArea", al::createAreaObjFunction<NpcForceMaterialCodeArea>},
-    // {"SePlayArea", al::createAreaObjFunction<al::SePlayArea>},
-    // {"SeBarrierArea", al::createAreaObjFunction<al::SeBarrierArea>},
-    // {"StainArea", al::createAreaObjFunction<StainArea>},
-    // {"TrafficArea", al::createAreaObjFunction<al::TrafficArea>},
-    // {"ViewCtrlArea", al::createAreaObjFunction<al::ViewCtrlArea>},
-    // {"RouteGuideArea", al::createAreaObjFunction<RouteGuideArea>},
-    // {"2DMoveArea", al::createAreaObjFunction<MoveArea2D>},
-    // {"CameraStartParamAreaKids", al::createAreaObjFunction<al::CameraStartParamArea>},
-    // {"RecoveryTargetPosKidsArea", al::createAreaObjFunction<ForceRecoveryKidsArea>},
+    {"BirdGatheringSpotArea", al::createAreaObjFunction<BirdGatheringSpotArea>},
+    {"CameraStartParamArea", al::createAreaObjFunction<al::CameraStartParamArea>},
+    {"ExtForceArea", al::createAreaObjFunction<ExtForceArea>},
+    {"ForceRecoveryKidsArea", al::createAreaObjFunction<ForceRecoveryKidsArea>},
+    {"NpcForceMaterialCodeArea", al::createAreaObjFunction<NpcForceMaterialCodeArea>},
+    {"SePlayArea", al::createAreaObjFunction<al::SePlayArea>},
+    {"SeBarrierArea", al::createAreaObjFunction<al::SeBarrierArea>},
+    {"StainArea", al::createAreaObjFunction<StainArea>},
+    {"TrafficArea", al::createAreaObjFunction<al::TrafficArea>},
+    {"ViewCtrlArea", al::createAreaObjFunction<al::ViewCtrlArea>},
+    {"RouteGuideArea", al::createAreaObjFunction<RouteGuideArea>},
+    {"2DMoveArea", al::createAreaObjFunction<MoveArea2D>},
+    {"CameraStartParamAreaKids", al::createAreaObjFunction<al::CameraStartParamArea>},
+    {"RecoveryTargetPosKidsArea", al::createAreaObjFunction<ForceRecoveryKidsArea>},
 };
 
-static al::AreaGroupInfo areaGroupInfo[] = {{"GraphicsArea", 1}};
+static al::AreaGroupInfo sAreaGroupInfo[] = {{"GraphicsArea", 1}};
 
 // not matching
 ProjectAreaFactory::ProjectAreaFactory() : al::AreaObjFactory("エリア生成") {
     initFactory(sAreaObjEntries);
-    setAreaGroupInfo(areaGroupInfo);
+    setAreaGroupInfo(sAreaGroupInfo);
 }
-
-// ProjectAreaFactory::ProjectAreaFactory() : al::AreaObjFactory("エリア生成", sAreaObjEntries, &areaGroupInfo, 1) {
-// ProjectAreaFactory::ProjectAreaFactory() : al::AreaObjFactory("エリア生成", sAreaObjEntries, &areaGroupInfo) {
-// ProjectAreaFactory::ProjectAreaFactory() : al::AreaObjFactory("エリア生成", sAreaObjEntries) {
-//     mNumBuffers = 1;
-//     // mFactoryEntries = sAreaObjEntries;
-//     mAreaGroupInfo = &areaGroupInfo;
-//     // mNumFactoryEntries = 0x7e;
-// }
-
