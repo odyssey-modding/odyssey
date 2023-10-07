@@ -11,10 +11,9 @@ class IUseSceneObjHolder;
 
 class SearchAmiiboData;
 
-class ShopItem {
-public:
+namespace ShopItem {
     struct ItemInfo;
-};
+}
 
 namespace rs {
 void calcSearchAmiiboBit(s32*, s32*, s32*, s32);
