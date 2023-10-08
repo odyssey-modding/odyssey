@@ -21,8 +21,8 @@ class LayoutPaneGroup;
 class IUseLayout;
 class MessageHolder;
 
-void killLayoutIfActive(al::LayoutActor*);
-void appearLayoutIfDead(al::LayoutActor*);
+bool killLayoutIfActive(al::LayoutActor*);
+bool appearLayoutIfDead(al::LayoutActor*);
 bool isActive(const al::LayoutActor*);
 bool isDead(const al::LayoutActor*);
 void calcTrans(sead::Vector3f*, const al::IUseLayout*);

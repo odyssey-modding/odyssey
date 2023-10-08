@@ -39,7 +39,15 @@ void FootPrint::exeAppear() {
 }
 
 void FootPrint::exeDisappear() {
-    if ((al::isFirstStep(this) && !al::tryStartMclAnimIfExist(this, "Disappear")) || al::isMclAnimEnd(this))
+    if (al::isFirstStep(this)) {
+        bool animStarted = al::tryStartMclAnimIfExist(this, "Disappear");
+        if(!animStarted) {
+            kill();
+            return;
+        }
+    }
+    
+    if (al::isMclAnimEnd(this))
         kill();
 }
 

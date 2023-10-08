@@ -11,7 +11,7 @@ struct MeInfo;
 struct SePlayParamList;
 
 void startSe(const al::IUseAudioKeeper*, const sead::SafeString&);
-void verifySeKeeperNull(const al::IUseAudioKeeper*, const sead::SafeString&);
+bool verifySeKeeperNull(const al::IUseAudioKeeper*, const sead::SafeString&);
 bool tryStartSe(const al::IUseAudioKeeper*, const sead::SafeString&);
 void holdSe(const al::IUseAudioKeeper*, const sead::SafeString&);
 bool tryHoldSe(const al::IUseAudioKeeper*, const sead::SafeString&);

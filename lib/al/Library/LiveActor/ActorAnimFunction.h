@@ -183,7 +183,7 @@ void initPartialSklAnim(al::LiveActor*, s32, s32, s32);
 s32 getPartialSklAnimSlotNum(al::LiveActor*);
 void addPartialSklAnimPartsList(al::LiveActor*, const char*, const char*, s32);
 void addPartialSklAnimPartsListRecursive(al::LiveActor*, const char*, s32);
-void calcJoitsAmountFromJoint(al::LiveActor*, const char*);
+s32 calcJoitsAmountFromJoint(al::LiveActor*, const char*);
 void startPartialSklAnim(al::LiveActor*, const char*, s32, s32, const al::SklAnimRetargettingInfo*);
 void startPartialSklAnimWithInterpolate(al::LiveActor*, const char*, s32, s32, s32, const al::SklAnimRetargettingInfo*);
 void clearPartialSklAnim(al::LiveActor*, s32);

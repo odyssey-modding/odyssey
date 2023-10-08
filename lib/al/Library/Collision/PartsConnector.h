@@ -39,9 +39,9 @@ al::CollisionPartsConnector* tryCreateCollisionPartsConnector(const al::LiveActo
 al::CollisionPartsConnector* tryCreateCollisionPartsConnector(const al::LiveActor*, const al::ActorInitInfo&, const sead::Quatf&);
 bool isMtxConnectorConnecting(const al::MtxConnector*);
 void disconnectMtxConnector(al::MtxConnector*);
-void attachMtxConnectorToCollision(al::MtxConnector*, const al::LiveActor*, const sead::Vector3f&, const sead::Vector3f&);
-void attachMtxConnectorToCollision(al::MtxConnector*, const al::LiveActor*, bool);
-void attachMtxConnectorToCollision(al::MtxConnector*, const al::LiveActor*, float, float);
+al::CollisionParts* attachMtxConnectorToCollision(al::MtxConnector*, const al::LiveActor*, const sead::Vector3f&, const sead::Vector3f&);
+al::CollisionParts* attachMtxConnectorToCollision(al::MtxConnector*, const al::LiveActor*, bool);
+al::CollisionParts* attachMtxConnectorToCollision(al::MtxConnector*, const al::LiveActor*, float, float);
 void attachMtxConnectorToCollisionParts(al::MtxConnector*, const al::CollisionParts*);
 void setConnectorBaseQuatTrans(const sead::Quatf&, const sead::Vector3f&, al::MtxConnector*);
 void setConnectorBaseQuatTrans(al::LiveActor*, al::MtxConnector*);

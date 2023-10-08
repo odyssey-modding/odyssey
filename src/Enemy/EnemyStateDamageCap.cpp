@@ -18,7 +18,6 @@ struct {
 }  // namespace
 
 EnemyStateDamageCap::EnemyStateDamageCap(al::LiveActor* actor) : al::ActorStateBase("キャプチャ敵の帽子反応ステート", actor) {
-    mEnemyCap = nullptr;
     initNerve(&NrvEnemyStateDamageCap.Wait, 0);
 }
 

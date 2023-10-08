@@ -1,7 +1,6 @@
 #pragma once
 
 #include <prim/seadSafeString.h>
-#include <prim/seadStringUtil.h>
 
 namespace al {
 template <s32 L>

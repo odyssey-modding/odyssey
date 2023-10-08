@@ -15,7 +15,7 @@
 #include <al/Library/Obj/PartsFunction.h>
 #include <al/Library/Placement/PlacementFunction.h>
 #include <al/Library/Yaml/ByamlUtil.h>
-#include "prim/seadSafeString.h"
+#include <prim/seadSafeString.h>
 
 namespace {
 NERVE_IMPL(EnemyCap, Wait);
@@ -57,7 +57,7 @@ void EnemyCap::initPartsFixFile(al::LiveActor* actor, const al::ActorInitInfo& i
         al::tryGetByamlV3f(&mLocalRotate, resourceYaml, "LocalRotate");
         al::tryGetByamlV3f(&mLocalScale, resourceYaml, "LocalScale");
         if (!al::isNearZero(mLocalTrans, 0.001f) || !al::isNearZero(mLocalRotate, 0.001f))
-            mIsAtOrigin = true;
+            mNotAtOrigin = true;
         mUseFollowMtxScale = al::tryGetByamlKeyBoolOrFalse(resourceYaml, "UseFollowMtxScale");
         mUseLocalScale = al::tryGetByamlKeyBoolOrFalse(resourceYaml, "UseLocalScale");
     }

@@ -13,7 +13,7 @@ class EnemyCap;
 
 class EnemyStateDamageCap : public al::ActorStateBase {
 private:
-    EnemyCap* mEnemyCap;
+    EnemyCap* mEnemyCap = nullptr;
 
 public:
     EnemyStateDamageCap(al::LiveActor* actor);

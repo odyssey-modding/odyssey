@@ -22,7 +22,7 @@ struct {
 
 EnemyStateWander::EnemyStateWander(al::LiveActor* actor, const char* stateName) : al::ActorStateBase("さんぽ状態", actor), mStateName(stateName) {
     initNerve(&NrvEnemyStateWander.Wait, 0);
-};
+}
 
 void EnemyStateWander::appear() {
     setDead(false);

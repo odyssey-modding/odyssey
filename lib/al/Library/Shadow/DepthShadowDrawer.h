@@ -7,6 +7,7 @@
 namespace al {
 class LiveActor;
 class DepthShadowMapInfo;
+class OccSphere;
 class ShadowMaskBase;
 class ShadowMaskDrawCategory;
 
@@ -102,7 +103,7 @@ bool isEnableOcclusion(const al::LiveActor*, const char*);
 void calcSphereDoBoundingInfo(sead::Vector3f*, sead::Vector3f*, f32*, f32*, const al::LiveActor*, const char*, f32);
 void calcOcclusionSpherePos(sead::Vector3f*, const al::LiveActor*, const char*);
 void changeOcclusionGroup(const al::LiveActor*, const char*, const char*);
-void* getOcclusionSphere(const al::LiveActor*, const char*);
+al::OccSphere* getOcclusionSphere(const al::LiveActor*, const char*);
 void setOcclusionIgnoreHostHide(const al::LiveActor*, bool);
 bool findIsInShade(const al::LiveActor*, const sead::Vector3f&);
 void requestDepthShadowMapLightDir(const al::LiveActor*, const sead::Vector3f&, const char*);

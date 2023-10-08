@@ -11,7 +11,7 @@ class EnemyCap : public al::LiveActor {
 private:
     al::LiveActor* mCap = nullptr;
     sead::Matrix34f* mCapBaseMtx = nullptr;
-    bool mIsAtOrigin = true;
+    bool mNotAtOrigin = true;
     sead::Vector3f mLocalTrans = {0.0f, 0.0f, 0.0f};
     sead::Vector3f mLocalRotate = {0.0f, 0.0f, 0.0f};
     sead::Vector3f mLocalScale = {1.0f, 1.0f, 1.0f};

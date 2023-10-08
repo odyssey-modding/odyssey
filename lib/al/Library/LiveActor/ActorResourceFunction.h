@@ -12,7 +12,7 @@ class Resource;
 
 bool isExistModelResource(const al::LiveActor*);
 bool isExistAnimResource(const al::LiveActor*);
-bool tryGetAnimResource(const al::LiveActor*);
+al::Resource* tryGetAnimResource(const al::LiveActor*);
 bool isExistModelResourceYaml(const al::LiveActor*, const char*, const char*);
 al::Resource* getModelResource(const al::LiveActor*);
 bool isExistAnimResourceYaml(const al::LiveActor*, const char*, const char*);
