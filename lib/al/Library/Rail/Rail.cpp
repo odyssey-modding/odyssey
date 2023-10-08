@@ -1,7 +1,7 @@
 #include <al/Library/Rail/Rail.h>
 #include <limits>
 
-#include <al/Library/Math/MathUtil.h>
+#include <al/Library/Math/MathSpeedUtil.h>
 #include <al/Library/Placement/PlacementFunction.h>
 #include <al/Library/Placement/PlacementInfo.h>
 #include <al/Library/Rail/RailPart.h>

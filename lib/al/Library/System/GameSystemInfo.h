@@ -17,10 +17,10 @@ class NfpDirector;
 class ApplicationMessageReceiver;
 
 struct DrawSystemInfo {
-    agl::RenderBuffer* dockedRenderBuffer;
-    agl::RenderBuffer* handheldRenderBuffer;
+    agl::RenderBuffer* mDockedRenderBuffer;
+    agl::RenderBuffer* mHandheldRenderBuffer;
     bool isDocked;
-    agl::DrawContext* drawContext;
+    agl::DrawContext* mDrawContext;
 };
 
 struct GameSystemInfo {

@@ -7,6 +7,7 @@
 class MofumofuWarpHole : public al::LiveActor {
 private:
     sead::Quatf gap = sead::Quatf::unit;
+
 public:
     MofumofuWarpHole(const char* name);
     void init(const al::ActorInitInfo& info) override;
@@ -28,5 +29,4 @@ public:
     void exeHideMove();
     void exeDashSign();
     void exeDashSignEnd();
-
 };

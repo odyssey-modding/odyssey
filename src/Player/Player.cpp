@@ -4,7 +4,7 @@
 #include <al/Library/LiveActor/ActorInitFunction.h>
 #include <al/Library/LiveActor/ActorMovementFunction.h>
 #include <al/Library/LiveActor/ActorPoseKeeper.h>
-#include <al/Library/Math/MathUtil.h>
+#include <al/Library/Math/MathAngleUtil.h>
 #include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Nerve/NerveUtil.h>
 
@@ -16,11 +16,10 @@ NERVE_IMPL(Player, Fall);
 NERVE_IMPL(Player, Damage);
 
 struct {
-    NERVE_MAKE(Player, Wait);
-    NERVE_MAKE(Player, Run);
-    NERVE_MAKE(Player, Jump);
     NERVE_MAKE(Player, Fall);
-    NERVE_MAKE(Player, Damage);
+    NERVE_MAKE(Player, Jump);
+    NERVE_MAKE(Player, Run);
+    NERVE_MAKE(Player, Wait);
 } NrvPlayer;
 }  // namespace
 
@@ -32,7 +31,7 @@ void Player::init(const al::ActorInitInfo& initInfo) {
 void Player::control() {
     if (al::isPadTriggerL(mPort)) {
         al::setVelocityZero(this);
-        al::setTrans(this, {100.0f, 0.0f, 800.0f});
+        al::setTrans(this, {0.0f, 100.0f, 800.0f});
         al::resetPosition(this);
         al::setNerve(this, &NrvPlayer.Fall);
     }
@@ -45,11 +44,11 @@ void Player::exeWait() {
 
     if (al::isPadTriggerA(mPort))
         al::setNerve(this, &NrvPlayer.Jump);
-    else if (al::isNearZero(al::getLeftStick(mPort), 0.001f))
+    else if (!al::isNearZero(al::getLeftStick(mPort), 0.001f))
         al::setNerve(this, &NrvPlayer.Run);
 }
 
-#ifdef NON_MATCHING
+// NON_MATCHING: Incomplete
 void Player::exeRun() {
     if (al::isFirstStep(this)) {
         al::startAction(this, "Run");
@@ -58,4 +57,3 @@ void Player::exeRun() {
     al::addVelocityToGravity(this, 2.0);
     al::scaleVelocity(this, 0.7);
 }
-#endif

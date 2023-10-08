@@ -7,23 +7,23 @@ NerveStateBase::~NerveStateBase() = default;
 void NerveStateBase::init() {}
 
 void NerveStateBase::appear() {
-    mIsDead = false;
+    setDead(false);
 }
 
 void NerveStateBase::kill() {
-    mIsDead = true;
+    setDead(true);
 }
 
 bool NerveStateBase::update() {
     updateNerve();
 
-    if (mIsDead) {
+    if (isDead()) {
         return true;
     }
 
     control();
 
-    return mIsDead;
+    return isDead();
 }
 
 void NerveStateBase::control() {}

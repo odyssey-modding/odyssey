@@ -4,11 +4,11 @@
 #include <al/Library/Camera/CameraDirector.h>
 #include <al/Library/Effect/EffectKeeper.h>
 #include <al/Library/HostIO/HioNode.h>
+#include <al/Library/Layout/LayoutKeeper.h>
+#include <al/Library/Message/MessageSystem.h>
 #include <al/Library/Nerve/NerveKeeper.h>
 #include <al/Library/Scene/SceneObjHolder.h>
-#include <al/Library/Layout/LayoutKeeper.h>
-#include <al/Library/Layout/LayoutActionKeeper.h>
-#include <al/Library/Message/MessageSystem.h>
+#include <al/Project/Layout/LayoutActionKeeper.h>
 #include <prim/seadSafeString.h>
 
 namespace al {

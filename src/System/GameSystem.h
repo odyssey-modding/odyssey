@@ -1,7 +1,6 @@
 #pragma once
 
 #include <al/Library/Nerve/NerveExecutor.h>
-#include <al/Library/Nerve/NerveSetupUtil.h>
 
 namespace al {
 class Sequence;
@@ -18,6 +17,7 @@ class WaveVibrationHolder;
 
 class ProjectNfpDirector;
 class GameConfigData;
+
 class GameSystem : public al::NerveExecutor {
     al::Sequence* mSequence;
     al::GameSystemInfo* mSystemInfo;

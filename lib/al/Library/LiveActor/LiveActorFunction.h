@@ -14,11 +14,11 @@ void findSubActor(const al::SubActorKeeper*, const char*);
 }  // namespace alSubActorFunction
 
 namespace al {
-void isExistSubActorKeeper(const al::LiveActor*);
+bool isExistSubActorKeeper(const al::LiveActor*);
 void getSubActor(const al::LiveActor*, const char*);
 void tryGetSubActor(const al::LiveActor*, const char*);
-void getSubActor(const al::LiveActor*, int);
-void getSubActorNum(const al::LiveActor*);
+al::LiveActor* getSubActor(const al::LiveActor*, int);
+s32 getSubActorNum(const al::LiveActor*);
 void offSyncClippingSubActor(al::LiveActor*, const al::LiveActor*);
 void offSyncClippingSubActor(al::LiveActor*, const char*);
 void offSyncClippingSubActorAll(al::LiveActor*);

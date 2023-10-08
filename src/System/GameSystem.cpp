@@ -1,4 +1,5 @@
 #include "GameSystem.h"
+#include <al/Library/Nerve/NerveSetupUtil.h>
 
 namespace {
 

@@ -1,6 +1,15 @@
 #include "CameraVerticalAbsorber.h"
-#include <al/Library/Math/MathUtil.h>
+#include <al/Library/Camera/CameraPoserFunction.h>
+#include <al/Library/Camera/CameraStartInfo.h>
+#include <al/Library/Math/MathAngleUtil.h>
+#include <al/Library/Math/MathLerpUtil.h>
+#include <al/Library/Math/MathVectorUtil.h>
+#include <al/Library/Nerve/Nerve.h>
+#include <al/Library/Nerve/NerveKeeper.h>
+#include <al/Library/Nerve/NerveSetupUtil.h>
+#include <al/Library/Nerve/NerveUtil.h>
 #include <al/Library/Yaml/ByamlUtil.h>
+#include <al/Library/Yaml/ByamlIter.h>
 
 namespace {
 using namespace al;
@@ -25,12 +34,6 @@ struct {
 
 namespace al {
 
-class CameraStartInfo {
-public:
-    unsigned char unk[0x25];
-    bool onGround;
-};
-
 void CameraVerticalAbsorber::exeFollowAbsolute() {
     mTargetInterp *= 0.8f;
 }
@@ -41,15 +44,12 @@ void CameraVerticalAbsorber::invalidate() {
         al::setNerve(this, &NrvCameraVerticalAbsorber.FollowAbsolute);
 }
 
-#ifdef NON_MATCHING
 void CameraVerticalAbsorber::start(const sead::Vector3f& pos, const al::CameraStartInfo& info) {
     alCameraPoserFunction::calcTargetFront(&mPrevTargetFront, mCameraPoser);
 
-    mTargetInterp.x = 0.0f;
-    mTargetInterp.y = 0.0f;
-    mTargetInterp.z = 0.0f;
+    mTargetInterp = sead::Vector3f(0, 0, 0);
 
-    mPrevTargetTrans = pos;
+    mPrevTargetTrans.e = pos.e;
 
     if (mUnusedBool || mIsInvalidated || alCameraPoserFunction::isPlayerTypeNotTouchGround(mCameraPoser))
         return al::setNerve(this, &NrvCameraVerticalAbsorber.FollowAbsolute);
@@ -57,19 +57,21 @@ void CameraVerticalAbsorber::start(const sead::Vector3f& pos, const al::CameraSt
         return al::setNerve(this, &NrvCameraVerticalAbsorber.FollowClimbPoleNoInterp);
     if (alCameraPoserFunction::isTargetGrabCeil(mCameraPoser))
         return al::setNerve(this, &NrvCameraVerticalAbsorber.FollowSlow);
-    if (!info.onGround || alCameraPoserFunction::isTargetCollideGround(mCameraPoser))
+    if (!info.mIsOnGround || alCameraPoserFunction::isTargetCollideGround(mCameraPoser))
         return al::setNerve(this, &NrvCameraVerticalAbsorber.FollowGround);
 
-    mPrevTargetTrans = alCameraPoserFunction::getPreLookAtPos(mCameraPoser);
+    mPrevTargetTrans.e = alCameraPoserFunction::getPreLookAtPos(mCameraPoser).e;
 
-    sead::Vector3f target;
+    const al::CameraPoser* poser = mCameraPoser;
 
-    alCameraPoserFunction::calcTargetGravity(&target, mCameraPoser);
+    sead::Vector3f target(0, 0, 0);
+
+    alCameraPoserFunction::calcTargetGravity(&target, poser);
+
     mTargetInterp = pos - mPrevTargetTrans;
     al::parallelizeVec(&mTargetInterp, target, mTargetInterp);
     al::setNerve(this, &NrvCameraVerticalAbsorber.Absorb);
 }
-#endif
 
 void CameraVerticalAbsorber::load(const al::ByamlIter& data) {
     al::ByamlIter it;
@@ -87,7 +89,7 @@ void CameraVerticalAbsorber::load(const al::ByamlIter& data) {
     mAdvanceAbsorbScreenPosUp = al::getByamlKeyFloat(it2, "AdvanceAbsorbScreenPosUp");
 };
 
-#ifdef NON_MATCHING
+// NON_MATCHING
 void CameraVerticalAbsorber::update() {
     if (mIsStopUpdate)
         return;
@@ -98,7 +100,7 @@ void CameraVerticalAbsorber::update() {
     mLookAtCamera.getPos() = mCameraPoser->getPosition();
     mLookAtCamera.getAt() = mCameraPoser->getTargetTrans();
     mLookAtCamera.getUp() = mCameraPoser->getCameraUp();
-    if (mLookAtCamera.getUp().length() > 0.f)
+    if (mLookAtCamera.getUp().length() > 0.0f)
         mLookAtCamera.getUp().normalize();
     if (!mUnusedBool && !mIsInvalidated) {
         mLookAtCamera.getAt() -= mTargetInterp;
@@ -124,14 +126,13 @@ void CameraVerticalAbsorber::update() {
         sead::Vector3f offsetTrans = sead::Vector3f::zero;
         alCameraPoserFunction::calcTargetTransWithOffset(&offsetTrans, mCameraPoser);
         alCameraPoserFunction::calcOffsetCameraKeepInFrameV(&gravity, &mLookAtCamera, offsetTrans, mCameraPoser, mKeepInFrameOffsetUp,
-                                                            alCameraPoserFunction::isPlayerTypeHighJump(mCameraPoser) ? 300.f :
+                                                            alCameraPoserFunction::isPlayerTypeHighJump(mCameraPoser) ? 300.0f :
                                                                                                                         mKeepInFrameOffsetDown);
         prevTargetTrans = mTargetInterp - gravity;
     }
     mPrevTargetTrans = mCameraPoser->getTargetTrans() - prevTargetTrans;
     mPrevTargetFront = mTargetFront;
 }
-#endif
 
 void CameraVerticalAbsorber::exeFollowGround(){
 

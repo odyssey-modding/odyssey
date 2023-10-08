@@ -12,7 +12,7 @@ class ParameterStringRef;
 class ParameterC4f;
 class ParameterArray;
 class LiveActor;
-class ActorInitInfo;
+struct ActorInitInfo;
 class Resource;
 
 class ActorPrePassLightKeeper {

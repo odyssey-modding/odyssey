@@ -79,7 +79,7 @@ void getOriginalSensorFollowPosOffset(const al::ActorSensorController*);
 void resetActorSensorController(al::ActorSensorController*);
 void calcPosBetweenSensors(sead::Vector3f*, const al::HitSensor*, const al::HitSensor*, float);
 void calcDistance(const al::HitSensor*, const al::HitSensor*);
-void getSensorPos(const al::HitSensor*);
+sead::Vector3f& getSensorPos(const al::HitSensor*);
 void calcDistanceV(const sead::Vector3f&, const al::HitSensor*, const al::HitSensor*);
 void calcDistanceH(const sead::Vector3f&, const al::HitSensor*, const al::HitSensor*);
 void calcDirBetweenSensors(sead::Vector3f*, const al::HitSensor*, const al::HitSensor*);

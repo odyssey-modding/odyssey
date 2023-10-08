@@ -86,8 +86,7 @@ class AudioDirector;
 class CollisionDirector;
 class GraphicsSystemInfo;
 
-class ActorInitInfo {
-private:
+struct ActorInitInfo {
     al::LiveActorGroup* mKitDrawingGroup;
     const al::PlacementInfo* mPlacementInfo;
     const al::LayoutInitInfo* mLayoutInitInfo;
@@ -103,7 +102,6 @@ private:
     al::StageSwitchDirector* mStageSwitchDirector;
     al::ViewIdHolder* mViewIdHolder;
 
-public:
     ActorInitInfo();
     void initNew(const PlacementInfo*, const LayoutInitInfo*, LiveActorGroup*, const ActorFactory*, ActorResourceHolder*, AreaObjDirector*,
                  AudioDirector*, CameraDirector*, ClippingDirector*, CollisionDirector*, DemoDirector*, EffectSystemInfo*, ExecuteDirector*,

@@ -1,16 +1,15 @@
 #include "Boss/Mofumofu/MofumofuWarpHole.h"
-
-#include <math/seadQuat.h>
-#include <math/seadVector.h>
+#include <al/Library/Effect/EffectSystemInfo.h>
+#include <al/Library/Joint/JointControllerKeeper.h>
 #include <al/Library/LiveActor/ActorActionFunction.h>
 #include <al/Library/LiveActor/ActorInitFunction.h>
+#include <al/Library/LiveActor/ActorModelFunction.h>
+#include <al/Library/LiveActor/ActorPoseKeeper.h>
+#include <al/Library/Math/MathAngleUtil.h>
 #include <al/Library/Nerve/NerveSetupUtil.h>
 #include <al/Library/Nerve/NerveUtil.h>
-#include <al/Library/Joint/JointControllerKeeper.h>
-#include <al/Library/LiveActor/ActorModelFunction.h>
-#include <al/Library/Effect/EffectSystemInfo.h>
-#include <al/Library/LiveActor/ActorPoseKeeper.h>
-#include <al/Library/Math/MathUtil.h>
+#include <math/seadQuat.h>
+#include <math/seadVector.h>
 
 namespace {
 
@@ -38,8 +37,7 @@ struct {
 
 }  // namespace
 
-MofumofuWarpHole::MofumofuWarpHole(const char* name)
-    : al::LiveActor(name) {}  // TODO minor mismatch about storing `gap`
+MofumofuWarpHole::MofumofuWarpHole(const char* name) : al::LiveActor(name) {}
 
 void MofumofuWarpHole::init(const al::ActorInitInfo& actorInitInfo) {
     al::initActorWithArchiveName(this, actorInitInfo, "MofumofuWarpHole", nullptr);

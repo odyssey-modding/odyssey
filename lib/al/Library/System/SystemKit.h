@@ -8,8 +8,6 @@ class MemorySystem;
 class ResourceSystem;
 class SaveDataDirector;
 class SystemKit {
-    friend class alProjectInterface;
-
 private:
     al::MemorySystem* mMemorySystem;
     al::FileLoader* mFileLoader;
@@ -30,7 +28,3 @@ public:
     al::SaveDataDirector* getSaveDataDirector() { return mSaveDataDirector; }
 };
 }  // namespace al
-
-class alProjectInterface {
-    static al::SystemKit* getSystemKit();
-};

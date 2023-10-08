@@ -1,4 +1,4 @@
-#include <al/Library/Math/MathUtil.h>
+#include <al/Library/Math/MathLengthUtil.h>
 #include <al/Project/Rail/LinearCurve.h>
 
 namespace al {
