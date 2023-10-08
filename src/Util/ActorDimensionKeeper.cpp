@@ -1,6 +1,4 @@
 #include "Util/ActorDimensionKeeper.h"
-#include <al/Library/LiveActor/ActorPoseKeeper.h>
-#include <container/seadPtrArray.h>
 
 void ActorDimensionKeeper::validate() {
     mIsValid = true;

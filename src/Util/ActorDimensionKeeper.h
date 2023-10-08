@@ -5,6 +5,7 @@
 namespace al {
 class LiveActor;
 class MtxConnector;
+class CollisionPartsFilterOnlySpecialPurpose;
 }  // namespace al
 
 class In2DAreaMoveControl;
@@ -46,7 +47,7 @@ ActorDimensionKeeper* createDimensionKeeper(const al::LiveActor*);
 void updateDimensionKeeper(ActorDimensionKeeper*);
 const char* getSpecialPurposeName2DOnly();
 void createAndSetFilter2DOnly(al::LiveActor*);
-void createCollisionPartsFilter2DOnly();
+al::CollisionPartsFilterOnlySpecialPurpose *createCollisionPartsFilter2DOnly();
 bool is2D(const IUseDimension*);
 bool isIn2DArea(const IUseDimension*);
 bool is3D(const IUseDimension*);

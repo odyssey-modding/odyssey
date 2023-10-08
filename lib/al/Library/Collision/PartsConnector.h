@@ -74,6 +74,6 @@ void attachToHitInfo(al::CollisionPartsConnector*, const al::HitInfo&, const sea
 void attachToHitInfoNrmToMinusZ(al::CollisionPartsConnector*, const al::HitInfo&);
 void calcConnectInfo(const al::MtxConnector*, sead::Vector3f*, sead::Quatf*, sead::Vector3f*, const sead::Vector3f&, const sead::Vector3f&);
 void connectPoseQTUsingConnectInfo(al::LiveActor*, const al::MtxConnector*);
-sead::Quatf &getConnectBaseQuat(const al::MtxConnector*);
-sead::Vector3f &getConnectBaseTrans(const al::MtxConnector*);
+sead::Quatf& getConnectBaseQuat(const al::MtxConnector*);
+sead::Vector3f& getConnectBaseTrans(const al::MtxConnector*);
 }  // namespace al

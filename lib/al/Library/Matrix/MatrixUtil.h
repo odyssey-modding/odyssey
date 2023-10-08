@@ -56,9 +56,9 @@ void turnMtxYDirDegree(sead::Matrix34f*, const sead::Matrix34f&, const sead::Vec
 void turnMtxZDirDegree(sead::Matrix34f*, const sead::Matrix34f&, const sead::Vector3f&, f32);
 void calcCameraPosFromViewMtx(sead::Vector3f*, const sead::Matrix34f&);
 void calcMtxMul(sead::Vector3f*, const sead::Matrix34f&, const sead::Vector3f&);
-void calcMtxMul(sead::Vector3f*, al::Matrix43f const&, const sead::Vector3f&);
+void calcMtxMul(sead::Vector3f*, const al::Matrix43f&, const sead::Vector3f&);
 void calcMtxScale(sead::Vector3f*, const sead::Matrix34f&);
-void calcMtxScale(sead::Vector3f*, al::Matrix43f const&);
+void calcMtxScale(sead::Vector3f*, const al::Matrix43f&);
 void normalizeMtxScale(sead::Matrix34f*, const sead::Matrix34f&);
 void tryNormalizeMtxScaleOrIdentity(sead::Matrix34f*, const sead::Matrix34f&);
 void calcMtxLocalTrans(sead::Vector3f*, const sead::Matrix34f&, const sead::Vector3f&);

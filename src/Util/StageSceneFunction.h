@@ -10,10 +10,10 @@ class IJudge;
 
 namespace rs {
 void resetJudge(IJudge*);
-bool updateJudge(IJudge*);
+void updateJudge(IJudge*);
 bool isJudge(const IJudge*);
 bool updateJudgeAndResult(IJudge*);
-void judgeAndResetReturnTrue(IJudge*);
+bool judgeAndResetReturnTrue(IJudge*);
 bool isEnableShowDemoAfterOpenMoonRockFirst(const al::LiveActor*);
 bool isFirstDemoOpenMoonRock(const al::LiveActor*);
 bool isEnableShowDemoMoonRockMapWorld(const al::LiveActor*);

@@ -56,10 +56,14 @@ void EnemyStateWander::exeWalk() {
         mRandNum = al::getRandom(50);
         mIsHalfProbability = al::isHalfProbability();
     }
-    if (al::isGreaterEqualStep(this, mRandNum + 100))
-        return al::setNerve(this, &NrvEnemyStateWander.Wait);
-    if (!al::isOnGround(mActor, 0))
-        return al::setNerve(this, &NrvEnemyStateWander.Fall);
+    if (al::isGreaterEqualStep(this, mRandNum + 100)) {
+        al::setNerve(this, &NrvEnemyStateWander.Wait);
+        return;
+    }
+    if (!al::isOnGround(mActor, 0)) {
+        al::setNerve(this, &NrvEnemyStateWander.Fall);
+        return;
+    }
 
     // TODO: Match this with a single function call
     if (mIsHalfProbability)
