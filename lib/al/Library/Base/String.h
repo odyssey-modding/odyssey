@@ -20,7 +20,7 @@ class MatchStr;
 const char* getBaseName(const char*);
 const char* createStringIfInStack(const char*);
 const char* createConcatString(const char*, const char*);
-al::StringTmp<128> createFileNameBySuffix(sead::BufferedSafeString*, const char*, const char*);
+void createFileNameBySuffix(sead::BufferedSafeString*, const char*, const char*);
 void outputValueWithComma(char*, u32, unsigned long, bool, bool);
 void extractString(char*, const char*, u32, u32);
 
