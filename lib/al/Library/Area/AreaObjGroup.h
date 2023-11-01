@@ -20,5 +20,7 @@ public:
     al::AreaObj* getInVolumeAreaObj(const sead::Vector3f& position) const;
     void incrementCount();
     void registerAreaObj(al::AreaObj* newAreaObj);
+
+    const char* getName() const { return mGroupName; };
 };
 }  // namespace al
