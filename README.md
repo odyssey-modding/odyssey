@@ -1,3 +1,7 @@
+# This repo is being archived. Please use [MonsterDruide1/OdysseyDecomp](https://github.com/MonsterDruide1/OdysseyDecomp) instead.
+
+This repo does not receive any further maintenance. As soon as all open PRs are either merged or ported over to the other repository, this repo will be archived.
+
 # Odyssey Decompilation Project ![Decompiled Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/odyssey-modding/odyssey/main/data/shields.json)
 Decompilation of Super Mario Odyssey 1.0.0. 
 
