@@ -5,9 +5,10 @@
 #include <al/Library/LiveActor/ActorMovementFunction.h>
 #include <al/Library/LiveActor/ActorPoseKeeper.h>
 #include <al/Library/LiveActor/LiveActor.h>
-#include <al/Library/Math/MathUtil.h>
 #include <al/Library/Screen/ScreenPointKeeper.h>
 #include <al/Library/Se/SeKeeper.h>
+#include <al/Library/Math/MathLerpUtil.h>
+#include <al/Library/Math/MathVectorUtil.h>
 
 namespace al {
 void resetPosition(al::LiveActor* actor) {
@@ -68,7 +69,67 @@ sead::Vector3f* getVelocityPtr(al::LiveActor* actor) {
     return actor->getPoseKeeper()->getVelocityPtr();
 }
 
-// separateVelocityHV
+void separateVelocityHV(sead::Vector3f* horizontal, sead::Vector3f* vertical, const al::LiveActor* actor) {
+    al::separateVectorHV(horizontal, vertical, al::getGravity(actor), actor->getPoseKeeper()->getVelocity());
+}
+
+void separateVelocityDirHV(sead::Vector3f* horizontal, sead::Vector3f* vertical, const al::LiveActor* actor, const sead::Vector3f& direction) {
+    al::separateVectorHV(horizontal, vertical, direction, actor->getPoseKeeper()->getVelocity());
+}
+
+void separateVelocityParallelVertical(sead::Vector3f* horizontal, sead::Vector3f* vertical, const al::LiveActor* actor,
+                                      const sead::Vector3f& direction) {
+    al::separateVectorParallelVertical(horizontal, vertical, direction, actor->getPoseKeeper()->getVelocity());
+}
+
+void setVelocity(al::LiveActor* actor, const sead::Vector3f& vel) {
+    sead::Vector3f* velocityPtr = actor->getPoseKeeper()->getVelocityPtr();
+    velocityPtr->e = vel.e;
+}
+
+void setVelocity(al::LiveActor* actor, f32 x, f32 y, f32 z) {
+    sead::Vector3f* velocityPtr = actor->getPoseKeeper()->getVelocityPtr();
+    velocityPtr->x = x;
+    velocityPtr->y = y;
+    velocityPtr->z = z;
+}
+
+void setVelocityX(al::LiveActor* actor, f32 x) {
+    sead::Vector3f* velocityPtr = actor->getPoseKeeper()->getVelocityPtr();
+    velocityPtr->x = x;
+}
+
+void setVelocityY(al::LiveActor* actor, f32 y) {
+    sead::Vector3f* velocityPtr = actor->getPoseKeeper()->getVelocityPtr();
+    velocityPtr->y = y;
+}
+
+void setVelocityZ(al::LiveActor* actor, f32 z) {
+    sead::Vector3f* velocityPtr = actor->getPoseKeeper()->getVelocityPtr();
+    velocityPtr->z = z;
+}
+
+void setVelocityZero(al::LiveActor* actor) {
+    sead::Vector3f* velocityPtr = actor->getPoseKeeper()->getVelocityPtr();
+    velocityPtr->x = 0;
+    velocityPtr->y = 0;
+    velocityPtr->z = 0;
+}
+
+void setVelocityZeroX(al::LiveActor* actor) {
+    sead::Vector3f* velocityPtr = actor->getPoseKeeper()->getVelocityPtr();
+    velocityPtr->x = 0;
+}
+
+void setVelocityZeroY(al::LiveActor* actor) {
+    sead::Vector3f* velocityPtr = actor->getPoseKeeper()->getVelocityPtr();
+    velocityPtr->y = 0;
+}
+
+void setVelocityZeroZ(al::LiveActor* actor) {
+    sead::Vector3f* velocityPtr = actor->getPoseKeeper()->getVelocityPtr();
+    velocityPtr->z = 0;
+}
 
 void addVelocity(al::LiveActor* actor, const sead::Vector3f& vel) {
     sead::Vector3f& currentVelocity = *actor->getMutPoseKeeper()->getVelocityPtr();

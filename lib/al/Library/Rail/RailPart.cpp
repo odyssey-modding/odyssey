@@ -1,6 +1,7 @@
 #include <al/Library/Rail/RailPart.h>
 
-#include <al/Library/Math/MathUtil.h>
+#include <al/Library/Math/MathAngleUtil.h>
+#include <al/Library/Math/MathLengthUtil.h>
 #include <al/Project/Rail/BezierCurve.h>
 #include <al/Project/Rail/LinearCurve.h>
 #include "math/seadVector.h"

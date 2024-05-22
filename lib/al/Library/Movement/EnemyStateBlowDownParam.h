@@ -1,0 +1,20 @@
+#pragma once
+
+#include <basis/seadTypes.h>
+
+namespace al {
+struct EnemyStateBlowDownParam {
+    const char* mActionName = "BlowDown";
+    f32 mGravityStrength = 10.3f;
+    f32 mVelocityStrength = 28.2f;
+    f32 mVelocityMultiplier = 1.1f;
+    f32 mVelocityScale = 0.995f;
+    s32 mBlowDownLength = 120;
+    bool mFaceAwayFromActor = true;
+
+    EnemyStateBlowDownParam();
+    EnemyStateBlowDownParam(const char* actionName);
+    EnemyStateBlowDownParam(const char* actionName, f32 gravityStrength, f32 velocityStrength, f32 velocityMultiplier, f32 velocityScale,
+                            s32 blowDownLength, bool faceAwayFromActor);
+};
+}  // namespace al

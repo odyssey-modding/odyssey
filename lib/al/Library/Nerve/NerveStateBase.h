@@ -18,11 +18,12 @@ public:
     virtual bool update();
     virtual void control();
 
+    void setDead(bool isDead) { mIsDead = isDead; }
     bool isDead() const { return mIsDead; }
 };
 
 class ActorStateBase : public al::NerveStateBase {
-private:
+protected:
     al::LiveActor* mActor;
 
 public:
