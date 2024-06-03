@@ -1,13 +1,13 @@
 #include "al/Library/Area/AreaObj.h"
 
 #include "al/Library/Area/AreaInitInfo.h"
+#include "al/Library/Area/AreaObjGroup.h"
 #include "al/Library/Area/AreaShape.h"
 #include "al/Library/Factory/Factory.h"
 #include "al/Library/Placement/PlacementFunction.h"
 #include "al/Library/Placement/PlacementInfo.h"
 #include "al/Library/Stage/ListenStageSwitch.h"
 #include "al/Library/Stage/StageSwitchUtil.h"
-#include "al/Library/String/StringUtil.h"
 #include "al/Library/Thread/FunctorV0M.h"
 
 namespace al {
@@ -26,7 +26,6 @@ void AreaObj::initStageSwitchKeeper() {
     mStageSwitchKeeper = new al::StageSwitchKeeper();
 }
 
-// NOT MATCHING -- 1 instruction out of order for `const char* entryName = areaShapeFactory.convertName(modelName);`
 void AreaObj::init(const al::AreaInitInfo& initInfo) {
     mPlacementInfo = new al::PlacementInfo(initInfo);
     mSceneObjHolder = initInfo.getSceneObjHolder();
@@ -37,12 +36,9 @@ void AreaObj::init(const al::AreaInitInfo& initInfo) {
     alPlacementFunction::tryGetModelName(&modelName, *mPlacementInfo);
 
     al::AreaShapeFactory areaShapeFactory("エリアシェイプファクトリー");
-    const char* entryName = areaShapeFactory.convertName(modelName);
-    const al::NameToCreator<al::AreaShape* (*)()>* factoryEntries = areaShapeFactory.getFactoryEntries();
-    while (!al::isEqualString(entryName, factoryEntries->mName)) {
-        factoryEntries++;
-    }
-    mAreaShape = factoryEntries->mCreationFunction();
+    AreaShape* (*creatorFunc)() = nullptr;
+    areaShapeFactory.getEntryIndex(modelName, &creatorFunc);
+    mAreaShape = creatorFunc();
 
     mAreaShape->setBaseMtxPtr(&mMatrixTR);
     sead::Vector3f scale({1.0, 1.0, 1.0});

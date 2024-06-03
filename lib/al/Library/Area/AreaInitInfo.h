@@ -9,8 +9,8 @@ class SceneObjHolder;
 
 class AreaInitInfo : public al::PlacementInfo {
 private:
-    al::StageSwitchDirector* mStageSwitchDirector = nullptr;
-    al::SceneObjHolder* mSceneObjHolder = nullptr;
+    al::StageSwitchDirector* mStageSwitchDirector;
+    al::SceneObjHolder* mSceneObjHolder;
 
 public:
     AreaInitInfo(){};

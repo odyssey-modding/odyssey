@@ -2,12 +2,14 @@
 
 #include <math/seadMatrix.h>
 #include <math/seadVector.h>
+#include "al/Library/Factory/Factory.h"
 #include "al/Library/HostIO/HioNode.h"
 #include "al/Library/Scene/SceneObjHolder.h"
 #include "al/Library/Stage/StageSwitchKeeper.h"
 
 namespace al {
 class AreaInitInfo;
+class AreaObjGroup;
 class AreaShape;
 class PlacementInfo;
 class SceneObjHolder;
@@ -38,4 +40,5 @@ public:
 
     s32 getPriority() { return mPriority; };
 };
+
 }  // namespace al
